@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kutxaMugitu : GorputzFisikak {
+public class KutxaMugitu : GorputzFisikak {
 
 	// Use this for initialization
 	void Start () {

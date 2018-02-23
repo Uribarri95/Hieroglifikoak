@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mugitu : GorputzFisikak {
+public class Mugitu : GorputzFisikak {
 
     public float saltoIndarra = 7f;
     public float abiaduraMax = 7f;
@@ -20,8 +20,9 @@ public class mugitu : GorputzFisikak {
         mugitu.x = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump") && lurrean)
         {
-            abiadura.y = 0;
             abiadura.y = saltoIndarra;
+            zoruNormala.y = 1;
+            zoruNormala.x = 0;
         }
         else if (Input.GetButtonUp("Jump"))
         {
