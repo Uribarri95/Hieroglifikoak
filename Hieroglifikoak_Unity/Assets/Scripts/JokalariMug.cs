@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent (typeof (MugKudeatzaile))]
 public class JokalariMug : MonoBehaviour {
 
-    float inputAbiadura = 6;
-    float grabitatea = -18;
-    float saltoIndarra = 8;
-    Vector3 abiadura;
+    public float mugimenduAbiadura = 6;
+    public float grabitatea = -50;
+    public float saltoIndarra = 20;
+
+    float currentVelocity;
+    Vector2 abiadura;
 
     MugKudeatzaile kudeatzailea;
 
@@ -19,18 +21,19 @@ public class JokalariMug : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Aginduak();
+	}
+
+    //Teklatutik jasotako eginduak kudeatu. Mugimendu bertikalari grabitate indarra aplikatzen zaio
+    void Aginduak()
+    {
         if (kudeatzailea.kolpeak.gainean || kudeatzailea.kolpeak.azpian)
         {
             abiadura.y = 0;
         }
-        if (kudeatzailea.kolpeak.eskuma || kudeatzailea.kolpeak.ezkerra)
+
+        if (Input.GetButtonDown("Jump") && kudeatzailea.kolpeak.azpian)
         {
-            abiadura.x = 0;
-        }
-
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetButtonDown("Jump") && kudeatzailea.kolpeak.azpian){
             abiadura.y = saltoIndarra;
         }
         else if (Input.GetButtonUp("Jump") && abiadura.y > 0)
@@ -38,8 +41,9 @@ public class JokalariMug : MonoBehaviour {
             abiadura.y = abiadura.y * .5f;
         }
 
-        abiadura.x = input.x * inputAbiadura;
+        float input = Input.GetAxisRaw("Horizontal");
+        abiadura.x = Mathf.SmoothDamp(abiadura.x, input * mugimenduAbiadura, ref currentVelocity, .1f); //SmoothDamp abiadura aldaketa leuntzen du
         abiadura.y += grabitatea * Time.deltaTime;
         kudeatzailea.Mugitu(abiadura * Time.deltaTime);
-	}
+    }
 }
