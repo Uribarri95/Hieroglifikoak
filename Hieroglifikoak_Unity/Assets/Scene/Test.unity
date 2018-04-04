@@ -285,7 +285,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222584500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.75, y: 0.12, z: -10}
+  m_LocalPosition: {x: -13.3, y: 0.12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -772,8 +772,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 633112790}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.11, y: -1.02, z: -0.07124843}
-  m_LocalScale: {x: 0.32232282, y: 1.045092, z: 1.9082559}
+  m_LocalPosition: {x: -5.11, y: 0.19, z: -0.07124843}
+  m_LocalScale: {x: 0.32232282, y: -5.643505, z: 1.9082559}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -789,7 +789,6 @@ GameObject:
   - component: {fileID: 1163230280}
   - component: {fileID: 1163230282}
   - component: {fileID: 1163230279}
-  - component: {fileID: 1163230283}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -889,17 +888,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1163230283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1163230278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970471e674cc1b14abb4cea24ef6ada3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1359717034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,8 +1076,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1638520022}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.66, y: -0.01, z: -0.07124843}
-  m_LocalScale: {x: 2.2564726, y: 1.045092, z: 1.9082559}
+  m_LocalPosition: {x: -8.5, y: 4.1, z: -0.07124843}
+  m_LocalScale: {x: 5.2745028, y: 0.48335472, z: 1.9082559}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1127,13 +1115,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mugimendua: 0
+  leunketa: 0
   abiaduraMakurtuta: 2
   abiaduraOinez: 6
   korrikaAbiadura: 10
-  leunketa: 0
+  irristapenLeunketa: 0.6
   leuntzeNormala: 0.1
-  leunduIrristatzea: 1.2
   noranzkoaLeundu: 0.4
+  paretaIrristatuAbiadura: 3
+  paretaSaltoa: {x: 18, y: 14}
+  denboraItsatsita: 0.25
+  askatzeDenbora: 0
   grabitatea: -50
   saltoIndarra: 16
 --- !u!114 &1853164286
@@ -1226,7 +1218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1853164284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.58, y: -0.25, z: 0.19}
+  m_LocalPosition: {x: -10.43, y: 0.12, z: 0.19}
   m_LocalScale: {x: 0.5338408, y: 1.1804763, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

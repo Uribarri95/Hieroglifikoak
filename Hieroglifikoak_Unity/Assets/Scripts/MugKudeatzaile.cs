@@ -26,6 +26,7 @@ public class MugKudeatzaile : MonoBehaviour {
 	void Start () {
         bc2d = GetComponent<BoxCollider2D> ();
         IzpTarteakKalkulatu();
+        kolpeak.noranzkoa = 1;
     }
 
     public BoxCollider2D ColliderLortu()
@@ -64,6 +65,7 @@ public class MugKudeatzaile : MonoBehaviour {
         }
         if (abiadura.x != 0)
         {
+            kolpeak.noranzkoa = (int)Mathf.Sign(abiadura.x);
             KolpeHorizontalak(ref abiadura);
         }
         if (abiadura.y != 0)
@@ -77,7 +79,7 @@ public class MugKudeatzaile : MonoBehaviour {
     // Mugimendu horizontala jaso. Beste gorputz baten aurka talka egingo bada abiadura eraldatzen da. Kolpea eskuman edo ezkerran jaso den gordetzen da.
     void KolpeHorizontalak(ref Vector2 abiadura)
     {
-        float xNoranzkoa = Mathf.Sign(abiadura.x);
+        float xNoranzkoa = kolpeak.noranzkoa;
         float izpiLuzera = Mathf.Abs(abiadura.x) + azalZabalera;
 
         for (int i = 0; i < izpiHorKop; i++)
@@ -216,11 +218,66 @@ public class MugKudeatzaile : MonoBehaviour {
                 abiadura.x = Mathf.Sign(kolpea.normal.x) * (Mathf.Abs(abiadura.y) - kolpea.distance) / Mathf.Tan(angelua * Mathf.Deg2Rad);
 
                 kolpeak.aldapaIrristatu = true;
-                //kolpeak.azpian = true;
                 kolpeak.aldapaAngelu = angelua;
                 kolpeak.normala = kolpea.normal;
             }
         }
+    }
+
+    //irristatzean jokalaria etzan egiten da (altuera / 2 eta alderantziz)
+    public void GeruzaBertikalaAldatu(bool handitu)
+    {
+        Vector3 eskala = bc2d.transform.localScale;
+        Vector3 posizioa = bc2d.transform.position;
+        float pos = bc2d.transform.position.y;
+        if (handitu)
+        {
+            eskala.y *= 2;
+            bc2d.transform.localScale = eskala;
+            pos = pos + eskala.y / 4;
+        }
+        else
+        {
+            eskala.y *= .5f;
+            bc2d.transform.localScale = eskala;
+            pos = pos - eskala.y / 2;
+        }
+        bc2d.transform.position = new Vector3(posizioa.x, pos, posizioa.z);
+        IzpTarteakKalkulatu();
+    }
+
+    //irristatzean jokalaria etzan egiten da (zabalera * 2 eta alderantziz)
+    public void GeruzaHorizontalaAldatu(bool handitu)
+    {
+        Vector3 eskala = bc2d.transform.localScale;
+        Vector3 posizioa = bc2d.transform.position;
+        //float pos = colliderra.transform.position.x; //posizioa ikutu nahi badugu noranzkoa jakin behar da
+        if (handitu)
+        {
+            eskala.x *= .5f;
+            bc2d.transform.localScale = eskala;
+            //pos = 
+        }
+        else
+        {
+            eskala.x *= 2;
+            bc2d.transform.localScale = eskala;
+            //pos = 
+        }
+        //colliderra.transform.position = new Vector3(posizioa.x, pos, posizioa.z);
+        IzpTarteakKalkulatu();
+    }
+
+    //true gainean oztoporik ez badago
+    public bool AltzatuNaiteke()
+    {
+        BoxCollider2D colliderra = ColliderLortu();
+        float jokalariLuzera = colliderra.transform.localScale.y;
+        
+        RaycastHit2D ezkerKolpea = Physics2D.Raycast(izpiJatorria.topLeft, Vector2.up, jokalariLuzera, kolpeGainazalak);
+        RaycastHit2D eskuinKolpea = Physics2D.Raycast(izpiJatorria.topRight, Vector2.up, jokalariLuzera, kolpeGainazalak);
+
+        return (!ezkerKolpea && !eskuinKolpea);
     }
 
     //talkak kudeatzeko izpiak
@@ -254,6 +311,7 @@ public class MugKudeatzaile : MonoBehaviour {
 
         public float aldapaAngeluZahar, aldapaAngelu;
         public Vector2 normala;
+        public int noranzkoa;
 
         //arazoak ekiditzeko (etengabe salto, hormaren kontra itsatsi, malda handietan gora igo...)
         public void Reset()
