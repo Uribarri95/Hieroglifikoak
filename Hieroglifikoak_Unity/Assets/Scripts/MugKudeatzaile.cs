@@ -27,11 +27,30 @@ public class MugKudeatzaile : MonoBehaviour {
         bc2d = GetComponent<BoxCollider2D> ();
         IzpTarteakKalkulatu();
     }
-	
-	// Update is called once per frame
-	//void Update () {
+
+    public BoxCollider2D ColliderLortu()
+    {
+        return bc2d;
+    }
+
+    // Update is called once per frame
+    //void Update () {
     //    
-	//}
+    //}
+
+    //izpiak bata bestetik zenbateko distatziara jaurtitzen diren kalkulatzeko, lehen izpia ertz baten eta bukaerakoa kontrako ertzean hasi behar direla kontuan hartuta
+    //derrigorrez bi izpi, horretarako da Mathf.clamp
+    public void IzpTarteakKalkulatu()
+    {
+        Bounds mugak = bc2d.bounds;
+        mugak.Expand(azalZabalera * -2);
+
+        izpiHorKop = Mathf.Clamp(izpiHorKop, 2, int.MaxValue);
+        izpiBertKop = Mathf.Clamp(izpiBertKop, 2, int.MaxValue);
+
+        horIzpiTartea = mugak.size.y / (izpiHorKop - 1);
+        bertIzpiTartea = mugak.size.x / (izpiBertKop - 1);
+    }
 
     //momentu oro exekutatzen da. Erabiltzailearen aginduak jaso eta fisika indarrak aplikatzen zaizkio
     public void Mugitu(Vector2 abiadura)
@@ -72,26 +91,26 @@ public class MugKudeatzaile : MonoBehaviour {
             if (kolpatu)
             {
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);
-                if (i == 0 && aldapaAngelua <= aldapaAngeluMax)
+                if (i == 0 && aldapaAngelua <= aldapaAngeluMax) //talka aldapa 'igogarri' baten
                 {
-                    AldapaIgo(ref abiadura, aldapaAngelua);
+                    AldapaIgo(ref abiadura, aldapaAngelua, kolpatu.normal);
                 }
-
-                if(!kolpeak.aldapaIgotzen || aldapaAngelua > aldapaAngeluMax)
+                else //talka horma edo malda handiko aldapan
                 {
+                    //lurra laua denean
                     abiadura.x = (kolpatu.distance - azalZabalera) * xNoranzkoa;
                     izpiLuzera = kolpatu.distance;
 
-                    if (kolpeak.aldapaIgotzen)
+                    //aldapan gaudenean
+                    if (kolpeak.aldapaIgotzen) // aldapan gaudenez abiadura bertikala eraldatu behar dugu
                     {
                         abiadura.y = Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x);
                     }
 
                     kolpeak.ezkerra = xNoranzkoa == -1;
                     kolpeak.eskuma = xNoranzkoa == 1;
+                    kolpeak.normala = kolpatu.normal;
                 }
-                
-                
             }
         }
     }
@@ -113,9 +132,9 @@ public class MugKudeatzaile : MonoBehaviour {
             if (kolpatu)
             {
                 abiadura.y = (kolpatu.distance - azalZabalera) * yNoranzkoa;
-                izpiLuzera = kolpatu.distance;
+                izpiLuzera = kolpatu.distance; //mugitu daitekeen distantzia murristen da, bestela, hurrengo izpia jaurtitzean distantzia handiagoa ikusten badu, lehen oztopoa zeharkatuko du
 
-                if (kolpeak.aldapaIgotzen)
+                if (kolpeak.aldapaIgotzen) // aldapan gaudenean abiadura horizontala ere aldatu behar da
                 {
                     abiadura.x = abiadura.y / Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Sign(abiadura.x);
                 }
@@ -129,7 +148,8 @@ public class MugKudeatzaile : MonoBehaviour {
     //abiadura horizontala bertikalean eta horizontalean banatzen da aldapan
     //sin a = altuera / hipotenusa -> altuera = hipotenusa * sin a
     //cos a = luzera / hipotenusa -> luzera = hipotenusa * cos a
-    void AldapaIgo(ref Vector2 abiadura, float angelua)
+    //tan a = altuera / luzera
+    void AldapaIgo(ref Vector2 abiadura, float angelua, Vector2 normala)
     {
         float distantzia = Mathf.Abs(abiadura.x);
         float abiaduraY = Mathf.Sin(angelua * Mathf.Deg2Rad) * distantzia;
@@ -142,39 +162,63 @@ public class MugKudeatzaile : MonoBehaviour {
             kolpeak.azpian = true;
             kolpeak.aldapaIgotzen = true;
             kolpeak.aldapaAngelu = angelua;
+            kolpeak.normala = normala;
         }
     }
 
     //abiadura horizontala bertikalean eta horizontalean banatzen da aldapan
     void AldapaJaitsi(ref Vector2 abiadura)
     {
-        float xNoranzkoa = Mathf.Sign(abiadura.x);
-        Vector2 izpia = (xNoranzkoa == -1) ? izpiJatorria.bottomRight : izpiJatorria.bottomLeft;
-        RaycastHit2D kolpea = Physics2D.Raycast(izpia, Vector2.down, Mathf.Infinity, kolpeGainazalak);
-
-        if (kolpea)
+        RaycastHit2D eskumaIrritatu = Physics2D.Raycast(izpiJatorria.bottomLeft, Vector2.down, Mathf.Abs(abiadura.y) + azalZabalera, kolpeGainazalak);
+        RaycastHit2D ezkerraIrritatu = Physics2D.Raycast(izpiJatorria.bottomRight, Vector2.down, Mathf.Abs(abiadura.y) + azalZabalera, kolpeGainazalak);
+        if (eskumaIrritatu ^ ezkerraIrritatu)
         {
-            float aldapaAngelua = Vector2.Angle(kolpea.normal, Vector2.up);
-            if (aldapaAngelua != 0 && aldapaAngelua <= aldapaAngeluMax)
-            {
-                if(Mathf.Sign(kolpea.normal.x) == xNoranzkoa)
-                {
-                    if (kolpea.distance - azalZabalera <= Mathf.Tan(aldapaAngelua * Mathf.Deg2Rad * Mathf.Abs(abiadura.x)))
-                    {
-                        float distantzia = Mathf.Abs(abiadura.x);
-                        float abiaduraY = Mathf.Sin(aldapaAngelua * Mathf.Deg2Rad) * distantzia;
-                        abiadura.x = Mathf.Cos(aldapaAngelua * Mathf.Deg2Rad) * distantzia * Mathf.Sign(abiadura.x);
-                        abiadura.y -= Mathf.Sin(aldapaAngelua * Mathf.Deg2Rad) * distantzia;
+            aldapaIrristatu(eskumaIrritatu, ref abiadura);
+            aldapaIrristatu(ezkerraIrritatu, ref abiadura);
+        }
 
-                        kolpeak.azpian = true;
-                        kolpeak.aldapaJaisten = true;
-                        kolpeak.aldapaAngelu = aldapaAngelua;
+        if (!kolpeak.aldapaIrristatu) {
+            float xNoranzkoa = Mathf.Sign(abiadura.x);
+            Vector2 izpia = (xNoranzkoa == -1) ? izpiJatorria.bottomRight : izpiJatorria.bottomLeft;
+            RaycastHit2D kolpea = Physics2D.Raycast(izpia, Vector2.down, Mathf.Infinity, kolpeGainazalak);
+
+            if (kolpea)
+            {
+                float aldapaAngelua = Vector2.Angle(kolpea.normal, Vector2.up);
+                if (aldapaAngelua != 0 && aldapaAngelua <= aldapaAngeluMax) // aldapa normala (ez horma, ez mald handia)
+                {
+                    if(Mathf.Sign(kolpea.normal.x) == xNoranzkoa) // aldapa behera goaz
+                    {
+                        if (kolpea.distance - azalZabalera <= Mathf.Tan(aldapaAngelua * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x)) // aldapa jaitsi kontaktuan gaudenean bakarrik
+                        {
+                            float distantzia = Mathf.Abs(abiadura.x);
+                            abiadura.x = Mathf.Cos(aldapaAngelua * Mathf.Deg2Rad) * distantzia * Mathf.Sign(abiadura.x);
+                            abiadura.y -= Mathf.Sin(aldapaAngelua * Mathf.Deg2Rad) * distantzia;
+
+                            kolpeak.azpian = true;
+                            kolpeak.aldapaJaisten = true;
+                            kolpeak.aldapaAngelu = aldapaAngelua;
+                            kolpeak.normala = kolpea.normal;
+                        }
                     }
                 }
             }
-            else
+        }
+    }
+
+    void aldapaIrristatu(RaycastHit2D kolpea, ref Vector2 abiadura)
+    {
+        if (kolpea)
+        {
+            float angelua = Vector2.Angle(kolpea.normal, Vector2.up);
+            if (angelua > aldapaAngeluMax)
             {
-                kolpeak.azpian = false;
+                abiadura.x = Mathf.Sign(kolpea.normal.x) * (Mathf.Abs(abiadura.y) - kolpea.distance) / Mathf.Tan(angelua * Mathf.Deg2Rad);
+
+                kolpeak.aldapaIrristatu = true;
+                //kolpeak.azpian = true;
+                kolpeak.aldapaAngelu = angelua;
+                kolpeak.normala = kolpea.normal;
             }
         }
     }
@@ -186,7 +230,7 @@ public class MugKudeatzaile : MonoBehaviour {
         public Vector2 bottomLeft, bottomRight;
     }
 
-    //momentu oro gorputzaren posizioa kalkulatzen da, izpiak posizio berritik igortzeko.
+    //jokalariaren posizio berria kontuan hartuta izpi berrien igorpen puntuak kalkulatzen dira
     void IzpiJatorriaEguneratu()
     {
         Bounds mugak = bc2d.bounds;
@@ -198,20 +242,6 @@ public class MugKudeatzaile : MonoBehaviour {
         izpiJatorria.topRight = new Vector2(mugak.max.x, mugak.max.y);
     }
 
-    //izpiak bata bestetik zenbateko distatziara jaurtitzen diren kalkulatzeko, lehen izpia ertz baten eta bukaerakoa kontrako ertzean hasi behar direla kontuan hartuta
-    //derrigorrez bi izpi, horretarako da Mathf.clamp
-    void IzpTarteakKalkulatu()
-    {
-        Bounds mugak = bc2d.bounds;
-        mugak.Expand(azalZabalera * -2);
-
-        izpiHorKop = Mathf.Clamp(izpiHorKop, 2, int.MaxValue);
-        izpiBertKop = Mathf.Clamp(izpiBertKop, 2, int.MaxValue);
-
-        horIzpiTartea = mugak.size.y / (izpiHorKop - 1);
-        bertIzpiTartea = mugak.size.x / (izpiBertKop - 1);
-    }
-
     //zein gainazal ukitzen gauden jakiteko
     public struct KolpeInfo
     {
@@ -220,8 +250,12 @@ public class MugKudeatzaile : MonoBehaviour {
 
         public bool aldapaIgotzen;
         public bool aldapaJaisten;
-        public float aldapaAngeluZahar, aldapaAngelu;
+        public bool aldapaIrristatu;
 
+        public float aldapaAngeluZahar, aldapaAngelu;
+        public Vector2 normala;
+
+        //arazoak ekiditzeko (etengabe salto, hormaren kontra itsatsi, malda handietan gora igo...)
         public void Reset()
         {
             gainean = false;
@@ -231,8 +265,11 @@ public class MugKudeatzaile : MonoBehaviour {
 
             aldapaIgotzen = false;
             aldapaJaisten = false;
+            aldapaIrristatu = false;
+
             aldapaAngeluZahar = aldapaAngelu;
             aldapaAngelu = 0;
+            normala = Vector2.zero;
         }
     }
 }
