@@ -2,30 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (BoxCollider2D))]
-public class MugKudeatzaile : MonoBehaviour {
-
-    //kolpeGainazalak geruzan dauden gorputzekin bakarrik egingo dugu talka
-    public LayerMask kolpeGainazalak;
+public class MugKudeatzaile : IzpiKudeaketa {
 
     public KolpeInfo kolpeak;
 
-    public int izpiHorKop = 4;
-    public int izpiBertKop = 4;
     public float aldapaAngeluMax = 45;
 
-    const float azalZabalera = .015f;
-
-    float horIzpiTartea;
-    float bertIzpiTartea;
-
-    BoxCollider2D bc2d;
-    IzpiJatorria izpiJatorria;
-
 	// Use this for initialization
-	void Start () {
-        bc2d = GetComponent<BoxCollider2D> ();
-        IzpTarteakKalkulatu();
+	public override void Start () {
+        base.Start();
         kolpeak.noranzkoa = 1;
     }
 
@@ -38,20 +23,6 @@ public class MugKudeatzaile : MonoBehaviour {
     //void Update () {
     //    
     //}
-
-    //izpiak bata bestetik zenbateko distatziara jaurtitzen diren kalkulatzeko, lehen izpia ertz baten eta bukaerakoa kontrako ertzean hasi behar direla kontuan hartuta
-    //derrigorrez bi izpi, horretarako da Mathf.clamp
-    public void IzpTarteakKalkulatu()
-    {
-        Bounds mugak = bc2d.bounds;
-        mugak.Expand(azalZabalera * -2);
-
-        izpiHorKop = Mathf.Clamp(izpiHorKop, 2, int.MaxValue);
-        izpiBertKop = Mathf.Clamp(izpiBertKop, 2, int.MaxValue);
-
-        horIzpiTartea = mugak.size.y / (izpiHorKop - 1);
-        bertIzpiTartea = mugak.size.x / (izpiBertKop - 1);
-    }
 
     //momentu oro exekutatzen da. Erabiltzailearen aginduak jaso eta fisika indarrak aplikatzen zaizkio
     public void Mugitu(Vector2 abiadura)
@@ -187,7 +158,7 @@ public class MugKudeatzaile : MonoBehaviour {
             if (kolpea)
             {
                 float aldapaAngelua = Vector2.Angle(kolpea.normal, Vector2.up);
-                if (aldapaAngelua != 0 && aldapaAngelua <= aldapaAngeluMax) // aldapa normala (ez horma, ez mald handia)
+                if (aldapaAngelua != 0 && aldapaAngelua <= aldapaAngeluMax) // aldapa normala (ez horma, ez malda handia)
                 {
                     if(Mathf.Sign(kolpea.normal.x) == xNoranzkoa) // aldapa behera goaz
                     {
@@ -225,7 +196,7 @@ public class MugKudeatzaile : MonoBehaviour {
     }
 
     //irristatzean jokalaria etzan egiten da (altuera / 2 eta alderantziz)
-    public void GeruzaBertikalaAldatu(bool handitu)
+    public void GeruzaBertikalaHanditu(bool handitu)
     {
         Vector3 eskala = bc2d.transform.localScale;
         Vector3 posizioa = bc2d.transform.position;
@@ -280,25 +251,6 @@ public class MugKudeatzaile : MonoBehaviour {
         return (!ezkerKolpea && !eskuinKolpea);
     }
 
-    //talkak kudeatzeko izpiak
-    struct IzpiJatorria
-    {
-        public Vector2 topLeft, topRight;
-        public Vector2 bottomLeft, bottomRight;
-    }
-
-    //jokalariaren posizio berria kontuan hartuta izpi berrien igorpen puntuak kalkulatzen dira
-    void IzpiJatorriaEguneratu()
-    {
-        Bounds mugak = bc2d.bounds;
-        mugak.Expand(azalZabalera * -2);
-
-        izpiJatorria.bottomLeft = new Vector2(mugak.min.x, mugak.min.y);
-        izpiJatorria.bottomRight = new Vector2(mugak.max.x, mugak.min.y);
-        izpiJatorria.topLeft = new Vector2(mugak.min.x, mugak.max.y);
-        izpiJatorria.topRight = new Vector2(mugak.max.x, mugak.max.y);
-    }
-
     //zein gainazal ukitzen gauden jakiteko
     public struct KolpeInfo
     {
@@ -309,7 +261,7 @@ public class MugKudeatzaile : MonoBehaviour {
         public bool aldapaJaisten;
         public bool aldapaIrristatu;
 
-        public float aldapaAngeluZahar, aldapaAngelu;
+        public float aldapaAngelu;
         public Vector2 normala;
         public int noranzkoa;
 
@@ -325,7 +277,6 @@ public class MugKudeatzaile : MonoBehaviour {
             aldapaJaisten = false;
             aldapaIrristatu = false;
 
-            aldapaAngeluZahar = aldapaAngelu;
             aldapaAngelu = 0;
             normala = Vector2.zero;
         }
