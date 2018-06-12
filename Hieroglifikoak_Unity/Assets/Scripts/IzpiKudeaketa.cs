@@ -6,13 +6,12 @@ using UnityEngine;
 public class IzpiKudeaketa : MonoBehaviour {
 
     //kolpeGainazalak geruzan dauden gorputzekin bakarrik egingo dugu talka
-    public LayerMask kolpeGainazalak;
     [HideInInspector]
     public BoxCollider2D bc2d;
 
     public const float azalZabalera = .015f;
 
-    const float izpiDistantzia = .2f;
+    const float izpiDistantzia = .1f;
     [HideInInspector]
     public int izpiHorKop;
     [HideInInspector]
@@ -24,20 +23,19 @@ public class IzpiKudeaketa : MonoBehaviour {
 
     public IzpiJatorria izpiJatorria;
 
+    // start baino lehe exekutatzen da
     private void Awake()
     {
         bc2d = GetComponent<BoxCollider2D>();
     }
 
-    // Use this for initialization
     public virtual void Start()
     {
-        IzpTarteakKalkulatu();
+        IzpiTarteakKalkulatu();
     }
 
-    //izpiak bata bestetik zenbateko distatziara jaurtitzen diren kalkulatzeko, lehen izpia ertz baten eta bukaerakoa kontrako ertzean hasi behar direla kontuan hartuta
-    //derrigorrez bi izpi, horretarako da Mathf.clamp
-    public void IzpTarteakKalkulatu()
+    // ertz batetik bestera jaurti behar diren izpi kopurua erabakitako izpiDistantzia kontuan hartuta
+    public void IzpiTarteakKalkulatu()
     {
         Bounds mugak = bc2d.bounds;
         mugak.Expand(azalZabalera * -2);
@@ -52,7 +50,7 @@ public class IzpiKudeaketa : MonoBehaviour {
         bertIzpiTartea = mugak.size.x / (izpiBertKop - 1);
     }
 
-    //jokalariaren posizio berria kontuan hartuta izpi berrien igorpen puntuak kalkulatzen dira
+    // jokalariaren posizio berria kontuan hartuta izpi berrien igorpen puntuak kalkulatzen dira
     public void IzpiJatorriaEguneratu()
     {
         Bounds mugak = bc2d.bounds;
@@ -64,7 +62,7 @@ public class IzpiKudeaketa : MonoBehaviour {
         izpiJatorria.topRight = new Vector2(mugak.max.x, mugak.max.y);
     }
 
-    //talkak kudeatzeko izpiak
+    // talkak kudeatzeko izpiak
     public struct IzpiJatorria
     {
         public Vector2 topLeft, topRight;

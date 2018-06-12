@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: bda63161122352040a1dfc8bb987d7ae
-timeCreated: 1519239668
+guid: 30d40a037a5e6534fa229c2306bd754a
+timeCreated: 1528124200
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BOB_0
+    21300000: player_slope_slide_3_0
+    21300002: player_slope_slide_3_1
+    21300004: player_slope_slide_3_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -47,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 150
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -81,13 +83,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BOB_0
+      name: player_slope_slide_3_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 55
-        height: 121
+        x: 0
+        y: 0
+        width: 77
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_slope_slide_3_1
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 77
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_slope_slide_3_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 77
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

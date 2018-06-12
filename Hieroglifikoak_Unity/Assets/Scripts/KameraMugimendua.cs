@@ -4,44 +4,53 @@ using UnityEngine;
 
 public class KameraMugimendua : MonoBehaviour {
 
-    public MugKudeatzaile helburua;
-    public Vector2 kameraGeldiTamaina;
+    public MugKudeatzaile jokalaria;
+    public float offset;
+    public float distantziaX;
+    public float distantziaY;
+    public Vector2 mugak;
+    public bool marraztuMugak;
 
     KameraGeldiGunea kameraGeldiGunea;
 
-	// Use this for initialization
+    // gelak -> kamera jokalaria erdian mantendu
+    // gela aldatzean kamera aldera mugitu
+
 	void Start () {
-        kameraGeldiGunea = new KameraGeldiGunea(helburua.bc2d.bounds, kameraGeldiTamaina);
+        kameraGeldiGunea = new KameraGeldiGunea(jokalaria.bc2d.bounds, distantziaX, distantziaY);
     }
 
     private void LateUpdate()
     {
-        kameraGeldiGunea.Update(helburua.bc2d.bounds);
-        transform.position = (Vector3)kameraGeldiGunea.erdigunea + Vector3.forward * -10;
+        kameraGeldiGunea.Update(jokalaria.bc2d.bounds);
+        Vector2 kameraPosizioa = kameraGeldiGunea.erdigunea + Vector2.up * offset;
+
+        transform.position = (Vector3)kameraPosizioa + Vector3.forward * -10;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(1, 0, 0, .5f);
-        Gizmos.DrawCube(kameraGeldiGunea.erdigunea, kameraGeldiTamaina);
+        if (marraztuMugak)
+        {
+            Gizmos.color = new Color(1, 0, 0, .5f);
+            Gizmos.DrawCube(kameraGeldiGunea.erdigunea, new Vector2(distantziaX * 2, distantziaY * 2));
+        }
     }
 
     struct KameraGeldiGunea
     {
         public Vector2 erdigunea;
-        public Vector2 abiadura;
         float ezkerra, eskuma;
         float goian, behean;
 
-        public KameraGeldiGunea(Bounds jokalariMugak, Vector2 kameraGeldiTamaina)
+        public KameraGeldiGunea(Bounds jokalariMugak, float distX, float distY)
         {
-            ezkerra = jokalariMugak.center.x - kameraGeldiTamaina.x / 2;
-            eskuma = jokalariMugak.center.x + kameraGeldiTamaina.x / 2;
-            behean = jokalariMugak.center.y - kameraGeldiTamaina.y / 2;
-            goian = jokalariMugak.center.y + kameraGeldiTamaina.y / 2;
+            ezkerra = jokalariMugak.center.x - distX;
+            eskuma = jokalariMugak.center.x + distX;
+            behean = jokalariMugak.center.y - distY;
+            goian = jokalariMugak.center.y + distY;
 
-            erdigunea = new Vector2((ezkerra+eskuma)/2,(goian + behean)/2);
-            abiadura = Vector2.zero;
+            erdigunea = new Vector2((ezkerra + eskuma) / 2, (goian + behean) / 2);
         }
 
         public void Update(Bounds jokalariMugak)
@@ -70,7 +79,6 @@ public class KameraMugimendua : MonoBehaviour {
             behean += mugituY;
             goian += mugituY;
             erdigunea = new Vector2((ezkerra + eskuma) / 2, (goian + behean) / 2);
-            abiadura = new Vector2(mugituX, mugituY);
         }
     }
 }
