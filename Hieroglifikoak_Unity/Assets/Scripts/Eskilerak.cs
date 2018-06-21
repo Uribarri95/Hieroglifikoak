@@ -8,7 +8,6 @@ public class Eskilerak : MonoBehaviour {
     public float yAbiadura = 6;
     public float xAbiadura = 3;
 
-    // Use this for initialization
     void Start () {
         jokalaria = FindObjectOfType<JokalariMug>();
 	}

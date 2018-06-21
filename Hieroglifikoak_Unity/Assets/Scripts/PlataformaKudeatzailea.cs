@@ -6,7 +6,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     public LayerMask bidaiariak;
     Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
-    //MugKudeatzaile mugKudeatzailea = FindObjectOfType<MugKudeatzaile>();
 
     public Vector3[] marraztuPuntuak;
     Vector3[] itzarotePuntuak;
@@ -81,7 +80,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     void MugituBidaiariak(Vector2 abiadura)
     {
         HashSet<Transform> mugitutakoBidaiariak = new HashSet<Transform>();
-        float xNoranzkoa = Mathf.Sign(abiadura.x);
 
         // jokalaria plataforma gainean
         float izpiLuzera = 2 * azalZabalera;
@@ -93,19 +91,14 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
             Debug.DrawRay(jatorriIzpia, Vector2.up, Color.red);
             if (kolpatu)
             {
-                /// !!! kutxa mugitzeko konponketak
-                //if (kolpatu.transform.tag == "Player")
                 if (!mugitutakoBidaiariak.Contains(kolpatu.transform))
                 {
                     mugitutakoBidaiariak.Add(kolpatu.transform);
-                    float bultzatuX = abiadura.x;
-                    float bultzatuY = abiadura.y;
-                    
                     if (!hiztegia.ContainsKey(kolpatu.transform))
                     {
                         hiztegia.Add(kolpatu.transform, kolpatu.transform.GetComponent<MugKudeatzaile>());
                     }
-                    hiztegia[kolpatu.transform].Mugitu(new Vector2(bultzatuX, bultzatuY), plataformaGainean: true);
+                    hiztegia[kolpatu.transform].Mugitu(new Vector2(abiadura.x, abiadura.y), plataformaGainean: true);
                 }
             }
         }
@@ -113,6 +106,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         // kolpe horizontala plataformaren aurka
         if (abiadura.x != 0)
         {
+            float xNoranzkoa = Mathf.Sign(abiadura.x);
             izpiLuzera = Mathf.Abs(abiadura.x) + azalZabalera;
             for (int i = 0; i < izpiHorKop; i++)
             {

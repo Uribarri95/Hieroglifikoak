@@ -13,6 +13,7 @@ public class KameraMugimendua : MonoBehaviour {
 
     KameraGeldiGunea kameraGeldiGunea;
 
+    // !!! kamera bounds !!!
     // gelak -> kamera jokalaria erdian mantendu
     // gela aldatzean kamera aldera mugitu
 
@@ -57,25 +58,17 @@ public class KameraMugimendua : MonoBehaviour {
         {
             float mugituX = 0;
             if (jokalariMugak.min.x < ezkerra)
-            {
                 mugituX = jokalariMugak.min.x - ezkerra;
-            }
             else if (jokalariMugak.max.x > eskuma)
-            {
                 mugituX = jokalariMugak.max.x - eskuma;
-            }
             ezkerra += mugituX;
             eskuma += mugituX;
 
             float mugituY = 0;
             if (jokalariMugak.min.y < behean)
-            {
                 mugituY = jokalariMugak.min.y - behean;
-            }
             else if (jokalariMugak.max.y > goian)
-            {
                 mugituY = jokalariMugak.max.y - goian;
-            }
             behean += mugituY;
             goian += mugituY;
             erdigunea = new Vector2((ezkerra + eskuma) / 2, (goian + behean) / 2);

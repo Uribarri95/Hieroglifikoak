@@ -12,7 +12,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
     float geruzaHasiera;
     //float makurtuAldaketa = 4 / 3; // !!! altzatuAldaketa = Mathf.Pow(makurtuAldaketa, -1); !!!
 
-    // !!! diseinua: aldapa denak 45º-koak !!!
+    // !!! diseinua: aldapa denak 45º-koak edo gutxiago !!!
     public float aldapaAngeluMax = 45;
 
 	// Use this for initialization
@@ -29,23 +29,15 @@ public class MugKudeatzaile : IzpiKudeaketa {
         IzpiJatorriaEguneratu();
         kolpeak.Reset();
 
-        if(abiadura.y < 0)
-        {
+        if(abiadura.y < 0) { }
             AldapaJaitsi(ref abiadura, irristatu);
-        }
         if (abiadura.x != 0)
-        {
             KolpeHorizontalak(ref abiadura, irristatu);
-        }
         if (abiadura.y != 0)
-        {
             KolpeBertikalak(ref abiadura, irristatu);
-        }
 
         if (plataformaGainean)
-        {
             kolpeak.azpian = true;
-        }
 
         transform.Translate(abiadura);
     }
@@ -71,37 +63,26 @@ public class MugKudeatzaile : IzpiKudeaketa {
             if (kolpatu)
             {
                 if (kolpatu.transform.tag != "zeharkatu" && kolpatu.distance == 0)
-                {
                     abiadura.x = 0;
-                }
 
-                if (kolpatu.transform.tag == "zeharkatu" || kolpatu.distance == 0)
-                {
+                if (kolpatu.transform.tag == "zeharkatu" /*|| kolpatu.transform.tag == "kutxa"*/ || kolpatu.distance == 0)
                     continue;
-                }
 
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);
 
                 // talka aldapa igogarri baten aurka
                 if (i == 0 && aldapaAngelua <= aldapaAngeluMax && !irristatu)
-                {
                     AldapaIgo(ref abiadura, aldapaAngelua, kolpatu.normal);
-                }
                 // ezin  da igo
                 else
                 {
-                     /// !!! kutxa mugitzeko ladaketak
-                    /*if (kolpatu.transform.name == "Kutxa")
-                        continue;*/
                     // izpi luzera murriztu, hurrengo izpiak aurrekoak ikusi dutena baino lehen dagoena konprobatuko dute bakarrik
                     abiadura.x = (kolpatu.distance - azalZabalera) * xNoranzkoa;
                     izpiLuzera = kolpatu.distance;
 
                     //aldapan gaudenean abiadura bertikala eraldatu behar dugu
                     if (kolpeak.aldapaIgotzen)
-                    {
                         abiadura.y = Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x);
-                    }
                     else
                     {
                         kolpeak.ezkerra = xNoranzkoa == -1;
@@ -133,15 +114,11 @@ public class MugKudeatzaile : IzpiKudeaketa {
                 if(kolpatu.transform.tag == "zeharkatu")
                 {
                     if (yNoranzkoa == 1 || kolpatu.distance == 0 || makurtu)
-                    {
                         continue;
-                    }
                 }
 
                 if (kolpatu.distance < 0.01f)
-                {
                     abiadura.y = 0;
-                }
                 else
                 {
                     // izpi luzera murriztu, hurrengo izpiak aurrekoak ikusi dutena baino lehen dagoena konprobatuko dute bakarrik
@@ -151,9 +128,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
                 // aldapan gaudenean abiadura horizontala ere aldatu behar da
                 if (kolpeak.aldapaIgotzen)
-                {
                     abiadura.x = abiadura.y / Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Sign(abiadura.x);
-                }
 
                 kolpeak.gainean = yNoranzkoa == 1;
                 kolpeak.azpian = yNoranzkoa == -1;
@@ -236,10 +211,10 @@ public class MugKudeatzaile : IzpiKudeaketa {
             {
                 abiadura.x = Mathf.Cos(angelua * Mathf.Deg2Rad) * .3f * Mathf.Sign(kolpea.normal.x);
                 abiadura.y -= Mathf.Sin(angelua * Mathf.Deg2Rad) * .3f;
+                jokalariMug.NoranzkoaAldatu(Mathf.Sign(kolpea.normal.x));
                 kolpeak.aldapaIrristatu = true;
                 kolpeak.aldapaAngelu = angelua;
                 kolpeak.normala = kolpea.normal;
-                jokalariMug.NoranzkoaAldatu(Mathf.Sign(kolpea.normal.x));
             }
         }
     }
@@ -324,6 +299,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
         
         RaycastHit2D ezkerKolpea = Physics2D.Raycast(izpiJatorria.topLeft, Vector2.up, jokalariLuzera, kolpeGainazalak);
         RaycastHit2D eskuinKolpea = Physics2D.Raycast(izpiJatorria.topRight, Vector2.up, jokalariLuzera, kolpeGainazalak);
+        if (ezkerKolpea && ezkerKolpea.transform.tag == "zeharkatu" || eskuinKolpea && eskuinKolpea.transform.tag == "zeharkatu")
+            return true;
 
         return (!ezkerKolpea && !eskuinKolpea);
     }
