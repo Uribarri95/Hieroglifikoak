@@ -26,7 +26,7 @@ public class JokalariMug : MonoBehaviour {
     bool irristatu = false;
 
     bool aldapaIrristatu = false;
-    float aldapaIrristatuDenbora = 1;
+    float aldapaIrristatuDenbora = .3f;
     float denboraIrristatu;
 
     public float korrikaAbiadura = 10;
@@ -117,7 +117,7 @@ public class JokalariMug : MonoBehaviour {
             anim.SetBool("aldapaIrristatu", kudeatzailea.kolpeak.aldapaIrristatu);
         }
 
-        if (!paretaItsatsi && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide"))
+        if (!paretaItsatsi && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slide") && !aldapaIrristatu)
             NoranzkoaAldatu(aginduHorizontala);
 
         if (((anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_up") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_down")) && abiadura.y == 0)
@@ -149,7 +149,7 @@ public class JokalariMug : MonoBehaviour {
         if (Input.GetKey(KeyCode.DownArrow))
         {
             // !!! ate baten aurrean
-            if (kudeatzailea.kolpeak.azpian && !kutxaIkutzen)
+            if (kudeatzailea.kolpeak.azpian)
                 MakurtuSakatu();
 
             // airean bagaude animazioa aldatuko da, denbora akatsen erruz airean gaudenerako da
@@ -207,10 +207,10 @@ public class JokalariMug : MonoBehaviour {
     {
         if (kudeatzailea.kolpeak.azpian)
         {
-            if (kudeatzailea.kolpeak.aldapaIrristatu && makurtu)
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide"))
             {
                 abiadura.y = saltoIndarra * kudeatzailea.kolpeak.normala.y;
-                abiadura.x = saltoIndarra * kudeatzailea.kolpeak.normala.x * 1.8f; ///!!! 1.8f parametro bihurtu
+                abiadura.x = saltoIndarra * kudeatzailea.kolpeak.normala.x * 4; ///!!! 1.8f parametro bihurtu
             }
             else
             {
@@ -363,8 +363,9 @@ public class JokalariMug : MonoBehaviour {
                 denboraIrristatu = aldapaIrristatuDenbora;
                 aldapaIrristatu = true;
                 leunketa = irristapenLeunketa;
-                if (kudeatzailea.kolpeak.aldapaIrristatu)
-                    abiadura.x = 10 * Mathf.Sign(kudeatzailea.kolpeak.normala.x);
+                //irristatu
+                if (aldapaIrristatu && kudeatzailea.kolpeak.azpian)
+                    abiadura.x = 8 * Mathf.Sign(kudeatzailea.kolpeak.normala.x); /// !!! paretaSaltoa apurtzen du
             }
         }
         else
