@@ -8,26 +8,26 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
 
     public Vector3[] marraztuPuntuak;
-    Vector3[] itzarotePuntuak;
+    Vector3[] itxarotePuntuak;
     public float PlataformaAbiadura;
     public bool zikloa;
     [Range(0,3)]
     public float easing;
-    int itzarotePosizioa;
+    int itxarotePosizioa;
     float bidaiKantitatea;
 
     public override void Start () {
         base.Start();
-        itzarotePuntuak = new Vector3[marraztuPuntuak.Length];
+        itxarotePuntuak = new Vector3[marraztuPuntuak.Length];
         for (int i = 0; i < marraztuPuntuak.Length; i++)
         {
-            itzarotePuntuak[i] = marraztuPuntuak[i] + transform.position;
+            itxarotePuntuak[i] = marraztuPuntuak[i] + transform.position;
         }
 	}
 	
 	void Update () {
         Vector2 abiadura = Vector2.zero;
-        if(itzarotePuntuak.Length != 0)
+        if(itxarotePuntuak.Length != 0)
         {
             IzpiJatorriaEguneratu();
             abiadura = PlataformaMugitu();
@@ -53,24 +53,24 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     Vector3 PlataformaMugitu()
     {
-        itzarotePosizioa %= itzarotePuntuak.Length;
-        int hurrengoPosizoia = (itzarotePosizioa + 1) % itzarotePuntuak.Length;
-        float PuntuenArtekoDistantzia = Vector3.Distance(itzarotePuntuak[itzarotePosizioa], itzarotePuntuak[hurrengoPosizoia]);
+        itxarotePosizioa %= itxarotePuntuak.Length;
+        int hurrengoPosizoia = (itxarotePosizioa + 1) % itxarotePuntuak.Length;
+        float PuntuenArtekoDistantzia = Vector3.Distance(itxarotePuntuak[itxarotePosizioa], itxarotePuntuak[hurrengoPosizoia]);
         bidaiKantitatea += Time.deltaTime * PlataformaAbiadura / PuntuenArtekoDistantzia;
         bidaiKantitatea = Mathf.Clamp01(bidaiKantitatea);
         float easeBidaiKantitatea = Ease(bidaiKantitatea);
 
-        Vector3 posizioBerria = Vector3.Lerp(itzarotePuntuak[itzarotePosizioa], itzarotePuntuak[hurrengoPosizoia], easeBidaiKantitatea);
+        Vector3 posizioBerria = Vector3.Lerp(itxarotePuntuak[itxarotePosizioa], itxarotePuntuak[hurrengoPosizoia], easeBidaiKantitatea);
         if (bidaiKantitatea >= 1)
         {
             bidaiKantitatea = 0;
-            itzarotePosizioa++;
+            itxarotePosizioa++;
             if (!zikloa)
             {
-                if (itzarotePosizioa >= itzarotePuntuak.Length - 1)
+                if (itxarotePosizioa >= itxarotePuntuak.Length - 1)
                 {
-                    itzarotePosizioa = 0;
-                    System.Array.Reverse(itzarotePuntuak);
+                    itxarotePosizioa = 0;
+                    System.Array.Reverse(itxarotePuntuak);
                 }
             }
         }
@@ -143,7 +143,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
             float size = .3f;
             for (int i = 0; i < marraztuPuntuak.Length; i++)
             {
-                Vector3 puntua = (Application.isPlaying) ? itzarotePuntuak[i] : marraztuPuntuak[i] + transform.position;
+                Vector3 puntua = (Application.isPlaying) ? itxarotePuntuak[i] : marraztuPuntuak[i] + transform.position;
                 Gizmos.DrawLine(puntua + Vector3.down * size, puntua + Vector3.up * size);
                 Gizmos.DrawLine(puntua + Vector3.right * size, puntua + Vector3.left * size);
             }

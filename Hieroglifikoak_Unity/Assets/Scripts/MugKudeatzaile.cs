@@ -65,7 +65,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
                 if (kolpatu.transform.tag != "zeharkatu" && kolpatu.distance == 0)
                     abiadura.x = 0;
 
-                if (kolpatu.transform.tag == "zeharkatu" /*|| kolpatu.transform.tag == "kutxa"*/ || kolpatu.distance == 0)
+                if (kolpatu.transform.tag == "zeharkatu" || kolpatu.distance == 0)
                     continue;
 
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);

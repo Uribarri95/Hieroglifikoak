@@ -101,7 +101,7 @@ public class JokalariMug : MonoBehaviour {
         anim.SetBool("eskileraIgo", eskileraIgotzen);
         anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
 
-        // kudeatzailea.kolpeak.aldapaIrristatu erreseteatzen da, animazioa aldatzeko itzarote denbora txiki bat ezarri
+        // kudeatzailea.kolpeak.aldapaIrristatu erreseteatzen da, animazioa aldatzeko itxarote denbora txiki bat ezarri
         if (!kudeatzailea.kolpeak.aldapaIrristatu)
         {
             denboraI -= Time.deltaTime;
@@ -152,7 +152,7 @@ public class JokalariMug : MonoBehaviour {
             if (kudeatzailea.kolpeak.azpian)
                 MakurtuSakatu();
 
-            // airean bagaude animazioa aldatuko da, denbora akatsen erruz airean gaudenerako da
+            // airean bagaude animazioa aldatuko da
             else if(makurtu && !kudeatzailea.kolpeak.azpian)
             {
                 if (denbora >= aireanDenbora)
@@ -328,7 +328,7 @@ public class JokalariMug : MonoBehaviour {
         kudeatzailea.GeruzaBertikalaHanditu(true);
     }
 
-    public void EskilerakIgo(Vector2 eskileraAbiadura)
+    public void AbiaduraAldatu(Vector2 eskileraAbiadura)
     {
         abiadura = eskileraAbiadura;
     }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
 
-    public CheckpointKudetzailea kudetzailea;
+    public JokalariKudetzailea kudetzailea;
 
 	// Use this for initialization
 	void Start () {
-		kudetzailea = FindObjectOfType<CheckpointKudetzailea>();
+		kudetzailea = FindObjectOfType<JokalariKudetzailea>();
     }
 	
 	// Update is called once per frame

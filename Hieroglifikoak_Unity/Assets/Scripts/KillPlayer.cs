@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour {
 
-    CheckpointKudetzailea kudetzailea;
+    JokalariKudetzailea kudetzailea;
 
 	// Use this for initialization
 	void Start () {
-        kudetzailea = FindObjectOfType<CheckpointKudetzailea>();
+        kudetzailea = FindObjectOfType<JokalariKudetzailea>();
 	}
 	
 	// Update is called once per frame
