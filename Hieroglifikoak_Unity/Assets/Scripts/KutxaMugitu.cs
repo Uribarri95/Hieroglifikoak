@@ -6,9 +6,10 @@ public class KutxaMugitu : MonoBehaviour {
 
     float currentVelocity;
     Vector2 abiadura;
-    float xAbiadura = 4;
+    float xAbiadura = 3;
     JokalariMug jokalaria;
-    MugKudeatzaile kudeatzailea;
+    MugKudeatzaile kudeatzailea; /// !!! kutxaren mugimendu kudetzailea, jokalariaren berdina, aldatu eta kode gehiagarria ezabatu
+    // !!! Jokalariak abiadura bidali jokalariaren instantzia eduki beharrean
 
     // Use this for initialization
     void Start () {
@@ -19,15 +20,10 @@ public class KutxaMugitu : MonoBehaviour {
 
     void Update()
     {
-        if (jokalaria.kutxaIkutzen && !jokalaria.GetMakurtu())
-        {
+        if (jokalaria.kutxaIkutzen)
             abiadura.x = jokalaria.aginduHorizontala * xAbiadura;
-            abiadura.x = Mathf.SmoothDamp(abiadura.x, abiadura.x, ref currentVelocity, .1f);
-        }
         else
-        {
-            abiadura.x = 0f;
-        }
+            abiadura.x = 0;
         kudeatzailea.Mugitu(abiadura * Time.deltaTime);
     }
 }

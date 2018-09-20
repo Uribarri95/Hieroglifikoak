@@ -5,7 +5,7 @@ using UnityEngine;
 public class Eskilerak : MonoBehaviour {
 
     JokalariMug jokalaria;
-    public float yAbiadura = 6;
+    public float yAbiadura = 3;
     public float xAbiadura = 3;
 
     // eskileretatik eraso  --> aginduHorizontala + eraso botoia (eskumako shift botoia?)

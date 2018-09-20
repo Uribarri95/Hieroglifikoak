@@ -25,15 +25,23 @@ public class JokalariKudetzailea : MonoBehaviour {
         StartCoroutine("PlayerRespawnItxaron");
     }
 
+    //!!! jokalariaHil() metodoa egin --- if !jokalaria.hiltzen -> jokalaria.hil ...  bi aldiz ez birragertzeko !!!//
     public IEnumerator PlayerRespawnItxaron()
     {
-        jokalaria.enabled = false;
-        jokalaria.GetComponent<Renderer>().enabled = false;
+        //jauzi
+        jokalaria.AbiaduraHorizontalaAldatu(0);
+        jokalaria.aginduHorizontala = 0;
+        //jokalaria.aginduHorizontala ezgaitu
+        jokalaria.hiltzen = true;
+        //jokalaria.enabled = false;
         yield return new WaitForSeconds(hilDenbora);
         jokalaria.AbiaduraAldatu(new Vector2(0, 0));
+        jokalaria.GetComponent<Renderer>().enabled = false;
         jokalaria.NoranzkoaAldatu(1);
         jokalaria.transform.position = checkpoint.transform.position;
-        jokalaria.enabled = true;
+        //jokalaria.enabled = true;
+        //jokalaria.aginduHorizontala gaitu
+        jokalaria.hiltzen = false;
         jokalaria.GetComponent<Renderer>().enabled = true;
     }
 }
