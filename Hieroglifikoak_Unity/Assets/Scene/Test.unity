@@ -7879,132 +7879,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: paretaSaltoa.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: irristapenLeunketa
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: grabitatea
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: saltoIndarra
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 212896225667781616, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114061272541786440, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: kolpeGainazalak.m_Bits
-      value: 1536
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: helduPuntua
-      value: 
-      objectReference: {fileID: 2076887360}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: erradioa
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: kutxa.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 61361369866668984, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.265
-      objectReference: {fileID: 0}
-    - target: {fileID: 61361369866668984, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: aireanDenbora
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 61361369866668984, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.004
-      objectReference: {fileID: 0}
-    - target: {fileID: 61361369866668984, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: abiaduraOinez
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: abiaduraMakurtuta
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: korrikaAbiadura
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: noranzkoaLeundu
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: paretaSaltoa.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: aldapaSaltoa
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 212896225667781616, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1d8e3d2d0bfca4c9dc05a2bec98991,
-        type: 3}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: erasoPuntua
-      value: 
-      objectReference: {fileID: 343648226}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: xbatugaia
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: ybatugaia
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550493213148104, guid: b850781d56f60964b9eefd89dcada076,
-        type: 2}
-      propertyPath: arkua
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b850781d56f60964b9eefd89dcada076, type: 2}
   m_IsPrefabAsset: 0
@@ -8111,34 +7985,6 @@ MonoBehaviour:
   distantziaY: 1.5
   mugak: {x: 4, y: 4}
   marraztuMugak: 1
---- !u!1 &343648225
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 343648226}
-  m_Layer: 0
-  m_Name: ErasoPuntua
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &343648226
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 343648225}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11, y: -0.035, z: 0}
-  m_LocalScale: {x: 0.2921714, y: 0.30697116, z: 1}
-  m_Children: []
-  m_Father: {fileID: 425949235}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344968976
 GameObject:
   m_ObjectHideFlags: 0
@@ -8206,68 +8052,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!1 &425949229 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1793441462724276, guid: b850781d56f60964b9eefd89dcada076,
-    type: 2}
-  m_PrefabInternal: {fileID: 209478968}
---- !u!4 &425949235 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076,
-    type: 2}
-  m_PrefabInternal: {fileID: 209478968}
---- !u!50 &425949236
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 425949229}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &425949237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 425949229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54695f31a2ed50e4c999cfe4391e4e43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  denboraTartea: 0.2
-  erasoPuntua: {fileID: 343648226}
-  erradioa: 0.45
-  damage: 60
-  etsaiak:
-    serializedVersion: 2
-    m_Bits: 2048
---- !u!114 &425949238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 425949229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8784339fe3f82164aa02bba043b21285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  denboraTartea: 0
-  erasoPuntua: {fileID: 343648226}
-  gezia: {fileID: 1279483222862472, guid: b3e3a08ec316b7a498f7ecef7968f33d, type: 2}
 --- !u!4 &430921608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4963224364849028, guid: e4f7491e0fec8c34fa12ecd8b400a651,
@@ -8311,14 +8095,6 @@ Prefab:
     - target: {fileID: 4787540889068112, guid: a3dcca3cc9f031b49ac84d19f1a4c7fd, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4787540889068112, guid: a3dcca3cc9f031b49ac84d19f1a4c7fd, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.4954
-      objectReference: {fileID: 0}
-    - target: {fileID: 4787540889068112, guid: a3dcca3cc9f031b49ac84d19f1a4c7fd, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5068
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3dcca3cc9f031b49ac84d19f1a4c7fd, type: 2}
@@ -8365,56 +8141,6 @@ Prefab:
     - target: {fileID: 1661650456537320, guid: 45d19e893f54c2b4085cce4f58410eb2, type: 2}
       propertyPath: m_Name
       value: Eskilerak
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_AutoTiling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_UsedByComposite
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212237823518313592, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_SpriteTileMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.adaptiveTiling
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114946380842551278, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: yAbiadura
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.7674694
-      objectReference: {fileID: 0}
-    - target: {fileID: 61759183575789060, guid: 45d19e893f54c2b4085cce4f58410eb2,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 2.2364993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d19e893f54c2b4085cce4f58410eb2, type: 2}
@@ -9664,34 +9390,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2076887359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2076887360}
-  m_Layer: 0
-  m_Name: HelduPuntua
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2076887360
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2076887359}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 425949235}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096902687
 GameObject:
   m_ObjectHideFlags: 0
