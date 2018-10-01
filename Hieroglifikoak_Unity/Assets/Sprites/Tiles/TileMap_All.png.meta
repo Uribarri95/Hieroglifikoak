@@ -148,6 +148,8 @@ TextureImporter:
     21300286: TileMap_All_143
     21300288: TileMap_All_144
     21300290: TileMap_All_145
+    21300292: TileMap_All_146
+    21300294: TileMap_All_147
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -3611,6 +3613,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4ce020ac496dcff4792fd455ab2a4074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_All_146
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 70
+        width: 66
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827c09fa83931bb4390734fd61cfba57
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_All_147
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 69
+        width: 66
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf0d5a4ee348d741ad145cacc86b9fd
       vertices: []
       indices: 
       edges: []

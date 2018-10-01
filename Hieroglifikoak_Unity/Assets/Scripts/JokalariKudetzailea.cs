@@ -8,7 +8,8 @@ public class JokalariKudetzailea : MonoBehaviour {
 
     private JokalariMug jokalaria;
 
-    float hilDenbora = .6f;
+    public float hilAnimazioa = 1.2f;
+    public float berpiztuAnimazioa = 1.2f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,28 +21,28 @@ public class JokalariKudetzailea : MonoBehaviour {
 		
 	}
 
-    public void PlayerRespawn()
+    public void JokalariaHil()
     {
-        StartCoroutine("PlayerRespawnItxaron");
+        if (!jokalaria.hiltzen)
+        {
+            StartCoroutine("ItxaronJokalariaHil");
+        }
     }
 
-    //!!! jokalariaHil() metodoa egin --- if !jokalaria.hiltzen -> jokalaria.hil ...  bi aldiz ez birragertzeko !!!//
-    public IEnumerator PlayerRespawnItxaron()
+    public IEnumerator ItxaronJokalariaHil()
     {
-        //jauzi
-        jokalaria.AbiaduraHorizontalaAldatu(0);
-        jokalaria.aginduHorizontala = 0;
-        //jokalaria.aginduHorizontala ezgaitu
+        // jokalariaren mugimendua ezgaitu
         jokalaria.hiltzen = true;
-        //jokalaria.enabled = false;
-        yield return new WaitForSeconds(hilDenbora);
-        jokalaria.AbiaduraAldatu(new Vector2(0, 0));
-        jokalaria.GetComponent<Renderer>().enabled = false;
-        jokalaria.NoranzkoaAldatu(1);
+
+        // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
+        yield return new WaitForSeconds(hilAnimazioa);
+        jokalaria.berpizten = true;
         jokalaria.transform.position = checkpoint.transform.position;
-        //jokalaria.enabled = true;
-        //jokalaria.aginduHorizontala gaitu
+        // jokalariari txanpon batzuk kendu
+        // etsaiak berpiztu
+
+        yield return new WaitForSeconds(berpiztuAnimazioa);
         jokalaria.hiltzen = false;
-        jokalaria.GetComponent<Renderer>().enabled = true;
+        jokalaria.berpizten = false;
     }
 }

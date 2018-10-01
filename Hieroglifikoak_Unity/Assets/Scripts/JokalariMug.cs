@@ -57,6 +57,7 @@ public class JokalariMug : MonoBehaviour
     public bool sua;
 
     public bool hiltzen = false;
+    public bool berpizten = false;
 
     Animator anim;
     SpriteRenderer nireSpriteRenderer;
@@ -83,17 +84,49 @@ public class JokalariMug : MonoBehaviour
         if (kudeatzailea.kolpeak.gainean || kudeatzailea.kolpeak.azpian)
             abiadura.y = 0;
 
-        // hil animazio bitartean eta eskilera gainean mugimendu normala ezgaituta
-        if (!hiltzen)
-            Aginduak();
-        //else
-            //Berpiztu();
+        // hil/berpiztu animazioak agindutik kanpo
+        anim.SetBool("hiltzen", hiltzen);
+        anim.SetBool("berpiztu", berpizten);
 
+        // hil animazio bitartean mugimendua ezgaituta eta jokalaria egoera arrunta jarri, bestela aginduak jaso
+        if (hiltzen)
+        {
+            if (!berpizten)
+            {
+                ErasoaEten();
+                KorrikaBotoiaAskatu();
+
+                // jauzi efektua
+                SetAbiaduraHorizontala(0);
+                if (GetAbiaduraBertikala() >= 0)
+                    SetAbiadura(new Vector2(0, 0));
+
+                if (kutxaIkutzen)
+                {
+                    kutxaIkutzen = false;
+                    KutxaBultzatu();
+                }
+
+                if (makurtu)
+                {
+                    MakurtuAskatu();
+                    anim.SetBool("makurtuta", false);
+                }
+            }
+            else
+            {
+                NoranzkoaAldatu(1);
+                // jokalariari txanpon batzuk kendu
+            }
+        }
+        else
+        {
+            Aginduak();
+        }
+
+        // eskilera gainean ez dago grabitate indarrik
         if (!eskileraIgotzen)
             abiadura.y += grabitatea * Time.deltaTime;
-
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
-            anim.SetBool("eraso", false);
 
         kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
     }
@@ -137,6 +170,9 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("ezpata", ezpata);
         anim.SetBool("arkua", arkua);
 
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
+            anim.SetBool("eraso", false);
+
         // kudeatzailea.kolpeak.aldapaIrristatu erreseteatzen da, animazioa aldatzeko itxarote denbora txiki bat ezarri
         if (!kudeatzailea.kolpeak.aldapaIrristatu)
         {
@@ -162,16 +198,6 @@ public class JokalariMug : MonoBehaviour
         else
             anim.speed = 1;
         // animazioak
-
-        // hiltzen
-        // talkak zapai eta zoruarekin abiadura bertikala = 0 eta aldapa irristatu
-        /*if (kudeatzailea.kolpeak.gainean || kudeatzailea.kolpeak.azpian)
-        {
-            if (kudeatzailea.kolpeak.aldapaIrristatu)
-                abiadura.y += kudeatzailea.kolpeak.normala.y * grabitatea * Time.deltaTime;
-            else
-                abiadura.y = 0;
-        }*/
 
         // saltoak
         SaltoKudeaketa();
@@ -209,10 +235,6 @@ public class JokalariMug : MonoBehaviour
         // korrika
         Korrika();
 
-        // hiltzen
-        /*if (!eskileraIgotzen)
-            abiadura.y += grabitatea * Time.deltaTime;  /// !!! abiadura.y Aginduak() metodotik kendu kodea txukuntzeko
-        kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);*/
     }
 
     // jokalaria airean dagoenean paretara itsatsi daiteke hormaren kontrako noranzkoan salto egiteko
@@ -250,7 +272,7 @@ public class JokalariMug : MonoBehaviour
 
     void SaltoKudeaketa()
     {
-        if (Input.GetButton("Jump") /*&& !hiltzen*/) //salto botoia sakatu hil animaioa ez dagoen bitartean
+        if (Input.GetButton("Jump")) //salto botoia sakatu hil animaioa ez dagoen bitartean
         {
             if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack"))
             {
@@ -375,12 +397,12 @@ public class JokalariMug : MonoBehaviour
         // animazioa
     }
 
-    public void AbiaduraHorizontalaAldatu(float x)
+    public void SetAbiaduraHorizontala(float x)
     {
         abiadura = new Vector2(x, abiadura.y);
     }
 
-    public void AbiaduraAldatu(Vector2 eskileraAbiadura)
+    public void SetAbiadura(Vector2 eskileraAbiadura)
     {
         abiadura = eskileraAbiadura;
     }
@@ -393,6 +415,11 @@ public class JokalariMug : MonoBehaviour
     public bool GetMakurtu()
     {
         return makurtu;
+    }
+
+    public float GetAbiaduraBertikala()
+    {
+        return abiadura.y;
     }
 
     // aldapa irristatu ostean pixka bat irristatu

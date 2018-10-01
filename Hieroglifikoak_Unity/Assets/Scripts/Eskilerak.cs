@@ -8,8 +8,6 @@ public class Eskilerak : MonoBehaviour {
     public float yAbiadura = 3;
     public float xAbiadura = 3;
 
-    // eskileretatik eraso  --> aginduHorizontala + eraso botoia (eskumako shift botoia?)
-
     void Start () {
         jokalaria = FindObjectOfType<JokalariMug>();
 	}
@@ -25,7 +23,7 @@ public class Eskilerak : MonoBehaviour {
         if (collision.tag == "Player")
         {
             if (!Input.GetButton("Jump") && jokalaria.eskileraIgotzen)
-                jokalaria.AbiaduraAldatu(new Vector2(0, -.4f));
+                jokalaria.SetAbiadura(new Vector2(0, -.4f));
             jokalaria.eskileran = false;
             jokalaria.eskileraIgotzen = false;
         }
@@ -39,7 +37,7 @@ public class Eskilerak : MonoBehaviour {
             float aginduHorizontala = Input.GetAxisRaw("Horizontal");
             if (aginduHorizontala != 0 && jokalaria.eskileraIgotzen)
             {
-                jokalaria.AbiaduraAldatu(new Vector2(aginduHorizontala * xAbiadura, 0));
+                jokalaria.SetAbiadura(new Vector2(aginduHorizontala * xAbiadura, 0));
                 jokalaria.eskileraIgotzen = false;
             }
 
@@ -58,7 +56,7 @@ public class Eskilerak : MonoBehaviour {
                     jokalaria.eskileraIgotzen = true;
                     float posX = gameObject.transform.position.x;
                     jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
-                    jokalaria.AbiaduraAldatu(new Vector2(0, aginduBertikala * yAbiadura));
+                    jokalaria.SetAbiadura(new Vector2(0, aginduBertikala * yAbiadura));
                 }
             }
             else
@@ -67,7 +65,7 @@ public class Eskilerak : MonoBehaviour {
                     jokalaria.eskileraIgotzen = false;
                 // eskileran geldi
                 else if (jokalaria.eskileraIgotzen)
-                    jokalaria.AbiaduraAldatu(new Vector2(0, 0));
+                    jokalaria.SetAbiadura(new Vector2(0, 0));
             }
         }
     }
