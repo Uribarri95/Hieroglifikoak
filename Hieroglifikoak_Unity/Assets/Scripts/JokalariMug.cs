@@ -48,7 +48,7 @@ public class JokalariMug : MonoBehaviour
     public bool kutxaIkutzen;
     public Transform helduPuntua;
     public float erradioa = .1f;
-    public LayerMask kutxa;
+    public LayerMask zerDaKutxa;
     public float kutxaBultzatuAbiadura = 3;
 
     public Transform erasoPuntua;
@@ -348,10 +348,13 @@ public class JokalariMug : MonoBehaviour
     {
         if (!makurtu) // makurtuta bagaude kutxa geldo eta animazio gabe mugituko da
         {
-            kutxaIkutzen = Physics2D.OverlapCircle(helduPuntua.position, erradioa, kutxa);
+            //kutxaIkutzen = Physics2D.OverlapCircle(helduPuntua.position, erradioa, kutxa);
+            Collider2D kutxa = Physics2D.OverlapCircle(helduPuntua.position, erradioa, zerDaKutxa);
+            kutxaIkutzen = kutxa != null;
             if (kutxaIkutzen)
             {
                 mugimendua = kutxaBultzatuAbiadura;
+                //kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
                 leunketa = 0;
             }
             else

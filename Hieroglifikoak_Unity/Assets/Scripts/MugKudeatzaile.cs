@@ -222,11 +222,11 @@ public class MugKudeatzaile : IzpiKudeaketa {
     void ParetaItsatsiKonprobatu(float xNoranzkoa, float izpiLuzera)
     {
         Vector2 jatorriIzpia = (xNoranzkoa == -1) ? izpiJatorria.bottomLeft : izpiJatorria.bottomRight;
-        bool goian = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
+        //bool goian = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
         jatorriIzpia += Vector2.up * (horIzpiTartea * izpiHorKop);
         bool behean = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
         
-        if (goian && behean)
+        if (/*goian &&*/ behean)
             kolpeak.paretaitsatsi = true;
     }
 
