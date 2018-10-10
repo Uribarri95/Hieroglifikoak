@@ -52,10 +52,10 @@ GameObject:
   - component: {fileID: 61361369866668984}
   - component: {fileID: 212896225667781616}
   - component: {fileID: 95341409763035150}
+  - component: {fileID: 50074972672261730}
+  - component: {fileID: 114688779517808370}
   - component: {fileID: 114061272541786440}
   - component: {fileID: 114550493213148104}
-  - component: {fileID: 114688779517808370}
-  - component: {fileID: 50074972672261730}
   - component: {fileID: 114555433977414284}
   - component: {fileID: 114591560343256796}
   m_Layer: 8
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: 1.48, z: 0}
+  m_LocalPosition: {x: 4.9, y: 1.69, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -200,7 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdda4cb66ea89b4aa4d6c705bec2fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aginduHorizontala: 0
   leunketa: 0
   grabitatea: -20
   saltoIndarra: 10
@@ -211,17 +210,16 @@ MonoBehaviour:
   aldapaSaltoa: 12
   korrikaAbiadura: 6
   noranzkoaLeundu: 0.2
-  paretaSaltoa: {x: 8, y: 6}
+  paretaSaltoa: {x: 10, y: 7}
   denboraItsatsita: 0.15
   eskileran: 0
   eskileraIgotzen: 0
   kutxaIkutzen: 0
   helduPuntua: {fileID: 4193295092765940}
   erradioa: 0.1
-  kutxa:
+  zerDaKutxa:
     serializedVersion: 2
     m_Bits: 1024
-  kutxaBultzatuAbiadura: 3
   erasoPuntua: {fileID: 4890666248301480}
   ezpata: 0
   arkua: 1

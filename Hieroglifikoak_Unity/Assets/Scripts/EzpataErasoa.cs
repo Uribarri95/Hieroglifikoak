@@ -30,11 +30,6 @@ public class EzpataErasoa : MonoBehaviour {
             {
                 if(!jokalaria.GetMakurtu())
                 {
-                    Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(erasoPuntua.position, erradioa, etsaiak);
-                    for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
-                    {
-                        kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(damage);
-                    }
                     anim.SetBool("eraso", true);
                     coolDown = denboraTartea;
                 }
@@ -43,6 +38,15 @@ public class EzpataErasoa : MonoBehaviour {
         else
         {
             coolDown -= Time.deltaTime;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_jump_attack"))
+        {
+            Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(erasoPuntua.position, erradioa, etsaiak);
+            for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
+            {
+                kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(damage);
+            }
         }
 	}
 

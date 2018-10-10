@@ -5,7 +5,7 @@ using UnityEngine;
 public class Etsaia : MonoBehaviour {
 
     public int bizitzaPuntuak;
-    public GameObject hilParticula;
+    public GameObject hilPartikula;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +31,7 @@ public class Etsaia : MonoBehaviour {
     void Hil()
     {
         Destroy(gameObject);
-        Instantiate(hilParticula, transform.position, Quaternion.identity);
+        Instantiate(hilPartikula, transform.position, Quaternion.identity);
         Debug.Log(gameObject.name + " hil da.");
     }
 }

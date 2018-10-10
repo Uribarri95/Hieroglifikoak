@@ -9,10 +9,9 @@ public class JokalariMug : MonoBehaviour
     MugKudeatzaile kudeatzailea;
 
     Vector2 abiadura;
-
     float currentVelocity;
 
-    public float aginduHorizontala;
+    float aginduHorizontala;
     float mugimendua;
     public float leunketa;
     public float grabitatea = -20;
@@ -42,14 +41,12 @@ public class JokalariMug : MonoBehaviour
     public float denboraItsatsita = .15f;
     float askatzeDenbora;
 
-    public bool eskileran;
     public bool eskileraIgotzen;
 
     public bool kutxaIkutzen;
     public Transform helduPuntua;
     public float erradioa = .1f;
     public LayerMask zerDaKutxa;
-    public float kutxaBultzatuAbiadura = 3;
 
     public Transform erasoPuntua;
     public bool ezpata;
@@ -84,49 +81,19 @@ public class JokalariMug : MonoBehaviour
         if (kudeatzailea.kolpeak.gainean || kudeatzailea.kolpeak.azpian)
             abiadura.y = 0;
 
+        // eskilera gainean ez dago grabitate indarrik
+        if (!eskileraIgotzen)
+            abiadura.y += grabitatea * Time.deltaTime;
+
         // hil/berpiztu animazioak agindutik kanpo
         anim.SetBool("hiltzen", hiltzen);
         anim.SetBool("berpiztu", berpizten);
 
         // hil animazio bitartean mugimendua ezgaituta eta jokalaria egoera arrunta jarri, bestela aginduak jaso
         if (hiltzen)
-        {
-            if (!berpizten)
-            {
-                ErasoaEten();
-                KorrikaBotoiaAskatu();
-
-                // jauzi efektua
-                SetAbiaduraHorizontala(0);
-                if (GetAbiaduraBertikala() >= 0)
-                    SetAbiadura(new Vector2(0, 0));
-
-                if (kutxaIkutzen)
-                {
-                    kutxaIkutzen = false;
-                    KutxaBultzatu();
-                }
-
-                if (makurtu)
-                {
-                    MakurtuAskatu();
-                    anim.SetBool("makurtuta", false);
-                }
-            }
-            else
-            {
-                NoranzkoaAldatu(1);
-                // jokalariari txanpon batzuk kendu
-            }
-        }
+            Berpiztu();
         else
-        {
             Aginduak();
-        }
-
-        // eskilera gainean ez dago grabitate indarrik
-        if (!eskileraIgotzen)
-            abiadura.y += grabitatea * Time.deltaTime;
 
         kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
     }
@@ -143,7 +110,8 @@ public class JokalariMug : MonoBehaviour
             Vector3.Lerp(transform.position, transform.position += new Vector3(-2, 0, 0), abiaduraOinez);
         }*/
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack"))
+        // erasotzen bagaude mugimendua 0 da
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack"))
             aginduHorizontala = 0;
         else
             aginduHorizontala = Input.GetAxisRaw("Horizontal");
@@ -158,46 +126,7 @@ public class JokalariMug : MonoBehaviour
         AldapaIrristatu();
 
         // animazioak
-        anim.SetFloat("xAbiadura", Mathf.Abs(aginduHorizontala * mugimendua));
-        anim.SetFloat("yAbiadura", abiadura.y);
-        anim.SetBool("lurrean", kudeatzailea.kolpeak.azpian);
-        anim.SetBool("makurtuta", makurtu);
-        anim.SetBool("irristatzen", irristatu);
-        anim.SetBool("itsatsita", paretaItsatsi);
-        anim.SetBool("eskileraIgo", eskileraIgotzen);
-        anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
-
-        anim.SetBool("ezpata", ezpata);
-        anim.SetBool("arkua", arkua);
-
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
-            anim.SetBool("eraso", false);
-
-        // kudeatzailea.kolpeak.aldapaIrristatu erreseteatzen da, animazioa aldatzeko itxarote denbora txiki bat ezarri
-        if (!kudeatzailea.kolpeak.aldapaIrristatu)
-        {
-            denboraIrristatu -= Time.deltaTime;
-            if (denboraIrristatu <= 0)
-            {
-                anim.SetBool("aldapaIrristatu", kudeatzailea.kolpeak.aldapaIrristatu);
-                denboraIrristatu = irristatuDenbora;
-            }
-        }
-        else
-        {
-            denboraIrristatu = irristatuDenbora;
-            anim.SetBool("aldapaIrristatu", kudeatzailea.kolpeak.aldapaIrristatu);
-        }
-
-        if (!paretaItsatsi && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slide"))
-            NoranzkoaAldatu(aginduHorizontala);
-
-        if (((anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_up") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_down")) && abiadura.y == 0)
-            || (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") && aginduHorizontala == 0 && kudeatzailea.kolpeak.azpian))
-            anim.speed = 0;
-        else
-            anim.speed = 1;
-        // animazioak
+        AnimazioakKudeatu();
 
         // saltoak
         SaltoKudeaketa();
@@ -208,7 +137,6 @@ public class JokalariMug : MonoBehaviour
         {
             if (ateAurrean)
             {
-                print("atea zabaltzen");
                 //AteaZabaldu();
             }
             else if (kudeatzailea.kolpeak.azpian)
@@ -234,7 +162,106 @@ public class JokalariMug : MonoBehaviour
 
         // korrika
         Korrika();
+    }
 
+    void AnimazioakKudeatu()
+    {
+        anim.SetFloat("xAbiadura", Mathf.Abs(aginduHorizontala * mugimendua));
+        anim.SetFloat("yAbiadura", abiadura.y);
+        anim.SetBool("lurrean", kudeatzailea.kolpeak.azpian);
+        anim.SetBool("makurtuta", makurtu);
+        anim.SetBool("irristatzen", irristatu);
+        anim.SetBool("itsatsita", paretaItsatsi);
+        anim.SetBool("eskileraIgo", eskileraIgotzen);
+        anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
+
+        anim.SetBool("ezpata", ezpata);
+        anim.SetBool("arkua", arkua);
+
+        // kutxa bultzatzen eta eskilerak igotzen ezin da eraso
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
+            ErasoaEten();
+
+        // kudeatzailea.kolpeak.aldapaIrristatu erreseteatzen da, animazioa aldatzeko itxarote denbora txiki bat ezarri
+        if (!kudeatzailea.kolpeak.aldapaIrristatu)
+        {
+            denboraIrristatu -= Time.deltaTime;
+            if (denboraIrristatu <= 0)
+            {
+                anim.SetBool("aldapaIrristatu", kudeatzailea.kolpeak.aldapaIrristatu);
+                denboraIrristatu = irristatuDenbora;
+            }
+        }
+        else
+        {
+            denboraIrristatu = irristatuDenbora;
+            anim.SetBool("aldapaIrristatu", kudeatzailea.kolpeak.aldapaIrristatu);
+        }
+
+        // irristatzen edo paretara itsatsita ez bagaude noranzkoa teklatuko aginduaren arabera
+        if (!paretaItsatsi && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_slide"))
+            NoranzkoaAldatu(aginduHorizontala);
+
+        // mugmiendua gelditzean animazioa ere gelditzen da
+        if (((anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_up") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_stairs_climb_down")) && abiadura.y == 0)
+            || (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") && aginduHorizontala == 0 && kudeatzailea.kolpeak.azpian))
+            anim.speed = 0;
+        else
+            anim.speed = 1;
+    }
+
+    void Berpiztu()
+    {
+        if (!berpizten)
+        {
+            // jauzi efektua
+            SetAbiaduraHorizontala(0);
+            if (GetAbiaduraBertikala() >= 0)
+                SetAbiadura(new Vector2(0, 0));
+
+            ErasoaEten();
+            KorrikaBotoiaAskatu();
+            kutxaIkutzen = false;
+            if (makurtu)
+            {
+                MakurtuAskatu();
+                anim.SetBool("makurtuta", false);
+            }
+        }
+        else
+        {
+            NoranzkoaAldatu(1);
+            // jokalariari txanpon batzuk kendu
+        }
+    }
+
+    // aldapa irristatu ostean pixka bat irristatu
+    void AldapaIrristatu()
+    {
+        if (makurtu && anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && kudeatzailea.kolpeak.azpian) // azpian
+        {
+            if (kudeatzailea.kolpeak.normala.x != 0 && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma)
+                abiadura.x = 5 * Mathf.Sign(kudeatzailea.kolpeak.normala.x);
+        }
+    }
+
+    // sprite-aren noranzkoa aldatzen da
+    public void NoranzkoaAldatu(float noranzkoa)
+    {
+        if (noranzkoa > 0 && nireSpriteRenderer.flipX)
+        {
+            nireSpriteRenderer.flipX = false;
+            helduPuntua.position = new Vector2(transform.position.x + .15f, transform.position.y - .15f);
+            erasoPuntua.position = new Vector2(transform.position.x + .35f, transform.position.y - .115f);
+            erasoPuntua.transform.Rotate(0f, 180f, 0f);
+        }
+        else if (noranzkoa < 0 && !nireSpriteRenderer.flipX)
+        {
+            nireSpriteRenderer.flipX = true;
+            helduPuntua.position = new Vector2(transform.position.x - .15f, transform.position.y - .15f);
+            erasoPuntua.position = new Vector2(transform.position.x - .35f, transform.position.y - .115f);
+            erasoPuntua.transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     // jokalaria airean dagoenean paretara itsatsi daiteke hormaren kontrako noranzkoan salto egiteko
@@ -244,7 +271,7 @@ public class JokalariMug : MonoBehaviour
         if (kudeatzailea.kolpeak.paretaitsatsi && !kudeatzailea.kolpeak.azpian && abiadura.y < 0)
         {
             paretaItsatsi = true;
-            anim.SetBool("eraso", false);
+            ErasoaEten();
             // jokalaria paretaren kontrako zentzuan begiratzen
             NoranzkoaAldatu(paretaNoranzkoa * -1);
             // ohikoa baino geldoago erortzen da
@@ -270,13 +297,15 @@ public class JokalariMug : MonoBehaviour
             paretaItsatsi = false;
     }
 
+    
+
     void SaltoKudeaketa()
     {
         if (Input.GetButton("Jump")) //salto botoia sakatu hil animaioa ez dagoen bitartean
         {
-            if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack"))
+            if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack"))
             {
-                if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide")) //aldapa irristatzen saltoa saltoa
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma) //aldapa irristatzen saltoa saltoa
                 {
                     abiadura.y = saltoIndarra * .75f; /// !!! .75 parametro bihurtu
                     abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
@@ -348,25 +377,10 @@ public class JokalariMug : MonoBehaviour
     {
         if (!makurtu) // makurtuta bagaude kutxa geldo eta animazio gabe mugituko da
         {
-            //kutxaIkutzen = Physics2D.OverlapCircle(helduPuntua.position, erradioa, kutxa);
             Collider2D kutxa = Physics2D.OverlapCircle(helduPuntua.position, erradioa, zerDaKutxa);
             kutxaIkutzen = kutxa != null;
             if (kutxaIkutzen)
-            {
-                mugimendua = kutxaBultzatuAbiadura;
-                //kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
-                leunketa = 0;
-            }
-            else
-            {
-                leunketa = korrika ? noranzkoaLeundu : leuntzeNormala;
-                if (makurtu)
-                    mugimendua = abiaduraMakurtuta;
-                else if (korrika)
-                    mugimendua = korrikaAbiadura;
-                else
-                    mugimendua = abiaduraOinez;
-            }
+                kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
         }
     }
 
@@ -395,11 +409,6 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("eraso", false);
     }
 
-    void Berpiztu()
-    {
-        // animazioa
-    }
-
     public void SetAbiaduraHorizontala(float x)
     {
         abiadura = new Vector2(x, abiadura.y);
@@ -425,32 +434,12 @@ public class JokalariMug : MonoBehaviour
         return abiadura.y;
     }
 
-    // aldapa irristatu ostean pixka bat irristatu
-    void AldapaIrristatu()
+    public bool GetEskileran()
     {
-        if (makurtu && anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && kudeatzailea.kolpeak.azpian)
-            if (!kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma)
-                abiadura.x = 5 * Mathf.Sign(kudeatzailea.kolpeak.normala.x);
-            else
-                abiadura.x = 0;
+        return eskileraIgotzen;
     }
-
-    // sprite-aren noranzkoa aldatzen da
-    public void NoranzkoaAldatu(float noranzkoa)
+    public void SetEskileran(bool eskileran)
     {
-        if (noranzkoa > 0 && nireSpriteRenderer.flipX)
-        {
-            nireSpriteRenderer.flipX = false;
-            helduPuntua.position = new Vector2(transform.position.x + .15f, transform.position.y - .15f);
-            erasoPuntua.position = new Vector2(transform.position.x + .35f, transform.position.y - .115f);
-            erasoPuntua.transform.Rotate(0f, 180f, 0f);
-        }
-        else if (noranzkoa < 0 && !nireSpriteRenderer.flipX)
-        {
-            nireSpriteRenderer.flipX = true;
-            helduPuntua.position = new Vector2(transform.position.x - .15f, transform.position.y - .15f);
-            erasoPuntua.position = new Vector2(transform.position.x - .35f, transform.position.y - .115f);
-            erasoPuntua.transform.Rotate(0f, 180f, 0f);
-        }
+        eskileraIgotzen = eskileran;
     }
 }

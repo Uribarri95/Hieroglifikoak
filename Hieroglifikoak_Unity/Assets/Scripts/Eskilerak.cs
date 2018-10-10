@@ -12,33 +12,26 @@ public class Eskilerak : MonoBehaviour {
         jokalaria = FindObjectOfType<JokalariMug>();
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-            jokalaria.eskileran = true;
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            if (!Input.GetButton("Jump") && jokalaria.eskileraIgotzen)
+            if (!Input.GetButton("Jump") && jokalaria.GetEskileran())
                 jokalaria.SetAbiadura(new Vector2(0, -.4f));
-            jokalaria.eskileran = false;
-            jokalaria.eskileraIgotzen = false;
+            jokalaria.SetEskileran(false);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && jokalaria.eskileran)
+        if (collision.tag == "Player")
         {
             // eskileratik salto egin
             float aginduHorizontala = Input.GetAxisRaw("Horizontal");
-            if (aginduHorizontala != 0 && jokalaria.eskileraIgotzen)
+            if (aginduHorizontala != 0 && jokalaria.GetEskileran())
             {
                 jokalaria.SetAbiadura(new Vector2(aginduHorizontala * xAbiadura, 0));
-                jokalaria.eskileraIgotzen = false;
+                jokalaria.SetEskileran(false);
             }
 
             // eskilera igo/jeitsi
@@ -47,13 +40,14 @@ public class Eskilerak : MonoBehaviour {
             {
                 // beheko topea
                 if (aginduBertikala < 0 && jokalaria.GetLurrean())
-                    jokalaria.eskileraIgotzen = false;
+                    jokalaria.SetEskileran(false);
                 // goiko topea
                 else if (aginduBertikala > 0 && jokalaria.transform.position.y > gameObject.transform.position.y && jokalaria.GetLurrean())
-                    jokalaria.eskileraIgotzen = false;
+                    jokalaria.SetEskileran(false);
+                // eskileratik mugitu
                 else
                 {
-                    jokalaria.eskileraIgotzen = true;
+                    jokalaria.SetEskileran(true);
                     float posX = gameObject.transform.position.x;
                     jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
                     jokalaria.SetAbiadura(new Vector2(0, aginduBertikala * yAbiadura));
@@ -62,9 +56,9 @@ public class Eskilerak : MonoBehaviour {
             else
             {
                 if (jokalaria.GetLurrean())
-                    jokalaria.eskileraIgotzen = false;
+                    jokalaria.SetEskileran(false);
                 // eskileran geldi
-                else if (jokalaria.eskileraIgotzen)
+                else if (jokalaria.GetEskileran())
                     jokalaria.SetAbiadura(new Vector2(0, 0));
             }
         }

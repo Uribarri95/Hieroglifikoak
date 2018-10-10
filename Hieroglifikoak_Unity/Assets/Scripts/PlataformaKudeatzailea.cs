@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     public LayerMask bidaiariak;
-    Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
+    //Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
+    List<Transform> hiztegia = new List<Transform>();
 
     public Vector3[] marraztuPuntuak;
     Vector3[] itxarotePuntuak;
@@ -44,13 +45,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         }
     }
 
-    float Ease(float x)
-    {
-        float a = easing + 1;
-        //return Mathf.Pow(x, 2) * (3 - 2 * x);
-        return Mathf.Pow(x, a) / (Mathf.Pow(x, a) + Mathf.Pow(1 - x, a));
-    }
-
     Vector3 PlataformaMugitu()
     {
         itxarotePosizioa %= itxarotePuntuak.Length;
@@ -77,6 +71,13 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         return posizioBerria - transform.position;
     }
 
+    float Ease(float x)
+    {
+        float a = easing + 1;
+        //return Mathf.Pow(x, 2) * (3 - 2 * x);
+        return Mathf.Pow(x, a) / (Mathf.Pow(x, a) + Mathf.Pow(1 - x, a));
+    }
+
     void MugituBidaiariak(Vector2 abiadura)
     {
         HashSet<Transform> mugitutakoBidaiariak = new HashSet<Transform>();
@@ -94,11 +95,16 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                 if (!mugitutakoBidaiariak.Contains(kolpatu.transform))
                 {
                     mugitutakoBidaiariak.Add(kolpatu.transform);
-                    if (!hiztegia.ContainsKey(kolpatu.transform))
+                    if (!hiztegia.Contains(kolpatu.transform))
+                    {
+                        hiztegia.Add(kolpatu.transform);
+                    }
+                    Mugitu(kolpatu.transform, new Vector2(abiadura.x, abiadura.y), true);
+                    /*if (!hiztegia.ContainsKey(kolpatu.transform))
                     {
                         hiztegia.Add(kolpatu.transform, kolpatu.transform.GetComponent<MugKudeatzaile>());
                     }
-                    hiztegia[kolpatu.transform].Mugitu(new Vector2(abiadura.x, abiadura.y), plataformaGainean: true);
+                    hiztegia[kolpatu.transform].Mugitu(new Vector2(abiadura.x, abiadura.y), plataformaGainean: true);*/
                 }
             }
         }
@@ -123,16 +129,32 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                         mugitutakoBidaiariak.Add(kolpatu.transform);
                         float bultzatuX = abiadura.x - (kolpatu.distance - azalZabalera) * xNoranzkoa;
                         float bultzatuY = -azalZabalera;
-                        
-                        if (!hiztegia.ContainsKey(kolpatu.transform))
+
+                        if (!hiztegia.Contains(kolpatu.transform))
+                        {
+                            hiztegia.Add(kolpatu.transform);
+                        }
+                        Mugitu(kolpatu.transform, new Vector2(bultzatuX, bultzatuY), false);
+                        /*if (!hiztegia.ContainsKey(kolpatu.transform))
                         {
                             hiztegia.Add(kolpatu.transform, kolpatu.transform.GetComponent<MugKudeatzaile>());
                         }
-                        hiztegia[kolpatu.transform].Mugitu(new Vector2(bultzatuX, bultzatuY), plataformaGainean: false);
+                        hiztegia[kolpatu.transform].Mugitu(new Vector2(bultzatuX, bultzatuY), plataformaGainean: false);*/
                     }
                 }
             }
         }
+    }
+
+    void Mugitu(Transform bidaiaria, Vector2 abiadura, bool plataformaGainean)
+    {
+        MugKudeatzaile jokalaria = bidaiaria.GetComponent<MugKudeatzaile>();
+        if (jokalaria != null)
+            jokalaria.Mugitu(abiadura, plataformaGainean);
+
+        KutxaMugKud kutxa = bidaiaria.GetComponent<KutxaMugKud>();
+        if (kutxa != null)
+            kutxa.Mugitu(abiadura, plataformaGainean);
     }
 
     private void OnDrawGizmos()

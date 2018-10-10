@@ -16,18 +16,19 @@ public class KutxaMugKud : IzpiKudeaketa {
         base.Start();
     }
 
+
     // erabiltzailearen aginduak jaso eta fisika indarrak aplikatzen zaizkio jokalaritik ateratzen diren izpiak erabilita
-    public void Mugitu(Vector2 abiadura, bool plataformaGainean = false, bool irristatu = false)
+    public void Mugitu(Vector2 abiadura, bool plataformaGainean = false)
     {
         IzpiJatorriaEguneratu();
         kolpeak.Reset();
 
         if (abiadura.y < 0) { }
-        AldapaJaitsi(ref abiadura, irristatu);
+            AldapaJaitsi(ref abiadura);
         if (abiadura.x != 0)
-            KolpeHorizontalak(ref abiadura, irristatu);
+            KolpeHorizontalak(ref abiadura);
         if (abiadura.y != 0)
-            KolpeBertikalak(ref abiadura, irristatu);
+            KolpeBertikalak(ref abiadura);
 
         if (plataformaGainean)
             kolpeak.azpian = true;
@@ -37,7 +38,7 @@ public class KutxaMugKud : IzpiKudeaketa {
 
     // Mugimendu horizontala jaso. Beste gorputz baten aurka talka egingo bada abiadura eraldatzen da
     // Kolpea eskuman edo ezkerran jaso den gordetzen da
-    void KolpeHorizontalak(ref Vector2 abiadura, bool irristatu = false)
+    void KolpeHorizontalak(ref Vector2 abiadura)
     {
         float xNoranzkoa = Mathf.Sign(abiadura.x);
         float izpiLuzera = Mathf.Abs(abiadura.x) + azalZabalera;
@@ -62,7 +63,7 @@ public class KutxaMugKud : IzpiKudeaketa {
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);
 
                 // talka aldapa igogarri baten aurka
-                if (i == 0 && aldapaAngelua <= aldapaAngeluMax && !irristatu)
+                if (i == 0 && aldapaAngelua <= aldapaAngeluMax)
                     AldapaIgo(ref abiadura, aldapaAngelua, kolpatu.normal);
                 // ezin  da igo
                 else
@@ -87,7 +88,7 @@ public class KutxaMugKud : IzpiKudeaketa {
 
     // Mugimendu bertikala jaso. Beste gorputz baten aurka talka egingo bada abiadura eraldatzen da
     // Kolpea goian edo azpian jaso den gordetzen da
-    void KolpeBertikalak(ref Vector2 abiadura, bool makurtu)
+    void KolpeBertikalak(ref Vector2 abiadura)
     {
         float yNoranzkoa = Mathf.Sign(abiadura.y);
         float izpiLuzera = Mathf.Abs(abiadura.y) + azalZabalera;
@@ -102,12 +103,6 @@ public class KutxaMugKud : IzpiKudeaketa {
 
             if (kolpatu)
             {
-                if (kolpatu.transform.tag == "zeharkatu")
-                {
-                    if (yNoranzkoa == 1 || kolpatu.distance == 0 || makurtu)
-                        continue;
-                }
-
                 if (kolpatu.distance < 0.01f)
                     abiadura.y = 0;
                 else
@@ -149,7 +144,7 @@ public class KutxaMugKud : IzpiKudeaketa {
     }
 
     // abiadura horizontala bertikalean eta horizontalean banatzen da aldapan
-    void AldapaJaitsi(ref Vector2 abiadura, bool irristatu = false)
+    void AldapaJaitsi(ref Vector2 abiadura)
     {
         float xNoranzkoa = Mathf.Sign(abiadura.x);
         Vector2 izpia = (xNoranzkoa == -1) ? izpiJatorria.bottomRight : izpiJatorria.bottomLeft;

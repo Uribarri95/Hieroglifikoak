@@ -39,6 +39,7 @@ public class ArkuErasoa : MonoBehaviour {
         }
 	}
 
+    //animazioko event jaurtitzen du metodoa
     public void GeziaJaurti()
     {
         Instantiate(gezia, erasoPuntua.position, erasoPuntua.rotation);

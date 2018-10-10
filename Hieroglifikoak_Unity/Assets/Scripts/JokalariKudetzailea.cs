@@ -36,8 +36,15 @@ public class JokalariKudetzailea : MonoBehaviour {
 
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
         yield return new WaitForSeconds(hilAnimazioa);
-        jokalaria.berpizten = true;
         jokalaria.transform.position = checkpoint.transform.position;
+        jokalaria.GetComponent<Renderer>().enabled = false;
+        // mapa erreseteatu
+
+        // animazioa kargatzeko behar duen denbora
+        yield return new WaitForSeconds(.4f);
+        jokalaria.berpizten = true;
+        yield return new WaitForSeconds(.04f);
+        jokalaria.GetComponent<Renderer>().enabled = true;
         // jokalariari txanpon batzuk kendu
         // etsaiak berpiztu
 
