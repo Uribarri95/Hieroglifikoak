@@ -24,7 +24,7 @@ public class ArkuErasoa : MonoBehaviour {
     void Update () {
         if (coolDown <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.RightControl)) // && !makurtu
+            if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 if (!jokalaria.GetMakurtu())
                 {

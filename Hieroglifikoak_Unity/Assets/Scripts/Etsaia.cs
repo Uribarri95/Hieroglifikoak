@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Etsaia : MonoBehaviour {
 
-    public int bizitzaPuntuak;
+    public float bizitzaPuntuak;
     public GameObject hilPartikula;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class Etsaia : MonoBehaviour {
 		
 	}
 
-    public void KolpeaJaso(int minPuntuak)
+    public void KolpeaJaso(float minPuntuak)
     {
         bizitzaPuntuak -= minPuntuak;
         Debug.Log("Ouch. " + minPuntuak + "bizitzaPuntu gutxiago.");

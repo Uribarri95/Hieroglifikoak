@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
 
-    public JokalariKudetzailea kudetzailea;
+    private JokalariKudetzailea kudetzailea;
 
 	// Use this for initialization
 	void Start () {

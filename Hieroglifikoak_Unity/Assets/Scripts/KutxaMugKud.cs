@@ -54,12 +54,6 @@ public class KutxaMugKud : IzpiKudeaketa {
 
             if (kolpatu)
             {
-                if (kolpatu.transform.tag != "zeharkatu" && kolpatu.distance == 0)
-                    abiadura.x = 0;
-
-                if (kolpatu.transform.tag == "zeharkatu" || kolpatu.distance == 0)
-                    continue;
-
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);
 
                 // talka aldapa igogarri baten aurka

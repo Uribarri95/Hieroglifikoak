@@ -379,8 +379,9 @@ public class JokalariMug : MonoBehaviour
         {
             Collider2D kutxa = Physics2D.OverlapCircle(helduPuntua.position, erradioa, zerDaKutxa);
             kutxaIkutzen = kutxa != null;
-            if (kutxaIkutzen)
-                kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
+            if (kutxaIkutzen && !Input.GetButton("Jump"))
+                //kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
+                kutxa.GetComponent<KutxaMugKud>().Mugitu(abiadura * Time.deltaTime);
         }
     }
 
@@ -402,6 +403,11 @@ public class JokalariMug : MonoBehaviour
         korrika = false;
         mugimendua = makurtu ? abiaduraMakurtuta : abiaduraOinez;
         leunketa = irristatu ? irristapenLeunketa : leuntzeNormala;
+    }
+
+    public bool ErasoDezaket()
+    {
+        return (!makurtu && !paretaItsatsi && !eskileraIgotzen);
     }
 
     public void ErasoaEten()

@@ -5,13 +5,15 @@ using UnityEngine;
 public class Gezia : MonoBehaviour {
 
     public GameObject geziPartikula;
-    public Rigidbody2D rb;
-    float desagertuDenbora = 3f;
-    public float abiadura = 30f;
-    public int damage;
+    Rigidbody2D rb;
+
+    float desagertuDenbora = 5f;
+    float abiadura = 30f;
+    float arrowDamage;
 
     // Use this for initialization
     void Start () {
+        rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * abiadura;
         Destroy(gameObject, desagertuDenbora);
     }
@@ -20,7 +22,7 @@ public class Gezia : MonoBehaviour {
     {
         if(collision.tag == "Etsaia")
         {
-            collision.GetComponent<Etsaia>().KolpeaJaso(damage);
+            collision.GetComponent<Etsaia>().KolpeaJaso(arrowDamage);
             Debug.Log(collision.name);
             Destroy(gameObject);
             Instantiate(geziPartikula, transform.position, transform.rotation);
@@ -31,5 +33,11 @@ public class Gezia : MonoBehaviour {
             Destroy(gameObject);
             Instantiate(geziPartikula, transform.position, transform.rotation);
         }
+        Debug.Log(arrowDamage);
+    }
+
+    public void setArrowDamage(float damage)
+    {
+        arrowDamage = damage;
     }
 }

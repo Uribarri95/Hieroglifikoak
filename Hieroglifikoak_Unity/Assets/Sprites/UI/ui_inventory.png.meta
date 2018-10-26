@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 5b7f0d70c50d1dc4d812c17b9f6add69
+guid: 7205fbfb2d4dc6e46b294c36c8e1dbd4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: player_torch_jump_0
-    21300002: player_torch_jump_1
+    21300000: ui_inventory_0
+    21300002: ui_inventory_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -62,7 +62,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -73,7 +73,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -86,13 +86,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_torch_jump_0
+      name: ui_inventory_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 128
-        height: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,19 +100,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ec0bc749a8701044892bc42b0898164
+      spriteID: db8bd3fc5dcb71f49ac8effd38ebe226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_torch_jump_1
+      name: ui_inventory_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c5e1e25197d9e94a8795cab9f67455a
+      spriteID: 2d67b748b237d1646b86269142084cee
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c6986644bb5b95b49bf810bdd18f2570
+    spriteID: 70bb225170565474f9f14d12fbe85795
     vertices: []
     indices: 
     edges: []

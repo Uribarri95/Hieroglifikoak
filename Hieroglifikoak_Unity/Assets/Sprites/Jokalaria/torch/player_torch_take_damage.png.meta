@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 1cff2a31baa86b04587e599800373e8d
+guid: 3b86ffa05c792a545ad88140cc243987
 TextureImporter:
   fileIDToRecycleName:
-    21300000: player_torch_idle_0
-    21300002: player_torch_idle_1
-    21300004: player_torch_idle_2
-    21300006: player_torch_idle_3
+    21300000: player_torch_take_damage_0
+    21300002: player_torch_take_damage_1
+    21300004: player_torch_take_damage_2
+    21300006: player_torch_take_damage_3
+    21300008: player_torch_take_damage_4
+    21300010: player_torch_take_damage_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,7 +90,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_torch_idle_0
+      name: player_torch_take_damage_0
       rect:
         serializedVersion: 2
         x: 0
@@ -102,13 +104,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e48212a33921a247934bb170cfe4bb5
+      spriteID: 33f1ff13b193023499e4892cd1d9f20d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_torch_idle_1
+      name: player_torch_take_damage_1
       rect:
         serializedVersion: 2
         x: 128
@@ -122,13 +124,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 647f0f52c93d95c49a7a3e8be8495a83
+      spriteID: 1fcf716d204bb2142a17965ef21a33ec
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_torch_idle_2
+      name: player_torch_take_damage_2
       rect:
         serializedVersion: 2
         x: 256
@@ -142,13 +144,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f979004bc8b45274280f43db9545e8e1
+      spriteID: d45f30bf77e93644fab272e6404da30e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_torch_idle_3
+      name: player_torch_take_damage_3
       rect:
         serializedVersion: 2
         x: 384
@@ -162,7 +164,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6be0d9cc8259a2d4f9fc36abee90ae6e
+      spriteID: f262d847651790a498f45fe32a9419e2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_torch_take_damage_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b69e9a4297d2f41ad145085278f203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_torch_take_damage_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5004b81cc56f034490dca78632bcc57
       vertices: []
       indices: 
       edges: []
@@ -170,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ceb3f0c42d563854f89ecd00cbd2a359
+    spriteID: 79f491386e2f24349b3c02c8340746de
     vertices: []
     indices: 
     edges: []

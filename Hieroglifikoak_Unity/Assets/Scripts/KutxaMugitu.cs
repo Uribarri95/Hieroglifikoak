@@ -18,9 +18,12 @@ public class KutxaMugitu : MonoBehaviour {
     void Update()
     {
         if (kudeatzailea.kolpeak.azpian)
+        {
             abiadura.y = 0;
-        else
+        } else
+        {
             abiadura.y += grabitatea * Time.deltaTime;
+        }
         kudeatzailea.Mugitu(abiadura * Time.deltaTime);
     }
 }
