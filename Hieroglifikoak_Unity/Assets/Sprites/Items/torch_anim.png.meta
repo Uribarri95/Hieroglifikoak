@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: bb26dc458a9783743b4e1928db0d5bb4
+guid: 04c6ff2b0f7c4374982de760467620bd
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Spike_trap_0
-    21300002: Spike_trap_1
-    21300004: Spike_trap_2
+    21300000: torch_anim_0
+    21300002: torch_anim_1
+    21300004: torch_anim_2
+    21300006: torch_anim_3
+    21300008: torch_anim_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -48,7 +50,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,69 +89,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spike_trap_0
+      name: torch_anim_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0a08000a4b7b0c48a48102c07f61d81
+      spriteID: 246ae5d48bcf2fb428cdb8018e76ca7b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spike_trap_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 32, y: -20}
-        - {x: 32, y: 21}
-        - {x: -32, y: 21}
-        - {x: -32, y: -20}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3dda7c19fac27d4cb2d46e5204b1282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spike_trap_2
+      name: torch_anim_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
+        width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 32, y: -20}
-        - {x: 32, y: 54}
-        - {x: -32, y: 54}
-        - {x: -32, y: -20}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd439fbe960d067419362bf3d6001215
+      spriteID: 7b56661d0ee69c24cb3daf4aeb60ad01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_anim_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8ec4dbeb707494bb53e73acde8e4fc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_anim_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc0c02751d2af44b94d632954b4d992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_anim_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de703cd23150fed4c86453f9f85e041d
       vertices: []
       indices: 
       edges: []
@@ -157,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 96356713c7966be46b840aed74bfa040
+    spriteID: e2deab7e99a7a3b468478dab893bb8ab
     vertices: []
     indices: 
     edges: []

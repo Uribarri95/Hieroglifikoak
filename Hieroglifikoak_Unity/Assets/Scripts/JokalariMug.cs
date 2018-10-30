@@ -49,9 +49,6 @@ public class JokalariMug : MonoBehaviour
     public LayerMask zerDaKutxa;
 
     public Transform erasoPuntua;
-    public bool ezpata;
-    public bool arkua;
-    public bool sua;
 
     public bool hiltzen = false;
     public bool berpizten = false;
@@ -174,9 +171,6 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("itsatsita", paretaItsatsi);
         anim.SetBool("eskileraIgo", eskileraIgotzen);
         anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
-
-        anim.SetBool("ezpata", ezpata);
-        anim.SetBool("arkua", arkua);
 
         // kutxa bultzatzen eta eskilerak igotzen ezin da eraso
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)

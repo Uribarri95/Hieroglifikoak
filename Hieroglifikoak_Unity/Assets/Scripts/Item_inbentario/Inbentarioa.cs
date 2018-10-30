@@ -37,7 +37,30 @@ public class Inbentarioa : MonoBehaviour {
 
     private void Start()
     {
+        geziKopurua = 10;
         UIEguneratu();
+    }
+
+    public bool ItemaDaukat(string izena)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].izena == izena)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int GetGeziKop()
+    {
+        return geziKopurua;
+    }
+
+    public void GeziaJaurti()
+    {
+        geziKopurua--;
     }
 
     public bool Add(Item item)
@@ -77,6 +100,9 @@ public class Inbentarioa : MonoBehaviour {
                 case "Geziak":
                     return GeziakGorde();
                     //break;
+                case "Bihotz+":
+                    return BizitzaPuntuakHanditu();
+                    //break;
                 default:
                     break;
             }
@@ -105,7 +131,6 @@ public class Inbentarioa : MonoBehaviour {
     bool EdariHandiaGorde(Item item)
     {
         Debug.Log("Edabe handia gordetzen");
-        Debug.Log(edabea.izena);
         if (edabea == null)
         {
             edabea = item;
@@ -153,6 +178,21 @@ public class Inbentarioa : MonoBehaviour {
             geziKopurua = gezikopuruMax;
         }
         // UI barruan adierazi
+        UIEguneratu();
+        return true;
+    }
+
+    bool BizitzaPuntuakHanditu()
+    {
+        if(bizitzaPuntuMax < 12)
+        {
+            bizitzaPuntuMax += 2;
+        }
+        else
+        {
+            Debug.Log("Gehienez 6 bihotz. Bizitza puntu maximoa duzu");
+        }
+        bizitzaPuntuak = bizitzaPuntuMax;
         UIEguneratu();
         return true;
     }

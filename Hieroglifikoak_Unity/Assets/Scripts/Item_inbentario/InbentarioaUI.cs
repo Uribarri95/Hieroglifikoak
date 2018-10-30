@@ -24,7 +24,16 @@ public class InbentarioaUI : MonoBehaviour {
         for (int i = 0; i < inbentario.items.Count; i++)
         {
             itemTokiak[i].AddItem(inbentario.items[i].irudia);
+            if(inbentario.items[i].izena == "Arkua")
+            {
+                itemTokiak[i].ErakutsiGeziKop(inbentario.GetGeziKop());
+            }
+            else
+            {
+                itemTokiak[i].EzkutatuGeziKop();
+            }
         }
+        // gezien IU ikusarazi-ezkutatu
         /*
         for (int i = 0; i < itemTokiak.Length; i++)
         {

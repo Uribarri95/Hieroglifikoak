@@ -56,11 +56,26 @@ GameObject:
   - component: {fileID: 114688779517808370}
   - component: {fileID: 114061272541786440}
   - component: {fileID: 114550493213148104}
-  - component: {fileID: 114555433977414284}
-  - component: {fileID: 114591560343256796}
+  - component: {fileID: 114843657160719016}
   m_Layer: 8
   m_Name: Jokalaria
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1850647987297026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4954125568800236}
+  - component: {fileID: 331294206548440136}
+  m_Layer: 0
+  m_Name: ArgiaMask
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,11 +100,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9, y: 1.69, z: 0}
+  m_LocalPosition: {x: 35.07, y: 5.41, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
   - {fileID: 4890666248301480}
+  - {fileID: 4954125568800236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,6 +121,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4578535735847250}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4954125568800236
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850647987297026}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.3825707, y: 4.6045675, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4578535735847250}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50074972672261730
 Rigidbody2D:
@@ -212,7 +241,6 @@ MonoBehaviour:
   noranzkoaLeundu: 0.2
   paretaSaltoa: {x: 10, y: 7}
   denboraItsatsita: 0.15
-  eskileran: 0
   eskileraIgotzen: 0
   kutxaIkutzen: 0
   helduPuntua: {fileID: 4193295092765940}
@@ -222,42 +250,10 @@ MonoBehaviour:
     m_Bits: 1024
   erasoPuntua: {fileID: 4890666248301480}
   ezpata: 0
-  arkua: 1
+  arkua: 0
   sua: 0
   hiltzen: 0
   berpizten: 0
---- !u!114 &114555433977414284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793441462724276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54695f31a2ed50e4c999cfe4391e4e43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  denboraTartea: 0.2
-  erasoPuntua: {fileID: 4890666248301480}
-  erradioa: 0.45
-  damage: 60
-  etsaiak:
-    serializedVersion: 2
-    m_Bits: 2048
---- !u!114 &114591560343256796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793441462724276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8784339fe3f82164aa02bba043b21285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  denboraTartea: 0
-  erasoPuntua: {fileID: 4890666248301480}
-  gezia: {fileID: 1279483222862472, guid: b3e3a08ec316b7a498f7ecef7968f33d, type: 2}
 --- !u!114 &114688779517808370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,6 +270,28 @@ MonoBehaviour:
   izpiBertKop: 4
   horIzpiTartea: 0
   bertIzpiTartea: 0
+--- !u!114 &114843657160719016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793441462724276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75517cee73100642ad00e8bddc4b765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  erasoPuntua: {fileID: 4890666248301480}
+  gezia: {fileID: 1279483222862472, guid: b3e3a08ec316b7a498f7ecef7968f33d, type: 2}
+  denboraTartea: 0.2
+  suMinPuntuak: 5
+  argiErradioa: 3
+  etsaiak:
+    serializedVersion: 2
+    m_Bits: 2048
+  erasoErradioa: 0.45
+  ezpataMinPuntuak: 40
+  geziMinPuntuak: 10
 --- !u!212 &212896225667781616
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -319,4 +337,49 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!331 &331294206548440136
+SpriteMask:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850647987297026}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0

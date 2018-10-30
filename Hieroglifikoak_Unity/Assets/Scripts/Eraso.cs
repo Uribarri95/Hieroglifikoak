@@ -107,8 +107,15 @@ public class Eraso : MonoBehaviour {
             {
                 if (Input.GetButtonDown("Eraso"))
                 {
-                    anim.SetBool("eraso", true);
-                    denbora = denboraTartea;
+                    if (arkua && inbentarioa.GetGeziKop() <= 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        anim.SetBool("eraso", true);
+                        denbora = denboraTartea;
+                    }
                 }
             }
         } else
@@ -145,6 +152,9 @@ public class Eraso : MonoBehaviour {
     //animazioko event jaurtitzen du metodoa
     public void GeziaJaurti()
     {
+        inbentarioa.GeziaJaurti();
+        inbentarioa.UIEguneratu();
+
         GameObject geziaGO = Instantiate(gezia, erasoPuntua.position, erasoPuntua.rotation);
         Gezia gz = geziaGO.GetComponent<Gezia>();
         if(gz != null)
