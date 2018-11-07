@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4954125568800236}
   - component: {fileID: 331294206548440136}
+  - component: {fileID: 114012688270446510}
   m_Layer: 0
   m_Name: ArgiaMask
   m_TagString: Untagged
@@ -99,8 +100,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.07, y: 5.41, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.81, y: 2.22, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -130,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1850647987297026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.3825707, y: 4.6045675, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4578535735847250}
   m_RootOrder: 2
@@ -198,6 +199,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114012688270446510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850647987297026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3df61c6152adf43810836377761d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114061272541786440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,9 +261,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   erasoPuntua: {fileID: 4890666248301480}
-  ezpata: 0
-  arkua: 0
-  sua: 0
   hiltzen: 0
   berpizten: 0
 --- !u!114 &114688779517808370
@@ -283,14 +292,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   erasoPuntua: {fileID: 4890666248301480}
   gezia: {fileID: 1279483222862472, guid: b3e3a08ec316b7a498f7ecef7968f33d, type: 2}
-  denboraTartea: 0.2
-  suMinPuntuak: 5
-  argiErradioa: 3
   etsaiak:
     serializedVersion: 2
     m_Bits: 2048
-  erasoErradioa: 0.45
-  ezpataMinPuntuak: 40
+  ezpataMinPuntuak: 15
   geziMinPuntuak: 10
 --- !u!212 &212896225667781616
 SpriteRenderer:
@@ -374,7 +379,7 @@ SpriteMask:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_MaskAlphaCutoff: 0.2
+  m_MaskAlphaCutoff: 0.468
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0

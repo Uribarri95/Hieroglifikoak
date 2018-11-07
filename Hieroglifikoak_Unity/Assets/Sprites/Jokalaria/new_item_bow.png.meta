@@ -90,7 +90,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -100,7 +100,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b15544a1ec22ea84fb285042a11d0d44
+      spriteID: 8629328af222c0648af8f0faaad4b244
       vertices: []
       indices: 
       edges: []
@@ -109,7 +109,7 @@ TextureImporter:
       name: new_item_bow_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 128
         height: 128
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10c9ab64524487a4c9e93dec595b1591
+      spriteID: ef0d839102ed8494ab32f90d09b28a4e
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 17d318bc891ee9d4fad826ac7368830a
+    spriteID: bf91c445bbe7af44f8c52ad721fd44c9
     vertices: []
     indices: 
     edges: []

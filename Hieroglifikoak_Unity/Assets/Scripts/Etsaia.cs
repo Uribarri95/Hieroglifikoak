@@ -9,8 +9,8 @@ public class Etsaia : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,7 +20,8 @@ public class Etsaia : MonoBehaviour {
     public void KolpeaJaso(float minPuntuak)
     {
         bizitzaPuntuak -= minPuntuak;
-        Debug.Log("Ouch. " + minPuntuak + "bizitzaPuntu gutxiago.");
+        Debug.Log("Ouch. " + minPuntuak + " bizitzaPuntu gutxiago.");
+        Debug.Log(bizitzaPuntuak);
 
         if(bizitzaPuntuak <= 0)
         {

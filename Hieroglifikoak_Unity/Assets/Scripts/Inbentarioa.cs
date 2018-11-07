@@ -24,6 +24,7 @@ public class Inbentarioa : MonoBehaviour {
 
     public List<Item> items = new List<Item>();
     private int itemKopuruMax = 3;
+    string newItem;
 
     int geziKopurua;
     public int gezikopuruMax = 10;
@@ -41,7 +42,7 @@ public class Inbentarioa : MonoBehaviour {
         UIEguneratu();
     }
 
-    public bool ItemaDaukat(string izena)
+    /*public bool ItemaDaukat(string izena)
     {
         for (int i = 0; i < items.Count; i++)
         {
@@ -51,6 +52,16 @@ public class Inbentarioa : MonoBehaviour {
             }
         }
         return false;
+    }*/
+
+    public string GetNewItem()
+    {
+        return newItem;
+    }
+
+    public void SetNewItem()
+    {
+        newItem = null;
     }
 
     public int GetGeziKop()
@@ -81,6 +92,7 @@ public class Inbentarioa : MonoBehaviour {
                 }
             }
             items.Add(item);
+            newItem = item.izena;
             UIEguneratu();
         }
         else

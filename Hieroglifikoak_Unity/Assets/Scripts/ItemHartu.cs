@@ -3,13 +3,13 @@
 public class ItemHartu : MonoBehaviour {
 
     public Item item;
-    Animator anim;
+    Animator torchAnim;
 
     private void Start()
     {
         if (item.izena == "SuArgia")
         {
-            anim = GetComponent<Animator>();
+            torchAnim = GetComponent<Animator>();
         }
     }
 
@@ -17,13 +17,14 @@ public class ItemHartu : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            print(item.izena);
             bool tokiaDago = Inbentarioa.instantzia.Add(item);
             if (tokiaDago)
             {
+                // itemHartu animazioa? !!!
                 if(item.izena == "SuArgia")
                 {
-                    anim.SetBool("TakeTorch", true);
+                    torchAnim.SetBool("TakeTorch", true);
+                    GetComponentInChildren<SpriteMask>().enabled = false;
                     return;
                 }
                 Destroy(gameObject);

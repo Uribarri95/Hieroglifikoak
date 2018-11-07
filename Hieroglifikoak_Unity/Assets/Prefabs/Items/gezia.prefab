@@ -91,9 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   geziPartikula: {fileID: 1827896046663442, guid: 70937070875f53544a3ca500ecaca956,
     type: 2}
-  rb: {fileID: 50347422660668900}
-  abiadura: 15
-  arrowDamage: 30
 --- !u!212 &212818982158353866
 SpriteRenderer:
   m_ObjectHideFlags: 1

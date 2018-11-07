@@ -90,7 +90,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -100,7 +100,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d6b62849e536344c8d27e064553ae50
+      spriteID: f7b760191aaf0564e8f752af901c26f0
       vertices: []
       indices: 
       edges: []
@@ -109,7 +109,7 @@ TextureImporter:
       name: new_item_sword_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 128
         height: 128
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59b3940a9f82b8542bed2ce908fe1e58
+      spriteID: 20f240d70507b0944b2d3a6b50e226fb
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9cb2f4309fb7bf14baed44b03cbfc28d
+    spriteID: 3b938217f5af83a4eb3c45c65579f792
     vertices: []
     indices: 
     edges: []

@@ -29,6 +29,7 @@ public class JokalariMug : MonoBehaviour
     float denboraIrristatu;
 
     public float aldapaSaltoa = 12;
+    float saltoNeurria = .75f;
 
     public float korrikaAbiadura = 6;
     public float noranzkoaLeundu = .2f;
@@ -92,7 +93,12 @@ public class JokalariMug : MonoBehaviour
         else
             Aginduak();
 
-        kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
+        //kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
+    }
+
+    private void FixedUpdate()
+    {
+        kudeatzailea.Mugitu(abiadura * Time.fixedDeltaTime, irristatu: makurtu);
     }
 
     void Aginduak()
@@ -107,11 +113,21 @@ public class JokalariMug : MonoBehaviour
             Vector3.Lerp(transform.position, transform.position += new Vector3(-2, 0, 0), abiaduraOinez);
         }*/
 
+        // !!! anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword")
+        // jokua gelditu edo tokia segurua
+
         // erasotzen bagaude mugimendua 0 da
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") || 
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_light_up") || 
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") || 
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
+        {
             aginduHorizontala = 0;
+        }
         else
+        {
             aginduHorizontala = Input.GetAxisRaw("Horizontal");
+        }   
 
         // SmoothDamp abiadura aldaketa leuntzeko (leunketa faktorearen arabera)
         abiadura.x = Mathf.SmoothDamp(abiadura.x, aginduHorizontala * mugimendua, ref currentVelocity, !kudeatzailea.kolpeak.azpian && !irristatu ? .2f : leunketa);
@@ -172,6 +188,14 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("eskileraIgo", eskileraIgotzen);
         anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
 
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
+        {
+            anim.SetBool("newSua", false);
+            anim.SetBool("newEzpata", false);
+            anim.SetBool("newArkua", false);
+            anim.SetBool("newItem", false);
+        }
+
         // kutxa bultzatzen eta eskilerak igotzen ezin da eraso
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
             ErasoaEten();
@@ -209,9 +233,10 @@ public class JokalariMug : MonoBehaviour
         if (!berpizten)
         {
             // jauzi efektua
-            SetAbiaduraHorizontala(0);
             if (GetAbiaduraBertikala() >= 0)
                 SetAbiadura(new Vector2(0, 0));
+            else
+                SetAbiaduraHorizontala(0);
 
             ErasoaEten();
             KorrikaBotoiaAskatu();
@@ -295,13 +320,14 @@ public class JokalariMug : MonoBehaviour
 
     void SaltoKudeaketa()
     {
-        if (Input.GetButton("Jump")) //salto botoia sakatu hil animaioa ez dagoen bitartean
+        if (Input.GetButton("Jump") && !anim.GetBool("eraso"))
         {
-            if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack"))
+            if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma) //aldapa irristatzen saltoa saltoa
                 {
-                    abiadura.y = saltoIndarra * .75f; /// !!! .75 parametro bihurtu
+                    abiadura.y = saltoIndarra * saltoNeurria;
                     abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
                 }
                 else //salto normala
@@ -310,9 +336,13 @@ public class JokalariMug : MonoBehaviour
                     {
                         Altzatu();
                         abiadura.y = saltoIndarra;
+                        anim.SetBool("eraso", false);
                     }
                     else if (!makurtu)
+                    {
                         abiadura.y = saltoIndarra;
+                        anim.SetBool("eraso", false);
+                    }
                 }
             }
             else if (paretaItsatsi) // pareta saltoa
@@ -323,10 +353,13 @@ public class JokalariMug : MonoBehaviour
                 abiadura.y = paretaSaltoa.y;
             }
         }
-
         else if (Input.GetButtonUp("Jump")) // salto botoia askatu altuera maximoa lortu baino lehen
+        {
             if (abiadura.y > 0)
+            {
                 abiadura.y = abiadura.y * .5f;
+            }
+        }   
     }
 
     // jokalaria makurtzen da, oso azkar badoa lurretik irristatuko da
@@ -441,5 +474,10 @@ public class JokalariMug : MonoBehaviour
     public void SetEskileran(bool eskileran)
     {
         eskileraIgotzen = eskileran;
+    }
+
+    public bool GetHiltzen()
+    {
+        return hiltzen;
     }
 }

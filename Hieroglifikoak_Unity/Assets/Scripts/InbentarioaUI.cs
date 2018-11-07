@@ -33,18 +33,5 @@ public class InbentarioaUI : MonoBehaviour {
                 itemTokiak[i].EzkutatuGeziKop();
             }
         }
-        // gezien IU ikusarazi-ezkutatu
-        /*
-        for (int i = 0; i < itemTokiak.Length; i++)
-        {
-            if(i < inbentario.items.Count)
-            {
-                itemTokiak[i].AddItem(inbentario.items[i]);
-            }
-            else
-            {
-                break;
-            }
-        }*/
     }
 }

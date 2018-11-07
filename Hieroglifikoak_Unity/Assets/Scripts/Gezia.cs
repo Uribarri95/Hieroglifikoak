@@ -33,10 +33,9 @@ public class Gezia : MonoBehaviour {
             Destroy(gameObject);
             Instantiate(geziPartikula, transform.position, transform.rotation);
         }
-        Debug.Log(arrowDamage);
     }
 
-    public void setArrowDamage(float damage)
+    public void SetArrowDamage(float damage)
     {
         arrowDamage = damage;
     }

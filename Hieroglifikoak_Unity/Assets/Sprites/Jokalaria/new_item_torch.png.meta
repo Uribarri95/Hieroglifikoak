@@ -90,7 +90,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -100,7 +100,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69e99a5e293215f4aa0a022ebf397aae
+      spriteID: dd5f752a919570e4fa1147a87c114029
       vertices: []
       indices: 
       edges: []
@@ -109,7 +109,7 @@ TextureImporter:
       name: new_item_torch_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 128
         height: 128
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a00bf96ff8bec9940bb5da8dfdc9046b
+      spriteID: 6f36d1a5e47241944b42ac7de3c77543
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7bde8a20b907aa9408dcbf14c20371e3
+    spriteID: bbd3bec76237f8340846ccc570c612f2
     vertices: []
     indices: 
     edges: []

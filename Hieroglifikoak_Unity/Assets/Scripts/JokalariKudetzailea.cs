@@ -15,11 +15,6 @@ public class JokalariKudetzailea : MonoBehaviour {
 	void Start () {
         jokalaria = FindObjectOfType<JokalariMug>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void JokalariaHil()
     {
@@ -29,7 +24,7 @@ public class JokalariKudetzailea : MonoBehaviour {
         }
     }
 
-    public IEnumerator ItxaronJokalariaHil()
+    IEnumerator ItxaronJokalariaHil()
     {
         // jokalariaren mugimendua ezgaitu
         jokalaria.hiltzen = true;

@@ -8,23 +8,28 @@ public class Eraso : MonoBehaviour {
     JokalariMug jokalaria;
     Animator anim;
     Inbentarioa inbentarioa;
+    SpriteMask argia;
 
     public Transform erasoPuntua;
     public GameObject gezia;
+    public LayerMask etsaiak;
+    public LayerMask piztu;
 
     float denbora;
-    public float denboraTartea;
+    float denboraTartea = .3f;
 
     bool suArgia;
     bool ezpata;
     bool arkua;
 
-    public float suMinPuntuak = 5;
-    public float argiErradioa = 3;
+    float suMinPuntuak = 5;
+    float argiErradioa = 20;
+    float argiErasoErradioa = .3f;
+    float xPos = -.05f;
+    float yPos = .075f;
 
-    public LayerMask etsaiak;
-    public float erasoErradioa = .45f;
-    public float ezpataMinPuntuak = 40;
+    float erasoErradioa = .45f;
+    public float ezpataMinPuntuak = 15;
 
     public float geziMinPuntuak = 10;
 
@@ -32,20 +37,25 @@ public class Eraso : MonoBehaviour {
     void Start () {
         jokalaria = GetComponent<JokalariMug>();
         anim = GetComponent<Animator>();
+        argia = GetComponentInChildren<SpriteMask>();
+        argia.enabled = false;
 
         inbentarioa = Inbentarioa.instantzia;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        NewItemKonprobatu();
+        ArgiKudeaketa();
         ItemAldatu();
         if (inbentarioa.items.Count >= 1)
         {
             ItemEguneratu();
         }
-        erabili();
+        Erabili();
 	}
 
+    // inbentarioko itemen artean aldatzeko
     void ItemAldatu()
     {
         if (inbentarioa.items.Count == 2)
@@ -68,6 +78,7 @@ public class Eraso : MonoBehaviour {
         }
     }
 
+    // Inbentarioan 0 posiizon dagoen itema erabilgarri geratzen da eta besteak ezgaitzen dira
     private void ItemEguneratu()
     {
         switch (inbentarioa.items[0].izena)
@@ -99,11 +110,12 @@ public class Eraso : MonoBehaviour {
         anim.SetBool("arkua", arkua);
     }
 
-    void erabili()
+    // erabilgarri dagoen itema erabiltzen da
+    void Erabili()
     {
         if (denbora <= 0)
         {
-            if (jokalaria.ErasoDezaket() && (/*suArgia || */ezpata || arkua))
+            if (jokalaria.ErasoDezaket() && (suArgia || ezpata || arkua))
             {
                 if (Input.GetButtonDown("Eraso"))
                 {
@@ -118,35 +130,46 @@ public class Eraso : MonoBehaviour {
                     }
                 }
             }
-        } else
+        }
+        else
         {
             denbora -= Time.deltaTime;
         }
+    }
 
+    // animazioko event jaurtitzen du metodoa
+    // ezpata edo suArgiarekin erasotzea agintzen da
+    public void Erasoa()
+    {
         if (ezpata)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_jump_attack"))
-            {
-                Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(erasoPuntua.position, erasoErradioa, etsaiak);
-                for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
-                {
-                    kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(ezpataMinPuntuak);
-                }
-            }
-        } /*else if (suArgia)
+            MinPuntuakKendu(ezpataMinPuntuak, erasoErradioa);
+        }
+        else if (suArgia)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_jump_attack"))
-            {
-                Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(erasoPuntua.position, erasoErradioa, etsaiak);
-                for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
-                {
-                    kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(suMinPuntuak);
-                }
-            }
+            MinPuntuakKendu(suMinPuntuak, argiErasoErradioa);
+            SuaPiztu();
+        }
+    }
 
-            // argi erradioa handitu
-            // sua piztu
-        }*/
+    //min puntuak eta erradioa emanda irisgarri dauden etsaiak kolpatzen ditu
+    void MinPuntuakKendu(float minPuntuak, float erradioa)
+    {
+        Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(new Vector3(erasoPuntua.position.x + xPos, erasoPuntua.position.y + yPos, erasoPuntua.position.z), erradioa, etsaiak);
+        for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
+        {
+            kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(minPuntuak);
+        }
+    }
+
+    // erradio barruan bagaude suTokia pizten du
+    void SuaPiztu()
+    {
+        Collider2D[] suaPiztekoTokiak = Physics2D.OverlapCircleAll(new Vector3(erasoPuntua.position.x + xPos, erasoPuntua.position.y + yPos, erasoPuntua.position.z), argiErasoErradioa, piztu);
+        for (int i = 0; i < suaPiztekoTokiak.Length; i++)
+        {
+            suaPiztekoTokiak[i].GetComponent<ErreDaiteke>().Piztu();
+        }
     }
 
     //animazioko event jaurtitzen du metodoa
@@ -159,7 +182,64 @@ public class Eraso : MonoBehaviour {
         Gezia gz = geziaGO.GetComponent<Gezia>();
         if(gz != null)
         {
-            gz.setArrowDamage(geziMinPuntuak);
+            gz.SetArrowDamage(geziMinPuntuak);
         }
+    }
+
+    void ArgiKudeaketa()
+    {
+        if (inbentarioa.items.Count > 0)
+        {
+            if (inbentarioa.items[0].izena == "SuArgia")
+            {
+                argia.enabled = true;
+                anim.SetLayerWeight(1, 1);
+            }
+            else
+            {
+                argia.enabled = false;
+                anim.SetLayerWeight(1, 0);
+            }
+        }
+    }
+
+    //animazioko event jaurtitzen du metodoa
+    void ArgiakHanditu()
+    {
+        GetComponentInChildren<ArgiEfektua>().ArgiErasoa(argiErradioa);
+    }
+
+    // item berria jasotzean animazio txiki bat gertatzen da
+    void NewItemKonprobatu()
+    {
+        switch (inbentarioa.GetNewItem())
+        {
+            case null:
+                return;
+            case "SuArgia":
+                anim.SetBool("newSua", true);
+                anim.SetBool("newItem", true);
+                inbentarioa.SetNewItem();
+                break;
+            case "Ezpata":
+                anim.SetBool("newEzpata", true);
+                anim.SetBool("newItem", true);
+                inbentarioa.SetNewItem();
+                break;
+            case "Arkua":
+                anim.SetBool("newArkua", true);
+                anim.SetBool("newItem", true);
+                inbentarioa.SetNewItem();
+                break;
+            default:
+                Debug.Log("Error: item-a ez dago zerrendan");
+                break;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(erasoPuntua.position, erasoErradioa);
     }
 }
