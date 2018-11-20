@@ -209,6 +209,30 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    public bool KolpeaJaso()
+    {
+        bizitzaPuntuak--;
+        UIEguneratu();
+        if (bizitzaPuntuak <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void JokalariaHil()
+    {
+        bizitzaPuntuak = 0;
+        UIEguneratu();
+    }
+
+    public void Berpiztu()
+    {
+        bizitzaPuntuak = bizitzaPuntuMax;
+        //bizitzaPuntuak = 6; // !!!
+        UIEguneratu();
+    }
+
     public void SwipeRight()
     {
         Item lag = items[0];

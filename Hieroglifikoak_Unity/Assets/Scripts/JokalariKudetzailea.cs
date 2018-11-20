@@ -5,8 +5,9 @@ using UnityEngine;
 public class JokalariKudetzailea : MonoBehaviour {
 
     public GameObject checkpoint;
-
+    
     private JokalariMug jokalaria;
+    Inbentarioa inbentarioa;
 
     public float hilAnimazioa = 1.2f;
     public float berpiztuAnimazioa = 1.2f;
@@ -14,13 +15,15 @@ public class JokalariKudetzailea : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         jokalaria = FindObjectOfType<JokalariMug>();
+        inbentarioa = Inbentarioa.instantzia;
     }
 
     public void JokalariaHil()
     {
         if (!jokalaria.hiltzen)
         {
-            StartCoroutine("ItxaronJokalariaHil");
+            inbentarioa.JokalariaHil();
+            StartCoroutine(ItxaronJokalariaHil());
         }
     }
 
@@ -38,6 +41,7 @@ public class JokalariKudetzailea : MonoBehaviour {
         // animazioa kargatzeko behar duen denbora
         yield return new WaitForSeconds(.4f);
         jokalaria.berpizten = true;
+        inbentarioa.Berpiztu();
         yield return new WaitForSeconds(.04f);
         jokalaria.GetComponent<Renderer>().enabled = true;
         // jokalariari txanpon batzuk kendu

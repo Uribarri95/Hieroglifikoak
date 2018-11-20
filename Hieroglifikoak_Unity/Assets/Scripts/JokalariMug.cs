@@ -93,12 +93,7 @@ public class JokalariMug : MonoBehaviour
         else
             Aginduak();
 
-        //kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
-    }
-
-    private void FixedUpdate()
-    {
-        kudeatzailea.Mugitu(abiadura * Time.fixedDeltaTime, irristatu: makurtu);
+        kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
     }
 
     void Aginduak()
@@ -120,7 +115,8 @@ public class JokalariMug : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") || 
             anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_light_up") || 
             anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") || 
-            anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_take_damage") || 
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_take_damage"))
         {
             aginduHorizontala = 0;
         }
@@ -143,7 +139,6 @@ public class JokalariMug : MonoBehaviour
 
         // saltoak
         SaltoKudeaketa();
-
 
         // atea dagoenean
         /*if (Input.GetKey(KeyCode.DownArrow))
@@ -316,7 +311,18 @@ public class JokalariMug : MonoBehaviour
             paretaItsatsi = false;
     }
 
-    
+    public void KnockBack(bool eskuma)
+    {
+        if (eskuma)
+        {
+            abiadura.x = -5;
+        }
+        else
+        {
+            abiadura.x = 5;
+        }
+        abiadura.y = 5;
+    }
 
     void SaltoKudeaketa()
     {

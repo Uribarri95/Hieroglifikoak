@@ -6,10 +6,11 @@ public class Etsaia : MonoBehaviour {
 
     public float bizitzaPuntuak;
     public GameObject hilPartikula;
+    bool kolpatuta;
 
 	// Use this for initialization
 	void Start () {
-
+        kolpatuta = false;
     }
 	
 	// Update is called once per frame
@@ -19,13 +20,17 @@ public class Etsaia : MonoBehaviour {
 
     public void KolpeaJaso(float minPuntuak)
     {
-        bizitzaPuntuak -= minPuntuak;
-        Debug.Log("Ouch. " + minPuntuak + " bizitzaPuntu gutxiago.");
-        Debug.Log(bizitzaPuntuak);
-
-        if(bizitzaPuntuak <= 0)
+        if (!kolpatuta)
         {
-            Hil();
+            bizitzaPuntuak -= minPuntuak;
+
+            Debug.Log("Ouch. " + minPuntuak + " bizitzaPuntu gutxiago.");
+            Debug.Log(bizitzaPuntuak);
+
+            if (bizitzaPuntuak <= 0)
+            {
+                Hil();
+            }
         }
     }
 
@@ -34,5 +39,10 @@ public class Etsaia : MonoBehaviour {
         Destroy(gameObject);
         Instantiate(hilPartikula, transform.position, Quaternion.identity);
         Debug.Log(gameObject.name + " hil da.");
+    }
+
+    public void SetKolpea(bool kolpea)
+    {
+        kolpatuta = kolpea;
     }
 }

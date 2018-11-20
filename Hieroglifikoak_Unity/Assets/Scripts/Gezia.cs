@@ -23,6 +23,7 @@ public class Gezia : MonoBehaviour {
         if(collision.tag == "Etsaia")
         {
             collision.GetComponent<Etsaia>().KolpeaJaso(arrowDamage);
+            collision.GetComponent<Etsaia>().SetKolpea(false);
             Debug.Log(collision.name);
             Destroy(gameObject);
             Instantiate(geziPartikula, transform.position, transform.rotation);

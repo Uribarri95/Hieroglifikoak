@@ -23,7 +23,7 @@ public class PintxoTranpa : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (anim.GetBool("Aktibatuta") && bc2d.offset.y != end)
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Trap_action") && bc2d.offset.y != end)
         {
             dest = end;
             yOffset = Mathf.Lerp(yOffset, dest, Time.deltaTime * s1);

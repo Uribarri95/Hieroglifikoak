@@ -5,11 +5,14 @@ using UnityEngine;
 public class ErreDaiteke : MonoBehaviour {
 
     Animator anim;
+    SpriteMask argia;
     bool piztuta = false;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        argia = GetComponentInChildren<SpriteMask>();
+        argia.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,7 @@ public class ErreDaiteke : MonoBehaviour {
     {
         piztuta = true;
         anim.SetBool("suaPiztuta", true);
+        argia.enabled = true;
     }
 
     public bool GetPiztuta()
