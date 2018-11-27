@@ -54,6 +54,9 @@ public class JokalariMug : MonoBehaviour
     public bool hiltzen = false;
     public bool berpizten = false;
 
+    bool ateAurrean;
+    bool ateaZeharkatzen;
+
     Animator anim;
     SpriteRenderer nireSpriteRenderer;
 
@@ -116,7 +119,7 @@ public class JokalariMug : MonoBehaviour
             anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_ground_attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_light_up") || 
             anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") || 
             anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword") || anim.GetCurrentAnimatorStateInfo(0).IsName("player_take_damage") || 
-            anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_take_damage"))
+            anim.GetCurrentAnimatorStateInfo(0).IsName("player_torch_take_damage") || ateaZeharkatzen)
         {
             aginduHorizontala = 0;
         }
@@ -141,6 +144,7 @@ public class JokalariMug : MonoBehaviour
         SaltoKudeaketa();
 
         // atea dagoenean
+        //!!! ateaurrean bagaude eta zabaldu daiteke ez makurtu !!!
         /*if (Input.GetKey(KeyCode.DownArrow))
         {
             if (ateAurrean)
@@ -160,10 +164,14 @@ public class JokalariMug : MonoBehaviour
 
 
         // makurtu eta irristatu
-        if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian) // makurtu botoia sakatu lurrean gaudenean
+        if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian && !ateAurrean) // makurtu botoia sakatu lurrean gaudenean
+        {
             MakurtuSakatu();
+        }   
         else if (!Input.GetKey(KeyCode.DownArrow) && makurtu) // makurtutua bagaude altzatu
+        {
             MakurtuAskatu();
+        }
 
         // kutxa bultzatu
         KutxaBultzatu();
@@ -233,6 +241,7 @@ public class JokalariMug : MonoBehaviour
             else
                 SetAbiaduraHorizontala(0);
 
+            MinEmanKendu();
             ErasoaEten();
             KorrikaBotoiaAskatu();
             kutxaIkutzen = false;
@@ -477,6 +486,7 @@ public class JokalariMug : MonoBehaviour
     {
         return eskileraIgotzen;
     }
+
     public void SetEskileran(bool eskileran)
     {
         eskileraIgotzen = eskileran;
@@ -486,4 +496,25 @@ public class JokalariMug : MonoBehaviour
     {
         return hiltzen;
     }
+
+    public void setAteAurrean(bool atean)
+    {
+        ateAurrean = atean;
+    }
+
+    public void MinEmanKendu()
+    {
+        anim.SetBool("minEman", false);
+    }
+
+    public void SetAteaZeharkatzen(bool zeharkatzen)
+    {
+        ateaZeharkatzen = zeharkatzen;
+    }
+
+    public bool GetAteaZeharkatzen()
+    {
+        return ateaZeharkatzen;
+    }
+
 }

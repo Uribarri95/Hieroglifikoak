@@ -17,7 +17,9 @@ public class Eskilerak : MonoBehaviour {
         if (collision.tag == "Player")
         {
             if (!Input.GetButton("Jump") && jokalaria.GetEskileran())
+            {
                 jokalaria.SetAbiadura(new Vector2(0, -.4f));
+            }
             jokalaria.SetEskileran(false);
         }
     }
@@ -36,14 +38,18 @@ public class Eskilerak : MonoBehaviour {
 
             // eskilera igo/jeitsi
             float aginduBertikala = Input.GetAxisRaw("Vertical");
-            if(aginduBertikala != 0)
+            if (aginduBertikala != 0)
             {
                 // beheko topea
                 if (aginduBertikala < 0 && jokalaria.GetLurrean())
+                {
                     jokalaria.SetEskileran(false);
+                }
                 // goiko topea
                 else if (aginduBertikala > 0 && jokalaria.transform.position.y > gameObject.transform.position.y && jokalaria.GetLurrean())
+                {
                     jokalaria.SetEskileran(false);
+                }
                 // eskileratik mugitu
                 else
                 {
@@ -56,11 +62,16 @@ public class Eskilerak : MonoBehaviour {
             else
             {
                 if (jokalaria.GetLurrean())
+                {
                     jokalaria.SetEskileran(false);
+                }
                 // eskileran geldi
                 else if (jokalaria.GetEskileran())
+                {
                     jokalaria.SetAbiadura(new Vector2(0, 0));
+                }
             }
         }
     }
+
 }

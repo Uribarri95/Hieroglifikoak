@@ -37,8 +37,7 @@ public class Eraso : MonoBehaviour {
 
     public Color zuria, grisa;
     bool garaiezina;
-    float garaiezinDenbora = 1.5f;
-    float kliskatuDenbora = .1f;
+    float kliskatuDenbora = .2f;
 
     // Use this for initialization
     void Start () {
@@ -205,7 +204,7 @@ public class Eraso : MonoBehaviour {
             {
                 //knockback efektua
                 jokalaria.KnockBack(eskuma);
-                anim.SetBool("minaHartu", true);
+                anim.SetBool("minEman", true);
                 garaiezina = true;
                 StartCoroutine(Garaiezina());
             }
@@ -218,9 +217,9 @@ public class Eraso : MonoBehaviour {
         for (int i = 0; i < 4; i++)
         {
             StartCoroutine(GrisaJarri());
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(kliskatuDenbora);
             StartCoroutine(ZuriJarri());
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(kliskatuDenbora);
         }
         garaiezina = false;
         yield return null;
@@ -250,11 +249,6 @@ public class Eraso : MonoBehaviour {
             sprite.color = Color.Lerp(grisa, zuria, lerpEhunekoa);
             yield return null;
         }
-    }
-
-    public void MinaHartuKendu()
-    {
-        anim.SetBool("minaHartu", false);
     }
 
     // animazioko event jaurtitzen du metodoa
