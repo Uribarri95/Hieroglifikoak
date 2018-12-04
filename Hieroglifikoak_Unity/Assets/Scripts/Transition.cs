@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class transition : MonoBehaviour {
+public class Transition : MonoBehaviour {
 
     Animator anim;
 

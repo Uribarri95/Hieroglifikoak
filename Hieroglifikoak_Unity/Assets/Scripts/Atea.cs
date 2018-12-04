@@ -9,6 +9,7 @@ public class Atea : MonoBehaviour {
     Animator anim;
     Animator exitAnim;
 
+    public Transition trantzizioa;
     public GameObject irteeraAtea;
     public GameObject cam;
 
@@ -39,36 +40,26 @@ public class Atea : MonoBehaviour {
 
     IEnumerator AteanSartu()
     {
-        yield return new WaitForSeconds(.1f);
-
         float posX = gameObject.transform.position.x;
         jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
         jokalaria.SetAbiaduraHorizontala(0);
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.3f); // jokalaria atea zabaldu baino lehen ez sartzeko
 
-        playerAnim.SetBool("ateanSartu", true);
-        // trantzizio animazioa sartu
+        playerAnim.SetTrigger("ateanSartu");
+        trantzizioa.FadeOut();
 
-        yield return new WaitForSeconds(.1f);
-
-        playerAnim.SetBool("ateanSartu", false);
-
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.25f); // atetik desagertzeko behar duen denbora
 
         cam.GetComponent<VCam>().CameraConfinerKudeatu(irteeraAtea.transform.position);
         jokalaria.transform.position = new Vector2(irteeraAtea.transform.position.x, irteeraAtea.transform.position.y);
-        // trantzizio animazioa irten
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(1); // jokalaria eta kamera toki berrian denbora
 
-        playerAnim.SetBool("atetikIrten", true);
+        trantzizioa.FadeIn();
+        playerAnim.SetTrigger("atetikIrten");
 
-        yield return new WaitForSeconds(.6f);
-        
-        playerAnim.SetBool("atetikIrten", false);
-
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(1f); // jokalaria irten ostean atea ixten da
 
         anim.SetBool("zabaldu", false);
         exitAnim.SetBool("zabaldu", false);

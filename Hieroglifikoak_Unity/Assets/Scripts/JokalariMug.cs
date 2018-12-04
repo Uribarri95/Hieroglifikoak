@@ -335,7 +335,7 @@ public class JokalariMug : MonoBehaviour
 
     void SaltoKudeaketa()
     {
-        if (Input.GetButton("Jump") && !anim.GetBool("eraso"))
+        if (Input.GetButton("Jump") && !anim.GetBool("eraso") && !ateaZeharkatzen)
         {
             if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") && 
                 !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
@@ -449,7 +449,7 @@ public class JokalariMug : MonoBehaviour
 
     public bool ErasoDezaket()
     {
-        return (!makurtu && !paretaItsatsi && !eskileraIgotzen);
+        return (!makurtu && !paretaItsatsi && !eskileraIgotzen && !ateaZeharkatzen);
     }
 
     public void ErasoaEten()
