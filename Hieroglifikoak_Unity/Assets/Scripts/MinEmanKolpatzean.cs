@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class MinEmanKolpatzean : MonoBehaviour {
 
-    private JokalariKudetzailea jokalariKudetzailea;
-
-    void Start()
-    {
-        jokalariKudetzailea = FindObjectOfType<JokalariKudetzailea>();
-    }
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")
@@ -23,10 +16,7 @@ public class MinEmanKolpatzean : MonoBehaviour {
     public void JokalariaKolpatu(Eraso eraso, bool eskuma)
     {
         Debug.Log("Jokalaria kolpatu!");
-        if (eraso.KolpeaJaso(eskuma))
-        {
-            jokalariKudetzailea.JokalariaHil();
-        }
+        eraso.KolpeaJaso(eskuma);
         if (gameObject.name == "Saguzar_txikia")
         {
             GetComponent<Etsaia>().Hil();

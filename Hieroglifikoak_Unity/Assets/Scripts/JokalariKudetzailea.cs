@@ -5,6 +5,7 @@ using UnityEngine;
 public class JokalariKudetzailea : MonoBehaviour {
 
     public GameObject checkpoint;
+    public GameObject cam;
     
     private JokalariMug jokalaria;
     Inbentarioa inbentarioa;
@@ -35,6 +36,8 @@ public class JokalariKudetzailea : MonoBehaviour {
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
         yield return new WaitForSeconds(hilAnimazioa);
         jokalaria.transform.position = checkpoint.transform.position;
+        // !!! camera bound aldatu !!!
+        cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
         jokalaria.GetComponent<Renderer>().enabled = false;
         // mapa erreseteatu
 

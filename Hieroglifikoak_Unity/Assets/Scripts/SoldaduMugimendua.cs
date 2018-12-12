@@ -30,6 +30,7 @@ public class SoldaduMugimendua : MonoBehaviour {
     Vector2 jokalariPos;
     int erasoa;
     bool erasoDezaket;
+    bool jokalariaJarraitu;
 
     // Use this for initialization
     void Start () {
@@ -43,13 +44,21 @@ public class SoldaduMugimendua : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print(erasoa);
-        /*Vector2 position = Physics2D.OverlapCircle(transform.position, begiradaErradioa, jokalaria).transform.position;
-
-        if (position != null)
+        Collider2D target = Physics2D.OverlapCircle(transform.position, begiradaErradioa, jokalaria);
+        if (target != null)
         {
-            jokalariPos = position;
-        }*/
+            jokalariaJarraitu = true;
+            jokalariPos = target.transform.position;
+        }
+        else
+        {
+            if (!LurraBilatu() || HormaBilatu())
+            {
+                StartCoroutine("IdleDenbora");
+                BueltaEman();
+            }
+            jokalariaJarraitu = false;
+        }
 
         anim.SetFloat("speed", abiadura);
 
@@ -66,7 +75,7 @@ public class SoldaduMugimendua : MonoBehaviour {
 
         // dash attack eta gezia bota -> urrundu
         // melee erasoa -> gerturatu
-        //transform.Translate(Vector2.left * abiadura * Time.deltaTime);
+        transform.Translate(Vector2.left * abiadura * Time.deltaTime);
 
         switch (erasoa)
         {
@@ -88,15 +97,15 @@ public class SoldaduMugimendua : MonoBehaviour {
     {
         if(erasoDezaket)
         {
+            anim.SetBool("stop_dash", false);
             erasoDezaket = false;
             abiadura = 0;
             anim.SetTrigger("dash_attack");
-            anim.SetBool("stop_dash", true);
         }
-        /*if (!LurraBilatu() || HormaBilatu() && anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_attack"))
+        if ((!LurraBilatu() || HormaBilatu()) && anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_attack"))
         {
             anim.SetBool("stop_dash", true);
-        }*/
+        }
     }
 
     //animazioko event jaurtitzen du
@@ -149,7 +158,6 @@ public class SoldaduMugimendua : MonoBehaviour {
     // animazioko event jaurtizen du
     void ErasoaBukatuta()
     {
-        anim.SetBool("stop_dash", false);
         StartCoroutine("IdleDenbora");
     }
 
@@ -157,19 +165,22 @@ public class SoldaduMugimendua : MonoBehaviour {
     {
         abiadura = 0;
         yield return new WaitForSeconds(idleDenbora);
-        /*if (jokalariPos != null && (transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira))
+        if ((transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira))
         {
             BueltaEman();
-        }*/
+        }
         StartCoroutine("ErasoaKargatu");
     }
 
     IEnumerator ErasoaKargatu()
     {
-        erasoa = Random.Range(0, 3);
         abiadura = abiaduraNormala;
         yield return new WaitForSeconds(erasoDenbora);
-        erasoDezaket = true;
+        if (!erasoDezaket && jokalariaJarraitu)
+        {
+            erasoa = Random.Range(0,3);
+            erasoDezaket = true;
+        }
     }
 
     bool LurraBilatu()

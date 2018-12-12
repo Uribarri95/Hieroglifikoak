@@ -594,7 +594,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222584500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.21, y: -19.512, z: -10}
+  m_LocalPosition: {x: -9.58, y: -19.592, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12881,11 +12881,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.21
+      value: -9.58
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20.08
+      value: -20.16
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14648,7 +14648,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675436947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.21, y: -19.512, z: -10}
+  m_LocalPosition: {x: -9.58, y: -19.592, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1140041636}
@@ -14796,22 +14796,6 @@ MonoBehaviour:
   icon: {fileID: 991553951}
   holder: {fileID: 1277582014}
   geziak: {fileID: 1509650547}
---- !u!1 &1753600393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1269915838373008, guid: 5da0b7cd670aaf449b044893c3124cd6,
-    type: 2}
-  m_PrefabInternal: {fileID: 2003475889}
---- !u!114 &1753600401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753600393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1858302375
 GameObject:
   m_ObjectHideFlags: 0
@@ -15025,11 +15009,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4700018719052420, guid: 5da0b7cd670aaf449b044893c3124cd6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.31
+      value: 4.92
       objectReference: {fileID: 0}
     - target: {fileID: 4700018719052420, guid: 5da0b7cd670aaf449b044893c3124cd6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20.08
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4700018719052420, guid: 5da0b7cd670aaf449b044893c3124cd6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -15058,17 +15042,7 @@ Prefab:
     - target: {fileID: 114023238001080790, guid: 5da0b7cd670aaf449b044893c3124cd6,
         type: 2}
       propertyPath: erasoDenbora
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114023238001080790, guid: 5da0b7cd670aaf449b044893c3124cd6,
-        type: 2}
-      propertyPath: begiradaErradioa
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114023238001080790, guid: 5da0b7cd670aaf449b044893c3124cd6,
-        type: 2}
-      propertyPath: dashAbiadura
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da0b7cd670aaf449b044893c3124cd6, type: 2}
@@ -15134,6 +15108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 1509805496}
+  cam: {fileID: 1675436947}
   hilAnimazioa: 1.2
   berpiztuAnimazioa: 1.2
 --- !u!4 &2016240694 stripped

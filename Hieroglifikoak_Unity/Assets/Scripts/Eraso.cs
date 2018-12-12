@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Eraso : MonoBehaviour {
 
+    private JokalariKudetzailea jokalariKudetzailea;
     JokalariMug jokalaria;
     Animator anim;
     SpriteRenderer sprite;
@@ -41,6 +42,7 @@ public class Eraso : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        jokalariKudetzailea = FindObjectOfType<JokalariKudetzailea>();
         jokalaria = GetComponent<JokalariMug>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -199,6 +201,7 @@ public class Eraso : MonoBehaviour {
         {
             if (inbentarioa.KolpeaJaso())
             {
+                jokalariKudetzailea.JokalariaHil();
                 return true;
             }
             else

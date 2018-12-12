@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 50178098683903306}
   - component: {fileID: 114419945995242174}
   - component: {fileID: 114023238001080790}
+  - component: {fileID: 114025199109711004}
   m_Layer: 0
   m_Name: Anubis_soldier
   m_TagString: Untagged
@@ -219,12 +220,23 @@ MonoBehaviour:
     type: 2}
   spear: {fileID: 1318704263179416, guid: eaea1ac2d77255245bcfdb51e0ae270f, type: 2}
   abiaduraNormala: 2
-  dashAbiadura: 4
-  begiradaErradioa: 3
+  dashAbiadura: 8
+  begiradaErradioa: 6
   erasoErradioa: 0.95
   erasoDistantzia: 2
-  erasoDenbora: 3
+  erasoDenbora: 0.6
   idleDenbora: 3
+--- !u!114 &114025199109711004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269915838373008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114419945995242174
 MonoBehaviour:
   m_ObjectHideFlags: 1
