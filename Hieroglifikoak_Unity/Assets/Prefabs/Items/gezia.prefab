@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4460072710981728}
   - component: {fileID: 212818982158353866}
-  - component: {fileID: 50347422660668900}
   - component: {fileID: 70457237821329124}
+  - component: {fileID: 50347422660668900}
   - component: {fileID: 114281968931713902}
   m_Layer: 0
   m_Name: gezia

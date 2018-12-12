@@ -8,8 +8,10 @@ public class Etsaia : MonoBehaviour {
     public GameObject hilPartikula;
     bool kolpatuta;
 
-	// Use this for initialization
-	void Start () {
+    bool knockBack = false;
+
+    // Use this for initialization
+    void Start () {
         kolpatuta = false;
     }
 	
@@ -22,6 +24,7 @@ public class Etsaia : MonoBehaviour {
     {
         if (!kolpatuta)
         {
+            knockBack = true;
             bizitzaPuntuak -= minPuntuak;
 
             Debug.Log("Ouch. " + minPuntuak + " bizitzaPuntu gutxiago.");
@@ -34,7 +37,7 @@ public class Etsaia : MonoBehaviour {
         }
     }
 
-    void Hil()
+    public void Hil()
     {
         Destroy(gameObject);
         Instantiate(hilPartikula, transform.position, Quaternion.identity);
@@ -44,5 +47,15 @@ public class Etsaia : MonoBehaviour {
     public void SetKolpea(bool kolpea)
     {
         kolpatuta = kolpea;
+    }
+
+    public bool GetKnockBack()
+    {
+        return knockBack;
+    }
+
+    public void KnockBackErreseteatu()
+    {
+        knockBack = false;
     }
 }

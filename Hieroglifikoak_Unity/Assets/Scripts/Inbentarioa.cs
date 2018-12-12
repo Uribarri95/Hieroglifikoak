@@ -42,18 +42,6 @@ public class Inbentarioa : MonoBehaviour {
         UIEguneratu();
     }
 
-    /*public bool ItemaDaukat(string izena)
-    {
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[i].izena == izena)
-            {
-                return true;
-            }
-        }
-        return false;
-    }*/
-
     public string GetNewItem()
     {
         return newItem;

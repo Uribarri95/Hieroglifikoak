@@ -91,7 +91,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -101,7 +101,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10edcf31f0e82ca4f94a06672e8eff41
+      spriteID: 7269988a0af088e40a3d1d9c64f196e9
       vertices: []
       indices: 
       edges: []
@@ -111,7 +111,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -121,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57a2c169b8779ef44a4f92686787be70
+      spriteID: b9bf2f12ee4d1804e8b6ed3ab6250a0c
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,7 @@ TextureImporter:
       name: mummy_arm_idle_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 64
         height: 64
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a0215ef62b2104418887526e7c98652
+      spriteID: 3e8d080ddefd7b045adf043310739339
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9c6e8dbd43463bb42822f8fc12fdaca4
+    spriteID: bc56d9a60dd29434581b96c0b1cb173a
     vertices: []
     indices: 
     edges: []

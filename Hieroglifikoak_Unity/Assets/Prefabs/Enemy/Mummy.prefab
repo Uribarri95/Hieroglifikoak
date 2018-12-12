@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1550824363325318}
   m_IsPrefabAsset: 1
+--- !u!1 &1034208140364868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4690879204833290}
+  m_Layer: 11
+  m_Name: Erasoa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1550824363325318
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,8 +36,11 @@ GameObject:
   - component: {fileID: 4957028704011236}
   - component: {fileID: 95994285246518668}
   - component: {fileID: 212063247487472008}
+  - component: {fileID: 50317139475304254}
   - component: {fileID: 61087937048580808}
   - component: {fileID: 114656131625775864}
+  - component: {fileID: 114745110265757820}
+  - component: {fileID: 114559866187529786}
   m_Layer: 11
   m_Name: Mummy
   m_TagString: Untagged
@@ -30,6 +48,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1667629176457574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4312215305630192}
+  m_Layer: 11
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4312215305630192
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667629176457574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4957028704011236}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4690879204833290
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034208140364868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.262, y: 0.293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4957028704011236}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4957028704011236
 Transform:
   m_ObjectHideFlags: 1
@@ -37,12 +96,34 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550824363325318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.615097, y: 2.411419, z: 0}
+  m_LocalPosition: {x: -5.40414, y: -20.20353, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4312215305630192}
+  - {fileID: 4690879204833290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50317139475304254
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550824363325318}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61087937048580808
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -52,7 +133,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -86,6 +167,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114559866187529786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550824363325318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061a0738de3569d41b160ca91636b54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jokalaria:
+    serializedVersion: 2
+    m_Bits: 256
+  oztopoak:
+    serializedVersion: 2
+    m_Bits: 1536
+  groundCheck: {fileID: 4312215305630192}
+  erasoPuntua: {fileID: 4690879204833290}
+  mugitzekoDenbora: 0.5
+  abiaduraNormala: 0.7
+  abiaduraAzkarra: 1
+  begiradaErradioa: 2.5
+  erasoErradioa: 0.42
+  erasoDistantzia: 0.7
+  erasoDenbora: 1.25
 --- !u!114 &114656131625775864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,9 +204,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00800bf2812086429610fb8f7055e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bizitzaPuntuak: 100
+  bizitzaPuntuak: 140
   hilPartikula: {fileID: 1034178795448690, guid: 899f7e2c21cee3b4e94ce8184abb58a1,
     type: 2}
+--- !u!114 &114745110265757820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550824363325318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212063247487472008
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -134,7 +252,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 01ed95c003660434d8cdce8b6820a6bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

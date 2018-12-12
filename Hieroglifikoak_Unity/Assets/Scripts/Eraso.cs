@@ -30,7 +30,7 @@ public class Eraso : MonoBehaviour {
     float xPos = -.05f;
     float yPos = .075f;
 
-    float erasoErradioa = .45f;
+    float erasoErradioa = .43f;
     public float ezpataMinPuntuak = 15;
 
     public float geziMinPuntuak = 10;
@@ -192,6 +192,7 @@ public class Eraso : MonoBehaviour {
     }
 
     // kolpea jaso eta bereala jokalaria garaiezin bihurtu segundu pare bat, etsaiarekiko distantzia hartu dezan
+    // bizitzarik ez badu hil egingo da, bestela koll
     public bool KolpeaJaso(bool eskuma)
     {
         if (!garaiezina)

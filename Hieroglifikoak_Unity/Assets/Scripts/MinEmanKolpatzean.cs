@@ -15,25 +15,21 @@ public class MinEmanKolpatzean : MonoBehaviour {
     {
         if (collision.transform.tag == "Player")
         {
-            bool eskuma;
-            if (transform.position.x > collision.transform.position.x)
-            {
-                eskuma = true;
-            }
-            else
-            {
-                eskuma = false;
-            }
+            bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
             JokalariaKolpatu(collision.transform.GetComponent<Eraso>(), eskuma);
         }
     }
 
-    void JokalariaKolpatu(Eraso eraso, bool eskuma)
+    public void JokalariaKolpatu(Eraso eraso, bool eskuma)
     {
         Debug.Log("Jokalaria kolpatu!");
         if (eraso.KolpeaJaso(eskuma))
         {
             jokalariKudetzailea.JokalariaHil();
+        }
+        if (gameObject.name == "Saguzar_txikia")
+        {
+            GetComponent<Etsaia>().Hil();
         }
     }
 

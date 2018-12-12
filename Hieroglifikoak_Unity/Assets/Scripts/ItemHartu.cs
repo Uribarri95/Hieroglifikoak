@@ -20,7 +20,6 @@ public class ItemHartu : MonoBehaviour {
             bool tokiaDago = Inbentarioa.instantzia.Add(item);
             if (tokiaDago)
             {
-                // itemHartu animazioa? !!!
                 if(item.izena == "SuArgia")
                 {
                     torchAnim.SetBool("TakeTorch", true);

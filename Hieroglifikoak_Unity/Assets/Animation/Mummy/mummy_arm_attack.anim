@@ -28,6 +28,8 @@ AnimationClip:
       value: {fileID: 21300006, guid: da798307e0335174ca63801da8a5b35b, type: 3}
     - time: 0.5714286
       value: {fileID: 21300008, guid: da798307e0335174ca63801da8a5b35b, type: 3}
+    - time: 0.71428573
+      value: {fileID: 21300010, guid: da798307e0335174ca63801da8a5b35b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,12 +54,13 @@ AnimationClip:
     - {fileID: 21300004, guid: da798307e0335174ca63801da8a5b35b, type: 3}
     - {fileID: 21300006, guid: da798307e0335174ca63801da8a5b35b, type: 3}
     - {fileID: 21300008, guid: da798307e0335174ca63801da8a5b35b, type: 3}
+    - {fileID: 21300010, guid: da798307e0335174ca63801da8a5b35b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.71428573
+    m_StopTime: 0.85714287
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,7 +82,14 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0.5714286
-    functionName: 
+    functionName: Eraso
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.71428573
+    functionName: Eraso
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

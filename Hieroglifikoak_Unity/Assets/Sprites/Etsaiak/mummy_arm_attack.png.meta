@@ -7,6 +7,7 @@ TextureImporter:
     21300004: mummy_arm_attack_2
     21300006: mummy_arm_attack_3
     21300008: mummy_arm_attack_4
+    21300010: mummy_arm_attack_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -103,7 +104,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f7baafa485a3204f9e0bc44f4a77906
+      spriteID: 5b0dbb83944400d4993ff5cd877439bf
       vertices: []
       indices: 
       edges: []
@@ -123,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3f5e46b7b980e34bbc8ebc298512143
+      spriteID: 1981f4daa8ab3244ca677934658e7e1a
       vertices: []
       indices: 
       edges: []
@@ -143,7 +144,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 585dd25e22b0d4c4d8f867a37cd20fdc
+      spriteID: 733713e6e49532a408401cd8d500cdfc
       vertices: []
       indices: 
       edges: []
@@ -163,7 +164,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d541043b1ea23f740bbe67e775f0a17d
+      spriteID: 84118fb57fd213d4ea4e7a02c5346f3c
       vertices: []
       indices: 
       edges: []
@@ -183,7 +184,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c7acab59e6d3c04a86b4bf03bf873f3
+      spriteID: 9c33da0081f3638438d162f4403f1d75
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mummy_arm_attack_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326e27b379d3b6e4e82f8ba8152dabf0
       vertices: []
       indices: 
       edges: []
@@ -191,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b9b81ab5645285c499504b5191f27e8d
+    spriteID: 424edf1832f221c46b158f43442445d7
     vertices: []
     indices: 
     edges: []
