@@ -24,7 +24,6 @@ public class SoldaduMugimendua : MonoBehaviour {
 
     public float begiradaErradioa;
     public float erasoErradioa;
-    public float erasoDistantzia;
     public float erasoDenbora;
     public float idleDenbora;
     Vector2 jokalariPos;
@@ -45,19 +44,29 @@ public class SoldaduMugimendua : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Collider2D target = Physics2D.OverlapCircle(transform.position, begiradaErradioa, jokalaria);
-        if (target != null)
+        if (target == null)
         {
-            jokalariaJarraitu = true;
-            jokalariPos = target.transform.position;
+            if (!jokalariaJarraitu)
+            {
+                Behatu();
+            }
+            else
+            {
+                jokalariaJarraitu = false;
+            }
         }
         else
         {
-            if (!LurraBilatu() || HormaBilatu())
+            if (!jokalariaJarraitu)
             {
-                StartCoroutine("IdleDenbora");
-                BueltaEman();
+                jokalariaJarraitu = true;
+                erasoDezaket = false;
+                StartCoroutine("ErasoaKargatu");
             }
-            jokalariaJarraitu = false;
+            else
+            {
+                jokalariPos = target.transform.position;
+            }
         }
 
         anim.SetFloat("speed", abiadura);
@@ -73,8 +82,6 @@ public class SoldaduMugimendua : MonoBehaviour {
             abiadura = 0;
         }
 
-        // dash attack eta gezia bota -> urrundu
-        // melee erasoa -> gerturatu
         transform.Translate(Vector2.left * abiadura * Time.deltaTime);
 
         switch (erasoa)
@@ -93,10 +100,28 @@ public class SoldaduMugimendua : MonoBehaviour {
         }
     }
 
+    void Behatu()
+    {
+        if (!LurraBilatu() || HormaBilatu())
+        {
+            StartCoroutine("IdleDenbora");
+            BueltaEman();
+        }
+    }
+
+    bool JokalariaAtzeanDago()
+    {
+        return (transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira);
+    }
+
     void DashAttack()
     {
         if(erasoDezaket)
         {
+            if (JokalariaAtzeanDago())
+            {
+                BueltaEman();
+            }
             anim.SetBool("stop_dash", false);
             erasoDezaket = false;
             abiadura = 0;
@@ -137,6 +162,10 @@ public class SoldaduMugimendua : MonoBehaviour {
     {
         if (erasoDezaket)
         {
+            if (JokalariaAtzeanDago())
+            {
+                BueltaEman();
+            }
             erasoDezaket = false;
             abiadura = 0;
             anim.SetTrigger("throw_spear");
@@ -165,21 +194,24 @@ public class SoldaduMugimendua : MonoBehaviour {
     {
         abiadura = 0;
         yield return new WaitForSeconds(idleDenbora);
-        if ((transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira))
+        abiadura = abiaduraNormala;
+        if (jokalariaJarraitu && JokalariaAtzeanDago())
         {
             BueltaEman();
         }
-        StartCoroutine("ErasoaKargatu");
+        if (jokalariaJarraitu)
+        {
+            StartCoroutine("ErasoaKargatu");
+        }
     }
 
     IEnumerator ErasoaKargatu()
     {
-        abiadura = abiaduraNormala;
         yield return new WaitForSeconds(erasoDenbora);
         if (!erasoDezaket && jokalariaJarraitu)
         {
-            erasoa = Random.Range(0,3);
             erasoDezaket = true;
+            erasoa = Random.Range(2,2);
         }
     }
 

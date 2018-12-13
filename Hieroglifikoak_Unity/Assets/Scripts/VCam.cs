@@ -67,6 +67,7 @@ public class VCam : MonoBehaviour {
             if (bounds[i].bounds.Contains(pos))
             {
                 confiner.m_BoundingShape2D = bounds[i];
+                confiner.InvalidatePathCache();
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneWidth = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneHeight = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 0;
