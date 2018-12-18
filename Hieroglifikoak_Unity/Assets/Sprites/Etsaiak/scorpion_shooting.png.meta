@@ -19,6 +19,7 @@ TextureImporter:
     21300028: scorpion_shooting_14
     21300030: scorpion_shooting_15
     21300032: scorpion_shooting_16
+    21300034: scorpion_shooting_17
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -62,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 258
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,7 +116,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00250bb4ecfaf3a48a57cdb67df3567f
+      spriteID: 049573ca029769e4dafe2c2adec607df
       vertices: []
       indices: 
       edges: []
@@ -135,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b8e1490758e64343907b8e43449ea83
+      spriteID: 998394dfe9fa2174da6f4927efea6d43
       vertices: []
       indices: 
       edges: []
@@ -155,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7ddb640af3e416458d7a7f9ee7fdb72
+      spriteID: b3cbffba5993b6e40b558a2bc0f8bef4
       vertices: []
       indices: 
       edges: []
@@ -175,7 +176,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c9e33fc3dfedd440ba469417eb5da41
+      spriteID: 6aa5ff911a80fc14a809234fd1b21544
       vertices: []
       indices: 
       edges: []
@@ -195,7 +196,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b7894f64bcf82247b1fd5ffc4615c9c
+      spriteID: ba21b01d3d458e447b5988ac3c5a3b7c
       vertices: []
       indices: 
       edges: []
@@ -215,7 +216,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed59f1cbf32beb42b689107b241848b
+      spriteID: 0f9c4cb1b99ef74418a8b1ed416cc10b
       vertices: []
       indices: 
       edges: []
@@ -235,7 +236,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 214ccb4b9279d2b43aaff43c636f1444
+      spriteID: ab6438dcc402dd247badceff1fd3f0ab
       vertices: []
       indices: 
       edges: []
@@ -255,7 +256,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d1c94120095c1044ab4bde0a1e15abb
+      spriteID: 214f7ac3b56d85e4dbe66438fc937635
       vertices: []
       indices: 
       edges: []
@@ -275,7 +276,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8519c733e243cb84d8f9100ddd5873d3
+      spriteID: 270f4a07534ad834bb9d6693df5dab6a
       vertices: []
       indices: 
       edges: []
@@ -295,7 +296,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a5d5771890475c46a719849edc1849b
+      spriteID: cdc1b34e029cd1147899666f05d92127
       vertices: []
       indices: 
       edges: []
@@ -315,7 +316,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b25f536341af2d4694ed7d84759ff2a
+      spriteID: 863d2fc9639726447ada74e4bb83e4c5
       vertices: []
       indices: 
       edges: []
@@ -335,7 +336,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d66a53f55546b7c4f9b09e036e8395f0
+      spriteID: 48838f8c9539aa74fbc20108dd638b0d
       vertices: []
       indices: 
       edges: []
@@ -355,7 +356,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74a12bad0d8b8d445becdbafbc0b331d
+      spriteID: 0ee021127bd8fd744bc8dc2ea7571de4
       vertices: []
       indices: 
       edges: []
@@ -375,7 +376,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ba0d4aa94192c842bcb688adda20703
+      spriteID: d4d4854210f977949af3b2369ecb17ec
       vertices: []
       indices: 
       edges: []
@@ -395,7 +396,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48e63fd2edfec5e4282469784e85bc7a
+      spriteID: 358b54f48e9599242a3b1146bb44a716
       vertices: []
       indices: 
       edges: []
@@ -415,7 +416,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7da8114004e32941806c8725c71e1bd
+      spriteID: 93f61a8f128fd1541b8720f82903972e
       vertices: []
       indices: 
       edges: []
@@ -435,7 +436,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8570f23a5cf838a418577946c12deea5
+      spriteID: 6068134e4f584484392210418ff68a16
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scorpion_shooting_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a546b437c63f3d438330de8f64fc0a0
       vertices: []
       indices: 
       edges: []
@@ -443,7 +464,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f9467ec1677f6c9499248342e594d75d
+    spriteID: 435ec20e9ac611146a32caecd79e8b74
     vertices: []
     indices: 
     edges: []

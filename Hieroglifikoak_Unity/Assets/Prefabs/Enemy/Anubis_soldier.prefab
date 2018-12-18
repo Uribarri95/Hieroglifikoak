@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4771608704228252}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DashPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4033114671736240}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114419945995242174}
   - component: {fileID: 114023238001080790}
   - component: {fileID: 114025199109711004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Anubis_soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4703664934460938}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ErasoPuntua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
