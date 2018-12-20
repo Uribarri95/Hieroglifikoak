@@ -195,7 +195,7 @@ public class Eraso : MonoBehaviour {
     // bizitzarik ez badu hil egingo da, bestela koll
     public bool KolpeaJaso(bool eskuma)
     {
-        if (!garaiezina || jokalaria.GetAteaZeharkatzen())
+        if (!garaiezina && !jokalaria.GetAteaZeharkatzen())
         {
             if (inbentarioa.KolpeaJaso())
             {

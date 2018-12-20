@@ -37,6 +37,7 @@ public class SoldaduMugimendua : MonoBehaviour {
         anim = GetComponent<Animator>();
         abiadura = abiaduraNormala;
         erasoDezaket = false;
+        jokalariaJarraitu = false;
         StartCoroutine("ErasoaKargatu");
     }
 	
@@ -67,6 +68,10 @@ public class SoldaduMugimendua : MonoBehaviour {
             else
             {
                 jokalariPos = target.transform.position;
+                if (!LurraBilatu() || HormaBilatu())
+                {
+                    BueltaEman();
+                }
             }
         }
 
@@ -130,7 +135,11 @@ public class SoldaduMugimendua : MonoBehaviour {
             anim.SetBool("stop_dash", false);
             erasoDezaket = false;
             abiadura = 0;
-            anim.SetTrigger("dash_attack");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_charge_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_attack") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_stop_attack"))
+            {
+                anim.SetTrigger("dash_attack");
+            }
         }
         if ((!LurraBilatu() || HormaBilatu()) && anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_attack"))
         {
@@ -201,8 +210,11 @@ public class SoldaduMugimendua : MonoBehaviour {
     // soldaduaren irudia buelta erdia ematen du, pareta/zuloa dagoelako edo jokalaria jarraitzeko
     void BueltaEman()
     {
-        eskumaBegira = !eskumaBegira;
-        transform.eulerAngles = new Vector3(0, eskumaBegira ? -180 : 0, 0);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_stop_attack"))
+        {
+            eskumaBegira = !eskumaBegira;
+            transform.eulerAngles = new Vector3(0, eskumaBegira ? -180 : 0, 0);
+        }
     }
 
     // animazioko event jaurtizen du
@@ -236,7 +248,7 @@ public class SoldaduMugimendua : MonoBehaviour {
         if (!erasoDezaket && jokalariaJarraitu)
         {
             erasoDezaket = true;
-            erasoa = Random.Range(0,3);
+            erasoa = Random.Range(0, 3);
         }
     }
 
