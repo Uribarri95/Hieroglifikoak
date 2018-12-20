@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -19.56, z: 0}
+  m_LocalPosition: {x: -19.34, y: -20.11, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1850647987297026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 4578535735847250}
   m_RootOrder: 2
@@ -298,9 +298,11 @@ MonoBehaviour:
   piztu:
     serializedVersion: 2
     m_Bits: 4096
+  denboraTartea: 0.3
   suMinPuntuak: 5
+  argiErradioa: 20
   ezpataMinPuntuak: 60
-  geziMinPuntuak: 10
+  geziMinPuntuak: 30
   zuria: {r: 1, g: 1, b: 1, a: 1}
   grisa: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
 --- !u!212 &212896225667781616

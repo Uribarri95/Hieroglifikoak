@@ -53,12 +53,12 @@ GameObject:
   - component: {fileID: 212996480448773972}
   - component: {fileID: 61574225084817574}
   - component: {fileID: 50178098683903306}
+  - component: {fileID: 114025199109711004}
   - component: {fileID: 114419945995242174}
   - component: {fileID: 114023238001080790}
-  - component: {fileID: 114025199109711004}
   m_Layer: 11
   m_Name: Anubis_soldier
-  m_TagString: Untagged
+  m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269915838373008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.92, y: 0.01, z: 0}
+  m_LocalPosition: {x: -7.08, y: -19.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4703664934460938}
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61574225084817574
 BoxCollider2D:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00800bf2812086429610fb8f7055e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bizitzaPuntuak: 200
+  bizitzaPuntuak: 600
   hilPartikula: {fileID: 1034178795448690, guid: 899f7e2c21cee3b4e94ce8184abb58a1,
     type: 2}
 --- !u!212 &212996480448773972

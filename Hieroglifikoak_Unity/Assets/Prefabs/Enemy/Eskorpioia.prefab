@@ -36,14 +36,14 @@ GameObject:
   - component: {fileID: 4874352165614660}
   - component: {fileID: 95043674231860446}
   - component: {fileID: 212357474312053834}
-  - component: {fileID: 61473403141887724}
   - component: {fileID: 50966387596431380}
+  - component: {fileID: 61473403141887724}
+  - component: {fileID: 114315283458665278}
   - component: {fileID: 114337693068000268}
   - component: {fileID: 114663609738554298}
-  - component: {fileID: 114315283458665278}
   m_Layer: 11
   m_Name: Eskorpioia
-  m_TagString: Untagged
+  m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700123700194080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.748, y: -19.845, z: 0}
+  m_LocalPosition: {x: -9.005683, y: -20.032383, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4482866446422200}
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61473403141887724
 BoxCollider2D:
@@ -165,7 +165,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: 0.05}
+  m_Offset: {x: 0.1, y: -0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -176,7 +176,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.4}
+  m_Size: {x: 0.65, y: 0.25}
   m_EdgeRadius: 0
 --- !u!95 &95043674231860446
 Animator:
@@ -232,6 +232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e093cf7a857ba4bad39b64d88a2f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jaurtigaia: {fileID: 1567310334399864, guid: 060ab2d0f6305924d90ee4ec47e0a6d8, type: 2}
+  erasoPuntua: {fileID: 4482866446422200}
+  jokalaria:
+    serializedVersion: 2
+    m_Bits: 256
+  erasoMaiztasuna: 8
 --- !u!212 &212357474312053834
 SpriteRenderer:
   m_ObjectHideFlags: 1

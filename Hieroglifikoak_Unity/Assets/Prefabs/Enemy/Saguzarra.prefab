@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 212291128210787070}
   - component: {fileID: 50617449489880118}
   - component: {fileID: 58613157672545880}
-  - component: {fileID: 114276999275258162}
-  - component: {fileID: 114449754015850972}
   - component: {fileID: 114515280165532654}
+  - component: {fileID: 114449754015850972}
+  - component: {fileID: 114276999275258162}
   m_Layer: 11
   m_Name: Saguzarra
   m_TagString: Etsaia

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MinEmanKolpatzean : MonoBehaviour {
 
+    // jokalaria kolpatu da
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")
@@ -13,11 +14,11 @@ public class MinEmanKolpatzean : MonoBehaviour {
         }
     }
 
+    // jokalaria kolpatzen da, saguzar txikia bada, suntsitu egiten da
     public void JokalariaKolpatu(Eraso eraso, bool eskuma)
     {
-        Debug.Log("Jokalaria kolpatu!");
         eraso.KolpeaJaso(eskuma);
-        if (gameObject.name == "Saguzar_txikia")
+        if (gameObject.name.Contains("Saguzar_txikia"))
         {
             GetComponent<Etsaia>().Hil();
         }

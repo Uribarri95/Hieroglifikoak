@@ -24,7 +24,7 @@ public class InbentarioaUI : MonoBehaviour {
         for (int i = 0; i < inbentario.items.Count; i++)
         {
             itemTokiak[i].AddItem(inbentario.items[i].irudia);
-            if(inbentario.items[i].izena == "Arkua")
+            if(inbentario.items[i].izena.Contains("Arkua"))
             {
                 itemTokiak[i].ErakutsiGeziKop(inbentario.GetGeziKop());
             }

@@ -143,26 +143,6 @@ public class JokalariMug : MonoBehaviour
         // saltoak
         SaltoKudeaketa();
 
-        // atea dagoenean
-        //!!! ateaurrean bagaude eta zabaldu daiteke ez makurtu !!!
-        /*if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if (ateAurrean)
-            {
-                //AteaZabaldu();
-            }
-            else if (kudeatzailea.kolpeak.azpian)
-            {
-                MakurtuSakatu();
-            }
-        }
-
-        if (!Input.GetKey(KeyCode.DownArrow) && makurtu)
-        {
-            MakurtuAskatu();
-        }*/
-
-
         // makurtu eta irristatu
         if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian && !ateAurrean) // makurtu botoia sakatu lurrean gaudenean
         {
@@ -322,6 +302,10 @@ public class JokalariMug : MonoBehaviour
 
     public void KnockBack(bool eskuma)
     {
+        if (makurtu)
+        {
+            MakurtuAskatu();
+        }
         if (eskuma)
         {
             abiadura.x = -5;
@@ -422,7 +406,6 @@ public class JokalariMug : MonoBehaviour
             Collider2D kutxa = Physics2D.OverlapCircle(helduPuntua.position, erradioa, zerDaKutxa);
             kutxaIkutzen = kutxa != null;
             if (kutxaIkutzen && !Input.GetButton("Jump"))
-                //kutxa.GetComponent<KutxaMugKud>().Mugitu(new Vector2(abiadura.x,0) * Time.deltaTime);
                 kutxa.GetComponent<KutxaMugKud>().Mugitu(abiadura * Time.deltaTime);
         }
     }

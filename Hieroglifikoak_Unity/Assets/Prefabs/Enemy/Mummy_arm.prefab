@@ -23,12 +23,12 @@ GameObject:
   - component: {fileID: 212497112140050790}
   - component: {fileID: 50770650688930390}
   - component: {fileID: 61168338252734746}
-  - component: {fileID: 114897530289474294}
   - component: {fileID: 114667077813883908}
+  - component: {fileID: 114897530289474294}
   - component: {fileID: 114841050631014174}
   m_Layer: 11
   m_Name: Mummy_arm
-  m_TagString: Untagged
+  m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261569425946232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.47, y: -21.12, z: 0}
+  m_LocalPosition: {x: -9.040029, y: -20.101074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4957707364669940}
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61168338252734746
 BoxCollider2D:
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061a0738de3569d41b160ca91636b54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mumiBesoa: {fileID: 0}
   jokalaria:
     serializedVersion: 2
     m_Bits: 256
@@ -198,8 +199,6 @@ MonoBehaviour:
   groundCheck: {fileID: 4957707364669940}
   erasoPuntua: {fileID: 4954523945190402}
   mugitzekoDenbora: 0
-  abiaduraNormala: 0.7
-  abiaduraAzkarra: 1
   begiradaErradioa: 2.5
   erasoErradioa: 0.55
   erasoDistantzia: 0.75

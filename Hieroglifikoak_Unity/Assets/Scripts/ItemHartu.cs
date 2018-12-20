@@ -20,7 +20,7 @@ public class ItemHartu : MonoBehaviour {
             bool tokiaDago = Inbentarioa.instantzia.Add(item);
             if (tokiaDago)
             {
-                if(item.izena == "SuArgia")
+                if(item.izena.Contains("SuArgia"))
                 {
                     torchAnim.SetBool("TakeTorch", true);
                     GetComponentInChildren<SpriteMask>().enabled = false;

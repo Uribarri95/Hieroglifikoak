@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212710554768044974}
   - component: {fileID: 58543427924366582}
   - component: {fileID: 50466752412841276}
-  - component: {fileID: 114960520011932004}
+  - component: {fileID: 114860883011214712}
   m_Layer: 0
   m_Name: scorpion_shoot
   m_TagString: Untagged
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114960520011932004
+--- !u!114 &114860883011214712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,9 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbde92803e6f5b45b7b9ee8bb15a952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyParticle: {fileID: 1567310334399864}
-  desagertuDenbora: 5
-  abiadura: 8
+  destroyParticle: {fileID: 1345692869310570, guid: 6e80b7725e7e1884d9e053fcb42668d3,
+    type: 2}
+  desagertuDenbora: 10
+  abiadura: 5
 --- !u!212 &212710554768044974
 SpriteRenderer:
   m_ObjectHideFlags: 1

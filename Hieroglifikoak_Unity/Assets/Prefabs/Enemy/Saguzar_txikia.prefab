@@ -23,12 +23,12 @@ GameObject:
   - component: {fileID: 212016872876406964}
   - component: {fileID: 50927517439119212}
   - component: {fileID: 58626180181512044}
-  - component: {fileID: 114991989480598464}
-  - component: {fileID: 114491190003099560}
   - component: {fileID: 114039656025060518}
+  - component: {fileID: 114491190003099560}
+  - component: {fileID: 114991989480598464}
   m_Layer: 11
   m_Name: Saguzar_txikia
-  m_TagString: Untagged
+  m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,42 +5,41 @@ using UnityEngine.UI;
 
 public class Eraso : MonoBehaviour {
 
-    private JokalariKudetzailea jokalariKudetzailea;
-    JokalariMug jokalaria;
+    JokalariKudetzailea jokalariKudetzailea;    // bizitza puntuak 0 direnean hil eta berpizteko
+    JokalariMug jokalaria;                      // jokalariaren egoera jakiteko (eraso dezake, atea zeharkatzen dago, hiltzen edo kolpea jasotzean bultzatzeko)
     Animator anim;
-    SpriteRenderer sprite;
-    Inbentarioa inbentarioa;
-    SpriteMask argia;
-    List<Etsaia> etsaiak;
+    SpriteRenderer sprite;                      // mina hartzean kolore aldakeak egiteko -> gorriz mina eta grisa garaitezina
+    Inbentarioa inbentarioa;                    // ekipaturik zer duen eta bizitza puntuak jakiteko
+    SpriteMask argia;                           // sua daukagunean ikusten den zatia
+    List<Etsaia> etsaiak;                       // etsaiak behin kolpatzeko
 
-    public Transform erasoPuntua;
-    public GameObject gezia;
-    public LayerMask zerDaEtsaia;
-    public LayerMask piztu;
+    public Transform erasoPuntua;               // gezia agertzen den puntua / erasoaren erradioaren erdigunea
+    public GameObject gezia;                    // gezi objektua, arkuarekin botatzeko
+    public LayerMask zerDaEtsaia;               // etsaia kolpatzeko
+    public LayerMask piztu;                     // sua pizteko
 
-    float denbora;
-    float denboraTartea = .3f;
+    float denbora;                              // eraso maiztasuna kudeatzeko
+    public float denboraTartea = .3f;           // eraso maiztasuna kudeatzeko
 
-    bool suArgia;
-    bool ezpata;
-    bool arkua;
+    bool suArgia;                               // sua itema
+    bool ezpata;                                // ezpata itema
+    bool arkua;                                 // arkua itema
 
-    public float suMinPuntuak = 5;
-    float argiErradioa = 20;
-    float argiErasoErradioa = .3f;
-    float xPos = -.05f;
-    float yPos = .075f;
+    public float suMinPuntuak = 5;              // suak egiten duen mina !!! kendu!!!
+    public float argiErradioa = 20;             // su erasoaren argi erradioa
+    float argiErasoErradioa = .3f;              // suErasoaren erradioa
+    float xOffset = -.05f;                      // gezia agertzen den tokia, eraso puntuaren diferentzia
+    float yOffset = .075f;                      // gezia agertzen den tokia, eraso puntuaren diferentzia
 
-    float erasoErradioa = .43f;
-    public float ezpataMinPuntuak = 15;
+    float erasoErradioa = .43f;                 // erasoaren zirkunferentzia erradioa
+    public float ezpataMinPuntuak = 15;         // ezpata erasoaren min puntuak
 
-    public float geziMinPuntuak = 10;
+    public float geziMinPuntuak = 10;           // geziaren min puntuak
 
-    public Color zuria, grisa;
-    bool garaiezina;
-    float kliskatuDenbora = .2f;
+    public Color zuria, grisa;                  // mina hartzean kolore aldaketak
+    bool garaiezina;                            // mina hartu ostean min gehiago ez hartzeko
+    float kliskatuDenbora = .2f;                // garaitezin denbora
 
-    // Use this for initialization
     void Start () {
         jokalariKudetzailea = FindObjectOfType<JokalariKudetzailea>();
         jokalaria = GetComponent<JokalariMug>();
@@ -50,11 +49,9 @@ public class Eraso : MonoBehaviour {
         argia = GetComponentInChildren<SpriteMask>();
         argia.enabled = false;
         etsaiak = new List<Etsaia>();
-
         garaiezina = false;
     }
 	
-	// Update is called once per frame
 	void Update () {
         NewItemKonprobatu();
         ItemAldatu();
@@ -94,7 +91,7 @@ public class Eraso : MonoBehaviour {
         }
     }
 
-    // inbentarioko itemen artean aldatzeko
+    // inbentarioko item artean aldatzeko
     void ItemAldatu()
     {
         if (inbentarioa.items.Count == 2)
@@ -117,6 +114,7 @@ public class Eraso : MonoBehaviour {
         }
     }
 
+    // su argia daukagunean argiak aktibatu
     void ArgiKudeaketa()
     {
         if (inbentarioa.items.Count > 0)
@@ -197,7 +195,7 @@ public class Eraso : MonoBehaviour {
     // bizitzarik ez badu hil egingo da, bestela koll
     public bool KolpeaJaso(bool eskuma)
     {
-        if (!garaiezina)
+        if (!garaiezina || jokalaria.GetAteaZeharkatzen())
         {
             if (inbentarioa.KolpeaJaso())
             {
@@ -216,6 +214,7 @@ public class Eraso : MonoBehaviour {
         return false;
     }
 
+    // garaitezin / mina jaso kolore efektua
     IEnumerator Garaiezina()
     {
         for (int i = 0; i < 4; i++)
@@ -229,6 +228,7 @@ public class Eraso : MonoBehaviour {
         yield return null;
     }
 
+    // garaitezin kolore efektua
     private IEnumerator GrisaJarri()
     {
         float timer = 0.0f;
@@ -242,6 +242,7 @@ public class Eraso : MonoBehaviour {
         }
     }
 
+    // mina jaso kolore efektua
     private IEnumerator ZuriJarri()
     {
         float timer = 0.0f;
@@ -255,7 +256,7 @@ public class Eraso : MonoBehaviour {
         }
     }
 
-    // animazioko event jaurtitzen du metodoa
+    // animazioko event jaurtitzen du
     // ezpata edo suArgiarekin erasotzea agintzen da
     public void Erasoa()
     {
@@ -265,6 +266,7 @@ public class Eraso : MonoBehaviour {
         }
         else if (suArgia)
         {
+            // su mina kendu !!!
             MinPuntuakKendu(suMinPuntuak, argiErasoErradioa);
             SuaPiztu();
         }
@@ -273,7 +275,7 @@ public class Eraso : MonoBehaviour {
     //min puntuak eta erradioa emanda irisgarri dauden etsaiak kolpatzen ditu
     void MinPuntuakKendu(float minPuntuak, float erradioa)
     {
-        Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(new Vector3(erasoPuntua.position.x + xPos, erasoPuntua.position.y + yPos, erasoPuntua.position.z), erradioa, zerDaEtsaia);
+        Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(new Vector3(erasoPuntua.position.x + xOffset, erasoPuntua.position.y + yOffset, erasoPuntua.position.z), erradioa, zerDaEtsaia);
         for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
         {
             etsaiak.Add(kolpatutakoEtsaiak[i].GetComponent<Etsaia>());
@@ -285,14 +287,14 @@ public class Eraso : MonoBehaviour {
     // erradio barruan bagaude suTokia pizten du
     void SuaPiztu()
     {
-        Collider2D suaPiztekoTokia = Physics2D.OverlapCircle(new Vector3(erasoPuntua.position.x + xPos, erasoPuntua.position.y + yPos, erasoPuntua.position.z), argiErasoErradioa, piztu);
+        Collider2D suaPiztekoTokia = Physics2D.OverlapCircle(new Vector3(erasoPuntua.position.x + xOffset, erasoPuntua.position.y + yOffset, erasoPuntua.position.z), argiErasoErradioa, piztu);
         if (suaPiztekoTokia)
         {
             suaPiztekoTokia.GetComponent<ErreDaiteke>().Piztu();
         }
     }
 
-    // animazioko event jaurtitzen du metodoa
+    // animazioko event jaurtitzen du
     // etsai bakoitza behin bakarrik kolpatuko da
     void KolpeBakarra()
     {
@@ -303,7 +305,8 @@ public class Eraso : MonoBehaviour {
         etsaiak = new List<Etsaia>();
     }
 
-    //animazioko event jaurtitzen du metodoa
+    // animazioko event jaurtitzen du
+    // gezia jaurtitzen da
     public void GeziaJaurti()
     {
         inbentarioa.GeziaJaurti();
@@ -317,7 +320,8 @@ public class Eraso : MonoBehaviour {
         }
     }
 
-    //animazioko event jaurtitzen du metodoa
+    // animazioko event jaurtitzen du metodoa
+    // argi erasoarekin argi zirkunferentzia handitzen da
     void ArgiakHanditu()
     {
         GetComponentInChildren<ArgiEfektua>().ArgiErasoa(argiErradioa);

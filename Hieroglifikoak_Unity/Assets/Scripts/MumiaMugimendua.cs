@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class MumiaMugimendua : MonoBehaviour {
 
-    public LayerMask jokalaria;
-    public LayerMask oztopoak;
-    public Transform groundCheck;
-    public Transform erasoPuntua;
+    public GameObject mumiBesoa;        // hiltzean besoa objectua jauzteko
+    public LayerMask jokalaria;         // jokalaria jarraitu/kolpatzeko
+    public LayerMask oztopoak;          // horma/lurra detektatzeko
+    public Transform groundCheck;       // horma/lurra detektatzeko
+    public Transform erasoPuntua;       // eraso zirkunferentziaren erdigunea
 
     Animator anim;
-
-    public float mugitzekoDenbora = .5f;    // bi pausoren artean denbora txiki bat emoteko
-    float abiadura;                         // mumiaren mugimendu abiadura
-    public float abiaduraNormala = .7f;
-    public float abiaduraAzkarra = 1;
-    float zoruDistantzia = .5f;
-    float hormaDistantzia = .1f;
-    bool eskumaBegira = false;
+    float abiadura;                     // mumiaren mugimendu abiadura
+    float abiaduraNormala = .7f;        // abiadura jokalaria ikusten ez duenean
+    float abiaduraAzkarra = 1f;         // abiadura jokalaria jarraitzen
+    float zoruDistantzia = .3f;         // zorua topatzeko izpi luzera
+    float hormaDistantzia = .1f;        // horma topatzeko izpi luzera
+    float knockBack = 15;               // kolpea jasotzean bultzatzen den indarra
+    bool eskumaBegira = false;          // irudiari buelta emateko
     bool mugituAgindua = false;         // errena den efektua emoteko
     bool idleMoveKontrola = false;      // false denean mugitu daiteke, bestela ez
-    bool idleBukatuta = false;
+    bool idleBukatuta = false;          // horma/zuloa topatzean pixka bat itzarongo du buelta eman baino lehen
+    bool erasoDezaket = true;           // erasoDenbora betetzeko 
 
+    // ezberdinak mumia eta besoan
+    public float mugitzekoDenbora;      // bi pausoren artean denbora txiki bat emoteko
     public float begiradaErradioa;      // jokalaria jarraitzeko distantzia
     public float erasoErradioa;         // jokalaria kolpatzeko zirkunferentziaren erradioa
     public float erasoDistantzia;       // erasotzeko distantzia minimoa
     public float erasoDenbora;          // denbora txiki bat bi erasoen artean
-    bool erasoDezaket = true;           // erasoDenbora betetzeko 
+    
 
     // Use this for initialization
     void Start () {
@@ -37,6 +40,7 @@ public class MumiaMugimendua : MonoBehaviour {
     // mugituAgindua eta idleMoveKontrola mumia erren dagoen efektua emoten diote
     // jokalaria begiradaErradioa-ren barruan dagioenean mumia jokalaria jarraituko du, bestela alde batetik bestera mugituko da zulo baten jauzi gabe eta hormaren aurka joan gabe
     // jokalaria jarritzen dagoenean azkarrago mugitzen da
+    // jokalaria gertu dagoenean eraso egiten du
     void Update()
     {
         KolpeaJaso();
@@ -64,13 +68,33 @@ public class MumiaMugimendua : MonoBehaviour {
         }
     }
 
+    // kolpea jasotzean etsaia atzerantz bultzatu
+    // mumia hiltzen denean besoa jauzten utziko du
     public void KolpeaJaso()
     {
         if (GetComponent<Etsaia>().GetKnockBack() && (!anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_attack") || !anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_arm_attack")))
         {
-            transform.Translate(Vector2.right * 15 * Time.deltaTime);
+            transform.Translate(Vector2.right * knockBack * Time.deltaTime);
             GetComponent<Etsaia>().KnockBackErreseteatu();
         }
+        if (transform.name.Contains("Mummy") && !GetComponent<Etsaia>().GetBizirik())
+        {
+            Destroy(gameObject);
+            GameObject mumiBesoaGO = Instantiate(mumiBesoa, transform.position, transform.rotation);
+            MumiaMugimendua mumia = mumiBesoaGO.GetComponent<MumiaMugimendua>();
+            if (mumia != null)
+            {
+                mumia.GetComponent<Animator>().SetTrigger(Random.Range(0, 2) == 0 ? "rspin" : "lspin");
+                mumia.BesoaJauzi();
+            }
+        }
+    }
+
+    // besoa mumitik jauzten denean salto txiki bat ematen du
+    void BesoaJauzi()
+    {
+        transform.Translate(Vector2.up * 2 * knockBack * Time.deltaTime);
+        GetComponent<Etsaia>().KnockBackErreseteatu();
     }
 
     // mumiaren mugimendu animazioa hasiko da denbora txiki bat pasa ondoren
@@ -129,7 +153,7 @@ public class MumiaMugimendua : MonoBehaviour {
         }
     }
 
-    // oztopoa/zuloa aurkitzean buelta ematen du
+    // jokalaria jarraitzen ez dagoenean, oztopoa/zuloa aurkitzean buelta ematen du
     void Behatu()
     {
         idleMoveKontrola = false;
@@ -164,11 +188,13 @@ public class MumiaMugimendua : MonoBehaviour {
         mugituAgindua = false;
     }
 
+    // aurrean lurra dagoen esaten du, aldapan ere ez da sartzen
     bool LurraBilatu()
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, zoruDistantzia, oztopoak);
     }
 
+    // aurrean horma dagoen esaten du
     bool HormaBilatu()
     {
         return Physics2D.Raycast(groundCheck.position, eskumaBegira ? Vector2.right : Vector2.left, hormaDistantzia, oztopoak); ;

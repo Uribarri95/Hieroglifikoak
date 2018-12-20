@@ -6,7 +6,6 @@ public class DestroyParticle : MonoBehaviour {
 
     public float particleDestroyTime;
 
-	// Use this for initialization
 	void Start () {
         Destroy(gameObject, particleDestroyTime);
 	}

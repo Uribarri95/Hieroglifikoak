@@ -4,56 +4,57 @@ using UnityEngine;
 
 public class Etsaia : MonoBehaviour {
 
-    public float bizitzaPuntuak;
-    public GameObject hilPartikula;
-    bool kolpatuta;
+    public float bizitzaPuntuak;        // etsaiaren bizitza puntuak
+    public GameObject hilPartikula;     // etsaia hiltzeam agertzen den efektua
 
-    bool knockBack = false;
+    bool kolpatuta = false;             // jokalariak kolpe bat eraso bakoitzeko
+    bool knockBack = false;             // etsaiak kolpea jaso duen efektua lortzeko
+    bool bizirik = true;                // jokalaria bizirik jarraitzen duen
 
-    // Use this for initialization
-    void Start () {
-        kolpatuta = false;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    // etsaiari min puntuak kendu
     public void KolpeaJaso(float minPuntuak)
     {
         if (!kolpatuta)
         {
             knockBack = true;
             bizitzaPuntuak -= minPuntuak;
-
-            Debug.Log("Ouch. " + minPuntuak + " bizitzaPuntu gutxiago.");
-            Debug.Log(bizitzaPuntuak);
-
             if (bizitzaPuntuak <= 0)
             {
+                bizirik = false;
                 Hil();
             }
         }
     }
 
+    // min puntuak 0 direnean etsaia hil, mumia denean bere IA barruan egingo da
     public void Hil()
     {
-        Destroy(gameObject);
+        if(!transform.name.Contains("Mummy"))
+        {
+            Destroy(gameObject);
+        }
         Instantiate(hilPartikula, transform.position, Quaternion.identity);
-        Debug.Log(gameObject.name + " hil da.");
     }
 
+    // etsaia eraso bakoitzean bakarrik behin kolpatzeko
     public void SetKolpea(bool kolpea)
     {
         kolpatuta = kolpea;
     }
 
+    // etsaia bizirik jarraitzen duen jakiteko, mumiaren IA bere burua hiltzeko
+    public bool GetBizirik()
+    {
+        return bizirik;
+    }
+
+    // kolpea jasotzean IA denak knockback efektua egin dezaten
     public bool GetKnockBack()
     {
         return knockBack;
     }
 
+    // IA denak knockback efektua egin ondoren 'entzuten' geratzen da berriro
     public void KnockBackErreseteatu()
     {
         knockBack = false;

@@ -23,8 +23,25 @@ GameObject:
   - component: {fileID: 95076903337534882}
   - component: {fileID: 50178356986407270}
   - component: {fileID: 58416105871937534}
-  m_Layer: 0
+  - component: {fileID: 114708447400748296}
+  - component: {fileID: 114237003169298622}
+  m_Layer: 11
   m_Name: kakalardo_bola
+  m_TagString: Bola
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1569485897017416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4633599030044916}
+  m_Layer: 11
+  m_Name: obstacleCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,10 +54,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484473723130826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.507, y: -20.473, z: 0}
+  m_LocalPosition: {x: -5.69, y: -19.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4633599030044916}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4633599030044916
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569485897017416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.419, y: -0.187, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4571726240262032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50178356986407270
@@ -57,11 +88,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &58416105871937534
 CircleCollider2D:
@@ -96,6 +127,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114237003169298622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484473723130826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8019fb7bda48ea142acadae886b79072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bolaParticle: {fileID: 1180656846648676, guid: 8732ec79091562f449162d93e3e4005f,
+    type: 2}
+  obstacleCheck: {fileID: 4633599030044916}
+  oztopoak:
+    serializedVersion: 2
+    m_Bits: 512
+  hormaDistantzia: 0.1
+  abiadura: 4
+--- !u!114 &114708447400748296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484473723130826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00800bf2812086429610fb8f7055e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bizitzaPuntuak: 1
+  hilPartikula: {fileID: 1180656846648676, guid: 8732ec79091562f449162d93e3e4005f,
+    type: 2}
 --- !u!212 &212088840380244424
 SpriteRenderer:
   m_ObjectHideFlags: 1

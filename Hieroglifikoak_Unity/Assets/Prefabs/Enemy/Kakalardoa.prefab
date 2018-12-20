@@ -21,10 +21,14 @@ GameObject:
   - component: {fileID: 4769481835100860}
   - component: {fileID: 212266847143405952}
   - component: {fileID: 95130426126021652}
+  - component: {fileID: 50320741148173426}
   - component: {fileID: 61429062575647402}
-  m_Layer: 0
+  - component: {fileID: 114997169611164218}
+  - component: {fileID: 114770699870875838}
+  - component: {fileID: 114665898469580618}
+  m_Layer: 11
   m_Name: Kakalardoa
-  m_TagString: Untagged
+  m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4011782859138140}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: JaurtiketaPunta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,13 +68,33 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811725758048182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.772, y: -20.141, z: 0}
+  m_LocalPosition: {x: -7.18, y: -19.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4011782859138140}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50320741148173426
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811725758048182}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &61429062575647402
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -94,7 +118,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.5}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!95 &95130426126021652
 Animator:
@@ -114,6 +138,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114665898469580618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811725758048182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090efd6ffa757a541a19170e5a504d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bola: {fileID: 1484473723130826, guid: 0147954303ba5f94cb57fc9b2cc99dc2, type: 2}
+  erasoPuntua: {fileID: 4011782859138140}
+  erasoMaiztasuna: 2
+--- !u!114 &114770699870875838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811725758048182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00800bf2812086429610fb8f7055e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bizitzaPuntuak: 40
+  hilPartikula: {fileID: 1034178795448690, guid: 899f7e2c21cee3b4e94ce8184abb58a1,
+    type: 2}
+--- !u!114 &114997169611164218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811725758048182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212266847143405952
 SpriteRenderer:
   m_ObjectHideFlags: 1
