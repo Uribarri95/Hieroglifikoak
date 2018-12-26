@@ -7,8 +7,13 @@ public class ItemTokia : MonoBehaviour {
     public Image holder;
     public Text geziak;
 
-    public void AddItem(Sprite irudia)
+    public void AddItem(Sprite irudia)          // !!! ez dadila berahala jarri -> UI puzzlea hemen?
     {
+        GetComponent<Image>().enabled = true;
+        if (GetComponentInChildren<EnableUI>())
+        {
+            GetComponentInChildren<EnableUI>().UIGaitu();
+        }
         icon.sprite = irudia;
         if (!icon.enabled)
         {
@@ -20,6 +25,10 @@ public class ItemTokia : MonoBehaviour {
     {
         holder.enabled = true;
         geziak.text = geziKop.ToString();
+        if(geziKop == 0)
+        {
+            geziak.color = Color.red;
+        }
         geziak.enabled = true;
     }
 

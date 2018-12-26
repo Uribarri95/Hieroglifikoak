@@ -146,6 +146,7 @@ MonoBehaviour:
     m_Bits: 512
   hormaDistantzia: 0.1
   abiadura: 4
+  denboraMax: 20
 --- !u!114 &114708447400748296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00800bf2812086429610fb8f7055e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bizitzaPuntuak: 1
+  bizitzaPuntuak: 3
   hilPartikula: {fileID: 1180656846648676, guid: 8732ec79091562f449162d93e3e4005f,
     type: 2}
 --- !u!212 &212088840380244424
@@ -194,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 21
   m_Sprite: {fileID: 21300000, guid: 8206e8d5c88fbbe4f9a6277680173856, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

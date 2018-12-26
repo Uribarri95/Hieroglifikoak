@@ -12,6 +12,7 @@ public class KakalardoBola : MonoBehaviour {
 
     public float hormaDistantzia;
     public float abiadura;
+    public float denboraMax;
     bool eskumaBegira;
 
 	// Use this for initialization
@@ -64,5 +65,11 @@ public class KakalardoBola : MonoBehaviour {
     {
         eskumaBegira = !eskumaBegira;
         transform.eulerAngles = new Vector3(0, eskumaBegira ? -180 : 0, 0);
+    }
+
+    IEnumerator Suntsitu()
+    {
+        yield return new WaitForSeconds(denboraMax);
+        BolaSuntsitu();
     }
 }

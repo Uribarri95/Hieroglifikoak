@@ -49,10 +49,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4578535735847250}
-  - component: {fileID: 61361369866668984}
   - component: {fileID: 212896225667781616}
   - component: {fileID: 95341409763035150}
   - component: {fileID: 50074972672261730}
+  - component: {fileID: 61361369866668984}
   - component: {fileID: 114688779517808370}
   - component: {fileID: 114061272541786440}
   - component: {fileID: 114550493213148104}
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.34, y: -20.11, z: 0}
+  m_LocalPosition: {x: 4.96, y: -21.07, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1850647987297026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 4578535735847250}
   m_RootOrder: 2
@@ -173,7 +173,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.25, y: 0.30078125}
-    newSize: {x: 0.42666668, y: 0.5133333}
+    newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -210,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3df61c6152adf43810836377761d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itxaroteDenbora: 3
+  murrizketaAbiadura: 3
 --- !u!114 &114061272541786440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,10 +301,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   denboraTartea: 0.3
-  suMinPuntuak: 5
+  suMinPuntuak: 2
   argiErradioa: 20
-  ezpataMinPuntuak: 60
-  geziMinPuntuak: 30
+  ezpataMinPuntuak: 10
+  geziMinPuntuak: 5
   zuria: {r: 1, g: 1, b: 1, a: 1}
   grisa: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
 --- !u!212 &212896225667781616
@@ -339,13 +341,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 5f1d8e3d2d0bfca4c9dc05a2bec98991, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.42666668, y: 0.5133333}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -29,6 +29,10 @@ public class ItemHartu : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        if(gameObject.name.Contains("Ezpata") || gameObject.name.Contains("Arkua"))
+        {
+            GetComponentInParent<Animator>().SetBool("ItemHartu", true);
+        }
     }
 
 }

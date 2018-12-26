@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ArgiEfektua : MonoBehaviour {
 
-    Vector3 tamainaHasiera;
-    float shakeTime = .05f;
-    float itxaroteDenbora = 2.2f;
-    float offset = .05f;
-    float tamaina;
+    public float itxaroteDenbora;               // argi efektua kentzeko denbora
+    public float murrizketaAbiadura;            // argi txikitzen den abiadura
 
-    float denbora;
-    float erradioa;
-    bool handitu;
-    bool erasotzen;
-    bool txikitu;
+    Vector3 tamainaHasiera;                     // argiaren hasierako esfera tamaina
+    float erradioa;                             // erasotzean argiak hartzen duen erradioa
+    float offset = .05f;                        // argia txikitzean errore margina kentzeko
+    bool txikitu;                               // argia berriro ere txikitzen denean gradualki egiteko
+
+    float shakeTime = .05f;                     // argia kliskatzen ari den efektua emateko
+    float randomTamaina;                        // argia kliskatzeko tamaina ezberdinak
+    float denbora;                              // argia kliskatze denbora
+    bool handitu;                               // kliskatze efekturako
+    bool erasotzen;                             // erasoa gertatzen denean ez dago kliskatze efekturik
 
     // Use this for initialization
     void Start () {
@@ -31,14 +33,14 @@ public class ArgiEfektua : MonoBehaviour {
         {
             if (denbora < shakeTime)
             {
-                tamaina = Random.Range(.01f,.05f);
+                randomTamaina = Random.Range(.01f,.05f);
                 if (handitu)
                 {
-                    transform.localScale = new Vector3(tamainaHasiera.x + tamaina, tamainaHasiera.y + tamaina, tamainaHasiera.z);
+                    transform.localScale = new Vector3(tamainaHasiera.x + randomTamaina, tamainaHasiera.y + randomTamaina, tamainaHasiera.z);
                 }
                 else
                 {
-                    transform.localScale = new Vector3(tamainaHasiera.x - tamaina, tamainaHasiera.y - tamaina, tamainaHasiera.z);
+                    transform.localScale = new Vector3(tamainaHasiera.x - randomTamaina, tamainaHasiera.y - randomTamaina, tamainaHasiera.z);
                 }
                 denbora += Time.deltaTime;
             }
@@ -50,7 +52,7 @@ public class ArgiEfektua : MonoBehaviour {
         }
         if(erasotzen && txikitu)
         {
-            erradioa = Mathf.Lerp(erradioa, tamainaHasiera.x, Time.deltaTime * 1.8f);
+            erradioa = Mathf.Lerp(erradioa, tamainaHasiera.x, Time.deltaTime * 3f);
             transform.localScale = new Vector3(erradioa, erradioa, tamainaHasiera.z);
             if (transform.localScale.x <= tamainaHasiera.x + offset)
             {

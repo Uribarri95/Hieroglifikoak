@@ -20,12 +20,13 @@ public class Eraso : MonoBehaviour {
 
     float denbora;                              // eraso maiztasuna kudeatzeko
     public float denboraTartea = .3f;           // eraso maiztasuna kudeatzeko
+    // !!! eraso maiztasuna arkua > ezpata !!!
 
     bool suArgia;                               // sua itema
     bool ezpata;                                // ezpata itema
     bool arkua;                                 // arkua itema
 
-    public float suMinPuntuak = 5;              // suak egiten duen mina !!! kendu!!!
+    public float suMinPuntuak = 5;              // suak egiten duen mina !!! kendu !!!
     public float argiErradioa = 20;             // su erasoaren argi erradioa
     float argiErasoErradioa = .3f;              // suErasoaren erradioa
     float xOffset = -.05f;                      // gezia agertzen den tokia, eraso puntuaren diferentzia
@@ -76,6 +77,10 @@ public class Eraso : MonoBehaviour {
                 inbentarioa.SetNewItem();
                 break;
             case "Ezpata":
+                if (sprite.flipX)
+                {
+                    jokalaria.NoranzkoaAldatu(1);
+                }
                 anim.SetBool("newEzpata", true);
                 anim.SetBool("newItem", true);
                 inbentarioa.SetNewItem();
