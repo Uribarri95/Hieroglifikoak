@@ -26,8 +26,9 @@ GameObject:
   - component: {fileID: 114667077813883908}
   - component: {fileID: 114897530289474294}
   - component: {fileID: 114841050631014174}
+  - component: {fileID: 114723441320074486}
   m_Layer: 11
-  m_Name: Mummy_arm
+  m_Name: mummy_arm
   m_TagString: Etsaia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,6 +179,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114723441320074486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261569425946232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2863f4debcfe8dd428f0eb9162359296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bihotza: {fileID: 1248335774213034, guid: 920d5f81014f69240baf21c462352241, type: 2}
+  geziak: {fileID: 1346075230357110, guid: 4d45f0fa222381b468dc87a57e49c651, type: 2}
+  itemEhunekoa: 10
 --- !u!114 &114841050631014174
 MonoBehaviour:
   m_ObjectHideFlags: 1

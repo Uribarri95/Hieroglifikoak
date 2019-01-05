@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.96, y: -21.07, z: 0}
+  m_LocalPosition: {x: -9.41, y: -20.03, z: 0}
   m_LocalScale: {x: 3.4226487, y: 3.2576349, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -230,7 +230,7 @@ MonoBehaviour:
   bertIzpiTartea: 0
   kolpeGainazalak:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 123392
   aldapaAngeluMax: 45
 --- !u!114 &114550493213148104
 MonoBehaviour:

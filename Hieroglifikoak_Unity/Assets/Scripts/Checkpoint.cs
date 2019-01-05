@@ -18,7 +18,7 @@ public class Checkpoint : MonoBehaviour {
         if (collision.tag == "Player")
         {
             kudetzailea.checkpoint = gameObject;
-            anim.SetBool("zabaldu", true);
+            anim.SetTrigger("zabaldu");
         }
     }
 }

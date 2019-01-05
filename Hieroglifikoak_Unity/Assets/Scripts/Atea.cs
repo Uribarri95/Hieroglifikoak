@@ -13,6 +13,8 @@ public class Atea : MonoBehaviour {
     public GameObject irteeraAtea;
     public GameObject cam;
 
+    public bool zabalduDaiteke;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -24,16 +26,19 @@ public class Atea : MonoBehaviour {
         if(collision.tag == "Player")
         {
             jokalaria = collision.GetComponent<JokalariMug>();
-            playerAnim = collision.GetComponent<Animator>();
             jokalaria.setAteAurrean(true);
-            if (Input.GetKeyDown(KeyCode.DownArrow) && jokalaria.GetLurrean() && !jokalaria.GetAteaZeharkatzen())
+            if (zabalduDaiteke)
             {
-                jokalaria.SetAteaZeharkatzen(true);
+                playerAnim = collision.GetComponent<Animator>();
+                if (Input.GetKeyDown(KeyCode.DownArrow) && jokalaria.GetLurrean() && !jokalaria.GetAteaZeharkatzen())
+                {
+                    jokalaria.SetAteaZeharkatzen(true);
 
-                anim.SetBool("zabaldu", true);
-                exitAnim.SetBool("zabaldu", true);
+                    anim.SetBool("zabaldu", true);
+                    exitAnim.SetBool("zabaldu", true);
 
-                StartCoroutine(AteanSartu());
+                    StartCoroutine(AteanSartu());
+                }
             }
         }
     }
@@ -77,4 +82,8 @@ public class Atea : MonoBehaviour {
         }
     }
 
+    public void AteaZabaldu(bool zabaldu)
+    {
+        zabalduDaiteke = zabaldu;
+    }
 }

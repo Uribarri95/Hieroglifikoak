@@ -10,7 +10,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
     JokalariMug jokalariMug;
     float offsetHasiera;
     float geruzaHasiera;
-    //float makurtuAldaketa = 4 / 3; // !!! altzatuAldaketa = Mathf.Pow(makurtuAldaketa, -1); !!!
+    float makurtuAldaketa = .75f;
+    float irristatuMoteldu = 5;
 
     // !!! diseinua: aldapa denak 45º-koak edo gutxiago !!!
     public float aldapaAngeluMax = 45;
@@ -72,9 +73,10 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
                 // talka aldapa igogarri baten aurka
                 if (i == 0 && aldapaAngelua <= aldapaAngeluMax && !irristatu)
+                {
                     AldapaIgo(ref abiadura, aldapaAngelua, kolpatu.normal);
-                // ezin  da igo
-                else
+                }
+                else // ezin  da igo
                 {
                     // izpi luzera murriztu, hurrengo izpiak aurrekoak ikusi dutena baino lehen dagoena konprobatuko dute bakarrik
                     abiadura.x = (kolpatu.distance - azalZabalera) * xNoranzkoa;
@@ -199,9 +201,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
             }
         }
     }
-    /// !!! aldaketak pendiente !!! //
+
     // makurtzen bagara aldapa irristatuko dugu
-    /// !!! abiadura murriztu
     void AldapaIrristatu(RaycastHit2D kolpea, ref Vector2 abiadura)
     {
         if (kolpea)
@@ -212,8 +213,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
                 jokalariMug.NoranzkoaAldatu(Mathf.Sign(kolpea.normal.x));
                 kolpeak.aldapaAngelu = angelua;
                 kolpeak.normala = kolpea.normal;
-                abiadura.x = Mathf.Cos(angelua * Mathf.Deg2Rad) * .2f * Mathf.Sign(kolpea.normal.x);
-                abiadura.y -= Mathf.Sin(angelua * Mathf.Deg2Rad) * .2f;
+                abiadura.x = Mathf.Cos(angelua * Mathf.Deg2Rad) * Mathf.Sign(kolpea.normal.x) / irristatuMoteldu;
+                abiadura.y -= Mathf.Sin(angelua * Mathf.Deg2Rad) / irristatuMoteldu;
                 kolpeak.aldapaIrristatu = true;
             }
         }
@@ -221,25 +222,26 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
     void ParetaItsatsiKonprobatu(float xNoranzkoa, float izpiLuzera)
     {
-        Vector2 jatorriIzpia = (xNoranzkoa == -1) ? izpiJatorria.bottomLeft : izpiJatorria.bottomRight;
-        //bool goian = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
-        jatorriIzpia += Vector2.up * (horIzpiTartea * izpiHorKop);
+        Vector2 jatorriIzpia = (xNoranzkoa == -1) ? izpiJatorria.topLeft : izpiJatorria.topRight;
+        bool goian = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
+        jatorriIzpia += Vector2.up * horIzpiTartea;
         bool behean = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
-        
-        if (/*goian &&*/ behean)
+        if (goian && behean)
+        {
             kolpeak.paretaitsatsi = true;
+        }
     }
 
     bool KolpeaKonprobatu(Vector2 jatorriIzpia, float xNoranzkoa, float izpiLuzera)
     {
         RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.right * xNoranzkoa, izpiLuzera, kolpeGainazalak);
-        if (kolpatu && (kolpatu.transform.tag == "zeharkatu" || kolpatu.transform.tag == "mugikorra"))
+        if (kolpatu && (kolpatu.transform.tag == "zeharkatu" || kolpatu.transform.tag == "mugikorra")){
             return false;
+        }
         return kolpatu;
     }
 
     // jokalaria makurtzean altuera txikitzen da eta altzatzean handitu
-    // !!! colider-a aldatu animazio guztiak bukatuta daudenean !!! 
     public void GeruzaBertikalaHanditu(bool handitu)
     {
         Vector2 geruza = bc2d.size;
@@ -250,7 +252,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
             Vector3 posizioa = transform.position;
             transform.position = new Vector3(posizioa.x, posizioa.y + .025f, posizioa.z);
 
-            geruza.y = geruza.y * 4 / 3;
+            geruza.y = geruza.y * Mathf.Pow(makurtuAldaketa, -1);
             bc2d.size = geruza;
 
             offset.y = offsetHasiera;
@@ -258,7 +260,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
         }
         else
         {
-            geruza.y = geruza.y * 3 / 4;
+            geruza.y = geruza.y *  makurtuAldaketa;
             bc2d.size = geruza;
 
             offset.y = -(geruzaHasiera - geruza.y) / 2;
@@ -271,7 +273,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
     // !!! diseinua: oztopoa beti izango da jokalaria etzan baino zabalagoa !!!
     public bool AltzatuNaiteke()
     {
-        float jokalariLuzera = bc2d.size.y * 4/3;
+        float jokalariLuzera = bc2d.size.y * Mathf.Pow(makurtuAldaketa, -1);
         
         RaycastHit2D ezkerKolpea = Physics2D.Raycast(izpiJatorria.topLeft, Vector2.up, jokalariLuzera, kolpeGainazalak);
         RaycastHit2D eskuinKolpea = Physics2D.Raycast(izpiJatorria.topRight, Vector2.up, jokalariLuzera, kolpeGainazalak);

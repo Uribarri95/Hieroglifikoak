@@ -14,6 +14,8 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     public bool zikloa;
     [Range(0,3)]
     public float easing;
+    public float itxaroteDenbora;
+    float hurrengoDenbora;
     int itxarotePosizioa;
     float bidaiKantitatea;
 
@@ -47,6 +49,11 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     Vector3 PlataformaMugitu()
     {
+        if (Time.time < hurrengoDenbora)
+        {
+            return Vector3.zero;
+        }
+
         itxarotePosizioa %= itxarotePuntuak.Length;
         int hurrengoPosizoia = (itxarotePosizioa + 1) % itxarotePuntuak.Length;
         float PuntuenArtekoDistantzia = Vector3.Distance(itxarotePuntuak[itxarotePosizioa], itxarotePuntuak[hurrengoPosizoia]);
@@ -67,6 +74,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                     System.Array.Reverse(itxarotePuntuak);
                 }
             }
+            hurrengoDenbora = Time.time + itxaroteDenbora;
         }
         return posizioBerria - transform.position;
     }

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114515280165532654}
   - component: {fileID: 114449754015850972}
   - component: {fileID: 114276999275258162}
+  - component: {fileID: 114604932405363492}
   m_Layer: 11
   m_Name: Saguzarra
   m_TagString: Etsaia
@@ -138,6 +139,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114604932405363492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598734495676246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2863f4debcfe8dd428f0eb9162359296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bihotza: {fileID: 1248335774213034, guid: 920d5f81014f69240baf21c462352241, type: 2}
+  geziak: {fileID: 1346075230357110, guid: 4d45f0fa222381b468dc87a57e49c651, type: 2}
+  itemEhunekoa: 10
 --- !u!212 &212291128210787070
 SpriteRenderer:
   m_ObjectHideFlags: 1

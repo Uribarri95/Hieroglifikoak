@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class KutxaMugitu : MonoBehaviour {
 
+    bool bultzatzen;
     Vector2 abiadura;
     float grabitatea = -10;
-    KutxaMugKud kudeatzailea; /// !!! kutxaren mugimendu kudetzailea, jokalariaren berdina, aldatu eta kode gehiagarria ezabatu
+    KutxaMugKud kudeatzailea;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,10 @@ public class KutxaMugitu : MonoBehaviour {
 
     void Update()
     {
+        if (!bultzatzen)
+        {
+            abiadura.x = 0;
+        }
         if (kudeatzailea.kolpeak.azpian)
         {
             abiadura.y = 0;
@@ -25,6 +30,17 @@ public class KutxaMugitu : MonoBehaviour {
             abiadura.y += grabitatea * Time.deltaTime;
         }
         kudeatzailea.Mugitu(abiadura * Time.deltaTime);
+        SetBultzatzen(false);
+    }
+
+    public void SetAbiadura(Vector2 v)
+    {
+        abiadura.x = v.x;
+    }
+
+    public void SetBultzatzen(bool bultza)
+    {
+        bultzatzen = bultza;
     }
 }
  

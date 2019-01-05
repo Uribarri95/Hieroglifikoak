@@ -145,13 +145,14 @@ MonoBehaviour:
   bertIzpiTartea: 0
   bidaiariak:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 124160
   marraztuPuntuak:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 2, z: 0}
   PlataformaAbiadura: 2
   zikloa: 0
   easing: 1.5
+  itxaroteDenbora: 0
 --- !u!212 &212113462095624202
 SpriteRenderer:
   m_ObjectHideFlags: 1

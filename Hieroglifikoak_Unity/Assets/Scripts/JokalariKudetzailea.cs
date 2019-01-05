@@ -6,6 +6,7 @@ public class JokalariKudetzailea : MonoBehaviour {
 
     public GameObject checkpoint;
     public GameObject cam;
+    public Transition trantzizioa;
     
     private JokalariMug jokalaria;
     Inbentarioa inbentarioa;
@@ -32,13 +33,14 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         // jokalariaren mugimendua ezgaitu
         jokalaria.hiltzen = true;
-
+        trantzizioa.FadeOut();
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
         yield return new WaitForSeconds(hilAnimazioa);
         jokalaria.transform.position = checkpoint.transform.position;
-        // !!! camera bound aldatu !!!
+        // camera bound aldatu
         cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
         jokalaria.GetComponent<Renderer>().enabled = false;
+        trantzizioa.FadeIn();
         // mapa erreseteatu
 
         // animazioa kargatzeko behar duen denbora

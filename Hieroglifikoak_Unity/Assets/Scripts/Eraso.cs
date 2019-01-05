@@ -26,16 +26,18 @@ public class Eraso : MonoBehaviour {
     bool ezpata;                                // ezpata itema
     bool arkua;                                 // arkua itema
 
-    public float suMinPuntuak = 5;              // suak egiten duen mina !!! kendu !!!
+    public float suMinPuntuak = 2;              // suak egiten duen mina !!! kendu !!!
     public float argiErradioa = 20;             // su erasoaren argi erradioa
     float argiErasoErradioa = .3f;              // suErasoaren erradioa
     float xOffset = -.05f;                      // gezia agertzen den tokia, eraso puntuaren diferentzia
     float yOffset = .075f;                      // gezia agertzen den tokia, eraso puntuaren diferentzia
 
     float erasoErradioa = .43f;                 // erasoaren zirkunferentzia erradioa
-    public float ezpataMinPuntuak = 15;         // ezpata erasoaren min puntuak
+    public float ezpataMinPuntuak = 10;         // ezpata erasoaren min puntuak
+    public float ezpataHobetuta = 16;           // ezpata min puntuak hobetuta
 
-    public float geziMinPuntuak = 10;           // geziaren min puntuak
+    public float geziMinPuntuak = 5;            // geziaren min puntuak
+    public float geziaHobetuta = 7;             // geziaren min puntuak hobetuta
 
     public Color zuria, grisa;                  // mina hartzean kolore aldaketak
     bool garaiezina;                            // mina hartu ostean min gehiago ez hartzeko
@@ -197,7 +199,7 @@ public class Eraso : MonoBehaviour {
     }
 
     // kolpea jaso eta bereala jokalaria garaiezin bihurtu segundu pare bat, etsaiarekiko distantzia hartu dezan
-    // bizitzarik ez badu hil egingo da, bestela koll
+    // bizitzarik ez badu hil egingo da
     public bool KolpeaJaso(bool eskuma)
     {
         if (!garaiezina && !jokalaria.GetAteaZeharkatzen())

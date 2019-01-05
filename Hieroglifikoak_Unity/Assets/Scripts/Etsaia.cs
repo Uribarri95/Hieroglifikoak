@@ -33,7 +33,7 @@ public class Etsaia : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        Instantiate(hilPartikula, transform.position, Quaternion.identity);
+        Instantiate(hilPartikula, transform.position, Quaternion.identity); // !!! parent berdinarekin
     }
 
     // etsaia eraso bakoitzean bakarrik behin kolpatzeko

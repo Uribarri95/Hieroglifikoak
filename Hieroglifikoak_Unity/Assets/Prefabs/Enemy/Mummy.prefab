@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114745110265757820}
   - component: {fileID: 114656131625775864}
   - component: {fileID: 114559866187529786}
+  - component: {fileID: 114880599780863790}
   m_Layer: 11
   m_Name: Mummy
   m_TagString: Etsaia
@@ -217,6 +218,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114880599780863790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550824363325318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2863f4debcfe8dd428f0eb9162359296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bihotza: {fileID: 1248335774213034, guid: 920d5f81014f69240baf21c462352241, type: 2}
+  geziak: {fileID: 1346075230357110, guid: 4d45f0fa222381b468dc87a57e49c651, type: 2}
+  itemEhunekoa: 10
 --- !u!212 &212063247487472008
 SpriteRenderer:
   m_ObjectHideFlags: 1

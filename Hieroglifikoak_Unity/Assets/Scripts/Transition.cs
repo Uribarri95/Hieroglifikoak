@@ -21,8 +21,13 @@ public class Transition : MonoBehaviour {
         anim.SetTrigger("fadeOut");
     }
 
-    public void FadeIn()
+    public bool FadeIn()
     {
-        anim.SetTrigger("fadeIn");
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+        {
+            anim.SetTrigger("fadeIn");
+            return true;
+        }
+        return false;
     }
 }

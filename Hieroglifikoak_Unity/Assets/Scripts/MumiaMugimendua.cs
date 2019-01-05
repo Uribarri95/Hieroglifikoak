@@ -77,10 +77,11 @@ public class MumiaMugimendua : MonoBehaviour {
             transform.Translate(Vector2.right * knockBack * Time.deltaTime);
             GetComponent<Etsaia>().KnockBackErreseteatu();
         }
-        if (transform.name.Contains("Mummy") && !GetComponent<Etsaia>().GetBizirik())
+        if (!name.Contains("arm") && !GetComponent<Etsaia>().GetBizirik())
         {
             Destroy(gameObject);
             GameObject mumiBesoaGO = Instantiate(mumiBesoa, transform.position, transform.rotation);
+            mumiBesoaGO.transform.parent = transform.parent;
             MumiaMugimendua mumia = mumiBesoaGO.GetComponent<MumiaMugimendua>();
             if (mumia != null)
             {

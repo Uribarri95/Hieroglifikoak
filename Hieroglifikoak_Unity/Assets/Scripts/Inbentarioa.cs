@@ -89,7 +89,9 @@ public class Inbentarioa : MonoBehaviour {
             switch (item.izena)
             {
                 case "Bihotza":
-                    return BizitzaPuntuakGehitu();
+                    BizitzaPuntuakGehitu();
+                    return true;
+                    //return BizitzaPuntuakGehitu();
                     //break;
                 case "EdariHandia":
                     return EdariHandiaGorde(item);
@@ -98,9 +100,12 @@ public class Inbentarioa : MonoBehaviour {
                     return EdariTxikiaGorde(item);
                     //break;
                 case "Geziak":
-                    return GeziakGorde();
+                    GeziakGorde();
+                    return true;
+                    //return GeziakGorde();
                     //break;
                 case "Bihotz+":
+                    // max 3 hartu daitezke
                     return BizitzaPuntuakHanditu();
                     //break;
                 default:
