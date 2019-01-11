@@ -16,14 +16,19 @@ public class KutxaPuzlea : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        bool zabaldu = true;
-        for (int i = 0; i < kutxak.Length; i++)
+        bool zabaldu = false;
+        if (!zabaldu)
         {
-            zabaldu = zabaldu && kutxak[i].GetKutxaEgokia();
-        }
-        if (zabaldu)
-        {
-            atea.AteaZabaldu(zabaldu);
+            zabaldu = true;
+            for (int i = 0; i < kutxak.Length; i++)
+            {
+                zabaldu = zabaldu && kutxak[i].GetKutxaEgokia();
+            }
+            if (zabaldu)
+            {
+                atea.AteaZabaldu(zabaldu);
+                //resetKutxa ezgaitu?
+            }
         }
     }
 }

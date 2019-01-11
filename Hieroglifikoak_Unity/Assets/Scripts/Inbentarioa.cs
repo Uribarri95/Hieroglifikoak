@@ -27,18 +27,22 @@ public class Inbentarioa : MonoBehaviour {
     string newItem;
 
     int geziKopurua;
-    public int gezikopuruMax = 10;
+    public int geziKopuruMax = 10;
+    int geziakTopera = 20;
+    int geziakAreagotu = 5;
 
     // hide in inspector
     public Item edabea; // enum -> handia, txikia, ezer
 
-    // hide in inspector
-    public int bizitzaPuntuak = 6; // bihotz erdietan kontata
+    public int bizitzaPuntuak; // bihotz erdietan kontata
     public int bizitzaPuntuMax = 6;
+    int bizitzaTopea = 12;
+    int bizitzaPuntuakAreagotu = 2;
 
     private void Start()
     {
-        geziKopurua = 10;
+        geziKopurua = geziKopuruMax;
+        bizitzaPuntuak = bizitzaPuntuMax;
         UIEguneratu();
     }
 
@@ -108,6 +112,9 @@ public class Inbentarioa : MonoBehaviour {
                     // max 3 hartu daitezke
                     return BizitzaPuntuakHanditu();
                     //break;
+                case "Gezi+":
+                    return GeziKopuruahanditu();
+                    //break;
                 default:
                     break;
             }
@@ -172,15 +179,15 @@ public class Inbentarioa : MonoBehaviour {
     bool GeziakGorde()
     {
         Debug.Log("Geziak gordetzen");
-        if (geziKopurua == gezikopuruMax)
+        if (geziKopurua == geziKopuruMax)
         {
             Debug.Log("Geziak topera");
             return false;
         }
         geziKopurua += 5;
-        if (geziKopurua > gezikopuruMax)
+        if (geziKopurua > geziKopuruMax)
         {
-            geziKopurua = gezikopuruMax;
+            geziKopurua = geziKopuruMax;
         }
         // UI barruan adierazi
         UIEguneratu();
@@ -189,15 +196,30 @@ public class Inbentarioa : MonoBehaviour {
 
     bool BizitzaPuntuakHanditu()
     {
-        if(bizitzaPuntuMax < 12)
+        if(bizitzaPuntuMax < bizitzaTopea)
         {
-            bizitzaPuntuMax += 2;
+            bizitzaPuntuMax += bizitzaPuntuakAreagotu;
         }
         else
         {
             Debug.Log("Gehienez 6 bihotz. Bizitza puntu maximoa duzu");
         }
         bizitzaPuntuak = bizitzaPuntuMax;
+        UIEguneratu();
+        return true;
+    }
+
+    bool GeziKopuruahanditu()
+    {
+        if(geziKopuruMax < geziakTopera)
+        {
+            geziKopuruMax += geziakAreagotu;
+        }
+        else
+        {
+            Debug.Log("Gehienez 20 gezi. Gezi kopurua topera");
+        }
+        geziKopurua = geziKopuruMax;
         UIEguneratu();
         return true;
     }

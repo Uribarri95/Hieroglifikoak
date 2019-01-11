@@ -12,6 +12,7 @@ public class Atea : MonoBehaviour {
     public Transition trantzizioa;
     public GameObject irteeraAtea;
     public GameObject cam;
+    public EtsaiKudeaketa etsaiak;
 
     public bool zabalduDaiteke;
 
@@ -19,6 +20,16 @@ public class Atea : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         exitAnim = irteeraAtea.GetComponent<Animator>();
+        if (!zabalduDaiteke || !irteeraAtea.GetComponent<Atea>().GetZabalduDaiteke())
+        {
+            anim.SetLayerWeight(1, 1);
+            exitAnim.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            anim.SetTrigger("giltza");
+            exitAnim.SetTrigger("giltza");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -58,6 +69,7 @@ public class Atea : MonoBehaviour {
 
         cam.GetComponent<VCam>().CameraConfinerKudeatu(irteeraAtea.transform.position);
         jokalaria.transform.position = new Vector2(irteeraAtea.transform.position.x, irteeraAtea.transform.position.y);
+        irteeraAtea.GetComponent<Atea>().EtsaiakReset();
 
         yield return new WaitForSeconds(1); // jokalaria eta kamera toki berrian denbora
 
@@ -85,5 +97,26 @@ public class Atea : MonoBehaviour {
     public void AteaZabaldu(bool zabaldu)
     {
         zabalduDaiteke = zabaldu;
+        irteeraAtea.GetComponent<Atea>().SetZabalduDaiteke(zabaldu);
+        anim.SetTrigger("giltza");
+        exitAnim.SetTrigger("giltza");
+    }
+
+    public bool GetZabalduDaiteke()
+    {
+        return zabalduDaiteke;
+    }
+
+    public void SetZabalduDaiteke(bool zabaldu)
+    {
+        zabalduDaiteke = zabaldu;
+    }
+
+    public void EtsaiakReset()
+    {
+        if (etsaiak != null)
+        {
+            etsaiak.EtsaiakReset();
+        }
     }
 }

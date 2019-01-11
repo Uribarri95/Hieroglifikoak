@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class KutxaJarri : MonoBehaviour {
 
+    // kutxa egokia denean reset multzotik kendu -> parent = transform
     public bool kutxaEgokia;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Contains(name))
+        if (collision.name.Contains(name)) // -> if name.contains gorria && collision.contains gorria || ...
         {
             kutxaEgokia = true;
         }

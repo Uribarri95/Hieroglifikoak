@@ -210,7 +210,7 @@ MonoBehaviour:
     m_Bits: 256
   oztopoak:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 386560
   groundCheck: {fileID: 4957707364669940}
   erasoPuntua: {fileID: 4954523945190402}
   mugitzekoDenbora: 0

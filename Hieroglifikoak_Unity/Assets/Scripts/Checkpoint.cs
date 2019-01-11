@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
 
+    public EtsaiKudeaketa etsaiak;
     JokalariKudetzailea kudetzailea;
     Animator anim;
 
@@ -19,6 +20,14 @@ public class Checkpoint : MonoBehaviour {
         {
             kudetzailea.checkpoint = gameObject;
             anim.SetTrigger("zabaldu");
+        }
+    }
+
+    public void EtsaiakAgerrarazi()
+    {
+        if(etsaiak != null)
+        {
+            etsaiak.EtsaiakReset();
         }
     }
 }

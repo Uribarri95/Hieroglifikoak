@@ -20,7 +20,7 @@ public class Eraso : MonoBehaviour {
 
     float denbora;                              // eraso maiztasuna kudeatzeko
     public float denboraTartea = .3f;           // eraso maiztasuna kudeatzeko
-    // !!! eraso maiztasuna arkua > ezpata !!!
+    public bool denboraTarteaHobetu;            // eraso maiztasina handitzeko
 
     bool suArgia;                               // sua itema
     bool ezpata;                                // ezpata itema
@@ -53,6 +53,7 @@ public class Eraso : MonoBehaviour {
         argia.enabled = false;
         etsaiak = new List<Etsaia>();
         garaiezina = false;
+        denboraTarteaHobetu = false;
     }
 	
 	void Update () {
@@ -64,6 +65,10 @@ public class Eraso : MonoBehaviour {
             ItemEguneratu();
         }
         Erabili();
+        if (denboraTarteaHobetu)
+        {
+            denboraTartea -= .02f;
+        }
 	}
 
     // item berria jasotzean animazio txiki bat gertatzen da

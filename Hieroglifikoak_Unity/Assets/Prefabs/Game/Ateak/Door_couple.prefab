@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834983901080806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5458784, y: -20.794481, z: 0}
+  m_LocalPosition: {x: -2.87, y: -21.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4387424667631064}
@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1102933191462538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67, y: 20.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4033297603101568}
@@ -205,6 +205,8 @@ MonoBehaviour:
   trantzizioa: {fileID: 0}
   irteeraAtea: {fileID: 1678263340877328}
   cam: {fileID: 0}
+  etsaiak: {fileID: 0}
+  zabalduDaiteke: 1
 --- !u!114 &114873133184729164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +221,8 @@ MonoBehaviour:
   trantzizioa: {fileID: 0}
   irteeraAtea: {fileID: 1102933191462538}
   cam: {fileID: 0}
+  etsaiak: {fileID: 0}
+  zabalduDaiteke: 1
 --- !u!212 &212171779978144252
 SpriteRenderer:
   m_ObjectHideFlags: 1

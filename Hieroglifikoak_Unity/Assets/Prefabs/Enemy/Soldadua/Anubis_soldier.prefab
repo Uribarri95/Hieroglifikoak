@@ -213,7 +213,7 @@ MonoBehaviour:
     m_Bits: 256
   oztopoak:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 386560
   groundCheck: {fileID: 4033114671736240}
   erasoPuntua: {fileID: 4703664934460938}
   dashPoint: {fileID: 4771608704228252}
