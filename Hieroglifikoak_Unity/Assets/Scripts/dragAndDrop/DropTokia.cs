@@ -5,62 +5,36 @@ using UnityEngine.EventSystems;
 
 public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
-    //public Drag.PiezaMota mota; // baldintza -> pieza bakarra
-    RectTransform tamaina;
-    public float luzera;
-    public float piezaAltuera;
-    public float altueraMin = 100;
-    public float padding = 20;
-    public float spacing = 2;
-    float altuera;
-    float semeKop;
-
-    // Use this for initialization
-    void Start()
-    {
-        semeKop = transform.childCount;
-        altuera = padding + (piezaAltuera * semeKop) + (spacing * (semeKop - 1));
-        if(altuera < altueraMin)
-        {
-            altuera = altueraMin;
-        }
-        tamaina = GetComponent<RectTransform>();
-        tamaina.sizeDelta = new Vector2(luzera, altuera);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(semeKop < transform.childCount)
-        {
-            semeKop = transform.childCount;
-            altuera = padding + (piezaAltuera * semeKop) + (spacing * (semeKop - 1));
-        }
-        tamaina.sizeDelta = new Vector2(luzera, altuera);
-    }
+    Transform gurasoa;
+    public bool baldintza;
 
     public void OnDrop(PointerEventData eventData)
     {
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
-        if(pieza != null)
+        if (pieza != null)
         {
-            // if pieza.mota == mota
-            pieza.SetGurasoa(transform);
+            pieza.SetPiezaGurasoa(transform);
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(eventData.pointerDrag == null)
+        if (eventData.pointerDrag == null)
         {
             return;
         }
 
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
-        if(pieza!= null)
+        if (pieza != null)
         {
-            pieza.SetPiezaGurasoa(transform);
-            pieza.SetPiezaTokiGurasoa(transform);
+            if (baldintza)
+            {
+                gurasoa = transform.parent.parent;
+            }
+            else
+            {
+                gurasoa = transform.parent;
+            }
         }
     }
 
@@ -72,11 +46,9 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
         }
 
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
-        pieza.SetPiezaTokiGurasoa(pieza.GetGurasoa().parent);
-
-        if (pieza != null && pieza.GetGurasoa() == transform)
+        if (pieza != null && pieza.GetHutsuneGurasoa() == transform)
         {
-            pieza.SetPiezaGurasoa(transform);
+            pieza.SetHutsuneGurasoa(gurasoa);
         }
     }
 }

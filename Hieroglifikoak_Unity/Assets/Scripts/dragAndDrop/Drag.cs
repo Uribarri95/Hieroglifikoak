@@ -6,29 +6,38 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    //public enum PiezaMota { Eragiketa, Baldintza } // baldintza -> pieza bakarra
-    //public PiezaMota mota;
-
-    GameObject piezaTokia;
-    Transform gurasoa;
+    public Transform lehenPanela;
+    public Sprite outline;
     Transform piezaGurasoa;
+    Transform hutsuneGurasoa;
+    GameObject piezaHutsunea;
+
+    public float hutsuneAltuera;
+    public float hutsuneLuzera;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        piezaTokia = new GameObject();
-        piezaTokia.transform.SetParent(transform.parent);
+        piezaHutsunea = new GameObject();
+        piezaHutsunea.transform.SetParent(transform.parent);
 
-        LayoutElement layouta = piezaTokia.AddComponent<LayoutElement>();
+        LayoutElement layouta = piezaHutsunea.AddComponent<LayoutElement>();
         layouta.preferredWidth = GetComponent<LayoutElement>().preferredWidth;
         layouta.preferredHeight = GetComponent<LayoutElement>().preferredHeight;
+        //layouta.preferredWidth = hutsuneLuzera;
+        //layouta.preferredHeight = hutsuneAltuera;
         layouta.flexibleWidth = 0;
         layouta.flexibleHeight = 0;
 
-        piezaTokia.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        Image ertzak = piezaHutsunea.AddComponent<Image>();
+        ertzak.sprite = outline;
+        ertzak.color = GetComponent<Image>().color;
+        ertzak.type = Image.Type.Sliced;
 
-        gurasoa = transform.parent;
+        piezaHutsunea.transform.SetSiblingIndex(transform.GetSiblingIndex());
+
         piezaGurasoa = transform.parent;
-        transform.SetParent(gurasoa.parent);
+        hutsuneGurasoa = transform.parent;
+        transform.SetParent(lehenPanela);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
@@ -37,59 +46,59 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         transform.position = eventData.position;
 
-        int piezaPos = piezaGurasoa.childCount;
-        for (int i = 0; i < piezaGurasoa.childCount; i++)
+        if(eventData.pointerEnter.GetComponent<DropTokia>() != null)
         {
-            if(transform.position.y > piezaGurasoa.GetChild(i).position.y)
+            hutsuneGurasoa = eventData.pointerEnter.transform;
+        }
+
+        if (piezaHutsunea.transform.parent != hutsuneGurasoa)
+        {
+            piezaHutsunea.transform.SetParent(hutsuneGurasoa);
+        }
+
+        int hutsunePos = hutsuneGurasoa.childCount;
+        for (int i = 0; i < hutsuneGurasoa.childCount; i++)
+        {
+            if(transform.position.y > hutsuneGurasoa.GetChild(i).position.y)
             {
-                piezaPos = i;
-                if(piezaTokia.transform.GetSiblingIndex() < piezaPos)
+                hutsunePos = i;
+                if (piezaHutsunea.transform.GetSiblingIndex() < hutsunePos)
                 {
-                    piezaPos--;
+                    hutsunePos--;
                 }
                 break;
             }
         }
-        piezaTokia.transform.SetSiblingIndex(piezaPos);
+        piezaHutsunea.transform.SetSiblingIndex(hutsunePos);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(gurasoa);
-        transform.SetSiblingIndex(piezaTokia.transform.GetSiblingIndex());
-
+        transform.SetParent(piezaGurasoa);
+        transform.SetSiblingIndex(piezaHutsunea.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        Destroy(piezaTokia);
+        Destroy(piezaHutsunea);
     }
 
-    public void PiezaEzabatu()
-    {
-        Destroy(piezaTokia);
-    }
-
-    public Transform GetGurasoa()
-    {
-        return gurasoa;
-    }
-
-    public void SetGurasoa(Transform guraso)
-    {
-        gurasoa = guraso;
-    }
-
+    // !! hau ez da erabiltzen
     public Transform GetPiezaGurasoa()
     {
         return piezaGurasoa;
     }
 
-    public void SetPiezaGurasoa(Transform guraso)
+    public void SetPiezaGurasoa(Transform gurasoa)
     {
-        piezaGurasoa = guraso;
+        piezaGurasoa = gurasoa;
     }
 
-    public void SetPiezaTokiGurasoa(Transform guraso)
+    public Transform GetHutsuneGurasoa()
     {
-        piezaTokia.transform.SetParent(guraso);
+        return hutsuneGurasoa;
+    }
+
+    public void SetHutsuneGurasoa(Transform gurasoa)
+    {
+        hutsuneGurasoa = gurasoa;
     }
 }
