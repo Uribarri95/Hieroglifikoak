@@ -16,12 +16,15 @@ public class BizitzaPuntuakUI : MonoBehaviour {
         inbentario = Inbentarioa.instantzia;
         inbentario.itemJasoDeitu += BihotzUIEguneratu;
         bihotzak = GetComponentsInChildren<BihotzTokia>();
+        inbentario.UIEguneratu();
     }
 	
 	void BihotzUIEguneratu()
     {
-        int bihotzOsoak = inbentario.bizitzaPuntuak / 2;
-        bool bErdia = inbentario.bizitzaPuntuak % 2 > 0;
+        int bihotzOsoak = Inbentarioa.bizitzaPuntuak / 2;
+        bool bErdia = Inbentarioa.bizitzaPuntuak % 2 > 0;
+        //int bihotzOsoak = inbentario.bizitzaPuntuak / 2;
+        //bool bErdia = inbentario.bizitzaPuntuak % 2 > 0;
         for (int i = 1; i < (inbentario.bizitzaPuntuMax / 2) + 1; i++)
         {
             if (bErdia)
@@ -52,10 +55,10 @@ public class BizitzaPuntuakUI : MonoBehaviour {
             }
         }
         // Edabea irudikatu
-        if (inbentario.edabea != null)
+        /*if (inbentario.edabea != null)
         {
             bihotzak[inbentario.bizitzaPuntuMax / 2].AddBihotza(inbentario.edabea.irudia);
-        }
+        }*/
     }
 
 }

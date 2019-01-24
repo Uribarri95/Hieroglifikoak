@@ -18,6 +18,7 @@ public class Transition : MonoBehaviour {
 
     public void FadeOut()
     {
+        anim = GetComponent<Animator>();
         anim.SetTrigger("fadeOut");
     }
 

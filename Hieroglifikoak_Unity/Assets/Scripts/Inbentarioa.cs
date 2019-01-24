@@ -31,13 +31,12 @@ public class Inbentarioa : MonoBehaviour {
     int geziakTopera = 20;
     int geziakAreagotu = 5;
 
-    // hide in inspector
-    public Item edabea; // enum -> handia, txikia, ezer
-
-    public int bizitzaPuntuak; // bihotz erdietan kontata
+    public static int bizitzaPuntuak; // bihotz erdietan kontata
     public int bizitzaPuntuMax = 6;
     int bizitzaTopea = 12;
     int bizitzaPuntuakAreagotu = 2;
+
+    public int txanponKopurua = 0;
 
     private void Start()
     {
@@ -93,27 +92,21 @@ public class Inbentarioa : MonoBehaviour {
             switch (item.izena)
             {
                 case "Bihotza":
-                    BizitzaPuntuakGehitu();
-                    return true;
-                    //return BizitzaPuntuakGehitu();
-                    //break;
-                case "EdariHandia":
-                    return EdariHandiaGorde(item);
-                    //break;
-                case "EdariTxikia":
-                    return EdariTxikiaGorde(item);
+                    return BizitzaPuntuakGehitu();
                     //break;
                 case "Geziak":
-                    GeziakGorde();
-                    return true;
-                    //return GeziakGorde();
+                    return GeziakGorde();
                     //break;
                 case "Bihotz+":
                     // max 3 hartu daitezke
                     return BizitzaPuntuakHanditu();
                     //break;
                 case "Gezi+":
-                    return GeziKopuruahanditu();
+                    return GeziKopuruaHanditu();
+                    //break;
+                case "Txanpona":
+                    TxanponaHartu();
+                    return true;
                     //break;
                 default:
                     break;
@@ -139,43 +132,6 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
-    //edozein momentuan edan bizitza gehitzeko
-    bool EdariHandiaGorde(Item item)
-    {
-        Debug.Log("Edabe handia gordetzen");
-        if (edabea == null)
-        {
-            edabea = item;
-        }
-        else if(edabea.izena == "EdariTxikia")
-        {
-            edabea = item;
-        }
-        else
-        {
-            Debug.Log("Badaukazu edabe handia");
-            return false;
-        }
-        UIEguneratu();
-        return true;
-    }
-
-    bool EdariTxikiaGorde(Item item)
-    {
-        Debug.Log("Edabe txikia gordetzen");
-        if (edabea == null)
-        {
-            edabea = item;
-        }
-        else
-        {
-            Debug.Log("Badaukazu edabe bat");
-            return false;
-        }
-        UIEguneratu();
-        return true;
-    }
-
     bool GeziakGorde()
     {
         Debug.Log("Geziak gordetzen");
@@ -189,7 +145,6 @@ public class Inbentarioa : MonoBehaviour {
         {
             geziKopurua = geziKopuruMax;
         }
-        // UI barruan adierazi
         UIEguneratu();
         return true;
     }
@@ -209,7 +164,7 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
-    bool GeziKopuruahanditu()
+    bool GeziKopuruaHanditu()
     {
         if(geziKopuruMax < geziakTopera)
         {
@@ -222,6 +177,12 @@ public class Inbentarioa : MonoBehaviour {
         geziKopurua = geziKopuruMax;
         UIEguneratu();
         return true;
+    }
+
+    void TxanponaHartu()
+    {
+        txanponKopurua++;
+        UIEguneratu();
     }
 
     public bool KolpeaJaso()

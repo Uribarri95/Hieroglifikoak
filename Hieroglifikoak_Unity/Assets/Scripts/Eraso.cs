@@ -49,6 +49,8 @@ public class Eraso : MonoBehaviour {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         inbentarioa = Inbentarioa.instantzia;
+        inbentarioa.itemJasoDeitu += NewItemKonprobatu;
+        inbentarioa.UIEguneratu();
         argia = GetComponentInChildren<SpriteMask>();
         argia.enabled = false;
         etsaiak = new List<Etsaia>();
@@ -57,7 +59,6 @@ public class Eraso : MonoBehaviour {
     }
 	
 	void Update () {
-        NewItemKonprobatu();
         ItemAldatu();
         ArgiKudeaketa();
         if (inbentarioa.items.Count >= 1)

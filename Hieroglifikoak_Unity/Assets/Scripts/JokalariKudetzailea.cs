@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class JokalariKudetzailea : MonoBehaviour {
 
+    #region Singleton
+    public static JokalariKudetzailea instantzia;
+
+    private void Awake()
+    {
+        if (instantzia != null)
+        {
+            Debug.LogWarning("Error Singleton: JokalariKudeatzaile bat baino gehiago aurkitu da!");
+            return;
+        }
+        instantzia = this;
+    }
+    #endregion
+
+    // true denean input-ak ezgaitu
+    public static bool jokuaGeldituta = false;
+
     public GameObject checkpoint;
     public GameObject cam;
     public Transition trantzizioa;
@@ -14,10 +31,37 @@ public class JokalariKudetzailea : MonoBehaviour {
     public float hilAnimazioa = 1.2f;
     public float berpiztuAnimazioa = 1.2f;
 
-	// Use this for initialization
-	void Start () {
+    public bool gelditu = false;
+    public bool abiarazi = false;
+
+    // Use this for initialization
+    void Start () {
         jokalaria = FindObjectOfType<JokalariMug>();
         inbentarioa = Inbentarioa.instantzia;
+    }
+
+    private void Update()
+    {
+        if (gelditu)
+        {
+            gelditu = false;
+            jokuaGeldituta = true;
+            Time.timeScale = 0f;
+        }
+        if (abiarazi)
+        {
+            abiarazi = false;
+            jokuaGeldituta = false;
+            Time.timeScale = 1f;
+        }
+    }
+
+    // pause -> jokuaGeldituta = true -> dialog-a gelditzeko !!!
+    // pause eta dialog-ak
+    // puzlea dagoen bitartean ere
+    public void TogglePause()
+    {
+        Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
     }
 
     public void JokalariaHil()
@@ -25,11 +69,11 @@ public class JokalariKudetzailea : MonoBehaviour {
         if (!jokalaria.hiltzen)
         {
             inbentarioa.JokalariaHil();
-            StartCoroutine(ItxaronJokalariaHil());
+            StartCoroutine(JokalariaBerpiztu());
         }
     }
 
-    IEnumerator ItxaronJokalariaHil()
+    IEnumerator JokalariaBerpiztu()
     {
         // jokalariaren mugimendua ezgaitu
         jokalaria.hiltzen = true;
@@ -51,7 +95,6 @@ public class JokalariKudetzailea : MonoBehaviour {
         yield return new WaitForSeconds(.04f);
         jokalaria.GetComponent<Renderer>().enabled = true;
         // jokalariari txanpon batzuk kendu
-        // etsaiak berpiztu
 
         yield return new WaitForSeconds(berpiztuAnimazioa);
         jokalaria.hiltzen = false;

@@ -66,6 +66,7 @@ public class JokalariMug : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        abiadura = new Vector2(0, 0);
         kudeatzailea = GetComponent<MugKudeatzaile>();
 
         mugimendua = abiaduraOinez;
@@ -111,7 +112,7 @@ public class JokalariMug : MonoBehaviour
         {
             Aginduak();
         }
-
+        
         kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
     }
 
@@ -141,10 +142,24 @@ public class JokalariMug : MonoBehaviour
         }
         else
         {
-            aginduHorizontala = Input.GetAxisRaw("Horizontal");
-        }   
+            if (!JokalariKudetzailea.jokuaGeldituta)
+            {
+                aginduHorizontala = Input.GetAxisRaw("Horizontal");
+                if(aginduHorizontala == 1 && !Ekintzak.instantzia.GetEskuma())
+                {
+                    aginduHorizontala = 0;
+                }
+                else if (aginduHorizontala == -1 && !Ekintzak.instantzia.GetEzkerra())
+                {
+                    aginduHorizontala = 0;
+                }
+            }
+        }
 
         // SmoothDamp abiadura aldaketa leuntzeko (leunketa faktorearen arabera)
+        //print(aginduHorizontala);
+
+        // !!! pause ez dagoenean soilik !!!
         abiadura.x = Mathf.SmoothDamp(abiadura.x, aginduHorizontala * mugimendua, ref currentVelocity, !kudeatzailea.kolpeak.azpian && !irristatu ? .2f : leunketa);
 
         // hormara itsatzita gauden konprobatu
@@ -278,6 +293,7 @@ public class JokalariMug : MonoBehaviour
         }
     }
 
+    // !!! pause ez dagoenean soilik !!!
     // sprite-aren noranzkoa aldatzen da
     public void NoranzkoaAldatu(float noranzkoa)
     {
@@ -587,5 +603,4 @@ public class JokalariMug : MonoBehaviour
     {
         return ateaZeharkatzen;
     }
-
 }

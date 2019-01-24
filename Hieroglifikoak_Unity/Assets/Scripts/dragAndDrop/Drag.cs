@@ -6,49 +6,65 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    public Transform lehenPanela;
+    public enum mota { Normal, Baldintza, Eragigaia, Funtzioa, Denak };
+    public mota piezaMota;
+    public Transform mugimenduPanela;
     public Sprite outline;
+    public Color kolorea;
+
     Transform piezaGurasoa;
     Transform hutsuneGurasoa;
     GameObject piezaHutsunea;
-
-    public float hutsuneAltuera;
-    public float hutsuneLuzera;
+    float hutsuneAltuera = 10;
+    int index;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         piezaHutsunea = new GameObject();
-        piezaHutsunea.transform.SetParent(transform.parent);
+        piezaHutsunea.transform.SetParent(transform.parent, false);
 
-        LayoutElement layouta = piezaHutsunea.AddComponent<LayoutElement>();
-        layouta.preferredWidth = GetComponent<LayoutElement>().preferredWidth;
-        layouta.preferredHeight = GetComponent<LayoutElement>().preferredHeight;
-        //layouta.preferredWidth = hutsuneLuzera;
-        //layouta.preferredHeight = hutsuneAltuera;
-        layouta.flexibleWidth = 0;
-        layouta.flexibleHeight = 0;
+        RectTransform tamaina = piezaHutsunea.AddComponent<RectTransform>();
+        float luzera = GetComponent<RectTransform>().sizeDelta.x;
+        float altuera = hutsuneAltuera;
+        tamaina.sizeDelta = new Vector2(luzera, altuera);
 
         Image ertzak = piezaHutsunea.AddComponent<Image>();
         ertzak.sprite = outline;
-        ertzak.color = GetComponent<Image>().color;
+        ertzak.color = kolorea;
         ertzak.type = Image.Type.Sliced;
 
-        piezaHutsunea.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        TamainaAldaketa piezaTamaina = piezaHutsunea.AddComponent<TamainaAldaketa>();
+        piezaTamaina.layoutBertikala = GetComponent<TamainaAldaketa>().layoutBertikala;
+
+        index = transform.GetSiblingIndex();
+        piezaHutsunea.transform.SetSiblingIndex(index);
 
         piezaGurasoa = transform.parent;
         hutsuneGurasoa = transform.parent;
-        transform.SetParent(lehenPanela);
+        transform.SetParent(mugimenduPanela);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        float posX = eventData.position.x + (GetComponent<TamainaAldaketa>().GetLuzera() / 3);
+        float posY = eventData.position.y - (GetComponent<TamainaAldaketa>().GetAltuera() / 3);
+        transform.position = new Vector2(posX, posY);
 
-        if(eventData.pointerEnter.GetComponent<DropTokia>() != null)
+        if (eventData.pointerEnter.GetComponent<DropTokia>() != null)
         {
             hutsuneGurasoa = eventData.pointerEnter.transform;
+
+            mota containerMota = eventData.pointerEnter.GetComponent<DropTokia>().piezaMota;
+            if (containerMota == piezaMota || containerMota == mota.Denak)
+            {
+                KoloreaAldatu(true);
+            }
+            else
+            {
+                KoloreaAldatu(false);
+            }
         }
 
         if (piezaHutsunea.transform.parent != hutsuneGurasoa)
@@ -59,8 +75,9 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         int hutsunePos = hutsuneGurasoa.childCount;
         for (int i = 0; i < hutsuneGurasoa.childCount; i++)
         {
-            if(transform.position.y > hutsuneGurasoa.GetChild(i).position.y)
+            if (eventData.position.y > hutsuneGurasoa.GetChild(i).position.y)
             {
+
                 hutsunePos = i;
                 if (piezaHutsunea.transform.GetSiblingIndex() < hutsunePos)
                 {
@@ -75,13 +92,31 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(piezaGurasoa);
-        transform.SetSiblingIndex(piezaHutsunea.transform.GetSiblingIndex());
+        if (transform.parent == hutsuneGurasoa)
+        {
+            transform.SetSiblingIndex(piezaHutsunea.transform.GetSiblingIndex());
+        }
+
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         Destroy(piezaHutsunea);
     }
 
-    // !! hau ez da erabiltzen
+    void KoloreaAldatu(bool koloreZuzena)
+    {
+        Image ertzak = piezaHutsunea.GetComponent<Image>();
+        if (koloreZuzena)
+        {
+            ertzak.sprite = outline;
+            ertzak.color = kolorea;
+        }
+        else
+        {
+            ertzak.sprite = outline;
+            ertzak.color = Color.red;
+        }
+    }
+
     public Transform GetPiezaGurasoa()
     {
         return piezaGurasoa;
@@ -100,5 +135,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public void SetHutsuneGurasoa(Transform gurasoa)
     {
         hutsuneGurasoa = gurasoa;
+    }
+
+    public int GetHasierkoIndizea()
+    {
+        return index;
     }
 }
