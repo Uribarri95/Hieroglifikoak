@@ -18,12 +18,10 @@ public class JokalariKudetzailea : MonoBehaviour {
     }
     #endregion
 
-    // true denean input-ak ezgaitu
-    public static bool jokuaGeldituta = false;
-
     public GameObject checkpoint;
     public GameObject cam;
-    public Transition trantzizioa;
+    //public Transition trantzizioa;
+    public FadeManager fadeManager;
     
     private JokalariMug jokalaria;
     Inbentarioa inbentarioa;
@@ -31,8 +29,6 @@ public class JokalariKudetzailea : MonoBehaviour {
     public float hilAnimazioa = 1.2f;
     public float berpiztuAnimazioa = 1.2f;
 
-    public bool gelditu = false;
-    public bool abiarazi = false;
 
     // Use this for initialization
     void Start () {
@@ -42,26 +38,7 @@ public class JokalariKudetzailea : MonoBehaviour {
 
     private void Update()
     {
-        if (gelditu)
-        {
-            gelditu = false;
-            jokuaGeldituta = true;
-            Time.timeScale = 0f;
-        }
-        if (abiarazi)
-        {
-            abiarazi = false;
-            jokuaGeldituta = false;
-            Time.timeScale = 1f;
-        }
-    }
 
-    // pause -> jokuaGeldituta = true -> dialog-a gelditzeko !!!
-    // pause eta dialog-ak
-    // puzlea dagoen bitartean ere
-    public void TogglePause()
-    {
-        Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
     }
 
     public void JokalariaHil()
@@ -77,7 +54,9 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         // jokalariaren mugimendua ezgaitu
         jokalaria.hiltzen = true;
-        trantzizioa.FadeOut();
+        yield return new WaitForSeconds(.4f);
+        fadeManager.Ilundu();
+        //trantzizioa.FadeOut();
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
         yield return new WaitForSeconds(hilAnimazioa);
         jokalaria.transform.position = checkpoint.transform.position;
@@ -85,7 +64,8 @@ public class JokalariKudetzailea : MonoBehaviour {
         // camera bound aldatu
         cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
         jokalaria.GetComponent<Renderer>().enabled = false;
-        trantzizioa.FadeIn();
+        fadeManager.Argitu();
+        //trantzizioa.FadeIn();
         // mapa erreseteatu
 
         // animazioa kargatzeko behar duen denbora

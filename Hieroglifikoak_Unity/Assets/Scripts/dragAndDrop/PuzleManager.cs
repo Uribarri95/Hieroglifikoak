@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PuzleManager : MonoBehaviour {
 
-    public GameObject trantzizioCanvas;
+    public FadeManager fadeManager;
+    public ArgibideakAldatu argibideak;
     public int extraKop;
+
     GameObject currentPanel;
     Ekintzak emaitzak;
-    Transition trantzizioa;
     int zenbakia;
 
     private void Start()
@@ -17,8 +18,6 @@ public class PuzleManager : MonoBehaviour {
         {
             emaitzak = Ekintzak.instantzia;
         }
-        //emaitzak = Ekintzak.instantzia;
-        trantzizioa = trantzizioCanvas.GetComponentInChildren<Transition>();
     }
 
     public void PanelGaitu(int zenb)
@@ -44,14 +43,15 @@ public class PuzleManager : MonoBehaviour {
     IEnumerator PanelEzgaitu()
     {
         yield return new WaitForSeconds(.5f);
-        trantzizioCanvas.SetActive(true);
-        trantzizioa.FadeOut();
-        yield return new WaitForSeconds(1);
+        fadeManager.Ilundu();
+        yield return new WaitForSeconds(1.5f);
         currentPanel.SetActive(false);
         gameObject.SetActive(false);
-        trantzizioa.FadeIn();
+        fadeManager.Argitu();
+        Pause.jokuaGeldituta = false;
         yield return new WaitForSeconds(1);
         // mugimendua berreskuratu
+        
     }
 
     public void Konprobatu()
@@ -63,6 +63,28 @@ public class PuzleManager : MonoBehaviour {
         {
             emaitzak.Eragin();
             StartCoroutine(PanelEzgaitu());
+        }
+        else
+        {
+            // mezu kutxa aldatu segundu batzuk
+            //StopAllCoroutines();
+            StartCoroutine(argibideak.BehinBehinekoTextua());
+        }
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < currentPanel.transform.childCount; i++)
+        {
+            Transform child = currentPanel.transform.GetChild(i);
+            for (int j = 0; j < child.transform.childCount; j++)
+            {
+                Drag pieza = child.transform.GetChild(j).GetComponent<Drag>();
+                if(pieza != null)
+                {
+                    pieza.Reset();
+                }
+            }
         }
     }
 }

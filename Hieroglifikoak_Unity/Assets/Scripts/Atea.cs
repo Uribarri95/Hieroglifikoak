@@ -9,7 +9,8 @@ public class Atea : MonoBehaviour {
     Animator anim;
     Animator exitAnim;
 
-    public Transition trantzizioa;
+    //public Transition trantzizioa;
+    public FadeManager fadeManager;
     public GameObject irteeraAtea;
     public GameObject cam;
     public EtsaiKudeaketa etsaiak;
@@ -63,7 +64,8 @@ public class Atea : MonoBehaviour {
         yield return new WaitForSeconds(.3f); // jokalaria atea zabaldu baino lehen ez sartzeko
 
         playerAnim.SetTrigger("ateanSartu");
-        trantzizioa.FadeOut();
+        fadeManager.Ilundu();
+        //trantzizioa.FadeOut();
 
         yield return new WaitForSeconds(1.25f); // atetik desagertzeko behar duen denbora
 
@@ -73,7 +75,8 @@ public class Atea : MonoBehaviour {
 
         yield return new WaitForSeconds(1); // jokalaria eta kamera toki berrian denbora
 
-        trantzizioa.FadeIn();
+        fadeManager.Argitu();
+        //trantzizioa.FadeIn();
         playerAnim.SetTrigger("atetikIrten");
 
         yield return new WaitForSeconds(1f); // jokalaria irten ostean atea ixten da

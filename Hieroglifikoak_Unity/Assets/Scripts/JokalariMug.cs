@@ -142,7 +142,7 @@ public class JokalariMug : MonoBehaviour
         }
         else
         {
-            if (!JokalariKudetzailea.jokuaGeldituta)
+            if (!Pause.jokuaGeldituta)
             {
                 aginduHorizontala = Input.GetAxisRaw("Horizontal");
                 if(aginduHorizontala == 1 && !Ekintzak.instantzia.GetEskuma())
@@ -153,6 +153,10 @@ public class JokalariMug : MonoBehaviour
                 {
                     aginduHorizontala = 0;
                 }
+            }
+            else
+            {
+                aginduHorizontala = 0;
             }
         }
 
@@ -388,12 +392,14 @@ public class JokalariMug : MonoBehaviour
                     if (makurtu && kudeatzailea.AltzatuNaiteke())
                     {
                         Altzatu();
-                        abiadura.y = saltoIndarra;
+                        abiadura.y = Ekintzak.instantzia.GetSaltoTxikia()? saltoIndarra / 1.3f : saltoIndarra;
+                        //abiadura.y = saltoIndarra;
                         anim.SetBool("eraso", false);
                     }
                     else if (!makurtu)
                     {
-                        abiadura.y = saltoIndarra;
+                        abiadura.y = Ekintzak.instantzia.GetSaltoTxikia() ? saltoIndarra / 1.3f : saltoIndarra;
+                        //abiadura.y = saltoIndarra;
                         anim.SetBool("eraso", false);
                     }
                 }

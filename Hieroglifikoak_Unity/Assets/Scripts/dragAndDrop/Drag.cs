@@ -18,6 +18,29 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     float hutsuneAltuera = 10;
     int index;
 
+    Transform hasierakoGurasoa;
+    int hasierakoPos;
+
+    private void Start()
+    {
+        hasierakoGurasoa = transform.parent;
+        hasierakoPos = transform.GetSiblingIndex();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Reset();
+        }
+    }
+
+    public void Reset()
+    {
+        transform.SetParent(hasierakoGurasoa);
+        transform.SetSiblingIndex(hasierakoPos);
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         piezaHutsunea = new GameObject();

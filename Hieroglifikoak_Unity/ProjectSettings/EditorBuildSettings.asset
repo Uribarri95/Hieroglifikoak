@@ -4,4 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/MainMenu.unity
+    guid: 29eeb817eb92e6c4cabb663858679398
+  - enabled: 1
+    path: Assets/Scene/Hasiera.unity
+    guid: c4abb442ced90d34d89fe11b15aac628
+  m_configObjects: {}

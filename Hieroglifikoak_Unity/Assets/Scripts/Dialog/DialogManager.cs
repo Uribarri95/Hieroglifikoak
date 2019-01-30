@@ -24,8 +24,8 @@ public class DialogManager : MonoBehaviour {
     public Animator anim;
     public GameObject dialogCanvas;
     public GameObject puzleCanvas;
-    public GameObject trantzizioCanvas;
-    public Transition trantzizioa;
+    public FadeManager fadeManager;
+    //public Transition trantzizioa;
     
     private Queue<string> esaldiak;
     bool puzleaJarri = false;
@@ -39,10 +39,11 @@ public class DialogManager : MonoBehaviour {
     // !!! if canvasJarri -> pause -> jokalariaren kontrola kendu !!!
     public void StartDialog(Dialog dialog, bool canvasJarri, int zenb)
     {
+        Pause.jokuaGeldituta = true;
+
         puzleaJarri = canvasJarri;
         zenbakia = zenb;
 
-        trantzizioCanvas.SetActive(false);
         anim.SetBool("zabalduta", true);
 
         esaldiak.Clear();
@@ -56,25 +57,26 @@ public class DialogManager : MonoBehaviour {
     // !!! pause sakatzean ezgaitu !!!
     public void HurrengoEsaldiaErakutsi()
     {
-        if (!JokalariKudetzailea.jokuaGeldituta)
+        if (esaldiak.Count == 0)
         {
-            if (esaldiak.Count == 0)
-            {
-                HizketaBukatu();
-                return;
-            }
-            if (esaldiak.Count == 1)
-            {
-                botoia.text = "Ados";
-            }
-            if (esaldiak.Count > 1)
-            {
-                botoia.text = "Jarraitu >";
-            }
-            string esaldia = esaldiak.Dequeue();
-            StopAllCoroutines();
-            StartCoroutine(EsaldiaIdatzi(esaldia));
+            HizketaBukatu();
+            return;
         }
+        if (esaldiak.Count == 1)
+        {
+            botoia.text = "Ados";
+        }
+        if (esaldiak.Count > 1)
+        {
+            botoia.text = "Jarraitu >";
+        }
+        string esaldia = esaldiak.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(EsaldiaIdatzi(esaldia));
+        /*if (!Pause.jokuaGeldituta)
+        {
+            
+        }*/
     }
 
     IEnumerator EsaldiaIdatzi(string esaldia)
@@ -87,7 +89,7 @@ public class DialogManager : MonoBehaviour {
         }
     }
 
-    // !!! canvas ezgaitu
+    // !!! canvas ezgaitu ? 
     public void HizketaBukatu()
     {
         anim.SetBool("zabalduta", false);
@@ -101,13 +103,13 @@ public class DialogManager : MonoBehaviour {
     IEnumerator ErakutsiPuzzleUI()
     {
         yield return new WaitForSeconds(.5f);
-        trantzizioCanvas.SetActive(true);
-        trantzizioa.FadeOut();
-        yield return new WaitForSeconds(1);
+        fadeManager.Ilundu();
+        //trantzizioa.FadeOut();
+        yield return new WaitForSeconds(1.5f);
         puzleCanvas.SetActive(true);
         puzleCanvas.GetComponent<PuzleManager>().PanelGaitu(zenbakia);
-        trantzizioa.FadeIn();
+        //trantzizioa.FadeIn();
+        fadeManager.Argitu();
         yield return new WaitForSeconds(1);
-        trantzizioCanvas.SetActive(false);
     }
 }

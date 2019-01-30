@@ -24,7 +24,7 @@ public class Ekintzak : MonoBehaviour {
 
     public int tamaina;
     int index;
-    bool[] ekintzak;
+    public bool[] ekintzak; //bukatzean private egin !!!
     string[] argibideak;
 
     // Use this for initialization
@@ -36,13 +36,15 @@ public class Ekintzak : MonoBehaviour {
         }
 
         argibideak = new string[tamaina];
-        argibideak[0] = "Eskuma gezia zapaltzean jokalaria eskumara mugitu behar da.";
+        argibideak[0] = "Eskuma gezia zapaltzean jokalaria eskumara mugitu behar da.\nMugitu eskumako pieza laukizuzen berdearen barnera.";
         argibideak[1] = "Ezkerra gezia zapaltzean jokalaria ezkerrera mugitu behar da.";
+        argibideak[2] = "Zuriune-barra zapaltzean jokalaria salto egin behar du.\nLurrera erori arte ezin du berriz jauzi egin.";
 
         emaitzak = new string[tamaina][];
 
         emaitzak[0] = new string[] { "hasiifbEskBotpxPos+4ifbukatu" };
         emaitzak[1] = new string[] { "hasiifbEskBotpxPos+4ififbEzkBotpxPos-4ifbukatu", "hasiifbEzkBotpxPos-4ififbEskBotpxPos+4ifbukatu" };
+        emaitzak[2] = new string[] { "" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)

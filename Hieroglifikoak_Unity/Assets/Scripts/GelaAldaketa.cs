@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GelaAldaketa : MonoBehaviour {
 
-    public Transition trantzizioa;
+    //public Transition trantzizioa;
+    public FadeManager fadeManager;
     public GameObject cam;
     public EtsaiKudeaketa etsaiak;
     public float aldaketaDenbora;
@@ -17,16 +18,18 @@ public class GelaAldaketa : MonoBehaviour {
         if (collision.tag == "Player")
         {
             jokalaria = collision.GetComponent<JokalariMug>();
-            if (!trantzizioa.FadeIn())
+            if (!jokalaria.gelaAldaketa) // sartzen
             {
                 jokalaria.SetGelaAldaketa(eskuma);
-                trantzizioa.FadeOut();
+                fadeManager.Ilundu();
+                //trantzizioa.FadeOut();
             }
-            else
+            else // urteten
             {
                 cam.GetComponent<VCam>().CameraConfinerKudeatu(jokalaria.transform.position);
-                trantzizioa.FadeIn();
-                if(etsaiak != null)
+                fadeManager.Argitu(.5f);
+                //trantzizioa.FadeIn();
+                if (etsaiak != null)
                 {
                     etsaiak.EtsaiakReset();
                 }

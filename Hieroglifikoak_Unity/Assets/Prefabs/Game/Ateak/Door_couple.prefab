@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18fd5e5a4220834aba24597f11efdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trantzizioa: {fileID: 0}
+  fadeManager: {fileID: 0}
   irteeraAtea: {fileID: 1678263340877328}
   cam: {fileID: 0}
   etsaiak: {fileID: 0}
@@ -218,11 +218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18fd5e5a4220834aba24597f11efdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trantzizioa: {fileID: 0}
+  fadeManager: {fileID: 0}
   irteeraAtea: {fileID: 1102933191462538}
   cam: {fileID: 0}
   etsaiak: {fileID: 0}
-  zabalduDaiteke: 1
+  zabalduDaiteke: 0
 --- !u!212 &212171779978144252
 SpriteRenderer:
   m_ObjectHideFlags: 1
