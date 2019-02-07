@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GelaAldaketa : MonoBehaviour {
 
-    //public Transition trantzizioa;
     public FadeManager fadeManager;
     public GameObject cam;
     public EtsaiKudeaketa etsaiak;
@@ -22,13 +21,12 @@ public class GelaAldaketa : MonoBehaviour {
             {
                 jokalaria.SetGelaAldaketa(eskuma);
                 fadeManager.Ilundu();
-                //trantzizioa.FadeOut();
             }
             else // urteten
             {
                 cam.GetComponent<VCam>().CameraConfinerKudeatu(jokalaria.transform.position);
-                fadeManager.Argitu(.5f);
-                //trantzizioa.FadeIn();
+                StartCoroutine(fadeManager.FadeIn(.5f));
+                //fadeManager.Argitu(.5f);
                 if (etsaiak != null)
                 {
                     etsaiak.EtsaiakReset();

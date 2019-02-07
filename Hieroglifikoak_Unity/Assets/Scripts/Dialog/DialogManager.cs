@@ -97,6 +97,13 @@ public class DialogManager : MonoBehaviour {
         {
             StartCoroutine(ErakutsiPuzzleUI());
         }
+        else
+        {
+            if (!puzleCanvas.GetComponent<PuzleManager>().aktibatuta)
+            {
+                Pause.jokuaGeldituta = false;
+            }
+        }
         dialogCanvas.SetActive(false);
     }
 

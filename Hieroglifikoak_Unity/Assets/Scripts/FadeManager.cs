@@ -16,8 +16,13 @@ public class FadeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(FadeIn());
+        //StartCoroutine(FadeIn()); // hau kentzen badugu eszenatoki guztietan singleton batek jartzea
 	}
+
+    public int GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
 
     public void FadeToScene(int scene)
     {
@@ -26,7 +31,7 @@ public class FadeManager : MonoBehaviour {
         StartCoroutine(FadeOut());
     }
 
-    public void Argitu(float t = 0)
+    public void Argitu(float t = 0) // ilundu argitu kendu? !!! erabiltzen duen bakarra gelaaldatu da eta fadein deitu dezake zuzenean
     {
         StartCoroutine(FadeIn(t));
     }

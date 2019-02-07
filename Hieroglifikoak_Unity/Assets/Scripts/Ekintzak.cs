@@ -36,15 +36,25 @@ public class Ekintzak : MonoBehaviour {
         }
 
         argibideak = new string[tamaina];
-        argibideak[0] = "Eskuma gezia zapaltzean jokalaria eskumara mugitu behar da.\nMugitu eskumako pieza laukizuzen berdearen barnera.";
-        argibideak[1] = "Ezkerra gezia zapaltzean jokalaria ezkerrera mugitu behar da.";
+
+        argibideak[0] = "Eskuma gezia zapaltzen bada, jokalaria eskumara mugitu behar da.\nMugitu eskumako pieza laukizuzen berdearen barnera.";
+        argibideak[1] = "Ezkerra gezia zapaltzen bada, jokalaria ezkerrera mugitu behar da.\n\nPieza bat soberan egon daiteke.";
         argibideak[2] = "Zuriune-barra zapaltzean jokalaria salto egin behar du.\nLurrera erori arte ezin du berriz jauzi egin.";
+        argibideak[3] = "Jokalariaren abiadura 6 izan behar da korrika dagoenean eta 4 oinez dagoenean. Eskumara zein ezkerrera joateko funtzionatu behar du." +
+            "\nAldatu 'mugimendu horizontala' eta 'mugimendu bertikala' dagoen kodea eta jarri aldagai egokiak";
 
         emaitzak = new string[tamaina][];
-
-        emaitzak[0] = new string[] { "hasiifbEskBotpxPos+4ifbukatu" };
-        emaitzak[1] = new string[] { "hasiifbEskBotpxPos+4ififbEzkBotpxPos-4ifbukatu", "hasiifbEzkBotpxPos-4ififbEskBotpxPos+4ifbukatu" };
-        emaitzak[2] = new string[] { "" };
+        emaitzak[0] = new string[] { "ifbEskBotpXAbiadura+4if" };
+        emaitzak[1] = new string[] { "ifbEskBotpXAbiadura+4ififbEzkBotpXAbiadura-4if", "ifbEzkBotpXAbiadura-4ififbEskBotpXAbiadura+4if" };
+        emaitzak[2] = new string[] { "pBoolSaltoEgin=TrueifbkbSaltoBotANDbSaltoEginbkpSaltoEgin=FalsepyPos+4if",
+                                     "pBoolSaltoEgin=TrueifbkbSaltoEginANDbSaltoBotbkpSaltoEgin=FalsepyPos+4if" };
+        emaitzak[3] = new string[] { "pIntHAbiadurapOinezAbiadura=4pKorrikaAbiadura=6ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif",
+                                     "pIntHAbiadurapKorrikaAbiadura=6pOinezAbiadura=4ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif",
+                                     "pKorrikaAbiadura=6pIntHAbiadurapOinezAbiadura=4ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif"};
+        emaitzak[4] = new string[] { "pSaltoIndarra=4pBoolSaltoEgin=TrueifbkbSaltoEginANDbSaltoBotbkpYAbiadura=saltoIndarrapSaltoEgin=Falseif",
+                                     "pSaltoIndarra=4pBoolSaltoEgin=TrueifbkbSaltoEginANDbSaltoBotbkpSaltoEgin=FalsepYAbiadura=saltoIndarraif",
+                                     "pBoolSaltoEgin=TruepSaltoIndarra=4ifbkbSaltoEginANDbSaltoBotbkpSaltoEgin=FalsepYAbiadura=saltoIndarraif",
+                                     "pBoolSaltoEgin=TruepSaltoIndarra=4ifbkbSaltoEginANDbSaltoBotbkpYAbiadura=saltoIndarrapSaltoEgin=Falseif" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
@@ -78,7 +88,6 @@ public class Ekintzak : MonoBehaviour {
 
     public void Eragin()
     {
-        print("eragin " + index);
         ekintzak[index] = true;
     }
 

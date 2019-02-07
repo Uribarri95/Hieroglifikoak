@@ -34,7 +34,6 @@ public class Pause : MonoBehaviour {
 
     public void Hiztegia()
     {
-        Debug.Log("beste UI bat erakusten");
         hiztegiPanel.SetActive(true);
         pausePanel.SetActive(false);
     }
@@ -43,7 +42,5 @@ public class Pause : MonoBehaviour {
     {
         TogglePause();
         fademanager.FadeToScene(0);
-        //trantzizioa.FadeOutMenu(0);
-        //SceneManager.LoadScene(0); // transition bitartez?
     }
 }

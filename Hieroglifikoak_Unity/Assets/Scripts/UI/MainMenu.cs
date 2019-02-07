@@ -7,6 +7,12 @@ public class MainMenu : MonoBehaviour {
     public FadeManager fadeManager;
     public static int sceneToLoad = 1; // load fitxategia zenbaki hau aldatu
 
+    private void Start()
+    {
+        //argitu
+        fadeManager.Argitu();
+    }
+
     public void Play()
     {
         fadeManager.FadeToScene(sceneToLoad);
@@ -18,12 +24,12 @@ public class MainMenu : MonoBehaviour {
         Application.Quit();
     }
 
-    void Save()
+    void Gorde()
     {
 
     }
 
-    void Load()
+    void Kargatu()
     {
 
     }

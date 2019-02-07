@@ -18,6 +18,10 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
         if (pieza != null)
         {
+            if(pieza.piezaMota == Drag.mota.Izenburua)
+            {
+                return;
+            }
             if (piezaMota == pieza.piezaMota || piezaMota == Drag.mota.Denak) // pieza hemen jarri daiteke
             {
                 if (piezaBakarra)
@@ -42,15 +46,15 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         piezaPos.SetSiblingIndex(piezaTokia.childCount);
                     }
                 }
-                if (goikoPieza != null && goikoPieza.parent == piezaTokia)
+                /*if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak muntatu daiteze ala ez
                 {
                     pieza.transform.SetParent(pieza.GetPiezaGurasoa());
                     pieza.transform.SetSiblingIndex(pieza.GetHasierkoIndizea());
                 }
                 else
-                {
+                {*/
                     pieza.SetPiezaGurasoa(transform); // pieza hutsunean jarri
-                }
+                //}
             }
             else // pieza toki okerren jarri da, datorren tokira itzuli
             {
@@ -70,6 +74,10 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
         if (pieza != null)
         {
+            if(pieza.piezaMota == Drag.mota.Izenburua)
+            {
+              return;
+            }
             if (goikoPieza != null)
             {
                 gurasoa = goikoPieza.parent;
@@ -98,6 +106,10 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
         if (pieza != null)
         {
+            if(pieza.piezaMota == Drag.mota.Izenburua)
+            {
+                return;
+            }
             if (pieza.GetHutsuneGurasoa() == transform)
             {
                 if (piezaBakarra)

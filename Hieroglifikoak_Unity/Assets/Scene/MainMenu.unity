@@ -358,6 +358,15 @@ Prefab:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1063349950585480, guid: 8f50a8b81dd5ec748beed1d5831a37a7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114003491536057474, guid: 8f50a8b81dd5ec748beed1d5831a37a7,
+        type: 2}
+      propertyPath: fadeOutDenbora
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f50a8b81dd5ec748beed1d5831a37a7, type: 2}
   m_IsPrefabAsset: 0

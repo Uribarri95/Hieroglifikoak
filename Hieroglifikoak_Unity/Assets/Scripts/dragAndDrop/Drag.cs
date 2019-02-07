@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    public enum mota { Normal, Baldintza, Eragigaia, Funtzioa, Denak };
+    public enum mota { Normal, Baldintza, Eragigaia, Funtzioa, Denak, Izenburua };
     public mota piezaMota;
     public Transform mugimenduPanela;
     public Sprite outline;
@@ -27,13 +27,13 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         hasierakoPos = transform.GetSiblingIndex();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
             Reset();
         }
-    }
+    }*/
 
     public void Reset()
     {
@@ -43,6 +43,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(piezaMota == mota.Izenburua)
+        {
+            return;
+        }
         piezaHutsunea = new GameObject();
         piezaHutsunea.transform.SetParent(transform.parent, false);
 
@@ -71,6 +75,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (piezaMota == mota.Izenburua)
+        {
+            return;
+        }
         float posX = eventData.position.x + (GetComponent<TamainaAldaketa>().GetLuzera() / 3);
         float posY = eventData.position.y - (GetComponent<TamainaAldaketa>().GetAltuera() / 3);
         transform.position = new Vector2(posX, posY);
@@ -100,13 +108,16 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         {
             if (eventData.position.y > hutsuneGurasoa.GetChild(i).position.y)
             {
-
-                hutsunePos = i;
-                if (piezaHutsunea.transform.GetSiblingIndex() < hutsunePos)
+                Drag izenburua = hutsuneGurasoa.GetChild(i).GetComponent<Drag>();
+                if (izenburua == null || (izenburua != null && izenburua.piezaMota != mota.Izenburua))
                 {
-                    hutsunePos--;
+                    hutsunePos = i;
+                    if (piezaHutsunea.transform.GetSiblingIndex() < hutsunePos)
+                    {
+                        hutsunePos--;
+                    }
+                    break;
                 }
-                break;
             }
         }
         piezaHutsunea.transform.SetSiblingIndex(hutsunePos);
@@ -114,6 +125,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (piezaMota == mota.Izenburua)
+        {
+            return;
+        }
         transform.SetParent(piezaGurasoa);
         if (transform.parent == hutsuneGurasoa)
         {

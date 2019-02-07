@@ -82,7 +82,7 @@ public class Eraso : MonoBehaviour {
             case "SuArgia":
                 anim.SetBool("newSua", true);
                 anim.SetBool("newItem", true);
-                inbentarioa.SetNewItem();
+                inbentarioa.NewItemHustu();
                 break;
             case "Ezpata":
                 if (sprite.flipX)
@@ -91,12 +91,12 @@ public class Eraso : MonoBehaviour {
                 }
                 anim.SetBool("newEzpata", true);
                 anim.SetBool("newItem", true);
-                inbentarioa.SetNewItem();
+                inbentarioa.NewItemHustu();
                 break;
             case "Arkua":
                 anim.SetBool("newArkua", true);
                 anim.SetBool("newItem", true);
-                inbentarioa.SetNewItem();
+                inbentarioa.NewItemHustu();
                 break;
             default:
                 Debug.Log("Error: item-a ez dago zerrendan");

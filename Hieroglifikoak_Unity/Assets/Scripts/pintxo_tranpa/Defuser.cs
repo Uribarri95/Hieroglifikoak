@@ -5,6 +5,8 @@ using UnityEngine;
 public class Defuser : MonoBehaviour {
 
     TranpaManager tranpak;
+    public HormaMugimendua mugTranpa;
+    public Zapaldu zapalTranpa;
 
     // Use this for initialization
     void Start()
@@ -14,9 +16,17 @@ public class Defuser : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (tranpak != null)
         {
             tranpak.TranpakKudeatu(false);
+        }
+        else if (mugTranpa != null)
+        {
+            mugTranpa.TranpakKudeatu(false);
+        }
+        else if (zapalTranpa != null)
+        {
+            zapalTranpa.TranpakKudeatu(false);
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour {
 
     public EtsaiKudeaketa etsaiak;
+    // !!! reset
     JokalariKudetzailea kudetzailea;
     Animator anim;
 

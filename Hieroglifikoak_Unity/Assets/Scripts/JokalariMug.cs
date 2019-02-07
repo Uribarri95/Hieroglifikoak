@@ -377,76 +377,82 @@ public class JokalariMug : MonoBehaviour
 
     void SaltoKudeaketa()
     {
-        if (Input.GetButton("Jump") && !anim.GetBool("eraso") && !ateaZeharkatzen)
+        if (!Pause.jokuaGeldituta)
         {
-            if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") && 
-                !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
+            if (Input.GetButton("Jump") && !anim.GetBool("eraso") && !ateaZeharkatzen)
             {
-                if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma) //aldapa irristatzen saltoa saltoa
+                if (kudeatzailea.kolpeak.azpian && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_sword_ground_attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_bow_ground_attack") &&
+                    !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_bow") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_torch") && !anim.GetCurrentAnimatorStateInfo(0).IsName("player_item_sword"))
                 {
-                    abiadura.y = saltoIndarra * saltoNeurria;
-                    abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
+                    if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma) //aldapa irristatzen saltoa saltoa
+                    {
+                        abiadura.y = saltoIndarra * saltoNeurria;
+                        abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
+                    }
+                    else //salto normala
+                    {
+                        if (makurtu && kudeatzailea.AltzatuNaiteke())
+                        {
+                            Altzatu();
+                            abiadura.y = Ekintzak.instantzia.GetSaltoTxikia() ? saltoIndarra / 1.3f : saltoIndarra;
+                            //abiadura.y = saltoIndarra;
+                            anim.SetBool("eraso", false);
+                        }
+                        else if (!makurtu)
+                        {
+                            abiadura.y = Ekintzak.instantzia.GetSaltoTxikia() ? saltoIndarra / 1.3f : saltoIndarra;
+                            //abiadura.y = saltoIndarra;
+                            anim.SetBool("eraso", false);
+                        }
+                    }
                 }
-                else //salto normala
+                else if (paretaItsatsi) // pareta saltoa
                 {
-                    if (makurtu && kudeatzailea.AltzatuNaiteke())
-                    {
-                        Altzatu();
-                        abiadura.y = Ekintzak.instantzia.GetSaltoTxikia()? saltoIndarra / 1.3f : saltoIndarra;
-                        //abiadura.y = saltoIndarra;
-                        anim.SetBool("eraso", false);
-                    }
-                    else if (!makurtu)
-                    {
-                        abiadura.y = Ekintzak.instantzia.GetSaltoTxikia() ? saltoIndarra / 1.3f : saltoIndarra;
-                        //abiadura.y = saltoIndarra;
-                        anim.SetBool("eraso", false);
-                    }
+                    KorrikaBotoiaAskatu();
+                    paretaNoranzkoa = kudeatzailea.kolpeak.ezkerra ? -1 : 1;
+                    abiadura.x = -paretaNoranzkoa * paretaSaltoa.x;
+                    abiadura.y = paretaSaltoa.y;
                 }
             }
-            else if (paretaItsatsi) // pareta saltoa
+            else if (Input.GetButtonUp("Jump")) // salto botoia askatu altuera maximoa lortu baino lehen
             {
-                KorrikaBotoiaAskatu();
-                paretaNoranzkoa = kudeatzailea.kolpeak.ezkerra ? -1 : 1;
-                abiadura.x = -paretaNoranzkoa * paretaSaltoa.x;
-                abiadura.y = paretaSaltoa.y;
+                if (abiadura.y > 0)
+                {
+                    abiadura.y = abiadura.y * .5f;
+                }
             }
         }
-        else if (Input.GetButtonUp("Jump")) // salto botoia askatu altuera maximoa lortu baino lehen
-        {
-            if (abiadura.y > 0)
-            {
-                abiadura.y = abiadura.y * .5f;
-            }
-        }   
     }
 
     // jokalaria makurtzen da, oso azkar badoa lurretik irristatuko da
     public void MakurtuSakatu()
     {
-        if (!makurtu)
+        if (!Pause.jokuaGeldituta)
         {
-            kudeatzailea.GeruzaBertikalaHanditu(false);
-        }
-        makurtu = true;
-        mugimendua = abiaduraMakurtuta;
+            if (!makurtu)
+            {
+                kudeatzailea.GeruzaBertikalaHanditu(false);
+            }
+            makurtu = true;
+            mugimendua = abiaduraMakurtuta;
 
-        if(kudeatzailea.kolpeak.ezkerra || kudeatzailea.kolpeak.eskuma || kudeatzailea.kolpeak.aldapaIgotzen || kudeatzailea.kolpeak.aldapaJaisten)
-        {
-            abiadura.x = 0;
-            aginduHorizontala = 0;
-        }
+            if (kudeatzailea.kolpeak.ezkerra || kudeatzailea.kolpeak.eskuma || kudeatzailea.kolpeak.aldapaIgotzen || kudeatzailea.kolpeak.aldapaJaisten)
+            {
+                abiadura.x = 0;
+                aginduHorizontala = 0;
+            }
 
-        // azkar badoa leunketa denbora gehiago ematen da irristatze efektua ematen
-        if (Mathf.Abs(abiadura.x) > 4 && !kudeatzailea.kolpeak.eskuma && !kudeatzailea.kolpeak.ezkerra)
-        {
-            leunketa = irristapenLeunketa;
-            irristatu = true;
-        }
-        else
-        {
-            leunketa = leuntzeNormala;
-            irristatu = false;
+            // azkar badoa leunketa denbora gehiago ematen da irristatze efektua ematen
+            if (Mathf.Abs(abiadura.x) > 4 && !kudeatzailea.kolpeak.eskuma && !kudeatzailea.kolpeak.ezkerra)
+            {
+                leunketa = irristapenLeunketa;
+                irristatu = true;
+            }
+            else
+            {
+                leunketa = leuntzeNormala;
+                irristatu = false;
+            }
         }
     }
 
@@ -487,15 +493,18 @@ public class JokalariMug : MonoBehaviour
 
     void Korrika()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && !makurtu && kudeatzailea.kolpeak.azpian) // jokalariaren abiadura areagotzen da makurtuta ez badago, noranzko aldaketa motelagoa da
+        if (Ekintzak.instantzia.GetKorrika())
         {
-            korrika = true;
-            mugimendua = korrikaAbiadura;
-            leunketa = noranzkoaLeundu;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) // korrika botoia askatzean abiadura egoera berrira aldatzen da
-        {
-            KorrikaBotoiaAskatu();
+            if (Input.GetKey(KeyCode.LeftShift) && !makurtu && kudeatzailea.kolpeak.azpian) // jokalariaren abiadura areagotzen da makurtuta ez badago, noranzko aldaketa motelagoa da
+            {
+                korrika = true;
+                mugimendua = korrikaAbiadura;
+                leunketa = noranzkoaLeundu;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift)) // korrika botoia askatzean abiadura egoera berrira aldatzen da
+            {
+                KorrikaBotoiaAskatu();
+            }
         }
     }
 

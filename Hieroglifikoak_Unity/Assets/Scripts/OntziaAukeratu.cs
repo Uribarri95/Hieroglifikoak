@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OntziaAukeratu : MonoBehaviour {
 
+    // kolore ezberdineko pitxerrak animazio ezberdinarekin apurtzen dira
     public bool pitxerra;
     Animator anim;
 

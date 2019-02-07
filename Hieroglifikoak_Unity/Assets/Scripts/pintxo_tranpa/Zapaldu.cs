@@ -90,6 +90,18 @@ public class Zapaldu : MonoBehaviour {
         }
     }
 
+    public void TranpakKudeatu(bool aktibatu)
+    {
+        if (aktibatu)
+        {
+            Aktibatu();
+        }
+        else
+        {
+            Erreseteatu();
+        }
+    }
+
     public void Aktibatu()
     {
         gelditu = false;

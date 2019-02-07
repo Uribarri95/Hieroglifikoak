@@ -7,6 +7,7 @@ public class PuzleManager : MonoBehaviour {
     public FadeManager fadeManager;
     public ArgibideakAldatu argibideak;
     public int extraKop;
+    public bool aktibatuta = false;     // puzlea jarrita dagoenean jokalaria geldi
 
     GameObject currentPanel;
     Ekintzak emaitzak;
@@ -22,6 +23,7 @@ public class PuzleManager : MonoBehaviour {
 
     public void PanelGaitu(int zenb)
     {
+        aktibatuta = true;
         zenbakia = zenb;
         if(emaitzak == null)
         {
@@ -42,6 +44,7 @@ public class PuzleManager : MonoBehaviour {
 
     IEnumerator PanelEzgaitu()
     {
+        aktibatuta = false;
         yield return new WaitForSeconds(.5f);
         fadeManager.Ilundu();
         yield return new WaitForSeconds(1.5f);
@@ -49,9 +52,6 @@ public class PuzleManager : MonoBehaviour {
         gameObject.SetActive(false);
         fadeManager.Argitu();
         Pause.jokuaGeldituta = false;
-        yield return new WaitForSeconds(1);
-        // mugimendua berreskuratu
-        
     }
 
     public void Konprobatu()
@@ -59,6 +59,14 @@ public class PuzleManager : MonoBehaviour {
         string erantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetErantzuna();
         emaitzak.SetIndex(zenbakia);
         bool zuzena = emaitzak.EmaitzaKonprobatu(erantzuna);
+        if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
+        {
+            print("bestea");
+            string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna();
+            emaitzak.SetIndex(zenbakia + 1);
+            zuzena = emaitzak.EmaitzaKonprobatu(besteErantzuna);
+            emaitzak.SetIndex(zenbakia);
+        }
         if (zuzena)
         {
             emaitzak.Eragin();

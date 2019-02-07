@@ -38,11 +38,33 @@ public class Inbentarioa : MonoBehaviour {
 
     public int txanponKopurua = 0;
 
-    private void Start()
+    private void Start() // -> kargatu lehenengo aldian !!!
     {
         geziKopurua = geziKopuruMax;
         bizitzaPuntuak = bizitzaPuntuMax;
         UIEguneratu();
+    }
+
+    public void Kargatu(JokalariKudetzailea.PlayerData datuak)
+    {
+        items = datuak.itemak;
+        geziKopurua = datuak.geziKopurua;
+        geziKopuruMax = datuak.geziKopuruMax;
+        bizitzaPuntuak = datuak.bizitzaPuntuak;
+        bizitzaPuntuMax = datuak.bizitzaPuntuMax;
+        txanponKopurua = datuak.txanponKopurua;
+    }
+
+    public JokalariKudetzailea.PlayerData Gorde()
+    {
+        JokalariKudetzailea.PlayerData datuak = new JokalariKudetzailea.PlayerData();
+        datuak.itemak = items;
+        datuak.geziKopurua = geziKopurua;
+        datuak.geziKopuruMax = geziKopuruMax;
+        datuak.bizitzaPuntuak = bizitzaPuntuak;
+        datuak.bizitzaPuntuMax = bizitzaPuntuMax;
+        datuak.txanponKopurua = txanponKopurua;
+        return datuak;
     }
 
     public string GetNewItem()
@@ -50,7 +72,7 @@ public class Inbentarioa : MonoBehaviour {
         return newItem;
     }
 
-    public void SetNewItem()
+    public void NewItemHustu()
     {
         newItem = null;
     }
@@ -205,7 +227,6 @@ public class Inbentarioa : MonoBehaviour {
     public void Berpiztu()
     {
         bizitzaPuntuak = bizitzaPuntuMax;
-        //bizitzaPuntuak = 6; // !!!
         UIEguneratu();
     }
 
