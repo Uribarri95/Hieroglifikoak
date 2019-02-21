@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour {
 
+    public SceneLoader sceneLoader;
     public Image blackImage;
     public float fadeOutDenbora;
     public float fadeInDenbora;
@@ -16,29 +16,20 @@ public class FadeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //StartCoroutine(FadeIn()); // hau kentzen badugu eszenatoki guztietan singleton batek jartzea
+        
 	}
-
-    public int GetCurrentScene()
-    {
-        return SceneManager.GetActiveScene().buildIndex;
-    }
 
     public void FadeToScene(int scene)
     {
         newScene = scene;
         fadeToScene = true;
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeOut(.8f));
     }
 
+    // Desaktibatutako objektuak ezin dute coroutine hasi
     public void Argitu(float t = 0) // ilundu argitu kendu? !!! erabiltzen duen bakarra gelaaldatu da eta fadein deitu dezake zuzenean
     {
         StartCoroutine(FadeIn(t));
-    }
-
-    public void Ilundu()
-    {
-        StartCoroutine(FadeOut());
     }
 
     public IEnumerator FadeIn(float denbora = 0)
@@ -55,8 +46,14 @@ public class FadeManager : MonoBehaviour {
         }
     }
 
-    public IEnumerator FadeOut()
+    public void Ilundu()
     {
+        StartCoroutine(FadeOut());
+    }
+
+    public IEnumerator FadeOut(float denbora = 0)
+    {
+        yield return new WaitForSeconds(denbora);
         float t = 0f;
         while (t < 1f)
         {
@@ -68,7 +65,7 @@ public class FadeManager : MonoBehaviour {
         if (fadeToScene)
         {
             fadeToScene = false;
-            SceneManager.LoadScene(newScene);
+            sceneLoader.LoadScene(newScene);
         }
     }
 }

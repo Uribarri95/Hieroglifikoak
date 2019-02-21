@@ -89,7 +89,7 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 
             if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Drag>() != null)
             {
-                if (piezaMota == Drag.mota.Baldintza || piezaMota == Drag.mota.Eragigaia)
+                if (piezaMota == Drag.mota.Baldintza || piezaMota == Drag.mota.Eragigaia || piezaMota == Drag.mota.ForIterator)
                 {
                     pieza.SetHutsuneGurasoa(desagertu);
                 }

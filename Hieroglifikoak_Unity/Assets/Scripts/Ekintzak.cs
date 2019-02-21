@@ -46,8 +46,8 @@ public class Ekintzak : MonoBehaviour {
         emaitzak = new string[tamaina][];
         emaitzak[0] = new string[] { "ifbEskBotpXAbiadura+4if" };
         emaitzak[1] = new string[] { "ifbEskBotpXAbiadura+4ififbEzkBotpXAbiadura-4if", "ifbEzkBotpXAbiadura-4ififbEskBotpXAbiadura+4if" };
-        emaitzak[2] = new string[] { "pBoolSaltoEgin=TrueifbkbSaltoBotANDbSaltoEginbkpSaltoEgin=FalsepyPos+4if",
-                                     "pBoolSaltoEgin=TrueifbkbSaltoEginANDbSaltoBotbkpSaltoEgin=FalsepyPos+4if" };
+        emaitzak[2] = new string[] { "pBoolSaltoEgin=TrueifbkbSaltoBotANDbSaltoEginbkpSaltoEgin=FalsepYAbiadura+4if",
+                                     "pBoolSaltoEgin=TrueifbkbSaltoEginANDbSaltoBotbkpSaltoEgin=FalsepYAbiadura+4if" };
         emaitzak[3] = new string[] { "pIntHAbiadurapOinezAbiadura=4pKorrikaAbiadura=6ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif",
                                      "pIntHAbiadurapKorrikaAbiadura=6pOinezAbiadura=4ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif",
                                      "pKorrikaAbiadura=6pIntHAbiadurapOinezAbiadura=4ifbKorrikaBotpHAbiadura=korrikaAbiaduraifelsepHAbiadura=oinezAbiaduraelseifbEskBotpXAbiadura=hAbiaduraififbEzkBotpXAbiadura=-hAbiaduraif"};

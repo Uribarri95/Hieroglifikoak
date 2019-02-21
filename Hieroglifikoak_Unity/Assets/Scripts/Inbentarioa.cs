@@ -45,7 +45,7 @@ public class Inbentarioa : MonoBehaviour {
         UIEguneratu();
     }
 
-    public void Kargatu(JokalariKudetzailea.PlayerData datuak)
+    public void Kargatu(Data.PlayerData datuak)
     {
         items = datuak.itemak;
         geziKopurua = datuak.geziKopurua;
@@ -55,9 +55,9 @@ public class Inbentarioa : MonoBehaviour {
         txanponKopurua = datuak.txanponKopurua;
     }
 
-    public JokalariKudetzailea.PlayerData Gorde()
+    public Data.PlayerData Gorde()
     {
-        JokalariKudetzailea.PlayerData datuak = new JokalariKudetzailea.PlayerData();
+        Data.PlayerData datuak = new Data.PlayerData();
         datuak.itemak = items;
         datuak.geziKopurua = geziKopurua;
         datuak.geziKopuruMax = geziKopuruMax;

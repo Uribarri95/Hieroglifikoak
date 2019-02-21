@@ -5,32 +5,58 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour {
 
     public FadeManager fadeManager;
-    public static int sceneToLoad = 1; // load fitxategia zenbaki hau aldatu
+    public Animator backAnim;
+    public Animator menuAnim;
+    Data playerData;
+    Data.PlayerData datuak;
 
     private void Start()
     {
-        //argitu
+        playerData = Data.instantzia;
         fadeManager.Argitu();
     }
 
-    public void Play()
+    public void Jolastu()
     {
-        fadeManager.FadeToScene(sceneToLoad);
+        datuak = playerData.Kargatu();
+        int sceneToLoad;
+        menuAnim.SetTrigger("play");
+        if (datuak.datuakGordeta)
+        {
+            print("datuak gordeta");
+            menuAnim.SetBool("partidaGordeta",true);
+        }
+        else
+        {
+            print("ez duzu daturik gordeta");
+            menuAnim.SetBool("partidaGordeta", false);
+            sceneToLoad = datuak.Eszenatokia;
+            backAnim.SetTrigger("start");
+            fadeManager.FadeToScene(sceneToLoad);
+        }
+        
     }
 
-    public void Quit()
+    public void Irten()
     {
         Debug.Log("Irteten");
         Application.Quit();
     }
 
-    void Gorde()
+    public void Jarraitu()
     {
-
+        menuAnim.SetTrigger("jarraituhasi");
+        int sceneToLoad = datuak.Eszenatokia;
+        backAnim.SetTrigger("start");
+        fadeManager.FadeToScene(sceneToLoad);
     }
 
-    void Kargatu()
+    public void Hasi()
     {
-
+        menuAnim.SetTrigger("jarraituhasi");
+        datuak = playerData.DatuBerriak();
+        int sceneToLoad = datuak.Eszenatokia;
+        backAnim.SetTrigger("start");
+        fadeManager.FadeToScene(sceneToLoad);
     }
 }

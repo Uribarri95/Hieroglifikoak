@@ -25,8 +25,7 @@ public class GelaAldaketa : MonoBehaviour {
             else // urteten
             {
                 cam.GetComponent<VCam>().CameraConfinerKudeatu(jokalaria.transform.position);
-                StartCoroutine(fadeManager.FadeIn(.5f));
-                //fadeManager.Argitu(.5f);
+                fadeManager.Argitu(.5f);
                 if (etsaiak != null)
                 {
                     etsaiak.EtsaiakReset();

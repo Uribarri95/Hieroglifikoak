@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//[System.Serializable]
 [CreateAssetMenu(fileName = "Item berria", menuName = "Inbentarioa/Item")]
 public class Item : ScriptableObject {
 

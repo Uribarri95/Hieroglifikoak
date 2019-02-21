@@ -13,29 +13,43 @@ public class ArgibideakAldatu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         argibideak = Ekintzak.instantzia;
-        textua = GetComponent<Text>();
-	}
+        textua = GetComponentInChildren<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (gameObject.activeSelf && !argibideBerria)
+        if (gameObject.activeSelf)
         {
             mezua = argibideak.GetArgibidea();
+        }
+        if (!argibideBerria)
+        {
             textua.text = argibideak.GetArgibidea();
         }
 	}
 
-    public void textuaAldatu() // !!! azpikoa funtzionatzen badu ezabatu
+    public void IkusiEzkutatu()
     {
-        StartCoroutine(BehinBehinekoTextua());
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
-    public IEnumerator BehinBehinekoTextua()
+    public void textuaAldatu(string mezua) // !!! azpikoa funtzionatzen badu ezabatu
+    {
+        argibideBerria = true;
+        textua.text = mezua;
+    }
+
+    public void ArgibideakJarri()
+    {
+        argibideBerria = false;
+    }
+
+    public IEnumerator BehinBehinekoTextua(string mezua)
     {
         argibideBerria = true;
         textua.color = Color.red;
-        textua.text = "KODEA EZ DA ZUZENA, DUDARIK BADAUKAZU SAKATU 'P' EDO 'ESC' TEKLA ETA BEGIRATU HIZTEGIA ATALA.";
-        yield return new WaitForSeconds(5f);
+        textua.text = mezua;
+        yield return new WaitForSeconds(4f);
         argibideBerria = false;
         textua.color = Color.black;
         textua.text = mezua;

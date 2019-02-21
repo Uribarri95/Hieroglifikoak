@@ -32,7 +32,7 @@ public class VCam : MonoBehaviour {
         if (target.GetComponent<JokalariMug>())
         {
             jokalaria = cam.m_Follow.GetComponent<JokalariMug>();
-            CameraConfinerKudeatu(jokalaria.transform.position);
+            //CameraConfinerKudeatu(jokalaria.transform.position);
         }
 	}
 	

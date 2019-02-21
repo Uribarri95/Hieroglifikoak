@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour {
     // !!! reset
     JokalariKudetzailea kudetzailea;
     Animator anim;
+    bool datuakGorde = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +20,21 @@ public class Checkpoint : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            kudetzailea.checkpoint = gameObject;
-            anim.SetTrigger("zabaldu");
+            if (!datuakGorde)
+            {
+                datuakGorde = true;
+                kudetzailea.checkpoint = gameObject;
+                kudetzailea.DatuakGorde();
+                anim.SetTrigger("zabaldu");
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            datuakGorde = false;
         }
     }
 

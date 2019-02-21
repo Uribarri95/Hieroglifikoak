@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 114847649842225822}
   - component: {fileID: 114541449284061084}
   - component: {fileID: 114653234520812680}
+  - component: {fileID: 114766890970638712}
   m_Layer: 5
   m_Name: IFELSEPieza
   m_TagString: Untagged
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPadding: 44
-  vPadding: 5
+  vPadding: 2
   spacing: 0
   layoutBertikala: 1
 --- !u!114 &114053018455283246
@@ -177,8 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPadding: 12
-  vPadding: 18
-  spacing: 2
+  vPadding: 16
+  spacing: 1
   layoutBertikala: 1
 --- !u!114 &114125077790628820
 MonoBehaviour:
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPadding: 44
-  vPadding: 10
+  vPadding: 8
   spacing: 0
   layoutBertikala: 1
 --- !u!114 &114304945871170806
@@ -293,7 +294,7 @@ MonoBehaviour:
     m_Top: 13
     m_Bottom: 5
   m_ChildAlignment: 0
-  m_Spacing: 2
+  m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -532,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hPadding: 12
   vPadding: 16
-  spacing: 2
+  spacing: 1
   layoutBertikala: 1
 --- !u!114 &114588156496617880
 MonoBehaviour:
@@ -551,7 +552,7 @@ MonoBehaviour:
     m_Top: 6
     m_Bottom: 10
   m_ChildAlignment: 0
-  m_Spacing: 2
+  m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -584,6 +585,20 @@ MonoBehaviour:
   pieza: 
   hasiBukatu: 0
   emanEmaintza: 0
+--- !u!114 &114766890970638712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361775648326134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e176011fd00c6a4f9e9105df833ad0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  argibideak: {fileID: 0}
+  deskribapena: Baldintza pieza egia denean laukizuzen berdeko kodea exekutatzen da.
+    Baldintza pieza gezurra denean laukizuzen gorriko kodea exekuatzen da.
 --- !u!114 &114794549454225868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -621,6 +636,7 @@ MonoBehaviour:
   mugimenduPanela: {fileID: 0}
   outline: {fileID: 21300000, guid: 62515a59a8a274c479ec025a719fbc62, type: 3}
   kolorea: {r: 0.015686275, g: 0.7058824, b: 0.003921569, a: 1}
+  argibideak: {fileID: 0}
 --- !u!114 &114937563310348142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,7 +759,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 35}
+  m_SizeDelta: {x: 60, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224276524720687070
 RectTransform:
@@ -763,7 +779,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 50}
+  m_SizeDelta: {x: 80, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224381790280026982
 RectTransform:
@@ -802,7 +818,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 90}
+  m_SizeDelta: {x: 80, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224848164030462256
 RectTransform:
@@ -820,7 +836,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 35}
+  m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225999329488348802
 CanvasGroup:

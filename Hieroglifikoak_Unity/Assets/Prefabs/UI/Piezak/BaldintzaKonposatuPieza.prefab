@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 114749787609566184}
   - component: {fileID: 114255360290969480}
   - component: {fileID: 114422911872048496}
+  - component: {fileID: 114942816709138916}
   m_Layer: 5
   m_Name: BaldintzaKonposatuPieza
   m_TagString: Untagged
@@ -471,6 +472,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114942816709138916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876158071174360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e176011fd00c6a4f9e9105df833ad0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  argibideak: {fileID: 0}
+  deskribapena: 
 --- !u!222 &222207532333240384
 CanvasRenderer:
   m_ObjectHideFlags: 1

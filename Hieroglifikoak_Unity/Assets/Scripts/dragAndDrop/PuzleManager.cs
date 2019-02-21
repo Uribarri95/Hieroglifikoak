@@ -7,11 +7,13 @@ public class PuzleManager : MonoBehaviour {
     public FadeManager fadeManager;
     public ArgibideakAldatu argibideak;
     public int extraKop;
-    public bool aktibatuta = false;     // puzlea jarrita dagoenean jokalaria geldi
+    public bool aktibatuta;     // puzlea jarrita dagoenean jokalaria geldi
 
     GameObject currentPanel;
     Ekintzak emaitzak;
     int zenbakia;
+    bool konprobatzen = false;
+    string emaitzaTxartoMezua = "KODEA EZ DA ZUZENA, DUDARIK BADAUKAZU SAKATU 'P' EDO 'ESC' TEKLA ETA BEGIRATU HIZTEGIA ATALA.";
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class PuzleManager : MonoBehaviour {
 
     public void PanelGaitu(int zenb)
     {
+        konprobatzen = false;
         aktibatuta = true;
         zenbakia = zenb;
         if(emaitzak == null)
@@ -40,6 +43,7 @@ public class PuzleManager : MonoBehaviour {
                 currentPanel.SetActive(true);
             }
         }
+        argibideak.gameObject.SetActive(true);
     }
 
     IEnumerator PanelEzgaitu()
@@ -56,27 +60,32 @@ public class PuzleManager : MonoBehaviour {
 
     public void Konprobatu()
     {
-        string erantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetErantzuna();
-        emaitzak.SetIndex(zenbakia);
-        bool zuzena = emaitzak.EmaitzaKonprobatu(erantzuna);
-        if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
+        if (!konprobatzen)
         {
-            print("bestea");
-            string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna();
-            emaitzak.SetIndex(zenbakia + 1);
-            zuzena = emaitzak.EmaitzaKonprobatu(besteErantzuna);
+            konprobatzen = true;
+            string erantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetErantzuna();
             emaitzak.SetIndex(zenbakia);
-        }
-        if (zuzena)
-        {
-            emaitzak.Eragin();
-            StartCoroutine(PanelEzgaitu());
-        }
-        else
-        {
-            // mezu kutxa aldatu segundu batzuk
-            //StopAllCoroutines();
-            StartCoroutine(argibideak.BehinBehinekoTextua());
+            bool zuzena = emaitzak.EmaitzaKonprobatu(erantzuna);
+            if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
+            {
+                print("bestea");
+                string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna();
+                emaitzak.SetIndex(zenbakia + 1);
+                zuzena = emaitzak.EmaitzaKonprobatu(besteErantzuna);
+                emaitzak.SetIndex(zenbakia);
+            }
+            if (zuzena)
+            {
+                emaitzak.Eragin();
+                StartCoroutine(PanelEzgaitu());
+            }
+            else
+            {
+                // mezu kutxa aldatu segundu batzuk
+                //StopAllCoroutines();
+                konprobatzen = false;
+                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua));
+            }
         }
     }
 

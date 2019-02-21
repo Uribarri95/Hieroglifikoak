@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    public enum mota { Normal, Baldintza, Eragigaia, Funtzioa, Denak, Izenburua };
+    public enum mota { Normal, Baldintza, Eragigaia, ForIterator, Denak, Izenburua };
     public mota piezaMota;
     public Transform mugimenduPanela;
     public Sprite outline;
@@ -26,14 +26,6 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         hasierakoGurasoa = transform.parent;
         hasierakoPos = transform.GetSiblingIndex();
     }
-
-    /*private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Reset();
-        }
-    }*/
 
     public void Reset()
     {
