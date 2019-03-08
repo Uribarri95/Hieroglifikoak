@@ -74,6 +74,7 @@ public class VCam : MonoBehaviour {
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 0;
                 StartCoroutine(Itxaron());
+                break;
             }
         }
     }
@@ -84,7 +85,7 @@ public class VCam : MonoBehaviour {
         cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneWidth = width;
         cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneHeight = hight;
         cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 1;
-        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 1;
+        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = .4f;
     }
 
     void SetFollow(Transform target)

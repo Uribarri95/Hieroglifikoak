@@ -968,7 +968,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222584500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.32, y: -21.081999, z: -10}
+  m_LocalPosition: {x: -2.3997784, y: -16.860775, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13834,11 +13834,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.32
+      value: -2.41
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -21.65
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.z
@@ -16460,7 +16460,7 @@ Transform:
   m_PrefabInternal: {fileID: 870430176}
   m_GameObject: {fileID: 1675436947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.32, y: -21.081999, z: -10}
+  m_LocalPosition: {x: -2.4099998, y: 2.578, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1140041636}
@@ -17452,6 +17452,9 @@ MonoBehaviour:
   geziKopuruMax: 10
   bizitzaPuntuMax: 6
   txanponKopurua: 0
+  suIrudia: {fileID: 0}
+  ezpataIrudia: {fileID: 0}
+  arkuIrudia: {fileID: 0}
 --- !u!4 &2012480220
 Transform:
   m_ObjectHideFlags: 0
@@ -17666,6 +17669,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063349950585480, guid: 8f50a8b81dd5ec748beed1d5831a37a7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f50a8b81dd5ec748beed1d5831a37a7, type: 2}

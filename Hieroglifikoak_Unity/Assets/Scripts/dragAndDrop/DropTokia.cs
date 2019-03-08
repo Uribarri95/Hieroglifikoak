@@ -54,6 +54,7 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                 else
                 {*/
                     pieza.SetPiezaGurasoa(transform); // pieza hutsunean jarri
+                    
                 //}
             }
             else // pieza toki okerren jarri da, datorren tokira itzuli

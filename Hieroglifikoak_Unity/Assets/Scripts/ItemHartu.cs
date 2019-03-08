@@ -26,7 +26,9 @@ public class ItemHartu : MonoBehaviour {
                     GetComponentInChildren<SpriteMask>().enabled = false;
                     return;
                 }
-                Destroy(gameObject);
+                // ezgaitu
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
             }
         }
         if(gameObject.name.Contains("Ezpata") || gameObject.name.Contains("Arkua"))

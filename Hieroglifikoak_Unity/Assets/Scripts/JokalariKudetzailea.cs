@@ -57,7 +57,7 @@ public class JokalariKudetzailea : MonoBehaviour {
 
     void DatuakKargatu()
     {
-        Data.PlayerData datuak = jokalariDatuak.Kargatu();
+        Data.PlayerData datuak = jokalariDatuak.JokalariDatuakKargatu();
         CheckPointAldatu(datuak.checkPointZenbakia);
         inbentarioa.Kargatu(datuak);
     }
@@ -66,14 +66,15 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         Data.PlayerData datuak = inbentarioa.Gorde();
         datuak.Eszenatokia = sceneLoader.GetCurrentScene();
-        CheckpointZenbakiaLortu();
+        CheckpointZenbakiaLortu();              // hau kendu eta behekoa utzi
         datuak.checkPointZenbakia = checkpointZenbakia;
+        //datuak.checkPointZenbakia = CheckpointZenbakiaLortu();
         datuak.ekintzak = Ekintzak.instantzia.ekintzak;
 
-        jokalariDatuak.Gorde(datuak);
+        jokalariDatuak.JokalariDatuakGorde(datuak);
     }
 
-    public void CheckpointZenbakiaLortu()
+    public void CheckpointZenbakiaLortu()       // void beharrean int izatea , test egiteko dago horrela, checkPointAldatu ere kendu
     {
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -88,14 +89,13 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         checkpointZenbakia = zenbakia;
         checkpoint = transform.GetChild(zenbakia).gameObject;
-        StartCoroutine(CheckPointeraMugitu());
+        StartCoroutine(HasieraKarga());
     }
 
     public void JokalariaHil()
     {
         if (!jokalaria.hiltzen)
         {
-            // jokalariaren mugimendua ezgaitu
             jokalaria.hiltzen = true;
             inbentarioa.JokalariaHil();
             StartCoroutine(JokalariaBerpiztu());
@@ -106,13 +106,9 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         yield return new WaitForSeconds(.4f);
         fadeManager.Ilundu();
+
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
         yield return new WaitForSeconds(hilAnimazioa);
-        StartCoroutine(CheckPointeraMugitu());
-    }
-
-    IEnumerator CheckPointeraMugitu()       // 2 zatitan banatu !!!
-    {
         jokalaria.transform.position = checkpoint.transform.position;
         checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
 
@@ -120,19 +116,36 @@ public class JokalariKudetzailea : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
         jokalaria.GetComponent<Renderer>().enabled = false;
-        fadeManager.Argitu(2);      // !!!dialog triggerraren aktibazio denbora luzatu baita ere! 
-        // mapa erreseteatu
-
+        fadeManager.Argitu();
         // animazioa kargatzeko behar duen denbora
-        yield return new WaitForSeconds(2.4f);
+
+        yield return new WaitForSeconds(.4f);
         jokalaria.berpizten = true;
         inbentarioa.Berpiztu();
         yield return new WaitForSeconds(.04f);
         jokalaria.GetComponent<Renderer>().enabled = true;
-        // jokalariari txanpon batzuk kendu
 
         yield return new WaitForSeconds(berpiztuAnimazioa);
         jokalaria.hiltzen = false;
         jokalaria.berpizten = false;
+    }
+
+    IEnumerator HasieraKarga()
+    {
+        jokalaria.kargatzen = true;
+        jokalaria.transform.position = checkpoint.transform.position;
+        checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
+
+        // camera bound aldatu
+        yield return new WaitForSeconds(1f);
+        cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
+        fadeManager.Argitu(2);      // !!!dialog triggerraren aktibazio denbora luzatu baita ere! 
+
+        // animazioa kargatzeko behar duen denbora
+        yield return new WaitForSeconds(2.4f);
+        inbentarioa.Berpiztu();
+
+        yield return new WaitForSeconds(1);
+        jokalaria.kargatzen = false;
     }
 }

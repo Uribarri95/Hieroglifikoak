@@ -8,7 +8,7 @@ public class ArgibideakAldatu : MonoBehaviour {
     Ekintzak argibideak;
     Text textua;
     bool argibideBerria = false;
-    string mezua;
+    string argibideMezua;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class ArgibideakAldatu : MonoBehaviour {
 	void Update () {
         if (gameObject.activeSelf)
         {
-            mezua = argibideak.GetArgibidea();
+            argibideMezua = argibideak.GetArgibidea();
         }
         if (!argibideBerria)
         {
@@ -33,7 +33,7 @@ public class ArgibideakAldatu : MonoBehaviour {
         gameObject.SetActive(!gameObject.activeSelf);
     }
 
-    public void textuaAldatu(string mezua) // !!! azpikoa funtzionatzen badu ezabatu
+    public void textuaAldatu(string mezua)
     {
         argibideBerria = true;
         textua.text = mezua;
@@ -42,6 +42,7 @@ public class ArgibideakAldatu : MonoBehaviour {
     public void ArgibideakJarri()
     {
         argibideBerria = false;
+        textua.text = argibideak.GetArgibidea();
     }
 
     public IEnumerator BehinBehinekoTextua(string mezua)
@@ -52,6 +53,6 @@ public class ArgibideakAldatu : MonoBehaviour {
         yield return new WaitForSeconds(4f);
         argibideBerria = false;
         textua.color = Color.black;
-        textua.text = mezua;
+        textua.text = argibideMezua;
     }
 }

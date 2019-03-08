@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   izena: Geziak
   irudia: {fileID: 21300000, guid: abb5f5e280545ef4e8ff29d5be79e65c, type: 3}
-  erbileraBakarra: 1
+  erabileraBakarra: 1

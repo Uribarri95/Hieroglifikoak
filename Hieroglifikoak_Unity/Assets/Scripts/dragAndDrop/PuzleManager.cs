@@ -33,6 +33,7 @@ public class PuzleManager : MonoBehaviour {
             emaitzak = Ekintzak.instantzia;
         }
         emaitzak.SetIndex(zenbakia);
+        print("index berria " + zenbakia);
         for (int i = 1; i < transform.childCount - extraKop; i++)
         {
             EmaitzaKonprobatu puzlea = transform.GetChild(i).GetComponent<EmaitzaKonprobatu>();
@@ -81,8 +82,7 @@ public class PuzleManager : MonoBehaviour {
             }
             else
             {
-                // mezu kutxa aldatu segundu batzuk
-                //StopAllCoroutines();
+                // mezu kutxa aldatu segundu batzuk, emaitza txarto dagoela esaten duen mezua
                 konprobatzen = false;
                 StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua));
             }

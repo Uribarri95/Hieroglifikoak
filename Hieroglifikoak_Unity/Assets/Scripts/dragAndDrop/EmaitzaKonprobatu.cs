@@ -12,7 +12,7 @@ public class EmaitzaKonprobatu : MonoBehaviour {
 
     public string GetErantzuna()
     {
-        print(erabErantzuna.EmaitzaItzuli());
+        print(erabErantzuna.EmaitzaItzuli());       // ekintzak barruan emaitzak ipintzeko
         return erabErantzuna.EmaitzaItzuli();
     }
 

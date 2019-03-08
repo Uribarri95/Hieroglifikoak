@@ -6,9 +6,9 @@ public class SaguzarMugimendua : MonoBehaviour {
 
     public LayerMask jokalaria;
 
-    private float aktibazioErradioa = 4.5f;
-    private float jarraituDistantziaMax = 8;
+    public float aktibazioErradioa = 4.5f;
     private float erasoDistantzia = 2.5f;
+    private float jarraituDistantziaMax = 8;
     private float abiaduraNormala = 1.8f;
     private float erasoAbiadura = 3.6f;
     private float erasoDenbora = .2f;
@@ -19,6 +19,7 @@ public class SaguzarMugimendua : MonoBehaviour {
 
     float erradioa;
     float abiadura;
+    bool aktibatuta;
     bool zintzilik;
     bool erasotzen;
     bool erasoDezaket;
@@ -31,6 +32,7 @@ public class SaguzarMugimendua : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>();
 
         abiadura = abiaduraNormala;
+        aktibatuta = false;
         zintzilik = true;
         erasotzen = false;
         erasoDezaket = false;
@@ -39,7 +41,7 @@ public class SaguzarMugimendua : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        erradioa = zintzilik ? aktibazioErradioa : jarraituDistantziaMax;
+        erradioa = aktibatuta ? jarraituDistantziaMax : aktibazioErradioa;
         
         Collider2D target = Physics2D.OverlapCircle(transform.position, erradioa, jokalaria);
         if(target != null)
@@ -64,6 +66,7 @@ public class SaguzarMugimendua : MonoBehaviour {
     {
         if (zintzilik)
         {
+            aktibatuta = true;
             bool eskuma = targetPos.x >= transform.position.x;
             SaguzarraJeisti(eskuma);
         }

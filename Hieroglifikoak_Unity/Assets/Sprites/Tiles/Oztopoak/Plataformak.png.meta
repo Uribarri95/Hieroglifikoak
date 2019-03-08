@@ -1,0 +1,828 @@
+fileFormatVersion: 2
+guid: e123af833595ea94da945ad23be3d4bb
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Plataformak_0
+    21300002: Plataformak_1
+    21300004: Plataformak_2
+    21300006: Plataformak_3
+    21300008: Plataformak_4
+    21300010: Plataformak_5
+    21300012: Plataformak_6
+    21300014: Plataformak_7
+    21300016: Plataformak_8
+    21300018: Plataformak_9
+    21300020: Plataformak_10
+    21300022: Plataformak_11
+    21300024: Plataformak_12
+    21300026: Plataformak_13
+    21300028: Plataformak_14
+    21300030: Plataformak_15
+    21300032: Plataformak_16
+    21300034: Plataformak_17
+    21300036: Plataformak_18
+    21300038: Plataformak_19
+    21300040: Plataformak_20
+    21300042: Plataformak_21
+    21300044: Plataformak_22
+    21300046: Plataformak_23
+    21300048: Plataformak_24
+    21300050: Plataformak_25
+    21300052: Plataformak_26
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Plataformak_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 22}
+        - {x: -19, y: 5}
+        - {x: -3, y: 5}
+        - {x: -1, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -16, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f3c2f1a50aef6429a978b5f75eec8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -32, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7764752ebe2c8e4baed1a21c1dbd766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 25}
+        - {x: -32, y: 25}
+        - {x: -32, y: 7}
+        - {x: 1, y: 7}
+        - {x: 3, y: 5}
+        - {x: 19, y: 5}
+        - {x: 19, y: 22}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d687659ca09e54787141ac462226e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 8}
+        - {x: -19, y: -9}
+        - {x: -3, y: -9}
+        - {x: -1, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -16, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9de05e216497af46b7c06650ccb9e5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_4
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -32, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8fadce6c5de5b43b0d0a45628f3b85
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_5
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 342
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 11}
+        - {x: -32, y: 11}
+        - {x: -32, y: -7}
+        - {x: 1, y: -7}
+        - {x: 3, y: -9}
+        - {x: 19, y: -9}
+        - {x: 19, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c06afaa48c1c64d96b8569308192b4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 22}
+        - {x: -19, y: 5}
+        - {x: -3, y: 5}
+        - {x: -1, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -16, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12601c900b612754bbbe333a8140c690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_7
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -32, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57d7620553ca5948a35f9a15aa12cf8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_8
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 25}
+        - {x: -32, y: 25}
+        - {x: -32, y: 7}
+        - {x: 1, y: 7}
+        - {x: 3, y: 5}
+        - {x: 19, y: 5}
+        - {x: 19, y: 22}
+      tessellationDetail: 0
+      bones: []
+      spriteID: de03ea77d6e11c44d9afa8696c5d1f6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_9
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 8}
+        - {x: -19, y: -9}
+        - {x: -3, y: -9}
+        - {x: -1, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -16, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1406f4382c8e9b40acb2bace6fd0308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_10
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -32, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21afc0af3e04ed549bc283d8dfd0580f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_11
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 274
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 11}
+        - {x: -32, y: 11}
+        - {x: -32, y: -7}
+        - {x: 1, y: -7}
+        - {x: 3, y: -9}
+        - {x: 19, y: -9}
+        - {x: 19, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6d676124d2c49842ba1c4a775682464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 22}
+        - {x: -19, y: 5}
+        - {x: -3, y: 5}
+        - {x: -1, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -16, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f15528ed45b83b4fadb4833af47b5d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_13
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: 7}
+        - {x: 32, y: 7}
+        - {x: 32, y: 25}
+        - {x: -32, y: 25}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b3a948979a08b4980e3ae623a68ccb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_14
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 25}
+        - {x: -32, y: 25}
+        - {x: -32, y: 7}
+        - {x: 1, y: 7}
+        - {x: 3, y: 5}
+        - {x: 19, y: 5}
+        - {x: 19, y: 22}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c9b26219c91ad4591baed15615e091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_15
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 8}
+        - {x: -19, y: -9}
+        - {x: -3, y: -9}
+        - {x: -1, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -16, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b811c2f9dece0f489708b07b406378f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_16
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -7}
+        - {x: 32, y: -7}
+        - {x: 32, y: 11}
+        - {x: -32, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4cfd2fdda193e4593b47a8e6a53cc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_17
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 11}
+        - {x: -32, y: 11}
+        - {x: -32, y: -7}
+        - {x: 1, y: -7}
+        - {x: 3, y: -9}
+        - {x: 19, y: -9}
+        - {x: 19, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd2c20dca6e14944924cf1560877054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_18
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 138
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: -13}
+        - {x: -19, y: -30}
+        - {x: -3, y: -30}
+        - {x: -1, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -16, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c4fd668845d8c4ebf6164f91231688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_19
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 138
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -32, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39abba07ec734be4c99bd582093e531f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_20
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 138
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: -10}
+        - {x: -32, y: -10}
+        - {x: -32, y: -28}
+        - {x: 1, y: -28}
+        - {x: 3, y: -30}
+        - {x: 19, y: -30}
+        - {x: 19, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf130cd3ccb91b949868b611ab073f1c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_21
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 70
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: -13}
+        - {x: -19, y: -30}
+        - {x: -3, y: -30}
+        - {x: -1, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -16, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c3f32ae1631ebd4e8be33bf4cf084e5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_22
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 70
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -32, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3342bb76539a31e4ab5324de8606fe92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_23
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 70
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: -10}
+        - {x: -32, y: -10}
+        - {x: -32, y: -28}
+        - {x: 1, y: -28}
+        - {x: 3, y: -30}
+        - {x: 19, y: -30}
+        - {x: 19, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac46a9224ee7344982af371d1d08177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: -13}
+        - {x: -19, y: -30}
+        - {x: -3, y: -30}
+        - {x: -1, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -16, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ae75bafea297244ad4b0f412c66e5b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_25
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 2
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -32, y: -28}
+        - {x: 32, y: -28}
+        - {x: 32, y: -10}
+        - {x: -32, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ee8d62d3f8505408aabe3667bd724d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plataformak_26
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 2
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: -10}
+        - {x: -32, y: -10}
+        - {x: -32, y: -28}
+        - {x: 1, y: -28}
+        - {x: 3, y: -30}
+        - {x: 19, y: -30}
+        - {x: 19, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee5eade954b4cf43b9daf13de23abaa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 64c9bfa321550ce4cbf8acf474f2d718
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

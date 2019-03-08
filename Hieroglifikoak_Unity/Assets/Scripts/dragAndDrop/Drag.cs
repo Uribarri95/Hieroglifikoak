@@ -121,6 +121,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         {
             return;
         }
+
         transform.SetParent(piezaGurasoa);
         if (transform.parent == hutsuneGurasoa)
         {

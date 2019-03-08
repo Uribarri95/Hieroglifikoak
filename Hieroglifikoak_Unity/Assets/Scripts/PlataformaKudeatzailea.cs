@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     public LayerMask bidaiariak;
+    public LayerMask jokalaria;
     //Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
     List<Transform> hiztegia = new List<Transform>();
 
@@ -19,6 +20,11 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     int itxarotePosizioa;
     float bidaiKantitatea;
 
+    public bool bidaiLuzea = false;
+    public bool reset = false;
+    bool alderantziz = false;
+    public bool lurreraJauzi = false;
+
     public override void Start () {
         base.Start();
         itxarotePuntuak = new Vector3[marraztuPuntuak.Length];
@@ -26,23 +32,67 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         {
             itxarotePuntuak[i] = marraztuPuntuak[i] + transform.position;
         }
+        if (bidaiLuzea || lurreraJauzi)
+        {
+            TranpakKudeatu(true);
+        }
 	}
 	
-	void Update () {
+	void Update () {                        // jokalariaren kontaktuan + reset
         Vector2 abiadura = Vector2.zero;
-        if(itxarotePuntuak.Length != 0)
+        IzpiJatorriaEguneratu();
+        if (reset)
         {
-            IzpiJatorriaEguneratu();
-            abiadura = PlataformaMugitu();
-            if (abiadura.y >= 0)
+            Restart();
+        }
+        else
+        {
+            if (itxarotePuntuak.Length != 0)
             {
-                MugituBidaiariak(abiadura);
-                transform.Translate(abiadura);
+                abiadura = PlataformaMugitu();
+                if (abiadura.y >= 0)
+                {
+                    MugituBidaiariak(abiadura);
+                    transform.Translate(abiadura);
+                }
+                else
+                {
+                    transform.Translate(abiadura);
+                    MugituBidaiariak(abiadura);
+                }
             }
-            else
+        }
+    }
+
+    public void TranpakKudeatu(bool hasieratu)
+    {
+        reset = hasieratu;
+
+        if (alderantziz)
+        {
+            System.Array.Reverse(itxarotePuntuak);
+            alderantziz = !alderantziz;
+        }
+
+        itxarotePosizioa = 0;
+        bidaiKantitatea = 0;
+        transform.position = itxarotePuntuak[0];
+    }
+
+    // jokalaria gainean jarri arte itzaroten gelditu
+    public void Restart()
+    {
+        if(transform.position == itxarotePuntuak[0])
+        {
+            float izpiLuzera = 2 * azalZabalera;
+            for (int i = 0; i < izpiBertKop; i++)
             {
-                transform.Translate(abiadura);
-                MugituBidaiariak(abiadura);
+                Vector2 jatorriIzpia = izpiJatorria.topLeft + Vector2.right * (bertIzpiTartea * i);
+                RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.up, izpiLuzera, jokalaria);
+                if (kolpatu)
+                {
+                    reset = false;
+                }
             }
         }
     }
@@ -66,12 +116,17 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         {
             bidaiKantitatea = 0;
             itxarotePosizioa++;
+            if (transform.position == itxarotePuntuak[1] && lurreraJauzi)
+            {
+                TranpakKudeatu(true);
+            }
             if (!zikloa)
             {
                 if (itxarotePosizioa >= itxarotePuntuak.Length - 1)
                 {
                     itxarotePosizioa = 0;
                     System.Array.Reverse(itxarotePuntuak);
+                    alderantziz = !alderantziz;
                 }
             }
             hurrengoDenbora = Time.time + itxaroteDenbora;

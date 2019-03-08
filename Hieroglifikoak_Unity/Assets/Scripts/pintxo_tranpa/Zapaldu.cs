@@ -11,16 +11,17 @@ public class Zapaldu : MonoBehaviour {
     public bool goianHasi;
     public bool reseta;
     public bool aktibatu;
+    public bool itxaron;                                        // segituan mugitzen edo itxaroten den
+    public float offsetDenbora;                                 // hasi aurretik zenbat denbora itzaronten den
 
-    float offset = .1f;
+    float offset = .01f;
     float hasieraPos;
     float bukaeraPos;
     bool ateratzen;
-    bool gelditu;
+    bool gelditu = true;
 
 	// Use this for initialization
 	void Start () {
-        gelditu = false;
         if (goianHasi)
         {
             hasieraPos = transform.position.y;
@@ -33,10 +34,35 @@ public class Zapaldu : MonoBehaviour {
             hasieraPos = bukaeraPos + blokeKop;
             ateratzen = false;
         }
-	}
+        if (itxaron)
+        {
+            StartCoroutine(HasieraAtzeratu());
+        }
+        else
+        {
+            gelditu = false;
+        }
+    }
+
+    IEnumerator HasieraAtzeratu()
+    {
+        yield return new WaitForSeconds(offsetDenbora);
+        gelditu = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if (reseta)
+        {
+            reseta = false;
+            Erreseteatu();
+        }
+        if (aktibatu)
+        {
+            aktibatu = false;
+            StartCoroutine(HasieraAtzeratu());
+        }
+
         if (!gelditu)
         {
             if (ateratzen)
@@ -68,17 +94,6 @@ public class Zapaldu : MonoBehaviour {
                 }
             }
         }
-        
-        if (reseta)
-        {
-            reseta = false;
-            Erreseteatu();
-        }
-        if (aktibatu)
-        {
-            aktibatu = false;
-            Aktibatu();
-        }
 	}
 
     IEnumerator Itxaron()
@@ -94,7 +109,7 @@ public class Zapaldu : MonoBehaviour {
     {
         if (aktibatu)
         {
-            Aktibatu();
+            StartCoroutine(HasieraAtzeratu());
         }
         else
         {
@@ -109,6 +124,7 @@ public class Zapaldu : MonoBehaviour {
 
     public void Erreseteatu()
     {
+        StopAllCoroutines();
         gelditu = true;
         if (goianHasi)
         {

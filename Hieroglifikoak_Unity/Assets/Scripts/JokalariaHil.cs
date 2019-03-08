@@ -2,6 +2,7 @@
 
 public class JokalariaHil : MonoBehaviour {
 
+    public bool zuzeneanHil = false;
     private JokalariKudetzailea jokalariKudetzailea;
 
 	// Use this for initialization
@@ -13,7 +14,29 @@ public class JokalariaHil : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            jokalariKudetzailea.JokalariaHil();
+            if (zuzeneanHil)
+            {
+                jokalariKudetzailea.JokalariaHil();
+            }
+            else
+            {
+                collision.transform.GetComponent<Eraso>().KolpeaJaso(Random.value > .5f);
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (zuzeneanHil)
+            {
+                jokalariKudetzailea.JokalariaHil();
+            }
+            else
+            {
+                collision.transform.GetComponent<Eraso>().KolpeaJaso(Random.value > .5f);
+            }
         }
     }
 }

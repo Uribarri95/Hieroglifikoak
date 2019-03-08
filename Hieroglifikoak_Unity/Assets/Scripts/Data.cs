@@ -7,7 +7,18 @@ using UnityEngine;
 
 public class Data : MonoBehaviour {
 
-    string dataPath = "playerData.dat";
+    string playerDataPath = "_playerData.dat";
+    string itemsDataPath = "_itemsData.dat";
+
+    int eszenatokia = 1;
+    int checkpointZenbakia = 0;
+    int txanponKopurua = 0;
+    int geziKopurua = 10;
+    int geziKopuruMax = 10;
+    int bizitzaPuntuak = 6;
+    int bizitzaPuntuMax = 6;
+
+    [HideInInspector]
 
     #region Singleton
     public static Data instantzia;
@@ -23,85 +34,134 @@ public class Data : MonoBehaviour {
         }
         instantzia = this;
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     #endregion Singleton
 
-    private void Start()
+    private void Start()        // !!! try catch jarri kargatu eta gorde koedan !!!
     {
-        //Kargatu();      // beste klase batek hasieratu dezala, ez denez suntzitzen atzera aurrera joatean ez dira datuak kargatzen
+
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            try
-            {
-                File.Delete(Application.persistentDataPath + dataPath);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
+            DatuakEzabatu();
         }
     }
 
-    public void Gorde(PlayerData datuak)
+    public void DatuakEzabatu()
     {
-        print("gordetzen");
+        try
+        {
+            File.Delete(Application.persistentDataPath + playerDataPath);
+            File.Delete(Application.persistentDataPath + itemsDataPath);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void JokalariDatuakGorde(PlayerData datuak)
+    {
+        Ekintzak jokalariEkintzak = Ekintzak.instantzia;
+        datuak.ekintzak = jokalariEkintzak.GetEkintzak();
         datuak.datuakGordeta = true;
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream fitxategia = File.Open(Application.persistentDataPath + dataPath, FileMode.OpenOrCreate);
+        FileStream fitxategia = File.Open(Application.persistentDataPath + playerDataPath, FileMode.OpenOrCreate);
         bf.Serialize(fitxategia, datuak);
         fitxategia.Close();
     }
 
-    public PlayerData Kargatu()
+    public PlayerData JokalariDatuakKargatu()
     {
-        print("kargatzen");
         PlayerData datuak = new PlayerData();
-        if (File.Exists(Application.persistentDataPath + dataPath))         // !!! errorea gertatzen bada partida berria !!! 
+        if (File.Exists(Application.persistentDataPath + playerDataPath))         // !!! errorea gertatzen bada partida berria !!! 
         {
             //print("gorde ftxategia bat dago  -> " + Application.persistentDataPath+dataPath);
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + dataPath, FileMode.Open);
-            //PlayerData datuak = (PlayerData)bf.Deserialize(file);
+            FileStream file = File.Open(Application.persistentDataPath + playerDataPath, FileMode.Open);
             datuak = (PlayerData)bf.Deserialize(file);
             file.Close();
         }
         else
         {
-            datuak = DatuBerriak();
+            datuak = JokalariDatuBerriak();
         }
         return datuak;
     }
 
-    public PlayerData DatuBerriak()     // zenbakiak parametro bihurtu eta inbentariotik kendu -> hasieraketa kargatu() izatea !!! ekintzak hasieraketa ere !!!
+    public void MapaGorde(Mapa mapaDatuak)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fitxategia = File.Open(Application.persistentDataPath + itemsDataPath, FileMode.OpenOrCreate);
+        bf.Serialize(fitxategia, mapaDatuak);
+        fitxategia.Close();
+    }
+
+    public Mapa MapaDatuakKargatu()
+    {
+        Mapa datuak = new Mapa();
+        if (File.Exists(Application.persistentDataPath + playerDataPath))         // !!! errorea gertatzen bada partida berria !!! 
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + itemsDataPath, FileMode.Open);
+            datuak = (Mapa)bf.Deserialize(file);
+            file.Close();
+        }
+        else
+        {
+            datuak = MapaBerria();
+        }
+        return datuak;
+    }
+
+    public PlayerData JokalariDatuBerriak()     // zenbakiak parametro bihurtu eta inbentariotik kendu -> hasieraketa kargatu() izatea !!! ekintzak hasieraketa ere !!!
     {
         PlayerData datuBerriak = new PlayerData();
         datuBerriak.datuakGordeta = false;
-        datuBerriak.Eszenatokia = 1;
-        datuBerriak.checkPointZenbakia = 0;
-        datuBerriak.txanponKopurua = 0;
-        datuBerriak.itemak = new List<Item>();
-        datuBerriak.geziKopurua = 10;
-        datuBerriak.geziKopuruMax = 10;
-        datuBerriak.bizitzaPuntuak = 6;
-        datuBerriak.bizitzaPuntuMax = 6;
+        datuBerriak.Eszenatokia = eszenatokia;
+        datuBerriak.checkPointZenbakia = checkpointZenbakia;
+        datuBerriak.txanponKopurua = txanponKopurua;
+        datuBerriak.suArgia = false;
+        datuBerriak.ezpata = false;
+        datuBerriak.arkua = false;
+        datuBerriak.geziKopurua = geziKopurua;
+        datuBerriak.geziKopuruMax = geziKopuruMax;
+        datuBerriak.bizitzaPuntuak = bizitzaPuntuak;
+        datuBerriak.bizitzaPuntuMax = bizitzaPuntuMax;
         return datuBerriak;
     }
 
-    [Serializable]                      // fitxategi berri bat -> mapa -> hartutako txanpon eta itemak -> 
-    public class PlayerData             // fitxategi berri bat -> partidadatuak -> datuak daude eta eszenatokia, mainmenu behar duen bakarra
+    public Mapa MapaBerria()
     {
-        public bool datuakGordeta;      // beste fitxategi baten partidadatuak
-        public int Eszenatokia;         // beste fitxategi baten partidadatuak
+        Mapa mapaBerria = new Mapa();
+        mapaBerria.itemak = null;
+        mapaBerria.dialogak = null;
+        return mapaBerria;
+    }
+
+    [Serializable]
+    public class PlayerData
+    {
+        public bool datuakGordeta;
+        public int Eszenatokia;
         public int checkPointZenbakia;
         public bool[] ekintzak;
         public int txanponKopurua;
-        public List<Item> itemak;
+        public bool suArgia;
+        public bool ezpata;
+        public bool arkua;
         public int geziKopurua, geziKopuruMax;
         public int bizitzaPuntuak, bizitzaPuntuMax;
+    }
+
+    [Serializable]
+    public class Mapa
+    {
+        public bool[] itemak;
+        public bool[] dialogak;
     }
 }

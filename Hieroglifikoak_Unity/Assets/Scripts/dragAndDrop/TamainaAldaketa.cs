@@ -41,6 +41,7 @@ public class TamainaAldaketa : MonoBehaviour
                 luzera = transform.GetChild(0).GetComponent<TamainaAldaketa>().GetLuzera();
                 for (int i = 0; i < transform.childCount; i++)
                 {
+                    //if(transform.GetChild(i).name != "New Game Object") { }
                     TamainaAldaketa piezaTamaina = transform.GetChild(i).GetComponent<TamainaAldaketa>();
                     altuera += piezaTamaina.GetAltuera();
                     if (piezaTamaina.GetLuzera() > luzera)
@@ -55,6 +56,7 @@ public class TamainaAldaketa : MonoBehaviour
                 luzera = (transform.childCount - 1) * spacing;
                 for (int i = 0; i < transform.childCount; i++)
                 {
+                    //if (transform.GetChild(i).name != "New Game Object") { }
                     TamainaAldaketa piezaTamaina = transform.GetChild(i).GetComponent<TamainaAldaketa>();
                     luzera += piezaTamaina.GetLuzera();
                     if (piezaTamaina.GetAltuera() > altuera)

@@ -59,7 +59,8 @@ public class Atea : MonoBehaviour {
     {
         float posX = gameObject.transform.position.x;
         jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
-        jokalaria.SetAbiaduraHorizontala(0);
+        //jokalaria.SetAbiaduraHorizontala(0);
+        jokalaria.SetAbiadura(new Vector2(0, 0));
 
         yield return new WaitForSeconds(.3f); // jokalaria atea zabaldu baino lehen ez sartzeko
 

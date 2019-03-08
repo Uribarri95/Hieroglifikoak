@@ -7,7 +7,7 @@ public class ItemTokia : MonoBehaviour {
     public Image holder;
     public Text geziak;
 
-    public void AddItem(Sprite irudia)          // !!! ez dadila berahala jarri -> UI puzzlea hemen?
+    public void AddItem(Sprite irudia)
     {
         GetComponent<Image>().enabled = true;
         if (GetComponentInChildren<EnableUI>())

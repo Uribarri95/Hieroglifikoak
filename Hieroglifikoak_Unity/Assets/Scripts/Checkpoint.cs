@@ -5,14 +5,15 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour {
 
     public EtsaiKudeaketa etsaiak;
-    // !!! reset
     JokalariKudetzailea kudetzailea;
+    Mapa mapa;
     Animator anim;
     bool datuakGorde = false;
 
 	// Use this for initialization
 	void Start () {
-        kudetzailea = GetComponentInParent<JokalariKudetzailea>();
+        kudetzailea = JokalariKudetzailea.instantzia;
+        mapa = Mapa.instantzia;
         anim = GetComponent<Animator>();
     }
 
@@ -25,6 +26,7 @@ public class Checkpoint : MonoBehaviour {
                 datuakGorde = true;
                 kudetzailea.checkpoint = gameObject;
                 kudetzailea.DatuakGorde();
+                mapa.MapaGorde();
                 anim.SetTrigger("zabaldu");
             }
         }

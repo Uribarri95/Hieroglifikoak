@@ -32,7 +32,33 @@ public class PiezaInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        argibideak.ArgibideakJarri();
+        bool bestePiezaBatDago = false;
+        if (!eventData.dragging)
+        {
+            List<GameObject> saguAzpian = eventData.hovered;
+            for (int i = saguAzpian.Count - 1; i >= 0; i--)
+            {
+                if(saguAzpian[i] != null)
+                {
+                    if (saguAzpian[i].GetComponent<PiezaInfo>() != null)
+                    {
+                        if (saguAzpian[i] != gameObject)
+                        {
+                            bestePiezaBatDago = true;
+                            saguAzpian[i].GetComponent<PiezaInfo>().DeskribapenaIkusi();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            bestePiezaBatDago = true;
+        }
+        if (!bestePiezaBatDago)
+        {
+            argibideak.ArgibideakJarri();
+        }
     }
-
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Inbentarioa : MonoBehaviour {
 
     #region Singleton
@@ -22,6 +23,7 @@ public class Inbentarioa : MonoBehaviour {
     public delegate void ItemJaso();
     public ItemJaso itemJasoDeitu;
 
+    [SerializeField]
     public List<Item> items = new List<Item>();
     private int itemKopuruMax = 3;
     string newItem;
@@ -38,6 +40,8 @@ public class Inbentarioa : MonoBehaviour {
 
     public int txanponKopurua = 0;
 
+    public Sprite suIrudia, ezpataIrudia, arkuIrudia;
+
     private void Start() // -> kargatu lehenengo aldian !!!
     {
         geziKopurua = geziKopuruMax;
@@ -47,7 +51,30 @@ public class Inbentarioa : MonoBehaviour {
 
     public void Kargatu(Data.PlayerData datuak)
     {
-        items = datuak.itemak;
+        if (datuak.suArgia)
+        {
+            Item suArgia = new Item();
+            suArgia.izena = "SuArgia";
+            suArgia.irudia = suIrudia;
+            suArgia.erabileraBakarra = false;
+            AddItem(suArgia);
+        }
+        if (datuak.ezpata)
+        {
+            Item ezpata = new Item();
+            ezpata.izena = "Ezpata";
+            ezpata.irudia = ezpataIrudia;
+            ezpata.erabileraBakarra = false;
+            AddItem(ezpata);
+        }
+        if (datuak.arkua)
+        {
+            Item arkua = new Item();
+            arkua.izena = "Arkua";
+            arkua.irudia = arkuIrudia;
+            arkua.erabileraBakarra = false;
+            AddItem(arkua);
+        }
         geziKopurua = datuak.geziKopurua;
         geziKopuruMax = datuak.geziKopuruMax;
         bizitzaPuntuak = datuak.bizitzaPuntuak;
@@ -55,10 +82,33 @@ public class Inbentarioa : MonoBehaviour {
         txanponKopurua = datuak.txanponKopurua;
     }
 
+    public void AddItem(Item itema)
+    {
+        items.Add(itema);
+        UIEguneratu();
+    }
+
     public Data.PlayerData Gorde()
     {
         Data.PlayerData datuak = new Data.PlayerData();
-        datuak.itemak = items;
+        datuak.suArgia = false;
+        datuak.ezpata = false;
+        datuak.arkua = false;
+        foreach (var item in items)
+        {
+            if(item.izena == "SuArgia")
+            {
+                datuak.suArgia = true;
+            }
+            if(item.izena == "Ezpata")
+            {
+                datuak.ezpata = true;
+            }
+            if (item.izena == "Arkua")
+            {
+                datuak.arkua = true;
+            }
+        }
         datuak.geziKopurua = geziKopurua;
         datuak.geziKopuruMax = geziKopuruMax;
         datuak.bizitzaPuntuak = bizitzaPuntuak;
@@ -89,7 +139,7 @@ public class Inbentarioa : MonoBehaviour {
 
     public bool Add(Item item)
     {
-        if (!item.erbileraBakarra)
+        if (!item.erabileraBakarra)
         {
             if(items.Count >= itemKopuruMax)
             {
@@ -98,7 +148,7 @@ public class Inbentarioa : MonoBehaviour {
             }
             for (int i = 0; i < items.Count; i++)
             {
-                if(items[i] == item)
+                if(items[i].izena == item.izena)
                 {
                     Debug.Log("Badaukazu " + item.izena + " inbentarioan.");
                     return false;

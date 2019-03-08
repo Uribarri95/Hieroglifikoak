@@ -26,7 +26,6 @@ public class DialogTrigger : MonoBehaviour {
             {
                 exekutatu = true;
                 StartCoroutine(TriggerDialog());
-                // jokalaria gelditu ||jokoa gelditu
             }
         }
     }
@@ -36,5 +35,6 @@ public class DialogTrigger : MonoBehaviour {
         yield return new WaitForSeconds(itzaroteDenbora);
         dialogCanvas.SetActive(true);
         dialogManager.StartDialog(dialog, puzleaErakutsi, zenbakia);
+        gameObject.SetActive(false);
     }
 }

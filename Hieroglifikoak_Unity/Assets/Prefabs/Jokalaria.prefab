@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793441462724276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9176617, y: -0.18611121, z: 0}
+  m_LocalPosition: {x: 1.12, y: -0.684, z: 0}
   m_LocalScale: {x: 3.4, y: 3.25, z: 1}
   m_Children:
   - {fileID: 4193295092765940}
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 1158688603437344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.11, y: -0.035, z: 0}
-  m_LocalScale: {x: 0.2921714, y: 0.30697116, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4578535735847250}
   m_RootOrder: 1
@@ -243,30 +243,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdda4cb66ea89b4aa4d6c705bec2fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leunketa: 0
-  grabitatea: -20
-  saltoIndarra: 9.8
-  abiaduraOinez: 4
-  leuntzeNormala: 0.1
-  abiaduraMakurtuta: 1
-  irristapenLeunketa: 1.5
-  aldapaSaltoa: 12
-  korrikaAbiadura: 6
-  noranzkoaLeundu: 0.2
-  paretaSaltoa: {x: 10, y: 7}
-  denboraItsatsita: 0.15
-  eskileraIgotzen: 0
-  kutxaIkutzen: 0
   helduPuntua: {fileID: 4193295092765940}
-  erradioa: 0.1
   zerDaKutxa:
     serializedVersion: 2
     m_Bits: 123904
   erasoPuntua: {fileID: 4890666248301480}
   hiltzen: 0
   berpizten: 0
+  kargatzen: 0
   gelaAldaketa: 0
-  aldaketaDenbora: 2.2
+  eskumarantz: 0
+  aldaketaDenbora: 1
 --- !u!114 &114688779517808370
 MonoBehaviour:
   m_ObjectHideFlags: 1

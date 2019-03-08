@@ -7,21 +7,21 @@ public class MainMenu : MonoBehaviour {
     public FadeManager fadeManager;
     public Animator backAnim;
     public Animator menuAnim;
-    Data playerData;
-    Data.PlayerData datuak;
+    Data data;
+    Data.PlayerData jokalariDatuak;
 
     private void Start()
     {
-        playerData = Data.instantzia;
+        data = Data.instantzia;
         fadeManager.Argitu();
     }
 
     public void Jolastu()
     {
-        datuak = playerData.Kargatu();
-        int sceneToLoad;
+        jokalariDatuak = data.JokalariDatuakKargatu();
         menuAnim.SetTrigger("play");
-        if (datuak.datuakGordeta)
+        print("jolastu -> datuak gordeta? " + jokalariDatuak.datuakGordeta);
+        if (jokalariDatuak.datuakGordeta)
         {
             print("datuak gordeta");
             menuAnim.SetBool("partidaGordeta",true);
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour {
         {
             print("ez duzu daturik gordeta");
             menuAnim.SetBool("partidaGordeta", false);
-            sceneToLoad = datuak.Eszenatokia;
+            int sceneToLoad = jokalariDatuak.Eszenatokia;
             backAnim.SetTrigger("start");
             fadeManager.FadeToScene(sceneToLoad);
         }
@@ -46,16 +46,19 @@ public class MainMenu : MonoBehaviour {
     public void Jarraitu()
     {
         menuAnim.SetTrigger("jarraituhasi");
-        int sceneToLoad = datuak.Eszenatokia;
+        jokalariDatuak = data.JokalariDatuakKargatu();
+        int sceneToLoad = jokalariDatuak.Eszenatokia;
         backAnim.SetTrigger("start");
         fadeManager.FadeToScene(sceneToLoad);
     }
 
     public void Hasi()
     {
+        data.DatuakEzabatu();
         menuAnim.SetTrigger("jarraituhasi");
-        datuak = playerData.DatuBerriak();
-        int sceneToLoad = datuak.Eszenatokia;
+        jokalariDatuak = data.JokalariDatuakKargatu();
+        jokalariDatuak = data.JokalariDatuBerriak();
+        int sceneToLoad = jokalariDatuak.Eszenatokia;
         backAnim.SetTrigger("start");
         fadeManager.FadeToScene(sceneToLoad);
     }
