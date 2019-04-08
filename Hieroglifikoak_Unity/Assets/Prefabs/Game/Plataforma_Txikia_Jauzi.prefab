@@ -35,8 +35,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049696301462456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.31, y: -156.28, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -154.35, y: -35.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,11 +91,11 @@ MonoBehaviour:
     m_Bits: 256
   marraztuPuntuak:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -10, z: 0}
-  PlataformaAbiadura: 2
+  - {x: 0, y: -18, z: 0}
+  PlataformaAbiadura: 5
   zikloa: 0
-  easing: 1.6
-  itxaroteDenbora: 2.4
+  easing: 3.8
+  itxaroteDenbora: 0.2
   bidaiLuzea: 0
   reset: 0
   lurreraJauzi: 1
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300014, guid: a646d926f8cbee242a83784b271c3b69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

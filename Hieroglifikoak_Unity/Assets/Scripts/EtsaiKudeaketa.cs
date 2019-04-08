@@ -8,6 +8,7 @@ public class EtsaiKudeaketa : MonoBehaviour {
     // !!! DISEINUA: etsaiak[] prefab-etik hartu -->> ordena mantendu!!!
     public GameObject[] etsaiak;
     float etsaiKop;
+    float[] etsaiRotation;
     Vector2[] etsaiPos;
     public bool reset;
 
@@ -17,9 +18,11 @@ public class EtsaiKudeaketa : MonoBehaviour {
         if(etsaiKop != 0)
         {
             etsaiPos = new Vector2[etsaiak.Length];
+            etsaiRotation = new float[etsaiak.Length];
             for (int i = 0; i < etsaiak.Length; i++)
             {
                 etsaiPos[i] = transform.GetChild(i).position;
+                etsaiRotation[i] = transform.GetChild(i).transform.rotation.y;
             }
         }
 	}
@@ -44,6 +47,7 @@ public class EtsaiKudeaketa : MonoBehaviour {
         for (int i = 0; i < etsaiak.Length; i++)
         {
             GameObject etsaia =  Instantiate(etsaiak[i], etsaiPos[i], transform.rotation);
+            //GameObject etsaia = Instantiate(etsaiak[i], etsaiPos[i], new Quaternion(0, etsaiRotation[i], 0, 0));
             etsaia.transform.parent = transform;
         }
     }

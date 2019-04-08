@@ -57,7 +57,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4482866446422200}
-  m_Layer: 11
+  - component: {fileID: 70289117181928358}
+  - component: {fileID: 114727516454690534}
+  m_Layer: 0
   m_Name: ErasoPuntua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700123700194080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.005683, y: -20.032383, z: 0}
+  m_LocalPosition: {x: 39.67, y: 38.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4482866446422200}
@@ -179,6 +181,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.25}
   m_EdgeRadius: 0
+--- !u!70 &70289117181928358
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820022272253004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25}
+  m_Size: {x: 0.6, y: 0.2}
+  m_Direction: 1
 --- !u!95 &95043674231860446
 Animator:
   serializedVersion: 3
@@ -238,7 +255,21 @@ MonoBehaviour:
   jokalaria:
     serializedVersion: 2
     m_Bits: 256
+  izpia:
+    serializedVersion: 2
+    m_Bits: 123648
   erasoMaiztasuna: 8
+--- !u!114 &114727516454690534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820022272253004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114881636800719086
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -41,6 +41,7 @@ public class KakalardoMugimendua : MonoBehaviour {
     // animazioko event jaurtitzen du
     void BolaJaurti()
     {
-        Instantiate(bola, erasoPuntua.position, erasoPuntua.rotation);
+        GameObject kakaBola = Instantiate(bola, erasoPuntua.position, erasoPuntua.rotation);
+        kakaBola.transform.SetParent(transform);
     }
 }

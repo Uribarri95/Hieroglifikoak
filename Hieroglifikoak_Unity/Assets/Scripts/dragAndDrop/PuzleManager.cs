@@ -14,6 +14,7 @@ public class PuzleManager : MonoBehaviour {
     int zenbakia;
     bool konprobatzen = false;
     string emaitzaTxartoMezua = "KODEA EZ DA ZUZENA, DUDARIK BADAUKAZU SAKATU 'P' EDO 'ESC' TEKLA ETA BEGIRATU HIZTEGIA ATALA.";
+    string emaitzaZuzenaMezua = "KODEA ZUZENA DA, ZORIONAK!";
 
     private void Start()
     {
@@ -47,8 +48,14 @@ public class PuzleManager : MonoBehaviour {
         argibideak.gameObject.SetActive(true);
     }
 
+    // !!! 
     IEnumerator PanelEzgaitu()
     {
+
+        if(currentPanel.GetComponent<EmaitzaKonprobatu>() != null && currentPanel.GetComponent<EmaitzaKonprobatu>().hurrengoPuzleaJarri)
+        {
+            print("bi puzzle jarraian");
+        }
         aktibatuta = false;
         yield return new WaitForSeconds(.5f);
         fadeManager.Ilundu();
@@ -67,24 +74,25 @@ public class PuzleManager : MonoBehaviour {
             string erantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetErantzuna();
             emaitzak.SetIndex(zenbakia);
             bool zuzena = emaitzak.EmaitzaKonprobatu(erantzuna);
-            if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
+            /*if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
             {
                 print("bestea");
-                string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna();
+                string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna(); // !!! bigarren erantzuna kendu?
                 emaitzak.SetIndex(zenbakia + 1);
                 zuzena = emaitzak.EmaitzaKonprobatu(besteErantzuna);
                 emaitzak.SetIndex(zenbakia);
-            }
+            }*/
             if (zuzena)
             {
                 emaitzak.Eragin();
+                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaZuzenaMezua, Color.green));
                 StartCoroutine(PanelEzgaitu());
             }
             else
             {
-                // mezu kutxa aldatu segundu batzuk, emaitza txarto dagoela esaten duen mezua
+                // mezu kutxa aldatu segundu batzuk, emaitza txarto dagoela esaten duen mezuarekin
                 konprobatzen = false;
-                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua));
+                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua, Color.red));
             }
         }
     }

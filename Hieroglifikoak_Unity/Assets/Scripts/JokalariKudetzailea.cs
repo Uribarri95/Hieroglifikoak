@@ -134,18 +134,18 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         jokalaria.kargatzen = true;
         jokalaria.transform.position = checkpoint.transform.position;
-        checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
+        //checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
 
         // camera bound aldatu
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1);
         cam.GetComponent<VCam>().CameraConfinerKudeatu(checkpoint.transform.position);
         fadeManager.Argitu(2);      // !!!dialog triggerraren aktibazio denbora luzatu baita ere! 
 
         // animazioa kargatzeko behar duen denbora
-        yield return new WaitForSeconds(2.4f);
-        inbentarioa.Berpiztu();
+        //yield return new WaitForSeconds(2.4f);
+        //inbentarioa.Berpiztu();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.4f);
         jokalaria.kargatzen = false;
     }
 }

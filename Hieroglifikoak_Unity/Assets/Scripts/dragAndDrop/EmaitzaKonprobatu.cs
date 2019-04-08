@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class EmaitzaKonprobatu : MonoBehaviour {
 
     public EmaitzaIrakurri erabErantzuna;
-    public EmaitzaIrakurri bigarrenErantzuna;
-    public bool extra;
+    //public EmaitzaIrakurri bigarrenErantzuna;
+    //public bool extra;
     public int ekintzaZenbakia;
+    public bool hurrengoPuzleaJarri;
 
     public string GetErantzuna()
     {
@@ -16,9 +17,9 @@ public class EmaitzaKonprobatu : MonoBehaviour {
         return erabErantzuna.EmaitzaItzuli();
     }
 
-    public string GetBesteErantzuna()
+    /*public string GetBesteErantzuna()
     {
         print(bigarrenErantzuna.EmaitzaItzuli());
         return bigarrenErantzuna.EmaitzaItzuli();
-    }
+    }*/
 }

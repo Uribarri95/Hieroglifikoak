@@ -20,35 +20,38 @@ public class Inbentarioa : MonoBehaviour {
     }
     #endregion
 
-    public delegate void ItemJaso();
+    public delegate void ItemJaso();                                // UI eguneratzeko
     public ItemJaso itemJasoDeitu;
 
-    [SerializeField]
-    public List<Item> items = new List<Item>();
-    private int itemKopuruMax = 3;
-    string newItem;
+    List<Item> items = new List<Item>();                            // item zerrenda
+    private int itemKopuruMax = 3;                                  // item kopuru maximoa
+    string newItem;                                                 // item berria lortzen denean animazio txiki bat gertatzeko
 
-    int geziKopurua;
-    public int geziKopuruMax = 10;
-    int geziakTopera = 20;
-    int geziakAreagotu = 5;
+    int bizitzaPuntuMax = 6;                                        // jokalariaren bizitza puntu maximoa, 3 aldiz handitu daiteke
+    int bizitzaPuntuak;                                             // jokalariaren momentuko bizitza puntuak, bihotz erdietan kontatuta
+    int bizitzaTopea = 12;                                          // jokalariaren gehiengo bizitza puntuak
+    int bizitzaPuntuakAreagotu = 2;                                 // bizitza puntu hobekuntza, 6-tik 8-ra, 8-tik 10-era eta 10-etik 12-ra
 
-    public static int bizitzaPuntuak; // bihotz erdietan kontata
-    public int bizitzaPuntuMax = 6;
-    int bizitzaTopea = 12;
-    int bizitzaPuntuakAreagotu = 2;
+    int geziKopuruMax = 10;                                         // jokalariaren gezi kopuru maximoa, 2 aldiz handitu daiteke
+    int geziKopurua;                                                // momentuan jokalariak dituen gezi kopurua
+    int geziakTopera = 20;                                          // jokalariaren gehiengo geziak
+    int geziakAreagotu = 5;                                         // gezi kopuru hobekuntza, 10-etik 15-era eta 15-etik 20-ra
 
-    public int txanponKopurua = 0;
+    int txanponKopurua = 0;                                         // jokalariaren txanpon kopurua, hobekuntzak erosteko.
+    // !!! behekoa data barruan sartu
+    int lortutakoTxaponGuztiak = 0;                                 // jokalariak lortu dituen txanpon denak.
+    int jokalariaHilZenbaketa = 0;                                  // jokalaria zenbat aldiz hil den.
 
-    public Sprite suIrudia, ezpataIrudia, arkuIrudia;
+    int pasahitzak = 0;                                             // atea zabaltzeko pasahitza.
 
-    private void Start() // -> kargatu lehenengo aldian !!!
+    public Sprite suIrudia, ezpataIrudia, arkuIrudia;               // item irudiak -> UI-an ikusteko
+
+    private void Start()
     {
-        geziKopurua = geziKopuruMax;
-        bizitzaPuntuak = bizitzaPuntuMax;
         UIEguneratu();
     }
 
+    // jokalariaren datuak kargatzen dira. JokalariKudetzaileak kargatzen ditu
     public void Kargatu(Data.PlayerData datuak)
     {
         if (datuak.suArgia)
@@ -80,14 +83,21 @@ public class Inbentarioa : MonoBehaviour {
         bizitzaPuntuak = datuak.bizitzaPuntuak;
         bizitzaPuntuMax = datuak.bizitzaPuntuMax;
         txanponKopurua = datuak.txanponKopurua;
+        lortutakoTxaponGuztiak = datuak.lortutakoTxanponGuztiak;
+        jokalariaHilZenbaketa = datuak.lortutakoTxanponGuztiak;
+        pasahitzak = datuak.pasahitzak;
+        UIEguneratu();
     }
 
-    public void AddItem(Item itema)
+    // kargatutako itemak zerrendara sartzen dira
+    void AddItem(Item itema)
     {
         items.Add(itema);
         UIEguneratu();
     }
 
+
+    // datuak gordetzen dira. JokalariKudetzailea arduratzen da
     public Data.PlayerData Gorde()
     {
         Data.PlayerData datuak = new Data.PlayerData();
@@ -111,32 +121,72 @@ public class Inbentarioa : MonoBehaviour {
         }
         datuak.geziKopurua = geziKopurua;
         datuak.geziKopuruMax = geziKopuruMax;
-        datuak.bizitzaPuntuak = bizitzaPuntuak;
+        // hil ostean jokua gordetzen da -> bizitza topera, ez 0
+        if (bizitzaPuntuak <= 0)
+        {
+            datuak.bizitzaPuntuak = bizitzaPuntuMax;
+        }
+        else
+        {
+            datuak.bizitzaPuntuak = bizitzaPuntuak;
+        }
         datuak.bizitzaPuntuMax = bizitzaPuntuMax;
         datuak.txanponKopurua = txanponKopurua;
+        datuak.lortutakoTxanponGuztiak = lortutakoTxaponGuztiak;
+        datuak.jokalariaHilZenbaketa = jokalariaHilZenbaketa;
+        datuak.pasahitzak = pasahitzak;
         return datuak;
     }
 
+    // item zerrenda itzultzen du, UI eguneratzeko
+    public List<Item> GetItemZerrenda()
+    {
+        return items;
+    }
+
+    // bizitzaPuntuMaximoa itzultze du, UI eguneratzeko
+    public int GetBizitzaPuntuMax()
+    {
+        return bizitzaPuntuMax;
+    }
+
+    // bizitzaPuntuak itzultzen du, UI eguneratzeko
+    public int GetBizitzaPuntuak()
+    {
+        return bizitzaPuntuak;
+    }
+
+    // newItem balioa itzultzen du, item berria lortzean animazio bat ikusteko
     public string GetNewItem()
     {
         return newItem;
     }
 
+    // balioa erreseteatzen da, beste item bat lortzean beste animazio bat ikusteko
     public void NewItemHustu()
     {
         newItem = null;
     }
 
+    // geziKopurua itzultzen du, UI eguneratzeko
     public int GetGeziKop()
     {
         return geziKopurua;
     }
 
+    // txanponKopurua itzultzen du, UI eguneratzeko
+    public int GetTxanponKopurua()
+    {
+        return txanponKopurua;
+    }
+
+    // arkua erabili ondoren gezi bat galtzen da
     public void GeziaJaurti()
     {
         geziKopurua--;
     }
 
+    // item berria lortu (sua, arkua, gezia, bihotzak, geziak, txanponak)
     public bool Add(Item item)
     {
         if (!item.erabileraBakarra)
@@ -180,6 +230,10 @@ public class Inbentarioa : MonoBehaviour {
                     TxanponaHartu();
                     return true;
                     //break;
+                case "Pasahitza":
+                    PapiroaHartu();
+                    return true;
+                    //break;
                 default:
                     break;
             }
@@ -187,6 +241,7 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    // galdutako bihotzak berreskuratzen dira. Ezin da maximoa baino gehiago izan (maximoa hirutan hobetzen da)
     bool BizitzaPuntuakGehitu()
     {
         Debug.Log("bizitza puntuak berreskuratzen");
@@ -204,6 +259,7 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    // geziak berreskuratzen dira. Ezin da maximoa baino gehiago izan (maximoa bitan hobetzen da)
     bool GeziakGorde()
     {
         Debug.Log("Geziak gordetzen");
@@ -221,6 +277,7 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    // bizitza kopuru maximoa hobetzen da (3 aldiz egin daiteke)
     bool BizitzaPuntuakHanditu()
     {
         if(bizitzaPuntuMax < bizitzaTopea)
@@ -236,6 +293,7 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    // gezi kopuru maximoa hobetzen da (2 aldiz egin daiteke) 
     bool GeziKopuruaHanditu()
     {
         if(geziKopuruMax < geziakTopera)
@@ -251,12 +309,42 @@ public class Inbentarioa : MonoBehaviour {
         return true;
     }
 
+    // txanpona hartu
     void TxanponaHartu()
     {
+        lortutakoTxaponGuztiak++;
         txanponKopurua++;
         UIEguneratu();
     }
 
+    // hobekuntzak erosi ondoren txanpon kopurua murrizten da
+    // !!! 10 edo bukaerako prezioa parametro bihurtu
+    public void TxanponakErabili()
+    {
+        if(txanponKopurua >= 10)
+        {
+            txanponKopurua -= 10;
+        }
+    }
+
+    void PapiroaHartu()
+    {
+        pasahitzak++;
+    }
+
+    // zenbat papiro hartu diren itzultzen du
+    public int GetPasahitzKop()
+    {
+        return pasahitzak;
+    }
+
+    // pasahitz minijokua berriz hasteko
+    public void PasahitzakReset()
+    {
+        pasahitzak = 0;
+    }
+
+    // kolpea jasotzean bihotz errdia galtzen da (BizitzaPuntuak bihotz erdietan kontatzen da)
     public bool KolpeaJaso()
     {
         bizitzaPuntuak--;
@@ -268,18 +356,23 @@ public class Inbentarioa : MonoBehaviour {
         return false;
     }
 
+    // jokalaria hiltzen denean bihotz denak galtzen ditu
     public void JokalariaHil()
     {
+        jokalariaHilZenbaketa++;
         bizitzaPuntuak = 0;
         UIEguneratu();
     }
 
+    // jokalaria berpiztean bihotz denak berreskurtzen ditu
     public void Berpiztu()
     {
         bizitzaPuntuak = bizitzaPuntuMax;
         UIEguneratu();
     }
 
+    // UI barruan erdian dagoen itema da item erabilgarria. 
+    // Eskumako itema erabilgarria den itemarekin aldatzen da.
     public void SwipeRight()
     {
         Item lag = items[0];
@@ -288,6 +381,8 @@ public class Inbentarioa : MonoBehaviour {
         UIEguneratu();
     }
 
+    // UI barruan erdian dagoen itema da item erabilgarria. 
+    // Ezkerreko itema erabilgarria den itemarekin aldatzen da.
     public void SwipeLeft()
     {
         Item lag = items[0];
@@ -296,6 +391,7 @@ public class Inbentarioa : MonoBehaviour {
         UIEguneratu();
     }
 
+    // UI-ak delegate-arekin lotuta, aldaketak egin behar direnean funtzioari deitzen zaio
     public void UIEguneratu()
     {
         if (itemJasoDeitu != null)

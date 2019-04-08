@@ -42,14 +42,17 @@ public class Atea : MonoBehaviour {
             if (zabalduDaiteke)
             {
                 playerAnim = collision.GetComponent<Animator>();
-                if (Input.GetKeyDown(KeyCode.DownArrow) && jokalaria.GetLurrean() && !jokalaria.GetAteaZeharkatzen())
+                if (Ekintzak.instantzia.GetAteaZabaldu())
                 {
-                    jokalaria.SetAteaZeharkatzen(true);
+                    if (Input.GetKeyDown(KeyCode.DownArrow) && jokalaria.GetLurrean() && !jokalaria.GetAteaZeharkatzen())
+                    {
+                        jokalaria.SetAteaZeharkatzen(true);
 
-                    anim.SetBool("zabaldu", true);
-                    exitAnim.SetBool("zabaldu", true);
+                        anim.SetBool("zabaldu", true);
+                        exitAnim.SetBool("zabaldu", true);
 
-                    StartCoroutine(AteanSartu());
+                        StartCoroutine(AteanSartu());
+                    }
                 }
             }
         }
@@ -59,7 +62,6 @@ public class Atea : MonoBehaviour {
     {
         float posX = gameObject.transform.position.x;
         jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
-        //jokalaria.SetAbiaduraHorizontala(0);
         jokalaria.SetAbiadura(new Vector2(0, 0));
 
         yield return new WaitForSeconds(.3f); // jokalaria atea zabaldu baino lehen ez sartzeko
@@ -68,17 +70,21 @@ public class Atea : MonoBehaviour {
         fadeManager.Ilundu();
         //trantzizioa.FadeOut();
 
-        yield return new WaitForSeconds(1.25f); // atetik desagertzeko behar duen denbora
+        yield return new WaitForSeconds(1f); // atetik desagertzeko behar duen denbora
 
         cam.GetComponent<VCam>().CameraConfinerKudeatu(irteeraAtea.transform.position);
         jokalaria.transform.position = new Vector2(irteeraAtea.transform.position.x, irteeraAtea.transform.position.y);
+        irteeraAtea.GetComponent<Atea>().AteaZabaldu(true);
         irteeraAtea.GetComponent<Atea>().EtsaiakReset();
 
         yield return new WaitForSeconds(1); // jokalaria eta kamera toki berrian denbora
 
         fadeManager.Argitu();
         //trantzizioa.FadeIn();
-        playerAnim.SetTrigger("atetikIrten");
+        if (jokalaria.GetLurrean())
+        {
+            playerAnim.SetTrigger("atetikIrten");
+        }
 
         yield return new WaitForSeconds(1f); // jokalaria irten ostean atea ixten da
 

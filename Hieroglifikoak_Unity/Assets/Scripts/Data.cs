@@ -13,6 +13,9 @@ public class Data : MonoBehaviour {
     int eszenatokia = 1;
     int checkpointZenbakia = 0;
     int txanponKopurua = 0;
+    int lortutakoTxanponGuztiak = 0;
+    int jokalariaHilZenbaketa = 0;
+    int pasahitzak = 0;
     int geziKopurua = 10;
     int geziKopuruMax = 10;
     int bizitzaPuntuak = 6;
@@ -125,6 +128,9 @@ public class Data : MonoBehaviour {
         datuBerriak.Eszenatokia = eszenatokia;
         datuBerriak.checkPointZenbakia = checkpointZenbakia;
         datuBerriak.txanponKopurua = txanponKopurua;
+        datuBerriak.lortutakoTxanponGuztiak = lortutakoTxanponGuztiak;
+        datuBerriak.jokalariaHilZenbaketa = jokalariaHilZenbaketa;
+        datuBerriak.pasahitzak = pasahitzak;
         datuBerriak.suArgia = false;
         datuBerriak.ezpata = false;
         datuBerriak.arkua = false;
@@ -151,6 +157,9 @@ public class Data : MonoBehaviour {
         public int checkPointZenbakia;
         public bool[] ekintzak;
         public int txanponKopurua;
+        public int lortutakoTxanponGuztiak;
+        public int jokalariaHilZenbaketa;
+        public int pasahitzak;
         public bool suArgia;
         public bool ezpata;
         public bool arkua;

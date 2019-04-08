@@ -46,16 +46,16 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         piezaPos.SetSiblingIndex(piezaTokia.childCount);
                     }
                 }
-                /*if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak muntatu daiteze ala ez
+                if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak ez muntatzeko
                 {
                     pieza.transform.SetParent(pieza.GetPiezaGurasoa());
                     pieza.transform.SetSiblingIndex(pieza.GetHasierkoIndizea());
                 }
                 else
-                {*/
+                {
                     pieza.SetPiezaGurasoa(transform); // pieza hutsunean jarri
                     
-                //}
+                }
             }
             else // pieza toki okerren jarri da, datorren tokira itzuli
             {

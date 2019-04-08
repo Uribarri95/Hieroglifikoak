@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Defuser : MonoBehaviour {
 
-    TranpaManager tranpak;
+    PintxoTranpaManager pintxoTranpak;
     public HormaMugimendua mugTranpa;
     public Zapaldu zapalTranpa;
     public PlataformaKudeatzailea plataforma;
@@ -13,7 +13,7 @@ public class Defuser : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        tranpak = GetComponentInParent<TranpaManager>();
+        pintxoTranpak = GetComponentInParent<PintxoTranpaManager>();
         plataformaTranpak = GetComponentsInChildren<PlataformaKudeatzailea>();
     }
 
@@ -21,9 +21,9 @@ public class Defuser : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            if (tranpak != null)
+            if (pintxoTranpak != null)
             {
-                tranpak.TranpakKudeatu(false);
+                pintxoTranpak.Desaktibatu();
             }
             else if (mugTranpa != null)
             {

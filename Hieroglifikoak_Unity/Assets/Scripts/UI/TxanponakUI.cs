@@ -32,13 +32,15 @@ public class TxanponakUI : MonoBehaviour {
 
     void AddTxanponak()
     {
-        if (!gaituta && inbentario.txanponKopurua != 0)
+        //if (!gaituta && inbentario.txanponKopurua != 0)
+        if (!gaituta && inbentario.GetTxanponKopurua() != 0)
         {
             irudia.enabled = true;
             zenbakia.enabled = true;
             gaituta = true;
         }
-        zenbakia.text = inbentario.txanponKopurua.ToString();
+        //zenbakia.text = inbentario.txanponKopurua.ToString();
+        zenbakia.text = inbentario.GetTxanponKopurua().ToString();
     }
 
     public void UIGaitu()

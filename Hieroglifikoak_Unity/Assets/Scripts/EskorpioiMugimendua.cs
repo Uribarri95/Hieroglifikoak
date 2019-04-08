@@ -7,6 +7,7 @@ public class EskorpioiMugimendua : MonoBehaviour {
     public GameObject jaurtigaia;       // jokalariari jaurtitzen den pozoi objektua
     public Transform erasoPuntua;       // pozoia botatzen den puntua
     public LayerMask jokalaria;         // jokalaria ikusteko, pozoia jaurtitzeko
+    public LayerMask izpia;             // erasoa detektatuko dituen objektuak
 
     Animator anim;
     Vector3 jokalariPos;                // pozoia jaurtiko den puntua, jokalaria dagoen tokia
@@ -48,15 +49,27 @@ public class EskorpioiMugimendua : MonoBehaviour {
         Collider2D target = Physics2D.OverlapCircle(transform.position, erasoErradioa, jokalaria);
         if (target != null)
         {
+            print(target.transform.position);
             jokalariPos = target.transform.position;
             if ((transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira))
             {
                 BueltaEman();
             }
-            if (erasoDezaket)
+            /*if (erasoDezaket)
+                {
+                    erasoDezaket = false;
+                    anim.SetBool("eraso", true);
+                }*/
+
+            Vector2 norabidea = target.transform.position - erasoPuntua.transform.position;
+            RaycastHit2D erasoIzpia = Physics2D.Raycast(erasoPuntua.transform.position, norabidea, erasoErradioa, izpia);
+            if (erasoIzpia.collider.tag == "Player")
             {
-                erasoDezaket = false;
-                anim.SetBool("eraso", true);
+                if (erasoDezaket)
+                {
+                    erasoDezaket = false;
+                    anim.SetBool("eraso", true);
+                }
             }
         }
 	}

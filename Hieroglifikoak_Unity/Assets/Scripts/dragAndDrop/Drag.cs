@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    public enum mota { Normal, Baldintza, Eragigaia, ForIterator, Denak, Izenburua };
+    public enum mota { Normal, Baldintza, Eragigaia, ForIterator, Denak, Izenburua, Parametroa, zenbakia};
     public mota piezaMota;
     public Transform mugimenduPanela;
     public Sprite outline;
@@ -15,7 +15,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     Transform piezaGurasoa;
     Transform hutsuneGurasoa;
     GameObject piezaHutsunea;
-    float hutsuneAltuera = 10;
+    //float hutsuneAltuera = 10;
     int index;
 
     Transform hasierakoGurasoa;
@@ -44,7 +44,8 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
         RectTransform tamaina = piezaHutsunea.AddComponent<RectTransform>();
         float luzera = GetComponent<RectTransform>().sizeDelta.x;
-        float altuera = hutsuneAltuera;
+        float altuera = GetComponent<RectTransform>().sizeDelta.y;
+        //float altuera = hutsuneAltuera;
         tamaina.sizeDelta = new Vector2(luzera, altuera);
 
         Image ertzak = piezaHutsunea.AddComponent<Image>();

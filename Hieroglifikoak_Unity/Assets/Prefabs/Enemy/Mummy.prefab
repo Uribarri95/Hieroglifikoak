@@ -19,6 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4690879204833290}
+  - component: {fileID: 70613865345537386}
+  - component: {fileID: 114629433169477982}
   m_Layer: 11
   m_Name: Erasoa
   m_TagString: Untagged
@@ -97,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550824363325318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.8, y: -20.067608, z: 0}
+  m_LocalPosition: {x: 37.033165, y: 9.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4312215305630192}
@@ -150,6 +152,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1.2}
   m_EdgeRadius: 0
+--- !u!70 &70613865345537386
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034208140364868}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25, y: -0.2}
+  m_Size: {x: 0.3, y: 1}
+  m_Direction: 0
 --- !u!95 &95994285246518668
 Animator:
   serializedVersion: 3
@@ -193,6 +210,17 @@ MonoBehaviour:
   erasoErradioa: 0.42
   erasoDistantzia: 0.7
   erasoDenbora: 1.5
+--- !u!114 &114629433169477982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034208140364868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114656131625775864
 MonoBehaviour:
   m_ObjectHideFlags: 1

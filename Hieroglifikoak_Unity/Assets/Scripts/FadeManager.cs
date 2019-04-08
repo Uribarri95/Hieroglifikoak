@@ -9,7 +9,7 @@ public class FadeManager : MonoBehaviour {
     public Image blackImage;
     public float fadeOutDenbora;
     public float fadeInDenbora;
-    public float speed = .8f;
+    public float speed = .6f;
 
     int newScene;
     bool fadeToScene;

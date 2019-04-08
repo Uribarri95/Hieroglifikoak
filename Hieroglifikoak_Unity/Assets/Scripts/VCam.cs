@@ -13,9 +13,12 @@ public class VCam : MonoBehaviour {
 
     public GameObject cameraBounds;
 
+    bool aldaketak = false;
     float lookAhead;
     float width;
     float hight;
+    float xDamp;
+    float yDamp;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +30,8 @@ public class VCam : MonoBehaviour {
         lookAhead = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime;
         width = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneWidth;
         hight = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneHeight;
+        xDamp = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping;
+        yDamp = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping;
 
         target = cam.m_Follow;
         if (target.GetComponent<JokalariMug>())
@@ -38,28 +43,15 @@ public class VCam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (jokalaria.GetHiltzen())
-        {
-            LookAheadKudeatu(true);
-        }
-        else
-        {
-            LookAheadKudeatu(false);
-        }
-	}
-
-    void LookAheadKudeatu(bool kendu)
-    {
-        if (kendu)
         {
             cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime = 0;
         }
-        else
+        else if(jokalaria.berpizten && !aldaketak)
         {
             cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime = lookAhead;
         }
-    }
+	}
 
     public void CameraConfinerKudeatu(Vector2 pos)
     {
@@ -69,6 +61,8 @@ public class VCam : MonoBehaviour {
             {
                 confiner.m_BoundingShape2D = bounds[i];
                 confiner.InvalidatePathCache();
+                aldaketak = true;
+                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneWidth = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneHeight = 0;
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 0;
@@ -81,11 +75,13 @@ public class VCam : MonoBehaviour {
 
     IEnumerator Itxaron()
     {
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(2f);
+        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime = lookAhead;
         cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneWidth = width;
         cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_DeadZoneHeight = hight;
-        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 1;
-        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = .4f;
+        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = xDamp;
+        cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = yDamp;
+        aldaketak = false;
     }
 
     void SetFollow(Transform target)

@@ -22,10 +22,13 @@ public class InbentarioaUI : MonoBehaviour {
 
     void InbentarioUIEguneratu()
     {
-        for (int i = 0; i < inbentario.items.Count; i++)
+        //for (int i = 0; i < inbentario.items.Count; i++)
+        for (int i = 0; i < inbentario.GetItemZerrenda().Count; i++)
         {
-            itemTokiak[i].AddItem(inbentario.items[i].irudia);
-            if(inbentario.items[i].izena.Contains("Arkua"))             // if i == inbentario.items.Count -1 --> arkua orain lortu da
+            //itemTokiak[i].AddItem(inbentario.items[i].irudia);
+            itemTokiak[i].AddItem(inbentario.GetItemZerrenda()[i].irudia);
+            //if(inbentario.items[i].izena.Contains("Arkua"))             // if i == inbentario.items.Count -1 --> arkua orain lortu da
+            if (inbentario.GetItemZerrenda()[i].izena.Contains("Arkua"))
             {
                 itemTokiak[i].ErakutsiGeziKop(inbentario.GetGeziKop());
             }

@@ -61,7 +61,8 @@ public class Eraso : MonoBehaviour {
 	void Update () {
         ItemAldatu();
         ArgiKudeaketa();
-        if (inbentarioa.items.Count >= 1)
+        //if (inbentarioa.items.Count >= 1)
+        if (inbentarioa.GetItemZerrenda().Count >= 1)
         {
             ItemEguneratu();
         }
@@ -107,14 +108,16 @@ public class Eraso : MonoBehaviour {
     // inbentarioko item artean aldatzeko
     void ItemAldatu()
     {
-        if (inbentarioa.items.Count == 2)
+        //if (inbentarioa.items.Count == 2)
+        if (inbentarioa.GetItemZerrenda().Count == 2)
         {
             if (Input.GetButtonDown("SwipeLeft"))
             {
                 inbentarioa.SwipeLeft();
             }
         }
-        else if (inbentarioa.items.Count == 3)
+        //else if (inbentarioa.items.Count == 3)
+        else if (inbentarioa.GetItemZerrenda().Count == 3)
         {
             if (Input.GetButtonDown("SwipeLeft"))
             {
@@ -130,9 +133,11 @@ public class Eraso : MonoBehaviour {
     // su argia daukagunean argiak aktibatu
     void ArgiKudeaketa()
     {
-        if (inbentarioa.items.Count > 0)
+        //if (inbentarioa.items.Count > 0)
+        if (inbentarioa.GetItemZerrenda().Count > 0)
         {
-            if (inbentarioa.items[0].izena == "SuArgia")
+            //if (inbentarioa.items[0].izena == "SuArgia")
+            if (inbentarioa.GetItemZerrenda()[0].izena == "SuArgia")
             {
                 argia.enabled = true;
                 anim.SetLayerWeight(1, 1);
@@ -148,7 +153,8 @@ public class Eraso : MonoBehaviour {
     // Inbentarioan 0 posizioan dagoen itema erabilgarri geratzen da eta besteak ezgaitzen dira
     private void ItemEguneratu()
     {
-        switch (inbentarioa.items[0].izena)
+        //switch (inbentarioa.items[0].izena)
+        switch (inbentarioa.GetItemZerrenda()[0].izena)
         {
             case "SuArgia":
                 suArgia = true;

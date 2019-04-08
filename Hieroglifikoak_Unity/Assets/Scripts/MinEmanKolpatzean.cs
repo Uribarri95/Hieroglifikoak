@@ -5,15 +5,30 @@ using UnityEngine;
 public class MinEmanKolpatzean : MonoBehaviour {
 
     // jokalaria kolpatu da
-    private void OnCollisionStay2D(Collision2D collision)
+    /*private void OnCollisionStay2D(Collision2D collision)
     {
-        print(collision.transform.name);
         if (collision.transform.tag == "Player")
         {
             bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
             JokalariaKolpatu(collision.transform.GetComponent<Eraso>(), eskuma);
         }
         else if(collision.transform.name == "Oztopoak" || collision.transform.name == "Plataforma_Zeharkagarria")
+        {
+            if (gameObject.name.Contains("Saguzar_txikia"))
+            {
+                GetComponent<Etsaia>().Hil();
+            }
+        }
+    }*/
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
+            JokalariaKolpatu(collision.transform.GetComponent<Eraso>(), eskuma);
+        }
+        else if (collision.transform.name == "Oztopoak" || collision.transform.name == "Plataforma_Zeharkagarria")
         {
             if (gameObject.name.Contains("Saguzar_txikia"))
             {
@@ -29,6 +44,10 @@ public class MinEmanKolpatzean : MonoBehaviour {
         if (gameObject.name.Contains("Saguzar_txikia"))
         {
             GetComponent<Etsaia>().Hil();
+        }
+        else if (gameObject.transform.parent.name.Contains("kakalardo_bola"))
+        {
+            GetComponentInParent<KakalardoBola>().BolaSuntsitu();
         }
     }
 

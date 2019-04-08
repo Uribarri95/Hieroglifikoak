@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlataformaKudeatzailea : IzpiKudeaketa {
 
-    public LayerMask bidaiariak;
-    public LayerMask jokalaria;
+    public LayerMask bidaiariak;                            // zein objektu mugituko da platafomarekin
+    public LayerMask jokalaria;                             // zein objektu mugituko du plataforma (erortzen direnak eta bidai luzeak)
     //Dictionary<Transform, MugKudeatzaile> hiztegia = new Dictionary<Transform, MugKudeatzaile>();
     List<Transform> hiztegia = new List<Transform>();
 
@@ -13,8 +13,8 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     Vector3[] itxarotePuntuak;
     public float PlataformaAbiadura;
     public bool zikloa;
-    [Range(0,3)]
-    public float easing;
+    [Range(0,4)]
+    public float easing;                    // plataforma mugikorren abiadura aldatu egiten da bidaiaren egoeraren arabera 0.1-0.9 -> ertzetan azkarra, 1-etik gora ertzak moteldu eta 1 abiadura kte
     public float itxaroteDenbora;
     float hurrengoDenbora;
     int itxarotePosizioa;
@@ -38,7 +38,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         }
 	}
 	
-	void Update () {                        // jokalariaren kontaktuan + reset
+	void Update () {
         Vector2 abiadura = Vector2.zero;
         IzpiJatorriaEguneratu();
         if (reset)
@@ -67,7 +67,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     public void TranpakKudeatu(bool hasieratu)
     {
         reset = hasieratu;
-
         if (alderantziz)
         {
             System.Array.Reverse(itxarotePuntuak);
@@ -77,6 +76,23 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         itxarotePosizioa = 0;
         bidaiKantitatea = 0;
         transform.position = itxarotePuntuak[0];
+    }
+
+    public void Gelditu()
+    {
+        if (lurreraJauzi)
+        {
+            TranpakKudeatu(true);
+        }
+        else
+        {
+            reset = true;
+        }
+    }
+
+    public void Berrabiarazi()
+    {
+        reset = false;
     }
 
     // jokalaria gainean jarri arte itzaroten gelditu
@@ -91,7 +107,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                 RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.up, izpiLuzera, jokalaria);
                 if (kolpatu)
                 {
-                    reset = false;
+                    Berrabiarazi();
                 }
             }
         }
@@ -116,9 +132,10 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         {
             bidaiKantitatea = 0;
             itxarotePosizioa++;
-            if (transform.position == itxarotePuntuak[1] && lurreraJauzi)
+            if (transform.position != itxarotePuntuak[0] && lurreraJauzi)
             {
-                TranpakKudeatu(true);
+                //TranpakKudeatu(true);
+                Gelditu();
             }
             if (!zikloa)
             {
@@ -136,9 +153,8 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     float Ease(float x)
     {
-        float a = easing + 1;
         //return Mathf.Pow(x, 2) * (3 - 2 * x);
-        return Mathf.Pow(x, a) / (Mathf.Pow(x, a) + Mathf.Pow(1 - x, a));
+        return Mathf.Pow(x, easing) / (Mathf.Pow(x, easing) + Mathf.Pow(1 - x, easing));
     }
 
     void MugituBidaiariak(Vector2 abiadura)
@@ -163,11 +179,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                         hiztegia.Add(kolpatu.transform);
                     }
                     Mugitu(kolpatu.transform, new Vector2(abiadura.x, abiadura.y), true);
-                    /*if (!hiztegia.ContainsKey(kolpatu.transform))
-                    {
-                        hiztegia.Add(kolpatu.transform, kolpatu.transform.GetComponent<MugKudeatzaile>());
-                    }
-                    hiztegia[kolpatu.transform].Mugitu(new Vector2(abiadura.x, abiadura.y), plataformaGainean: true);*/
                 }
             }
         }
@@ -198,11 +209,6 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                             hiztegia.Add(kolpatu.transform);
                         }
                         Mugitu(kolpatu.transform, new Vector2(bultzatuX, bultzatuY), false);
-                        /*if (!hiztegia.ContainsKey(kolpatu.transform))
-                        {
-                            hiztegia.Add(kolpatu.transform, kolpatu.transform.GetComponent<MugKudeatzaile>());
-                        }
-                        hiztegia[kolpatu.transform].Mugitu(new Vector2(bultzatuX, bultzatuY), plataformaGainean: false);*/
                     }
                 }
             }
@@ -213,11 +219,15 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     {
         MugKudeatzaile jokalaria = bidaiaria.GetComponent<MugKudeatzaile>();
         if (jokalaria != null)
+        {
             jokalaria.Mugitu(abiadura, plataformaGainean);
+        }
 
         KutxaMugKud kutxa = bidaiaria.GetComponent<KutxaMugKud>();
         if (kutxa != null)
+        {
             kutxa.Mugitu(abiadura, plataformaGainean);
+        }
     }
 
     private void OnDrawGizmos()

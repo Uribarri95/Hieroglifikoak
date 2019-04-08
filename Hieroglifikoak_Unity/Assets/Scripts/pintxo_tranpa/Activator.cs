@@ -4,43 +4,62 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour {
 
-    TranpaManager tranpak;
+    PintxoTranpaManager pintxoTranpak;
     HormaMugimendua mugTranpa;
     Zapaldu zapalTranpa;
     Zapaldu[] zapaltranpaMultzoa;
+    PlataformaKudeatzailea plataforma;
 
 	// Use this for initialization
 	void Start () {
-        tranpak = GetComponentInParent<TranpaManager>();
+        pintxoTranpak = GetComponentInParent<PintxoTranpaManager>();
         mugTranpa = GetComponentInParent<HormaMugimendua>();
         zapalTranpa = GetComponentInParent<Zapaldu>();
         zapaltranpaMultzoa = GetComponentsInChildren<Zapaldu>();
+        plataforma = GetComponentInParent<PlataformaKudeatzailea>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            if (tranpak != null)
+            Aktibatu();
+        }
+    }
+
+    private void Aktibatu()
+    {
+        if (pintxoTranpak != null)
+        {
+            pintxoTranpak.Aktibatu();
+        }
+        else if (mugTranpa != null)
+        {
+            mugTranpa.TranpakKudeatu(true);
+        }
+        else if (zapalTranpa != null)
+        {
+            zapalTranpa.TranpakKudeatu(true);
+        }
+        else if (zapaltranpaMultzoa != null)
+        {
+            for (int i = 0; i < zapaltranpaMultzoa.Length; i++)
             {
-                tranpak.TranpakKudeatu(true);
+                zapaltranpaMultzoa[i].TranpakKudeatu(false);
+                zapaltranpaMultzoa[i].TranpakKudeatu(true);
             }
-            else if (mugTranpa != null)
-            {
-                mugTranpa.TranpakKudeatu(true);
-            }
-            else if (zapalTranpa != null)
-            {
-                zapalTranpa.TranpakKudeatu(true);
-            }
-            else if(zapaltranpaMultzoa != null)
-            {
-                for (int i = 0; i < zapaltranpaMultzoa.Length; i++)
-                {
-                    zapaltranpaMultzoa[i].TranpakKudeatu(false);
-                    zapaltranpaMultzoa[i].TranpakKudeatu(true);
-                }
-            }
+        }
+        else if (plataforma != null)
+        {
+            plataforma.reset = true;
+        }
+    }
+
+    public void ZapalduDesaktibatu()
+    {
+        for (int i = 0; i < zapaltranpaMultzoa.Length; i++)
+        {
+            zapaltranpaMultzoa[i].TranpakKudeatu(false);
         }
     }
 

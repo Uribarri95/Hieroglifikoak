@@ -57,7 +57,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4954523945190402}
-  m_Layer: 11
+  - component: {fileID: 70306285060406840}
+  - component: {fileID: 114778499819989538}
+  m_Layer: 0
   m_Name: Erasoa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +72,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261569425946232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.040029, y: -20.101074, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 34.47, y: -32.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4957707364669940}
@@ -150,6 +152,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.3}
   m_EdgeRadius: 0
+--- !u!70 &70306285060406840
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857506900001946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06, y: 0.05}
+  m_Size: {x: 0.8, y: 0.2}
+  m_Direction: 1
 --- !u!95 &95404779953212230
 Animator:
   serializedVersion: 3
@@ -193,6 +210,17 @@ MonoBehaviour:
   bihotza: {fileID: 1248335774213034, guid: 920d5f81014f69240baf21c462352241, type: 2}
   geziak: {fileID: 1346075230357110, guid: 4d45f0fa222381b468dc87a57e49c651, type: 2}
   itemEhunekoa: 10
+--- !u!114 &114778499819989538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857506900001946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7531e07b6f3ce47bf397b519d6e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114841050631014174
 MonoBehaviour:
   m_ObjectHideFlags: 1

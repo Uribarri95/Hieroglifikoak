@@ -180,13 +180,18 @@ public class JokalariMug : MonoBehaviour
         SaltoKudeaketa();
 
         // makurtu eta irristatu
-        if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian && !ateAurrean) // makurtu botoia sakatu lurrean gaudenean
+        if (Ekintzak.instantzia.GetMakurtu())
         {
-            MakurtuSakatu();
-        }   
-        else if (!Input.GetKey(KeyCode.DownArrow) && makurtu) // makurtutua bagaude altzatu
-        {
-            MakurtuAskatu();
+            // makurtu botoia sakatu lurrean gaudenean
+            if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian && !ateAurrean)
+            {
+                MakurtuSakatu();
+            }
+            // makurtutua bagaude altzatu
+            else if (!Input.GetKey(KeyCode.DownArrow) && makurtu)
+            {
+                MakurtuAskatu();
+            }
         }
 
         // kutxa bultzatu
@@ -288,16 +293,18 @@ public class JokalariMug : MonoBehaviour
     // aldapa irristatu ostean pixka bat irristatu
     void AldapaIrristatu()
     {
-        if (makurtu && anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && kudeatzailea.kolpeak.azpian)
+        if (Ekintzak.instantzia.GetAldapaIrristatu())
         {
-            if (kudeatzailea.kolpeak.normala.x != 0 && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma)
+            if (makurtu && anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && kudeatzailea.kolpeak.azpian)
             {
-                abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * irristatuNeurria;
+                if (kudeatzailea.kolpeak.normala.x != 0 && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma)
+                {
+                    abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * irristatuNeurria;
+                }
             }
         }
     }
 
-    // !!! pause ez dagoenean soilik !!! ??
     // sprite-aren noranzkoa aldatzen da, eraso eta kutxa bultzatzeko puntuak mugitzen dira
     public void NoranzkoaAldatu(float noranzkoa)
     {
@@ -432,22 +439,36 @@ public class JokalariMug : MonoBehaviour
             mugimendua = abiaduraMakurtuta;
 
             // hormaren kontra talka egitean abiadura 0 da
-            if (kudeatzailea.kolpeak.ezkerra || kudeatzailea.kolpeak.eskuma || kudeatzailea.kolpeak.aldapaIgotzen || kudeatzailea.kolpeak.aldapaJaisten)
+            if (kudeatzailea.kolpeak.ezkerra || kudeatzailea.kolpeak.eskuma)
             {
                 abiadura.x = 0;
                 aginduHorizontala = 0;
             }
-
-            // azkar badoa leunketa denbora gehiago ematen da irristatze efektua ematen
-            if (Mathf.Abs(abiadura.x) > 4 && !kudeatzailea.kolpeak.eskuma && !kudeatzailea.kolpeak.ezkerra)
+            if (Ekintzak.instantzia.GetAldapaIrristatu())
             {
-                leunketa = irristapenLeunketa;
-                irristatu = true;
+                if (kudeatzailea.kolpeak.aldapaIgotzen || kudeatzailea.kolpeak.aldapaJaisten)
+                {
+                    abiadura.x = 0;
+                    aginduHorizontala = 0;
+                }
             }
-            else
+
+            if (Ekintzak.instantzia.GetIrristatu())
             {
-                leunketa = oinezLeunketa;
-                irristatu = false;
+                if (!kudeatzailea.kolpeak.aldapaIgotzen && !kudeatzailea.kolpeak.aldapaJaisten)
+                {
+                    // azkar badoa leunketa denbora gehiago ematen da irristatze efektua ematen
+                    if (Mathf.Abs(abiadura.x) > 4 && !kudeatzailea.kolpeak.eskuma && !kudeatzailea.kolpeak.ezkerra)
+                    {
+                        leunketa = irristapenLeunketa;
+                        irristatu = true;
+                    }
+                    else
+                    {
+                        leunketa = oinezLeunketa;
+                        irristatu = false;
+                    }
+                }
             }
         }
     }
@@ -567,13 +588,11 @@ public class JokalariMug : MonoBehaviour
         gelaAldaketa = false;
     }
 
-    // !!! kentzeko pendinete
     // jokalaria gela berri batera doala eta noranzkoa adierazten da
     public void SetGelaAldaketa(bool noranzkoa)
     {
         eskumarantz = noranzkoa;
         gelaAldaketa = true;
-        //gelaAldatzen = true;
     }
 
     // jokalariak egin ahal dituen ekintzak ezgaitzen dira
@@ -606,6 +625,18 @@ public class JokalariMug : MonoBehaviour
     public void SetAbiadura(Vector2 eskileraAbiadura)
     {
         abiadura = eskileraAbiadura;
+    }
+
+    // abiadura itzultzen du, eskilerak erabiltzen du.
+    public Vector2 GetAbiadura()
+    {
+        return abiadura;
+    }
+
+    // abiadura bertikala aldatu, eskilerak erabiltzen du.
+    public void SetAbiaduraBertikala(float yAbiadura)
+    {
+        abiadura.y = yAbiadura;
     }
 
     // jokalaria lurrean badago true, eskilerak eta atea behar dute

@@ -21,11 +21,12 @@ public class BizitzaPuntuakUI : MonoBehaviour {
 	
 	void BihotzUIEguneratu()
     {
-        int bihotzOsoak = Inbentarioa.bizitzaPuntuak / 2;
-        bool bErdia = Inbentarioa.bizitzaPuntuak % 2 > 0;
-        //int bihotzOsoak = inbentario.bizitzaPuntuak / 2;
-        //bool bErdia = inbentario.bizitzaPuntuak % 2 > 0;
-        for (int i = 1; i < (inbentario.bizitzaPuntuMax / 2) + 1; i++)
+        //int bihotzOsoak = Inbentarioa.bizitzaPuntuak / 2;
+        //bool bErdia = Inbentarioa.bizitzaPuntuak % 2 > 0;
+        int bihotzOsoak = inbentario.GetBizitzaPuntuak() / 2;
+        bool bErdia = inbentario.GetBizitzaPuntuak() % 2 > 0;
+        //for (int i = 1; i < (inbentario.bizitzaPuntuMax / 2) + 1; i++)
+        for (int i = 1; i < (inbentario.GetBizitzaPuntuMax() / 2) + 1; i++)
         {
             if (bErdia)
             {

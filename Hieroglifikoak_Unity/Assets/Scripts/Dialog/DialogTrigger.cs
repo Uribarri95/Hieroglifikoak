@@ -10,12 +10,20 @@ public class DialogTrigger : MonoBehaviour {
     public int zenbakia;
     public Dialog dialog;
 
+    public bool pasahitzak;
+    public int pasahitzKopurua;
+    Dialog pasahitzakFaltan = new Dialog();
+
     DialogManager dialogManager;
     private bool exekutatu = false;
 
     private void Start()
     {
         dialogManager = DialogManager.instantzia;
+        if (pasahitzak)
+        {
+            pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu."};
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +42,16 @@ public class DialogTrigger : MonoBehaviour {
     {
         yield return new WaitForSeconds(itzaroteDenbora);
         dialogCanvas.SetActive(true);
-        dialogManager.StartDialog(dialog, puzleaErakutsi, zenbakia);
-        gameObject.SetActive(false);
+        if (pasahitzak && pasahitzKopurua != Inbentarioa.instantzia.GetPasahitzKop())
+        {
+            dialogManager.StartDialog(pasahitzakFaltan, false, 0);
+            exekutatu = false;
+        }
+        else
+        {
+            Inbentarioa.instantzia.PasahitzakReset();
+            dialogManager.StartDialog(dialog, puzleaErakutsi, zenbakia);
+            gameObject.SetActive(false);
+        }
     }
 }

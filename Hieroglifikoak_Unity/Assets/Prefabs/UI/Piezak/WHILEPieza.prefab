@@ -87,8 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: 0
-  vPadding: 0
+  horizontalOffset: 0
+  verticalOffset: 0
   spacing: 0
   layoutBertikala: 0
 --- !u!114 &114117871021774488
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: 12
-  vPadding: 14
+  horizontalOffset: 12
+  verticalOffset: 14
   spacing: 1
   layoutBertikala: 1
 --- !u!114 &114751989878023932
@@ -301,7 +301,6 @@ MonoBehaviour:
   mugimenduPanela: {fileID: 0}
   outline: {fileID: 21300000, guid: 62515a59a8a274c479ec025a719fbc62, type: 3}
   kolorea: {r: 0.003921569, g: 0.5294118, b: 0.72156864, a: 1}
-  argibideak: {fileID: 0}
 --- !u!114 &114825252731937512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,8 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: 44
-  vPadding: 2
+  horizontalOffset: 44
+  verticalOffset: 2
   spacing: 0
   layoutBertikala: 1
 --- !u!114 &114909240205348012

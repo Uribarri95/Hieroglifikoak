@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PiezaInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler {
+public class PiezaInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler/*, IDragHandler*/ {
 
     public ArgibideakAldatu argibideak;
     [TextArea(3, 10)]
@@ -14,13 +14,13 @@ public class PiezaInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         argibideak.textuaAldatu(deskribapena);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    /*public void OnDrag(PointerEventData eventData)
     {
         if(eventData.pointerDrag.GetComponent<Drag>() != null)
         {
             argibideak.ArgibideakJarri();
         }
-    }
+    }*/
 
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -14,6 +14,8 @@ public class PintxoTranpa : MonoBehaviour {
     float init = -.8f;
     float end = .3f;
 
+    bool reset = false;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -23,22 +25,56 @@ public class PintxoTranpa : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Trap_action") && bc2d.offset.y != end)
+        if (!reset)
         {
-            dest = end;
-            yOffset = Mathf.Lerp(yOffset, dest, Time.deltaTime * s1);
-            bc2d.offset = new Vector2(0, yOffset);
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Trap_action") && bc2d.offset.y != end)
+            {
+                PintxoakAtera();
+            }
+            if (!anim.GetBool("Aktibatuta") && bc2d.offset.y != init)
+            {
+                PintxoakSartu();
+            }
         }
-        if (!anim.GetBool("Aktibatuta") && bc2d.offset.y != init)
-        {
-            dest = init;
-            yOffset = Mathf.Lerp(yOffset, dest, Time.deltaTime * s2);
-            bc2d.offset = new Vector2(0, yOffset);
-        }
+    }
+
+    void PintxoakAtera()
+    {
+        dest = end;
+        yOffset = Mathf.Lerp(yOffset, dest, Time.deltaTime * s1);
+        bc2d.offset = new Vector2(0, yOffset);
+    }
+
+    void PintxoakSartu()
+    {
+        dest = init;
+        yOffset = Mathf.Lerp(yOffset, dest, Time.deltaTime * s2);
+        bc2d.offset = new Vector2(0, yOffset);
     }
 
     public void Aktibatu(bool eragin)
     {
-        anim.SetBool("Aktibatuta", eragin);
+        if (!reset)
+        {
+            anim.SetBool("Aktibatuta", eragin);
+        }
+    }
+
+    public void Itzali()
+    {
+        reset = true;
+        if(anim == null)
+        {
+            print("animator == null");
+            anim = GetComponent<Animator>();
+        }
+        anim.SetBool("Aktibatuta", false);
+        anim.SetTrigger("reset");
+        bc2d.offset = new Vector2(0, init);
+    }
+
+    public void Piztu()
+    {
+        reset = false;
     }
 }

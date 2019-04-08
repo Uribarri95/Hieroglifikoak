@@ -45,10 +45,10 @@ public class ArgibideakAldatu : MonoBehaviour {
         textua.text = argibideak.GetArgibidea();
     }
 
-    public IEnumerator BehinBehinekoTextua(string mezua)
+    public IEnumerator BehinBehinekoTextua(string mezua, Color kolorea)
     {
         argibideBerria = true;
-        textua.color = Color.red;
+        textua.color = kolorea;
         textua.text = mezua;
         yield return new WaitForSeconds(4f);
         argibideBerria = false;

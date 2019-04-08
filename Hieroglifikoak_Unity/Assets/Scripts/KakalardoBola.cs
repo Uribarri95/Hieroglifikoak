@@ -11,7 +11,7 @@ public class KakalardoBola : MonoBehaviour {
     Rigidbody2D rb;
 
     public float hormaDistantzia;
-    public float abiadura;
+    public float abiadura = 3.75f;
     public float denboraMax;
     bool eskumaBegira;
 
@@ -36,7 +36,7 @@ public class KakalardoBola : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Player")
+        /*if (collision.transform.tag == "Player")
         {
             // min eman
             bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
@@ -44,7 +44,7 @@ public class KakalardoBola : MonoBehaviour {
             // suntsitu
             BolaSuntsitu();
         }
-        else if(collision.transform.tag == "kutxa")
+        else */if(collision.transform.tag == "kutxa")
         {
             BolaSuntsitu();
         }

@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: 10
-  vPadding: 4
+  horizontalOffset: 10
+  verticalOffset: 4
   spacing: 0
   layoutBertikala: 0
 --- !u!114 &114320643883964756
@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: 0
-  vPadding: 0
+  horizontalOffset: 0
+  verticalOffset: 0
   spacing: 0
   layoutBertikala: 0
 --- !u!114 &114590677382878440
@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: -2
-  vPadding: 0
+  horizontalOffset: 0
+  verticalOffset: 0
   spacing: 0
   layoutBertikala: 0
 --- !u!114 &114840545814791088
@@ -403,8 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67faf111dd3c7c43a55206dd81115a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPadding: -2
-  vPadding: 0
+  horizontalOffset: 0
+  verticalOffset: 0
   spacing: 0
   layoutBertikala: 0
 --- !u!114 &114842909412474330

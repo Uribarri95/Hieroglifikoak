@@ -28,54 +28,60 @@ public class Eskilerak : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (Ekintzak.instantzia.GetEskilerakIgo())
         {
-            // eskileratik salto egin
-            float aginduHorizontala = Input.GetAxisRaw("Horizontal");
-            if (aginduHorizontala != 0 && eskileran)
+            if (collision.tag == "Player")
             {
-                jokalaria.SetAbiadura(new Vector2(aginduHorizontala * xAbiadura, 0));
-                eskileran = false;
-                jokalaria.SetEskileran(false);
-            }
+                // eskileratik salto egin
+                float aginduHorizontala = Input.GetAxisRaw("Horizontal");
+                if (aginduHorizontala != 0 && eskileran)
+                {
+                    jokalaria.SetAbiadura(new Vector2(aginduHorizontala * xAbiadura, 0));
+                    eskileran = false;
+                    jokalaria.SetEskileran(false);
+                }
 
-            // eskilera igo/jeitsi
-            float aginduBertikala = Input.GetAxisRaw("Vertical");
-            if (aginduBertikala != 0)
-            {
-                // beheko topea
-                if (aginduBertikala < 0 && jokalaria.GetLurrean())
+                // eskilera igo/jeitsi
+                float aginduBertikala = Input.GetAxisRaw("Vertical");
+                if (aginduBertikala != 0)
                 {
-                    eskileran = false;
-                    jokalaria.SetEskileran(false);
+                    // beheko topea
+                    if (aginduBertikala < 0 && jokalaria.GetLurrean())
+                    {
+                        eskileran = false;
+                        jokalaria.SetEskileran(false);
+                    }
+                    // goiko topea
+                    else if (aginduBertikala > 0 && jokalaria.transform.position.y > gameObject.transform.position.y && jokalaria.GetLurrean())
+                    {
+                        eskileran = false;
+                        jokalaria.SetEskileran(false);
+                    }
+                    // eskileratik mugitu
+                    else
+                    {
+                        if (!eskileran)
+                        {
+                            eskileran = true;
+                            float posX = gameObject.transform.position.x;
+                            jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
+                        }
+                        jokalaria.SetEskileran(true);
+                        jokalaria.SetAbiadura(new Vector2(0, aginduBertikala * yAbiadura));
+                    }
                 }
-                // goiko topea
-                else if (aginduBertikala > 0 && jokalaria.transform.position.y > gameObject.transform.position.y && jokalaria.GetLurrean())
-                {
-                    eskileran = false;
-                    jokalaria.SetEskileran(false);
-                }
-                // eskileratik mugitu
                 else
                 {
-                    eskileran = true;
-                    jokalaria.SetEskileran(true);
-                    float posX = gameObject.transform.position.x;
-                    jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
-                    jokalaria.SetAbiadura(new Vector2(0, aginduBertikala * yAbiadura));
-                }
-            }
-            else
-            {
-                if (jokalaria.GetLurrean())
-                {
-                    eskileran = false;
-                    jokalaria.SetEskileran(false);
-                }
-                // eskileran geldi
-                else if (eskileran)
-                {
-                    jokalaria.SetAbiadura(new Vector2(0, 0));
+                    if (jokalaria.GetLurrean())
+                    {
+                        eskileran = false;
+                        jokalaria.SetEskileran(false);
+                    }
+                    // eskileran geldi
+                    else if (eskileran)
+                    {
+                        jokalaria.SetAbiadura(new Vector2(0, 0));
+                    }
                 }
             }
         }

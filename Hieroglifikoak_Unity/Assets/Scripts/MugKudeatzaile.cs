@@ -25,7 +25,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
     }
 
     // erabiltzailearen aginduak jaso eta fisika indarrak aplikatzen zaizkio jokalaritik ateratzen diren izpiak erabilita
-    public void Mugitu(Vector2 abiadura,bool plataformaGainean = false, bool irristatu = false)
+    public void Mugitu(Vector2 abiadura, bool plataformaGainean = false, bool irristatu = false)
     {
         IzpiJatorriaEguneratu();
         kolpeak.Reset();
@@ -47,6 +47,11 @@ public class MugKudeatzaile : IzpiKudeaketa {
     // Kolpea eskuman edo ezkerran jaso den gordetzen da
     void KolpeHorizontalak(ref Vector2 abiadura, bool irristatu = false)
     {
+        if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        {
+            irristatu = false;
+        }
+
         float xNoranzkoa = Mathf.Sign(abiadura.x);
         float izpiLuzera = Mathf.Abs(abiadura.x) + azalZabalera;
 
@@ -162,6 +167,10 @@ public class MugKudeatzaile : IzpiKudeaketa {
     // abiadura horizontala bertikalean eta horizontalean banatzen da aldapan
     void AldapaJaitsi(ref Vector2 abiadura, bool irristatu = false)
     {
+        if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        {
+            irristatu = false;
+        }
         // malda handietako aldapetan irristatu
         RaycastHit2D eskumaIrristatu = Physics2D.Raycast(izpiJatorria.bottomLeft, Vector2.down, Mathf.Abs(abiadura.y) + azalZabalera, kolpeGainazalak);
         RaycastHit2D ezkerraIrristatu = Physics2D.Raycast(izpiJatorria.bottomRight, Vector2.down, Mathf.Abs(abiadura.y) + azalZabalera, kolpeGainazalak);

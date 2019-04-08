@@ -123,6 +123,11 @@ public class Ekintzak : MonoBehaviour {
         return ekintzak;
     }
 
+    public bool GetEkintza(int zenbakia)
+    {
+        return ekintzak[zenbakia];
+    }
+
     public bool GetEskuma()
     {
         return ekintzak[0];
@@ -151,5 +156,30 @@ public class Ekintzak : MonoBehaviour {
     public bool GetHormaSaltoa()
     {
         return ekintzak[8];
+    }
+
+    public bool GetAteaZabaldu()
+    {
+        return ekintzak[9];
+    }
+
+    public bool GetEskilerakIgo()
+    {
+        return ekintzak[10];
+    }
+
+    public bool GetMakurtu()
+    {
+        return ekintzak[11];
+    }
+
+    public bool GetIrristatu()
+    {
+        return ekintzak[12];
+    }
+
+    public bool GetAldapaIrristatu()
+    {
+        return ekintzak[13];
     }
 }

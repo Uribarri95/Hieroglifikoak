@@ -26,7 +26,7 @@ public class Jaurtigaia : MonoBehaviour {
             Destroy(gameObject);
             Instantiate(destroyParticle, transform.position, transform.rotation);
         }
-        else if (collision.tag == "Horma")
+        else if (collision.tag == "Horma" || collision.tag == "zeharkatu")
         {
             Destroy(gameObject);
             Instantiate(destroyParticle, transform.position, transform.rotation);
