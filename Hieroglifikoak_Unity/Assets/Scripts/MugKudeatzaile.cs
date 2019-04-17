@@ -257,14 +257,14 @@ public class MugKudeatzaile : IzpiKudeaketa {
         return kolpatu;
     }
 
-    // jokalaria makurtzean altuera txikitzen da eta altzatzean handitu
+    // jokalaria makurtzean altuera txikitzen da eta altxatzean handitu
     public void GeruzaBertikalaHanditu(bool handitu)
     {
         Vector2 geruza = bc2d.size;
         Vector2 offset = bc2d.offset;
         if (handitu)
         {
-            // grabitatearen erruz jokalaria lur azpian sartzen da, ekiditzeko altzatzean apur bat altuago jarriko dugu 
+            // grabitatearen erruz jokalaria lur azpian sartzen da, ekiditzeko altxatzean apur bat altuago jarriko dugu 
             Vector3 posizioa = transform.position;
             transform.position = new Vector3(posizioa.x, posizioa.y + .025f, posizioa.z);
 

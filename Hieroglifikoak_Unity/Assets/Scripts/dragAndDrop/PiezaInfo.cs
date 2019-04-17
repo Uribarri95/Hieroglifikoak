@@ -52,10 +52,6 @@ public class PiezaInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 }
             }
         }
-        else
-        {
-            bestePiezaBatDago = true;
-        }
         if (!bestePiezaBatDago)
         {
             argibideak.ArgibideakJarri();

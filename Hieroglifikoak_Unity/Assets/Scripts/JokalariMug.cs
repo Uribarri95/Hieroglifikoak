@@ -183,12 +183,12 @@ public class JokalariMug : MonoBehaviour
         if (Ekintzak.instantzia.GetMakurtu())
         {
             // makurtu botoia sakatu lurrean gaudenean
-            if (Input.GetKey(KeyCode.DownArrow) && kudeatzailea.kolpeak.azpian && !ateAurrean)
+            if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && kudeatzailea.kolpeak.azpian && !ateAurrean)
             {
                 MakurtuSakatu();
             }
-            // makurtutua bagaude altzatu
-            else if (!Input.GetKey(KeyCode.DownArrow) && makurtu)
+            // makurtutua bagaude altxatu
+            else if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && makurtu)
             {
                 MakurtuAskatu();
             }
@@ -391,7 +391,7 @@ public class JokalariMug : MonoBehaviour
                         {
                             if (makurtu && kudeatzailea.AltzatuNaiteke())
                             {
-                                Altzatu();
+                                Altxatu();
                                 abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarHobea : saltoIndarHobea / 1.3f;
                             }
                             else if (!makurtu)
@@ -480,12 +480,12 @@ public class JokalariMug : MonoBehaviour
         leunketa = korrika ? korrikaLeunketa : oinezLeunketa;
         if (kudeatzailea.AltzatuNaiteke())
         {
-            Altzatu();
+            Altxatu();
         }
     }
 
     // jokalariak okupatzen duen gainazala berriro handitzen da, mugimendua egoera berrira egokitzen da
-    void Altzatu()
+    void Altxatu()
     {
         makurtu = false;
         mugimendua = korrika ? korrikaAbiadura : abiaduraOinez;

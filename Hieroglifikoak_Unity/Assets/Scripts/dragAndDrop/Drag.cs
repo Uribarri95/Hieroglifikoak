@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
-    public enum mota { Normal, Baldintza, Eragigaia, ForIterator, Denak, Izenburua, Parametroa, zenbakia};
+    public enum mota { Normal, Baldintza, Eragigaia, ForIterator, Denak, Izenburua, Parametroa, Aldagaia};
     public mota piezaMota;
     public Transform mugimenduPanela;
     public Sprite outline;
