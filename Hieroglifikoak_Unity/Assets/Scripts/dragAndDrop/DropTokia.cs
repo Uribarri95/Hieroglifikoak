@@ -31,8 +31,11 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         Transform piezaPos = transform.GetChild(0);
                         if (piezaPos.GetComponent<Drag>() != null)
                         {
-                            piezaPos.SetParent(piezaTokia);
-                            piezaPos.SetSiblingIndex(piezaTokia.childCount);
+                            if (piezaPos.GetComponent<Drag>().isActiveAndEnabled)
+                            {
+                                piezaPos.SetParent(piezaTokia);
+                                piezaPos.SetSiblingIndex(piezaTokia.childCount);
+                            }
                         }
                     }
                     else if (transform.childCount == 2)
@@ -41,12 +44,16 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         if (piezaPos.GetComponent<Drag>() == null)
                         {
                             piezaPos = transform.GetChild(1);
+                            if (!piezaPos.GetComponent<Drag>().isActiveAndEnabled)
+                            {
+                                print("ez dago drag -> ezin da mugitu edo hutsunea da");
+                            }
                         }
                         piezaPos.SetParent(piezaTokia);
                         piezaPos.SetSiblingIndex(piezaTokia.childCount);
                     }
                 }
-                if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak ez muntatzeko
+                if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak ez muntatzeko // !!! pieza bakarrra ez exekutatu
                 {
                     pieza.transform.SetParent(pieza.GetPiezaGurasoa());
                     pieza.transform.SetSiblingIndex(pieza.GetHasierkoIndizea());

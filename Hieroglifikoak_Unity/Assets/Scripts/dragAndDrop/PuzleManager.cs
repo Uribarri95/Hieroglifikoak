@@ -49,13 +49,19 @@ public class PuzleManager : MonoBehaviour {
     }
 
     // !!! 
+    IEnumerator HurrengoAriketaJarri()
+    {
+        print("bi puzzle jarraian");
+
+        fadeManager.Ilundu();
+        yield return new WaitForSeconds(1.5f);
+        currentPanel.SetActive(false);
+        PanelGaitu(zenbakia + 1);
+        fadeManager.Argitu();
+    }
+
     IEnumerator PanelEzgaitu()
     {
-
-        if(currentPanel.GetComponent<EmaitzaKonprobatu>() != null && currentPanel.GetComponent<EmaitzaKonprobatu>().hurrengoPuzleaJarri)
-        {
-            print("bi puzzle jarraian");
-        }
         aktibatuta = false;
         yield return new WaitForSeconds(.5f);
         fadeManager.Ilundu();
@@ -86,7 +92,14 @@ public class PuzleManager : MonoBehaviour {
             {
                 emaitzak.Eragin();
                 StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaZuzenaMezua, Color.green));
-                StartCoroutine(PanelEzgaitu());
+                if (currentPanel.GetComponent<EmaitzaKonprobatu>() != null && currentPanel.GetComponent<EmaitzaKonprobatu>().hurrengoPuzleaJarri)
+                {
+                    StartCoroutine(HurrengoAriketaJarri());
+                }
+                else
+                {
+                    StartCoroutine(PanelEzgaitu());
+                }
             }
             else
             {

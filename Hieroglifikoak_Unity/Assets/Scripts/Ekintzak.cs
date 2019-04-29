@@ -65,8 +65,9 @@ public class Ekintzak : MonoBehaviour {
                         "\nJokalaria hormara itsasten bada, erortzen den abiadura erdian murrizten da. Gainera, berriro salto egin dezake naiz eta lurrean ez egon.";
 
         emaitzak = new string[tamaina][];
-        emaitzak[0] = new string[] { "ifabif" };
-        emaitzak[1] = new string[] { "ifabififcdif", "ifcdififabif" };
+
+        /*emaitzak[0] = new string[] { "ifabif" };
+        emaitzak[1] = new string[] { "ifabif", "ifcdififabif" };
         emaitzak[2] = new string[] { "aifbkdANDebkcbif", "aifbkdANDebkbcif", "aifbkeANDdbkcbif", "aifbkeANDdbkbcif" };
         emaitzak[3] = new string[] { "labifcdifelsemelseifejififgkif", "albifcdifelsemelseifejififgkif", "ablifcdifelsemelseifejififgkif", "abifcldifelsemelseifejififgkif" };
         emaitzak[4] = new string[] { "bifafif" };
@@ -81,7 +82,14 @@ public class Ekintzak : MonoBehaviour {
                                      "aifbkgANDebkchififbkdANDbbkfhif", "aifbkgANDebkchififbkdANDbbkhfif", "aifbkgANDebkchififbkbANDdbkhfif", "aifbkgANDebkchififbkbANDdbkfhif"};
         emaitzak[7] = new string[] { "cifbkfANDebkdgif", "cifbkfANDebkgdif", "cifbkeANDfbkgdif", "cifbkeANDfbkdgif" };
         emaitzak[8] = new string[] { "abcifdliifbkfANDgbkehifif", "abcifdliifbkfANDgbkheifif", "abcifdliifbkgANDfbkheifif", "abcifdliifbkgANDfbkehifif",
-                                     "abcifdilifbkgANDfbkehifif", "abcifdilifbkgANDfbkheifif", "abcifdilifbkfANDgbkheifif", "abcifdilifbkfANDgbkehifif"};
+                                     "abcifdilifbkgANDfbkehifif", "abcifdilifbkgANDfbkheifif", "abcifdilifbkfANDgbkheifif", "abcifdilifbkfANDgbkehifif"};*/
+
+        emaitzak[0] = new string[] { "ifabif" };
+        emaitzak[1] = new string[] { "ifabif" };
+        emaitzak[2] = new string[] { "ifabif" };
+        emaitzak[3] = new string[] { "ifaifbcifif", "ifbifacifif" };
+        emaitzak[4] = new string[] { "ifbkaandbcif", "ifbkbandacif" };
+        emaitzak[4] = new string[] { "ifabififcdififbkeandfgif", "ifabififcdififbkfandegif" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
