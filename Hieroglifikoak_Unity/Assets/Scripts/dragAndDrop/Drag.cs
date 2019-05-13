@@ -25,12 +25,19 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         hasierakoGurasoa = transform.parent;
         hasierakoPos = transform.GetSiblingIndex();
+
+        PuzleManager puzleManager;
+        puzleManager = PuzleManager.instantzia;
+        puzleManager.resetDeia += Reset;
     }
 
     public void Reset()
     {
-        transform.SetParent(hasierakoGurasoa);
-        transform.SetSiblingIndex(hasierakoPos);
+        if (isActiveAndEnabled)
+        {
+            transform.SetParent(hasierakoGurasoa);
+            transform.SetSiblingIndex(hasierakoPos);
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)

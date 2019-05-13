@@ -83,7 +83,7 @@ public class Data : MonoBehaviour {
         PlayerData datuak = new PlayerData();
         if (File.Exists(Application.persistentDataPath + playerDataPath))         // !!! errorea gertatzen bada partida berria !!! 
         {
-            //print("gorde ftxategia bat dago  -> " + Application.persistentDataPath+dataPath);
+            //print("gorde ftxategia bat dago  -> " + Application.persistentDataPath+playerDataPath);
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + playerDataPath, FileMode.Open);
             datuak = (PlayerData)bf.Deserialize(file);

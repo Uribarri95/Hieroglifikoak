@@ -50,46 +50,70 @@ public class Ekintzak : MonoBehaviour {
         argibideak = new string[tamaina];
 
         argibideak[0] = "Eskuma gezia zapaltzen bada, jokalaria eskumara mugitu behar da.\nMugitu eskumako pieza laukizuzen berdearen barnera.";
-        argibideak[1] = "Ezkerra gezia zapaltzen bada, jokalaria ezkerrera mugitu behar da.\nPieza bat soberan egon daiteke.";
-        argibideak[2] = "Zuriune-barra zapaltzean jokalaria salto egin behar du. Jokalaria ezin du airean dagoenean berriro salto egin." + 
-                        " Salto egin ondoren eguneratu 'SaltoEginDezaket' aldagaia gezurra balioarekin";
-        argibideak[3] = "Jokalariaren abiadura 6 izan behar da korrika dagoenean eta 4 oinez dagoenean. Eskumara zein ezkerrera joateko funtzionatu behar du." +
-                        "\nAldatu pieza zaharrak aldagaiak dituzten piezengatik.";
-        argibideak[4] = "Jokalariaren bizitza puntuak unitate baten areagotu behar dira. Jokalariak ezin du bizitza maximoa baino bihotz gehiago izan.";
-        argibideak[5] = "Plataformak jokalaria helmugara garraiatu behar du, baina jokalaria plataforma gainean mugitzeko gai izan behar du." + 
-                        "Horretarako, jokalariaren abiadurari plataformaren abiadura batu edo kendu.";
-        argibideak[6] = "Plataforma gainean badago eta behera gezia zapaltzen badu, plataforma zeharkatzen du eta jauzi egiten da." +
-                        "Jokalaria plataforma azpian badago eta salto egiten badu, plataforma zeharkatu behar du, zapaia kolpatu gabe.";
-        argibideak[7] = "Aldatu kodea aldagaiak erabiltzeko. Salto botoia sakatzean eta salto egin badezake abiadura bertikala 6 izan behar du. Salto egin ondoren ezin du berriro salto egin";
-        argibideak[8] = "Demagun jokalaria salto egin duela eta airean dagoela." + 
-                        "\nJokalaria hormara itsasten bada, erortzen den abiadura erdian murrizten da. Gainera, berriro salto egin dezake naiz eta lurrean ez egon.";
+        argibideak[1] = "Ezkerra gezia zapaltzen bada, jokalaria ezkerrera mugitu behar da.";
+        argibideak[2] = "Zuriune-barra zapaltzen bada, jokalariak salto egin behar du.";
+        argibideak[3] = "Zuriune-barra zapaltzen bada eta jokalaria lurrean badago, jokalariak salto egin behar du. \nErabili SaltoEginDaiteke() funtzioa jokalaria lurrean dagoen jakiteko.";
+        argibideak[4] = "Zuriune-barra zapaltzen bada eta jokalaria lurrean badago, jokalariak salto egin behar du.";
+        argibideak[5] = "Eskuma eta ezkerra geziak aldi berean zapaltzen badira jokalaria geldi mantendu behar da.";
+        argibideak[6] = "Jokalariak bihotz bat berreskuratu behar du.";
+        argibideak[7] = "Jokalariak bihotz erdia galdu behar du.";
+        argibideak[8] = "Jokalariak bihotz bat berreskuratu behar du. Ziurtatu bihotzak bizitza maximoa baino handiagoa ez izatea.";
+        argibideak[9] = "Jokalariak bihotz erdia galdu behar du. Bihotzak 0 edo txikiago badira jokalaria hil egiten da.";
+        argibideak[10] = "Bihotz bat hartu aurretik ziurtatu bihotzak topera ez egotea.";
+        argibideak[11] = "Shift tekla zapaltzen bada, jokalariaren abiadura 6 izango da eta bestela 4.";
+        argibideak[12] = "Jokalaria lurrean dagoenean saltoEgin aldagaia egia izan behar da, bestela saltoEgin gezurra izan behar da.";
+        argibideak[13] = "KorrikaEgin() exekutatzeko eskuma edo ezkerra geziak sakatuta egon behar dute, bestela jokalaria geldi mantendu behar da.";
+        argibideak[14] = "Norabide geziak sakatu ostean, aurrean hormarik badago jokalaria gelditu egin behar da, bestela ikututako noranzkoan mugitu behar da.";
+        argibideak[15] = "Funtzio honek bool motako informazio erantzun behar du. Jokalaria plataformaren gainean badago egia izan behar du eta bestela gezurra.";
+        argibideak[16] = "Jokalaria plataformarekin batera mugitu behar da naiz eta geziak ez ikutu. Plataforma geldi badago jokalaria ere geldi mantenduko da.";
+        argibideak[17] = "Aldatu baldintza plataforma hegalariez gain plataforma zeharkagarrien gainean gaudenean ere 'gainean' aldagaia egia izateko.";
+        argibideak[18] = "Jokalaria behera jauzi behar da plataforma gainean badago eta sabaia zeharkatu salto egiten badu. " + 
+                         "Erabili ! eragigaia PlataformaGaineanDago() funtzioarekin jokalaria plataforma azpian dagoen jakiteko";
+        argibideak[19] = "Jokalaria geldi mantendu behar da botoirik sakatzen ez denean.";
+        argibideak[20] = "Salto botoia sakatzen denean, botoia sakatuta mantentzen bada indarra 8 izan behar da eta altuera maximoa lortu baino lehen askatzen bada 4 izan behar da.";
+        argibideak[21] = "Jokalariak bihotzak berreskuratu behar ditu. Kopurua bihotzKopurua aldagaiak adieraziko du. Ziurtatu bihotzak bizitza maximoa baino hadiagoa ez izatea.";
+        argibideak[22] = "Funtzioak saltoa aldagaia erabiliko du salto egin dezakken jakiteko. Gero, hormaren kontrako zentzuan salto egingo du.\nSaltoEgin() funtzio pieza bakarra dago, " + 
+                         "jarri toki egokian bi noranzkoetan funtzionatzeko.";
+        argibideak[23] = "HormaSaltoa() funtzioak bool motako datua behar du funtzionatzeko. Datu hori SaltoEginDaiteke() funtzioak eskeiniko du. Jarri funtzioak itzultzen duen datua HormaSaltoa() duen hutsunean.";
+        argibideak[24] = "Jokalariak salto egin ahal izango du baldin eta lurrean badago edo hormari itsatsita badago. Funtzioak egia itzuli behar du salto egin badezake eta gezurra kontrako kasuan.";
+        argibideak[25] = "Jokalaria lurrean badago salto normala egingo du. Bestela, airean badago eta pareta baten aurka itsatsita badago horma saltoa egingo du.";
+        argibideak[26] = "Jokalariak atea zeharkatu dezake behera gezia zapaltzen baldin eta atearen aurrean badago.";
+        argibideak[27] = "Jokalaria eskilera gainean badago behera mugitu daiteke behera geziarekin. Eskilera azpian badago gora mugitu daiteke gora geziarekin. " +
+                         "Eskilera erdian badago gora edo behera mugitu daiteke norabide gezi egokiak erabilita. Goian ez badago eta behean ere ez badago jokalaria erdian dago.";
+        argibideak[28] = "Jokalariak noiz makurtu daitekeen erabaki behar da. Hasieran makurtu aldagaia egia izango da, eta airean, plataforma zeharkagarri baten gainean, eskileran edo ate baten aurrean badago " + 
+                         "makurtu aldagaia gezurra izango da.";
 
         emaitzak = new string[tamaina][];
-
-        /*emaitzak[0] = new string[] { "ifabif" };
-        emaitzak[1] = new string[] { "ifabif", "ifcdififabif" };
-        emaitzak[2] = new string[] { "aifbkdANDebkcbif", "aifbkdANDebkbcif", "aifbkeANDdbkcbif", "aifbkeANDdbkbcif" };
-        emaitzak[3] = new string[] { "labifcdifelsemelseifejififgkif", "albifcdifelsemelseifejififgkif", "ablifcdifelsemelseifejififgkif", "abifcldifelsemelseifejififgkif" };
-        emaitzak[4] = new string[] { "bifafif" };
-        emaitzak[5] = new string[] { "zifbifebififhaififfgififdcifif" };
-        emaitzak[6] = new string[] { "aifbkdANDbbkfhififbkeANDgbkchif", "aifbkdANDbbkfhififbkeANDgbkhcif", "aifbkdANDbbkfhififbkgANDebkhcif", "aifbkdANDbbkfhififbkgANDebkchif",
-                                     "aifbkdANDbbkhfififbkgANDebkchif", "aifbkdANDbbkhfififbkgANDebkhcif", "aifbkdANDbbkhfififbkeANDgbkhcif", "aifbkdANDbbkhfififbkeANDgbkchif",
-                                     "aifbkbANDdbkhfififbkeANDgbkchif", "aifbkbANDdbkhfififbkeANDgbkhcif", "aifbkbANDdbkhfififbkgANDebkhcif", "aifbkbANDdbkhfififbkgANDebkchif",
-                                     "aifbkbANDdbkfhififbkgANDebkchif", "aifbkbANDdbkfhififbkgANDebkhcif", "aifbkbANDdbkfhififbkeANDgbkhcif", "aifbkbANDdbkfhififbkeANDgbkchif",
-                                     "aifbkeANDgbkchififbkbANDdbkfhif", "aifbkeANDgbkchififbkbANDdbkhfif", "aifbkeANDgbkchififbkdANDbbkhfif", "aifbkeANDgbkchififbkdANDbbkfhif",
-                                     "aifbkeANDgbkhcififbkdANDbbkfhif", "aifbkeANDgbkhcififbkdANDbbkhfif", "aifbkeANDgbkhcififbkbANDdbkhfif", "aifbkeANDgbkhcififbkbANDdbkfhif",
-                                     "aifbkgANDebkhcififbkbANDdbkfhif", "aifbkgANDebkhcififbkbANDdbkhfif", "aifbkgANDebkhcififbkdANDbbkhfif", "aifbkgANDebkhcififbkdANDbbkfhif",
-                                     "aifbkgANDebkchififbkdANDbbkfhif", "aifbkgANDebkchififbkdANDbbkhfif", "aifbkgANDebkchififbkbANDdbkhfif", "aifbkgANDebkchififbkbANDdbkfhif"};
-        emaitzak[7] = new string[] { "cifbkfANDebkdgif", "cifbkfANDebkgdif", "cifbkeANDfbkgdif", "cifbkeANDfbkdgif" };
-        emaitzak[8] = new string[] { "abcifdliifbkfANDgbkehifif", "abcifdliifbkfANDgbkheifif", "abcifdliifbkgANDfbkheifif", "abcifdliifbkgANDfbkehifif",
-                                     "abcifdilifbkgANDfbkehifif", "abcifdilifbkgANDfbkheifif", "abcifdilifbkfANDgbkheifif", "abcifdilifbkfANDgbkehifif"};*/
 
         emaitzak[0] = new string[] { "ifabif" };
         emaitzak[1] = new string[] { "ifabif" };
         emaitzak[2] = new string[] { "ifabif" };
-        emaitzak[3] = new string[] { "ifaifbcifif", "ifbifacifif" };
-        emaitzak[4] = new string[] { "ifbkaandbcif", "ifbkbandacif" };
-        emaitzak[4] = new string[] { "ifabififcdififbkeandfgif", "ifabififcdififbkfandegif" };
+        emaitzak[3] = new string[] { "ifaifacifif" };
+        emaitzak[4] = new string[] { "ifbkaandabif" };
+        emaitzak[5] = new string[] { "ifabififcdififbkeandefif" };
+        emaitzak[6] = new string[] { "a" };
+        emaitzak[7] = new string[] { "a" };
+        emaitzak[8] = new string[] { "aifb>cdif" };
+        emaitzak[9] = new string[] { "aifb<=cdif" };
+        emaitzak[10] = new string[] { "ifb>acif", "ifa<bcif" };
+        emaitzak[11] = new string[] { "aifbcifelsedelsee" };
+        emaitzak[12] = new string[] { "aifbcifelsedelsee" };
+        emaitzak[13] = new string[] { "ifbkaorbcifelsedelse", "ifbkboracifelsedelse" };
+        emaitzak[14] = new string[] { "ifaifbcifelsedelseififeiffcifelsegelseif", "ifeiffcifelsegelseififaifbcifelsedelseif" };
+        emaitzak[15] = new string[] { "abifcdifelseefelsegb" };
+        emaitzak[16] = new string[] { "ifbkaandbifcgififdjififehififfiififelsekelse" };
+        emaitzak[17] = new string[] { "aifbkcandbdifelseeelsef", "aifbkbandcdifelseeelsef" };
+        emaitzak[18] = new string[] { "ifaifcdifififbifbk!ceifif" };
+        emaitzak[19] = new string[] { "ifbk!aand!bcif", "ifbk!band!acif" };
+        emaitzak[20] = new string[] { "aifbkbandcifefifelseeelsegif" };
+        emaitzak[21] = new string[] { "ifbka<bcdifelseefelse" };
+        emaitzak[22] = new string[] { "bifbkaandbifdgififceiffif", "bifbkaandbifdgiffifceifif", "bifbkaandbfifdgififceifif" };
+        emaitzak[23] = new string[] { "ifehdif", "abcdifehbif" };
+        emaitzak[24] = new string[] { "aifbkborceifelsefelsegd", "aifbkcorbeifelsefelsegd" };
+        emaitzak[25] = new string[] { "ifaifbcifelseifbkcordefifelseif", "ifaifbcifelseifbkdorcefifelseif" };
+        emaitzak[26] = new string[] { "ifbkaandbcif", "ifbkbandacif" };
+        emaitzak[27] = new string[] { "ifcifdifbfifififeifagifififbk!dand!eifafififbgififif", "ifcifdifbfifififeifagifififbk!eand!difafififbgififif" };
+        emaitzak[28] = new string[] { "caif!dbififebififfbififgbifh" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
@@ -148,46 +172,46 @@ public class Ekintzak : MonoBehaviour {
 
     public bool GetSaltoTxikia()
     {
-        return ekintzak[2];
+        return ekintzak[4];
     }
 
     public bool GetKorrika()
     {
-        return ekintzak[3];
+        return ekintzak[14];
     }
 
     public bool GetSaltoHandia()
     {
-        return ekintzak[7];
+        return ekintzak[21];
     }
 
     public bool GetHormaSaltoa()
     {
-        return ekintzak[8];
+        return ekintzak[25];
     }
 
     public bool GetAteaZabaldu()
     {
-        return ekintzak[9];
+        return ekintzak[26];
     }
 
     public bool GetEskilerakIgo()
     {
-        return ekintzak[10];
+        return ekintzak[27];
     }
 
     public bool GetMakurtu()
     {
-        return ekintzak[11];
+        return ekintzak[32];
     }
 
     public bool GetIrristatu()
     {
-        return ekintzak[12];
+        return ekintzak[33];
     }
 
     public bool GetAldapaIrristatu()
     {
-        return ekintzak[13];
+        return ekintzak[34];
     }
 }

@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class PuzleManager : MonoBehaviour {
 
+    #region Singleton
+    public static PuzleManager instantzia;
+
+    private void Awake()
+    {
+        if (instantzia != null)
+        {
+            Debug.LogWarning("Error Singleton: PuzleManager bat baino gehiago aurkitu da!");
+            return;
+        }
+        instantzia = this;
+    }
+    #endregion
+
     public FadeManager fadeManager;
     public ArgibideakAldatu argibideak;
     public int extraKop;
     public bool aktibatuta;     // puzlea jarrita dagoenean jokalaria geldi
+
+    public delegate void Reseta();
+    public Reseta resetDeia;
 
     GameObject currentPanel;
     Ekintzak emaitzak;
@@ -110,19 +127,34 @@ public class PuzleManager : MonoBehaviour {
         }
     }
 
-    public void Reset()
+    /*public void Reset()
     {
         for (int i = 0; i < currentPanel.transform.childCount; i++)
         {
-            Transform child = currentPanel.transform.GetChild(i);
-            for (int j = 0; j < child.transform.childCount; j++)
+            Transform ariketaPanelak = currentPanel.transform.GetChild(i);
+            for (int j = 0; j < ariketaPanelak.transform.childCount; j++)
             {
-                Drag pieza = child.transform.GetChild(j).GetComponent<Drag>();
+                Drag pieza = ariketaPanelak.transform.GetChild(j).GetComponent<Drag>();
                 if(pieza != null)
                 {
                     pieza.Reset();
                 }
             }
+        }
+    }*/
+
+    public void Reset()
+    {
+        {
+            DenakReset();
+        }
+    }
+
+    public void DenakReset()
+    {
+        if(resetDeia != null)
+        {
+            resetDeia.Invoke();
         }
     }
 }

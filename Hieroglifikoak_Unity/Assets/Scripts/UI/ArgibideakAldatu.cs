@@ -50,7 +50,7 @@ public class ArgibideakAldatu : MonoBehaviour {
         argibideBerria = true;
         textua.color = kolorea;
         textua.text = mezua;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         argibideBerria = false;
         textua.color = Color.black;
         textua.text = argibideMezua;
