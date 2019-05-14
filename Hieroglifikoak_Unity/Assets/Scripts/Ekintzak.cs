@@ -82,6 +82,31 @@ public class Ekintzak : MonoBehaviour {
                          "Eskilera erdian badago gora edo behera mugitu daiteke norabide gezi egokiak erabilita. Goian ez badago eta behean ere ez badago jokalaria erdian dago.";
         argibideak[28] = "Jokalariak noiz makurtu daitekeen erabaki behar da. Hasieran makurtu aldagaia egia izango da, eta airean, plataforma zeharkagarri baten gainean, eskileran edo ate baten aurrean badago " + 
                          "makurtu aldagaia gezurra izango da.";
+        argibideak[29] = "Behera gezia zapaltzen denean eta makurtu badaiteke, jokalariaren tamaina 2 aldiz txikiagoa izan behar da eta abiadura 2 izan behar da.";
+        argibideak[30] = "Erabili EskumaraMugitu() eta EzkerreraMugitu() pieza berriak abiadura ezberdinekin funtzionatzeko. Deitu KorrikaEgin() eta makurtu() funtzioei abiadura aldatzeko.";
+        argibideak[31] = "Joalaria makurtuta dagoen bitartean abiadura 2 izan behar du. Makurtzeko botoia askatzean (edo zapalduta ez dagoenean) eta gainean oztoporik ez dagoenean makurtu gezurra izango da " +
+                         "eta abiadura 4 izan behar du berriro";
+        argibideak[32] = "Jokalaria korrika badago eta makurtu egiten bada makurtuta mugitu beharrean irristatu egingo da.";
+        argibideak[33] = "";
+        argibideak[34] = "";
+        argibideak[35] = "";
+        argibideak[36] = "";
+        argibideak[37] = "";
+        argibideak[38] = "";
+        argibideak[39] = "";
+        argibideak[40] = "";
+        argibideak[41] = "";
+        argibideak[42] = "";
+        argibideak[43] = "";
+        argibideak[44] = "";
+        argibideak[45] = "";
+        argibideak[46] = "";
+        argibideak[47] = "";
+        argibideak[48] = "";
+        argibideak[49] = "";
+        argibideak[50] = "";
+        argibideak[52] = "";
+        argibideak[51] = "";
 
         emaitzak = new string[tamaina][];
 
@@ -114,6 +139,30 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[26] = new string[] { "ifbkaandbcif", "ifbkbandacif" };
         emaitzak[27] = new string[] { "ifcifdifbfifififeifagifififbk!dand!eifafififbgififif", "ifcifdifbfifififeifagifififbk!eand!difafififbgififif" };
         emaitzak[28] = new string[] { "caif!dbififebififfbififgbifh" };
+        emaitzak[29] = new string[] { "abifbkeandfgbhzcifi", "abifbkfandegbhzcifi" };
+        emaitzak[30] = new string[] { "abifcdififefififghififijif" };
+        emaitzak[31] = new string[] { "awhilebfifbk!cand!ceeeifwhilei", "awhilebifbk!cand!ceeeiffwhilei" };
+        emaitzak[32] = new string[] { "ifbcifadifif" };
+        emaitzak[33] = new string[] { "whilebka>bdif!fccifwhileg", "whilebka>bif!fccifdwhileg" };
+        emaitzak[34] = new string[] { "" };
+        emaitzak[35] = new string[] { "" };
+        emaitzak[36] = new string[] { "" };
+        emaitzak[37] = new string[] { "" };
+        emaitzak[38] = new string[] { "" };
+        emaitzak[39] = new string[] { "" };
+        emaitzak[40] = new string[] { "" };
+        emaitzak[41] = new string[] { "" };
+        emaitzak[42] = new string[] { "" };
+        emaitzak[43] = new string[] { "" };
+        emaitzak[44] = new string[] { "" };
+        emaitzak[45] = new string[] { "" };
+        emaitzak[46] = new string[] { "" };
+        emaitzak[47] = new string[] { "" };
+        emaitzak[48] = new string[] { "" };
+        emaitzak[49] = new string[] { "" };
+        emaitzak[50] = new string[] { "" };
+        emaitzak[51] = new string[] { "" };
+        emaitzak[52] = new string[] { "" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
@@ -202,7 +251,7 @@ public class Ekintzak : MonoBehaviour {
 
     public bool GetMakurtu()
     {
-        return ekintzak[32];
+        return ekintzak[31];
     }
 
     public bool GetIrristatu()
