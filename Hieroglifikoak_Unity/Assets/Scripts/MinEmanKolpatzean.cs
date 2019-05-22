@@ -4,27 +4,12 @@ using UnityEngine;
 
 public class MinEmanKolpatzean : MonoBehaviour {
 
-    // jokalaria kolpatu da
-    /*private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Player")
-        {
-            bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
-            JokalariaKolpatu(collision.transform.GetComponent<Eraso>(), eskuma);
-        }
-        else if(collision.transform.name == "Oztopoak" || collision.transform.name == "Plataforma_Zeharkagarria")
-        {
-            if (gameObject.name.Contains("Saguzar_txikia"))
-            {
-                GetComponent<Etsaia>().Hil();
-            }
-        }
-    }*/
-
+    // jokalaria kolpatu eta saguzar txikiaren kasuan hormaren aurka suntsitu
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player")
         {
+            print("jokalaria kolpatu");
             bool eskuma = transform.position.x > collision.transform.position.x ? true : false;
             JokalariaKolpatu(collision.transform.GetComponent<Eraso>(), eskuma);
         }

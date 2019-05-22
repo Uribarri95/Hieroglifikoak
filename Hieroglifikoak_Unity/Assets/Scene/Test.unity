@@ -968,7 +968,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222584500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3997784, y: -16.860775, z: -10}
+  m_LocalPosition: {x: 6, y: -19.831999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13834,11 +13834,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.41
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 4578535735847250, guid: b850781d56f60964b9eefd89dcada076, type: 2}
       propertyPath: m_LocalPosition.z
@@ -13913,6 +13913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ab84d5fa94dce4cb0243bca0f49389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zuzeneanHil: 0
 --- !u!70 &961288091
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15066,6 +15067,8 @@ MonoBehaviour:
   goianHasi: 1
   reseta: 1
   aktibatu: 0
+  itxaron: 0
+  offsetDenbora: 0
 --- !u!61 &1379742362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16460,7 +16463,7 @@ Transform:
   m_PrefabInternal: {fileID: 870430176}
   m_GameObject: {fileID: 1675436947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4099998, y: 2.578, z: -10}
+  m_LocalPosition: {x: 6, y: -19.831999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1140041636}
@@ -17448,10 +17451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027760c4718a34d4c9de44763e5dbb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  geziKopuruMax: 10
-  bizitzaPuntuMax: 6
-  txanponKopurua: 0
   suIrudia: {fileID: 0}
   ezpataIrudia: {fileID: 0}
   arkuIrudia: {fileID: 0}

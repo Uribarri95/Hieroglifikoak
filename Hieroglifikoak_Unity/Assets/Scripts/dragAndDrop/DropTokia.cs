@@ -15,6 +15,7 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 
     public void OnDrop(PointerEventData eventData)
     {
+        bool piezaJarriDaiteke = true;
         Drag pieza = eventData.pointerDrag.GetComponent<Drag>();
         if (pieza != null)
         {
@@ -33,12 +34,24 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         {
                             if (piezaPos.GetComponent<Drag>().isActiveAndEnabled)
                             {
+                                // jarrita dagoen pieza tokiz mugitu daiteke
                                 piezaPos.SetParent(piezaTokia);
                                 piezaPos.SetSiblingIndex(piezaTokia.childCount);
+                                piezaJarriDaiteke = true;
+                            }
+                            else
+                            {
+                                // jarrita dagoen pieza ezin da mugitu
+                                piezaJarriDaiteke = false;
                             }
                         }
+                        else
+                        {
+                            //pieza guk sortutako hutsunea da, pieza tokian jarri
+                            piezaJarriDaiteke = true;
+                        }
                     }
-                    else if (transform.childCount == 2)
+                    /*else if (transform.childCount == 2)
                     {
                         Transform piezaPos = transform.GetChild(0);
                         if (piezaPos.GetComponent<Drag>() == null)
@@ -51,17 +64,20 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                         }
                         piezaPos.SetParent(piezaTokia);
                         piezaPos.SetSiblingIndex(piezaTokia.childCount);
-                    }
+                    }*/
                 }
-                if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak ez muntatzeko // !!! pieza bakarrra ez exekutatu
+                if (goikoPieza != null && goikoPieza.parent == piezaTokia) // eskumaldean piezak ez muntatzeko // !!! pieza bakarra ez exekutatu
                 {
                     pieza.transform.SetParent(pieza.GetPiezaGurasoa());
                     pieza.transform.SetSiblingIndex(pieza.GetHasierkoIndizea());
                 }
                 else
                 {
-                    pieza.SetPiezaGurasoa(transform); // pieza hutsunean jarri
-                    
+                    //pieza.SetPiezaGurasoa(transform); // pieza hutsunean jarri
+                    if (piezaJarriDaiteke)
+                    {
+                        PiezaTokianJarri(pieza);
+                    }
                 }
             }
             else // pieza toki okerren jarri da, datorren tokira itzuli
@@ -70,6 +86,11 @@ public class DropTokia : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
                 pieza.transform.SetSiblingIndex(pieza.GetHasierkoIndizea());
             }
         }
+    }
+
+    public void PiezaTokianJarri(Drag pieza)
+    {
+        pieza.SetPiezaGurasoa(transform);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

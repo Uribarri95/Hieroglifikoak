@@ -31,14 +31,22 @@ public class MugKudeatzaile : IzpiKudeaketa {
         kolpeak.Reset();
 
         if(abiadura.y < 0)
+        {
             AldapaJaitsi(ref abiadura, irristatu);
+        }
         if (abiadura.x != 0)
+        {
             KolpeHorizontalak(ref abiadura, irristatu);
+        }
         if (abiadura.y != 0)
-            KolpeBertikalak(ref abiadura, irristatu);
+        {
+            KolpeBertikalak(ref abiadura);
+        }
 
         if (plataformaGainean)
+        {
             kolpeak.azpian = true;
+        }
 
         transform.Translate(abiadura);
     }
@@ -69,10 +77,14 @@ public class MugKudeatzaile : IzpiKudeaketa {
             if (kolpatu)
             {
                 if (kolpatu.transform.tag != "zeharkatu" && kolpatu.distance == 0)
+                {
                     abiadura.x = 0;
+                }
 
                 if (kolpatu.transform.tag == "zeharkatu" || kolpatu.distance == 0)
+                {
                     continue;
+                }
 
                 float aldapaAngelua = Vector2.Angle(kolpatu.normal, Vector2.up);
 
@@ -89,7 +101,9 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
                     //aldapan gaudenean abiadura bertikala eraldatu behar dugu
                     if (kolpeak.aldapaIgotzen)
+                    {
                         abiadura.y = Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x);
+                    }
                     else
                     {
                         kolpeak.ezkerra = xNoranzkoa == -1;
@@ -103,7 +117,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
     // Mugimendu bertikala jaso. Beste gorputz baten aurka talka egingo bada abiadura eraldatzen da
     // Kolpea goian edo azpian jaso den gordetzen da
-    void KolpeBertikalak(ref Vector2 abiadura, bool makurtu)
+    void KolpeBertikalak(ref Vector2 abiadura)
     {
         float yNoranzkoa = Mathf.Sign(abiadura.y);
         float izpiLuzera = Mathf.Abs(abiadura.y) + azalZabalera;
@@ -120,12 +134,23 @@ public class MugKudeatzaile : IzpiKudeaketa {
             {
                 if(kolpatu.transform.tag == "zeharkatu")
                 {
-                    if (yNoranzkoa == 1 || kolpatu.distance == 0 || makurtu)
+                    if (yNoranzkoa == 1 || kolpatu.distance == 0)
+                    {
                         continue;
+                    }
+                    if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+                    {
+                        if (Ekintzak.instantzia.GetZoruaZeharkatu())
+                        {
+                            continue;
+                        }
+                    }
                 }
 
                 if (kolpatu.distance < 0.01f)
+                {
                     abiadura.y = 0;
+                }
                 else
                 {
                     // izpi luzera murriztu, hurrengo izpiak aurrekoak ikusi dutena baino lehen dagoena konprobatuko dute bakarrik
@@ -135,7 +160,9 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
                 // aldapan gaudenean abiadura horizontala ere aldatu behar da
                 if (kolpeak.aldapaIgotzen)
+                {
                     abiadura.x = abiadura.y / Mathf.Tan(kolpeak.aldapaAngelu * Mathf.Deg2Rad) * Mathf.Sign(abiadura.x);
+                }
 
                 kolpeak.gainean = yNoranzkoa == 1;
                 kolpeak.azpian = yNoranzkoa == -1;
@@ -251,7 +278,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
     bool KolpeaKonprobatu(Vector2 jatorriIzpia, float xNoranzkoa, float izpiLuzera)
     {
         RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.right * xNoranzkoa, izpiLuzera, kolpeGainazalak);
-        if (kolpatu && (kolpatu.transform.tag == "zeharkatu" || kolpatu.transform.tag == "mugikorra")){
+        if (kolpatu && (kolpatu.transform.tag == "zeharkatu" || kolpatu.transform.tag == "mugikorra"))
+        {
             return false;
         }
         return kolpatu;
@@ -294,7 +322,9 @@ public class MugKudeatzaile : IzpiKudeaketa {
         RaycastHit2D ezkerKolpea = Physics2D.Raycast(izpiJatorria.topLeft, Vector2.up, jokalariLuzera, kolpeGainazalak);
         RaycastHit2D eskuinKolpea = Physics2D.Raycast(izpiJatorria.topRight, Vector2.up, jokalariLuzera, kolpeGainazalak);
         if (ezkerKolpea && ezkerKolpea.transform.tag == "zeharkatu" || eskuinKolpea && eskuinKolpea.transform.tag == "zeharkatu")
+        {
             return true;
+        }
         return (!ezkerKolpea && !eskuinKolpea);
     }
 

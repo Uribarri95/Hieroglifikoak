@@ -188,7 +188,7 @@ public class JokalariMug : MonoBehaviour
                 MakurtuSakatu();
             }
             // makurtutua bagaude altxatu
-            else if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && makurtu)
+            else if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.S) && makurtu)
             {
                 MakurtuAskatu();
             }

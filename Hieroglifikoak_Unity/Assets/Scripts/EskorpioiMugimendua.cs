@@ -49,7 +49,6 @@ public class EskorpioiMugimendua : MonoBehaviour {
         Collider2D target = Physics2D.OverlapCircle(transform.position, erasoErradioa, jokalaria);
         if (target != null)
         {
-            print(target.transform.position);
             jokalariPos = target.transform.position;
             if ((transform.position.x < jokalariPos.x && !eskumaBegira) || (transform.position.x > jokalariPos.x && eskumaBegira))
             {

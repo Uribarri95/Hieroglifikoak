@@ -9,7 +9,7 @@ public class SaguzarMugimendua : MonoBehaviour {
     private float aktibazioErradioa = 4.5f;                     // saguzarra jokalaria jarraitzeko egon behar den distantzia
     private float erasoDistantzia = 2.5f;                       // saguzarra jokalaria erasotzeko distantzia
     private float jarraituDistantziaMax = 8;                    // saguzarra jokalaria jarraitzen uzteko distantzia
-    private float abiaduraNormala = 1.8f;                       // saguzarraren mugimendu abiadura
+    private float abiaduraNormala = 1.6f;                       // saguzarraren mugimendu abiadura
     private float erasoAbiadura = 3.6f;                         // saguzarra erasotzen dagoenean duen abiadura
     private float erasoDenbora = .2f;                           // eraso aurretik geldi dagoen denbora, jokalaria erasoko dela adierazten du
     private float coolDownDenbora = 3;                          // eraso batetik bestera itxaron behar duen denbora

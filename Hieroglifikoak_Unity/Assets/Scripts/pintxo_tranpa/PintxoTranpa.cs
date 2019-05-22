@@ -65,7 +65,6 @@ public class PintxoTranpa : MonoBehaviour {
         reset = true;
         if(anim == null)
         {
-            print("animator == null");
             anim = GetComponent<Animator>();
         }
         anim.SetBool("Aktibatuta", false);
