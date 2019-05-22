@@ -99,10 +99,10 @@ public class Ekintzak : MonoBehaviour {
         argibideak[42] = "Kontrol tekla zapaltzean ingurunea argitu behar da eta etsaia gertu badago zerrendan gordeko da. Erabili pieza moreak zerrendekin lan egiteko. Erabili 'Add' eragigaia kolpatutako etsaiak zerrendan sartzeko.";
         argibideak[43] = "Erabaki zelan zeharkatuko dira zerrendako elementuak etsai guztiei bizitza kentzeko. 1.- Zenbatgarren elementuarekin hasiko da. 2.- Zein baldintzarekin geldituko da. 3.- Zenbatero ikusiko dira etsaiak eta gorako edo beherako ordenean";
         argibideak[44] = "Etsaiari minPuntuak kendu behar zaizkio bere bizitza puntuetatik. Bizitza dena galtzen badu etsai hiltzen da.";
-        argibideak[45] = "";
-        argibideak[46] = "";
-        argibideak[47] = "";
-        argibideak[48] = "";
+        argibideak[45] = "ArgiDenakPiztuta aldagaia gezurra izango da argiren bat itzalita badago. Horrela bada, jarri 'break' eragiketa. ArgiDenakPiztuta egia bada gela argitu behar da.";
+        argibideak[46] = "Kutxa ikutzen duen bitartean kutxaren aurka mugitzen bada kutxa bultzatuko du. Kutxa ikutzen dagoen bitartean kutxaren kontrako noranzkoan mugitzen bada ez da gehiago kutxa ikutzen egongo.";
+        argibideak[47] = "KutxaDenakjarrita aldagaia gezurra izango da kutxetako bat txarto jarrita badago. Kutxa denak ondo badaude kutxaDenakJarrita aldagaia egia izango da eta atea zabalduko da.";
+        argibideak[48] = "Ezpataren eraso distantzia lastarrgiaren bikoitza da. ErasoErradioa etsaiarekiko distantzia baino handiagoa bada funtzioak egia iztuli behar du eta gezurra bestela.";
         argibideak[49] = "";
         argibideak[50] = "";
         argibideak[51] = "";
@@ -155,9 +155,10 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[42] = new string[] { "abaifchifdegefifif", "abaifcifdegefifhif" };
         emaitzak[43] = new string[] { "aforbdfhbcjfor", "aforbegibcjfor" };
         emaitzak[44] = new string[] { "aifbk<=bkdif" };
-        emaitzak[45] = new string[] { "" };
-        emaitzak[46] = new string[] { "" };
-        emaitzak[47] = new string[] { "" };
+        emaitzak[45] = new string[] { "abforckgmcdifieifforifjfif" };
+        emaitzak[46] = new string[] { "difaeifwhilegifbkh&&ibkbifelsefelseifbkj&&kbkcifelsefelsewhile", "difaeifwhilegifbkh&&ibkbifelsefelseifbkk&&jbkcifelsefelsewhile",
+                                      "difaeifwhilegifbki&&hbkbifelsefelseifbkk&&jbkcifelsefelsewhile", "difaeifwhilegifbki&&hbkbifelsefelseifbkj&&kbkcifelsefelsewhile" };
+        emaitzak[47] = new string[] { "abforcjgmcifbkhdifforifieif" };
         emaitzak[48] = new string[] { "" };
         emaitzak[49] = new string[] { "" };
         emaitzak[50] = new string[] { "" };

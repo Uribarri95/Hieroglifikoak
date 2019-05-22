@@ -138,6 +138,8 @@ public class MumiaMugimendua : MonoBehaviour {
     IEnumerator MumiErasoa()
     {
         erasoDezaket = false;
+        float auzaskoDenbora = Random.Range(0.5f, 2);
+        yield return new WaitForSeconds(auzaskoDenbora);
         anim.SetTrigger("erasoa");        
         yield return new WaitForSeconds(erasoDenbora);
         erasoDezaket = true;
