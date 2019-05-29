@@ -87,26 +87,27 @@ public class Ekintzak : MonoBehaviour {
         argibideak[31] = "Joalaria makurtuta dagoen bitartean abiadura 2 izan behar du. Makurtzeko botoia askatzean (edo zapalduta ez dagoenean) eta gainean oztoporik ez dagoenean makurtu gezurra izango da " +
                          "eta abiadura 4 izan behar du berriro";
         argibideak[32] = "Jokalaria korrika badago eta makurtu egiten bada makurtuta mugitu beharrean irristatu egingo da.";
-        argibideak[33] = "Erabili begizta jokalariaren abiadura pixkanaka murrizteko. Jarri IF pieza tamaina aldaketa behin bakarrik gertatzeko. Irristatzen bukatu ondoren jokalaria makurtu egin behar da.";
+        argibideak[33] = "Erabili begizta jokalariaren abiadura pixkanaka murrizteko. Erabili IF pieza eta makurtuta aldagaia tamaina aldaketa behin bakarrik gertatzeko. Irristatzen bukatu ondoren jokalaria makurtu egin behar da.";
         argibideak[34] = "Jokalaria aldapan badago eta behera gezia zapaltzen badu, aldapa behera irristatuko du oso abiadura handian. Aldapa bukatzean abiadura azkarra galduko du.";
-        argibideak[35] = "Lortutako pasahitza atePasahitzaren berdina izan behar du atea zabaltzeko. Erabili 'Equals' baldintza pieza pasahitzak berdinak diren zihurtatzeko.";
+        argibideak[35] = "Lortutako pasahitza atePasahitzaren berdina izan behar du atea zabaltzeko. Erabili '==' eragigaia string-ak berdinak diren zihurtatzeko.";
         argibideak[36] = "Batu lortutako bi hitzak '+' eragigaia erabilita atea zabaltzeko.";
-        argibideak[37] = "";
-        argibideak[38] = "";
-        argibideak[39] = "";
-        argibideak[40] = "";
-        argibideak[41] = "ArgiDistantzia 5 da. Ctrl tekla zapaldu ondoren argiDistantzia 30 bihurtzen da eta 3 segundu pasatu ondoren argiDistantzia pixkanaka murrizten da berriro 5 izan arte.";
-        argibideak[42] = "Kontrol tekla zapaltzean ingurunea argitu behar da eta etsaia gertu badago zerrendan gordeko da. Erabili pieza moreak zerrendekin lan egiteko. Erabili 'Add' eragigaia kolpatutako etsaiak zerrendan sartzeko.";
-        argibideak[43] = "Erabaki zelan zeharkatuko dira zerrendako elementuak etsai guztiei bizitza kentzeko. 1.- Zenbatgarren elementuarekin hasiko da. 2.- Zein baldintzarekin geldituko da. 3.- Zenbatero ikusiko dira etsaiak eta gorako edo beherako ordenean";
-        argibideak[44] = "Etsaiari minPuntuak kendu behar zaizkio bere bizitza puntuetatik. Bizitza dena galtzen badu etsai hiltzen da.";
-        argibideak[45] = "ArgiDenakPiztuta aldagaia gezurra izango da argiren bat itzalita badago. Horrela bada, jarri 'break' eragiketa. ArgiDenakPiztuta egia bada gela argitu behar da.";
-        argibideak[46] = "Kutxa ikutzen duen bitartean kutxaren aurka mugitzen bada kutxa bultzatuko du. Kutxa ikutzen dagoen bitartean kutxaren kontrako noranzkoan mugitzen bada ez da gehiago kutxa ikutzen egongo.";
-        argibideak[47] = "KutxaDenakjarrita aldagaia gezurra izango da kutxetako bat txarto jarrita badago. Kutxa denak ondo badaude kutxaDenakJarrita aldagaia egia izango da eta atea zabalduko da.";
-        argibideak[48] = "Ezpataren eraso distantzia lastarrgiaren bikoitza da. ErasoErradioa etsaiarekiko distantzia baino handiagoa bada funtzioak egia iztuli behar du eta gezurra bestela.";
-        argibideak[49] = "";
-        argibideak[50] = "";
-        argibideak[51] = "";
-        argibideak[52] = "";
+        argibideak[37] = "ArgiDistantzia 5 da. Ctrl tekla zapaldu ondoren argiDistantzia 30 bihurtzen da eta 3 segundu pasatu ondoren argiDistantzia pixkanaka murrizten da berriro 5 izan arte.";
+        argibideak[38] = "Kontrol tekla zapaltzean ingurunea argitu behar da eta etsaia gertu badago zerrendan gordeko da. Erabili pieza moreak zerrendekin lan egiteko. Erabili 'Add' eragigaia kolpatutako etsaiak zerrendan sartzeko.";
+        argibideak[39] = "Erabaki zelan zeharkatuko dira zerrendako elementuak etsai guztiei bizitza kentzeko. 1.- Zenbatgarren elementuarekin hasiko da. 2.- Zein baldintzarekin geldituko da. 3.- Zenbatero ikusiko dira etsaiak eta gorako edo beherako ordenean";
+        argibideak[40] = "Etsaiari minPuntuak kendu behar zaizkio bere bizitza puntuetatik. Bizitza dena galtzen badu etsai hiltzen da.";
+        argibideak[41] = "ArgiDenakPiztuta aldagaia gezurra izango da argiren bat itzalita badago. Horrela bada, jarri 'break' eragiketa. ArgiDenakPiztuta egia bada gela argitu behar da.";
+        argibideak[42] = "String-ak karaktere zerrendak dira. Zeharkatu esaldia letra kopurua zenbatzeko.";
+        argibideak[43] = "Atea zabaltzeko behar den pasahitza lortzeko zeharkatu mezua atzekoz aurrera eta idatzi mezua alderantziz.";
+        argibideak[44] = "Gorde aurkitutako pasahitzak zerrenda baten.";
+        argibideak[45] = "Zeharkatu zerrenda eta konprobatu pasahitz denak atea zabaltzeko.";
+        argibideak[46] = "Konprobatu pasahitz konbinaketa denak begizta bat beste begizta baten barruan jarriz. Zerrenda bakoitza bere luzeraren arabera zehakatu behar da.";
+        argibideak[47] = "Kutxa ikutzen duen bitartean kutxaren aurka mugitzen bada kutxa bultzatuko du. Kutxa ikutzen dagoen bitartean kutxaren kontrako noranzkoan mugitzen bada ez da gehiago kutxa ikutzen egongo.";
+        argibideak[48] = "KutxaDenakjarrita aldagaia gezurra izango da kutxetako bat txarto jarrita badago. Kutxa denak ondo badaude kutxaDenakJarrita aldagaia egia izango da eta atea zabalduko da.";
+        argibideak[49] = "Ezpataren eraso distantzia lastarrgiaren bikoitza da. ErasoErradioa etsaiarekiko distantzia baino handiagoa bada funtzioak egia iztuli behar du eta gezurra bestela.";
+        argibideak[50] = "Etsai guztiak kolpatu behar dira min puntu egokiekin. Erabiliko den itema itemZerrendako lehen postuan dago.";
+        argibideak[51] = "Item zerrendan dagoen lehen elementua bigarrenarekin aldatu. Arazorik ez izateko sortu aldagai lagungarri bat zeinekin itema den galtzen.";
+        argibideak[52] = "Jokalariak geziak baditu arkua erabili dezake. Gezia jaurti ostean geziKopurua murriztu behar da. Etsaia kolpatzen bada bizitza behar zaio.";
+        argibideak[53] = "Bigarren eta hirugarren itema lehenengoarengatik aldatu behar dira. Sortu aldagai lagungarriak itemak ez galtzeko.";
 
         emaitzak = new string[tamaina][];
 
@@ -127,7 +128,7 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[14] = new string[] { "ifaifbcifelsedelseififeiffcifelsegelseif", "ifeiffcifelsegelseififaifbcifelsedelseif" };
         emaitzak[15] = new string[] { "abifcdifelseefelsegb" };
         emaitzak[16] = new string[] { "ifbkaandbifcgififdjififehififfiififelsekelse" };
-        emaitzak[17] = new string[] { "aifbkcandbdifelseeelsef", "aifbkbandcdifelseeelsef" };
+        emaitzak[17] = new string[] { "aifbkcorbdifelseeelsef", "aifbkborcdifelseeelsef" };
         emaitzak[18] = new string[] { "ifaifcdifififbifbk!ceifif" };
         emaitzak[19] = new string[] { "ifbk!aand!bcif", "ifbk!band!acif" };
         emaitzak[20] = new string[] { "aifbkbandcifefifelseeelsegif" };
@@ -147,23 +148,24 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[34] = new string[] { "aifbkbandheifwhilecdififgifwhile", "aifbkbandheifwhilecdifigfifwhile", "aifbkbandheifwhilecifigfifdwhile", "aifbkbandheifwhilecififgifdwhile" };
         emaitzak[35] = new string[] { "ifeqaeeqbif", "cpkdepkifeqadeqbif" };
         emaitzak[36] = new string[] { "aaapkbfepkifeqgeqdif" };
-        emaitzak[37] = new string[] { "" };
-        emaitzak[38] = new string[] { "" };
-        emaitzak[39] = new string[] { "" };
-        emaitzak[40] = new string[] { "" };
-        emaitzak[41] = new string[] { "abcaifdefgehihifwhilebkf>cjwhile" };
-        emaitzak[42] = new string[] { "abaifchifdegefifif", "abaifcifdegefifhif" };
-        emaitzak[43] = new string[] { "aforbdfhbcjfor", "aforbegibcjfor" };
-        emaitzak[44] = new string[] { "aifbk<=bkdif" };
-        emaitzak[45] = new string[] { "abforckgmcdifieifforifjfif" };
-        emaitzak[46] = new string[] { "difaeifwhilegifbkh&&ibkbifelsefelseifbkj&&kbkcifelsefelsewhile", "difaeifwhilegifbkh&&ibkbifelsefelseifbkk&&jbkcifelsefelsewhile",
+        emaitzak[37] = new string[] { "abcaifdefgehihifwhilebkf>cjwhile" };
+        emaitzak[38] = new string[] { "abaifchifdegefifif", "abaifcifdegefifhif" };
+        emaitzak[39] = new string[] { "aforbdfhbcjfor", "aforbegibcjfor" };
+        emaitzak[40] = new string[] { "aifbk<=bkdif" };
+        emaitzak[41] = new string[] { "abforckgmcdifieifforifjfif" };
+        emaitzak[42] = new string[] { "anabforcifdeoe!=fdkbifforifgh==lgiif", "amabforcifdeoe==fdjbifforifgh==lgiif" };
+        emaitzak[43] = new string[] { "abkbforcnhocdijdforifefif", "abkbforclgmcdjidforifefif" };
+        emaitzak[44] = new string[] { "acabcdb" };
+        emaitzak[45] = new string[] { "agabibforcifbke==hbkfiffor", "agabibforcdihdifbke==ibkfiffor" };
+        emaitzak[46] = new string[] { "abcfordejmdforfglkfhionhifpqifforfor" };
+        emaitzak[47] = new string[] { "difaeifwhilegifbkh&&ibkbifelsefelseifbkj&&kbkcifelsefelsewhile", "difaeifwhilegifbkh&&ibkbifelsefelseifbkk&&jbkcifelsefelsewhile",
                                       "difaeifwhilegifbki&&hbkbifelsefelseifbkk&&jbkcifelsefelsewhile", "difaeifwhilegifbki&&hbkbifelsefelseifbkj&&kbkcifelsefelsewhile" };
-        emaitzak[47] = new string[] { "abforcjgmcifbkhdifforifieif" };
-        emaitzak[48] = new string[] { "" };
-        emaitzak[49] = new string[] { "" };
-        emaitzak[50] = new string[] { "" };
-        emaitzak[51] = new string[] { "" };
-        emaitzak[52] = new string[] { "" };
+        emaitzak[48] = new string[] { "abforcjgmcifbkhdifforifieif" };
+        emaitzak[49] = new string[] { "abcifd==jdeififfk==fgbbififh<hmifelselelsei", "abcifd==jdeififfk==fgbbififh>=hlifelsemelsei" };
+        emaitzak[50] = new string[] { "abifcm==cdififeflfifforghn<jhgilifor" };
+        emaitzak[51] = new string[] { "acifbdeif", "aifbcdeif" };
+        emaitzak[52] = new string[] { "abbifcgandbi>jbcpdififfehif", "abbifcgandbi>jbcdpififfehif", "abbifcbi>jbandgcdpififfehif", "abbifcbi>jbandgcpdififfehif" };
+        emaitzak[53] = new string[] { "aifbcocdldekeififfgmghnhijiif" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
@@ -268,5 +270,10 @@ public class Ekintzak : MonoBehaviour {
     public bool GetAldapaIrristatu()
     {
         return ekintzak[34];
+    }
+
+    public bool GetArgiakPiztu()
+    {
+        return ekintzak[41];
     }
 }

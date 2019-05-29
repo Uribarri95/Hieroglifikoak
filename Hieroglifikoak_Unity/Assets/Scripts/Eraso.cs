@@ -287,7 +287,10 @@ public class Eraso : MonoBehaviour {
         {
             // su mina kendu !!!
             MinPuntuakKendu(suMinPuntuak, argiErasoErradioa);
-            SuaPiztu();
+            if (Ekintzak.instantzia.GetArgiakPiztu())
+            {
+                SuaPiztu();
+            }
         }
     }
 
