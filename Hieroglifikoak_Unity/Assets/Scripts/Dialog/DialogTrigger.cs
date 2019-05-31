@@ -20,10 +20,10 @@ public class DialogTrigger : MonoBehaviour {
     private void Start()
     {
         dialogManager = DialogManager.instantzia;
-        if (pasahitzak)
+        /*if (pasahitzak)
         {
             pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu."};
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,10 +40,14 @@ public class DialogTrigger : MonoBehaviour {
 
     public IEnumerator TriggerDialog()
     {
+        print("beharrezkoak: " + pasahitzKopurua);
+        print("hartutakoak: " + Inbentarioa.instantzia.GetPasahitzKop());
+
         yield return new WaitForSeconds(itzaroteDenbora);
         dialogCanvas.SetActive(true);
         if (pasahitzak && pasahitzKopurua != Inbentarioa.instantzia.GetPasahitzKop())
         {
+            pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu." };
             dialogManager.StartDialog(pasahitzakFaltan, false, 0);
             exekutatu = false;
         }
