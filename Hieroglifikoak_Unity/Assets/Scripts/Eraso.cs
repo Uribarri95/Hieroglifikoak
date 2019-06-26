@@ -188,7 +188,42 @@ public class Eraso : MonoBehaviour {
     {
         if (denbora <= 0)
         {
-            if (jokalaria.ErasoDezaket() && (suArgia || ezpata || arkua))
+            if (jokalaria.ErasoDezaket())
+            {
+                if (Input.GetButtonDown("Eraso"))
+                {
+                    if (arkua && inbentarioa.GetGeziKop() <= 0)
+                    {
+                        return;
+                    }
+                    else if (suArgia)
+                    {
+                        if (Ekintzak.instantzia.GetSuErasoa())
+                        {
+                            anim.SetBool("eraso", true);
+                            denbora = denboraTartea;
+                        }
+                    }
+                    else if (ezpata)
+                    {
+                        if (Ekintzak.instantzia.GetEzpata())
+                        {
+                            anim.SetBool("eraso", true);
+                            denbora = denboraTartea;
+                        }
+                    }
+                    else if (arkua)
+                    {
+                        if (Ekintzak.instantzia.GetArkua())
+                        {
+                            anim.SetBool("eraso", true);
+                            denbora = denboraTartea;
+                        }
+                    }
+                }
+            }
+
+            /*if (jokalaria.ErasoDezaket() && (suArgia || ezpata || arkua))
             {
                 if (Input.GetButtonDown("Eraso"))
                 {
@@ -202,7 +237,7 @@ public class Eraso : MonoBehaviour {
                         denbora = denboraTartea;
                     }
                 }
-            }
+            }*/
         }
         else
         {
@@ -300,9 +335,12 @@ public class Eraso : MonoBehaviour {
         Collider2D[] kolpatutakoEtsaiak = Physics2D.OverlapCircleAll(new Vector3(erasoPuntua.position.x + xOffset, erasoPuntua.position.y + yOffset, erasoPuntua.position.z), erradioa, zerDaEtsaia);
         for (int i = 0; i < kolpatutakoEtsaiak.Length; i++)
         {
-            etsaiak.Add(kolpatutakoEtsaiak[i].GetComponent<Etsaia>());
-            kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(minPuntuak);
-            kolpatutakoEtsaiak[i].GetComponent<Etsaia>().SetKolpea(true);
+            if(kolpatutakoEtsaiak[i].GetComponent<Etsaia>() != null)
+            {
+                etsaiak.Add(kolpatutakoEtsaiak[i].GetComponent<Etsaia>());
+                kolpatutakoEtsaiak[i].GetComponent<Etsaia>().KolpeaJaso(minPuntuak);
+                kolpatutakoEtsaiak[i].GetComponent<Etsaia>().SetKolpea(true);
+            }
         }
     }
 

@@ -46,8 +46,8 @@ public class EtsaiKudeaketa : MonoBehaviour {
         
         for (int i = 0; i < etsaiak.Length; i++)
         {
-            GameObject etsaia =  Instantiate(etsaiak[i], etsaiPos[i], transform.rotation);
-            //GameObject etsaia = Instantiate(etsaiak[i], etsaiPos[i], new Quaternion(0, etsaiRotation[i], 0, 0));
+            //GameObject etsaia =  Instantiate(etsaiak[i], etsaiPos[i], transform.rotation);
+            GameObject etsaia = Instantiate(etsaiak[i], etsaiPos[i], new Quaternion(0, etsaiRotation[i], 0, 0));
             etsaia.transform.parent = transform;
         }
     }

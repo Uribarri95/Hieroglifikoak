@@ -71,9 +71,9 @@ public class Ekintzak : MonoBehaviour {
                          "Erabili ! eragigaia PlataformaGaineanDago() funtzioarekin jokalaria plataforma azpian dagoen jakiteko";
         argibideak[19] = "Jokalaria geldi mantendu behar da botoirik sakatzen ez denean.";
         argibideak[20] = "Salto botoia sakatzen denean, botoia sakatuta mantentzen bada indarra 8 izan behar da eta altuera maximoa lortu baino lehen askatzen bada 4 izan behar da.";
-        argibideak[21] = "Funtzioak saltoa aldagaia erabiliko du salto egin dezakken jakiteko. Gero, hormaren kontrako zentzuan salto egingo du.\nSaltoEgin() funtzio pieza bakarra dago, " + 
+        argibideak[21] = "Funtzioak saltoa aldagaia erabiliko du salto egin dezakeen jakiteko. Gero, hormaren kontrako zentzuan salto egingo du.\nSaltoEgin() funtzio pieza bakarra dago, " + 
                          "jarri toki egokian bi noranzkoetan funtzionatzeko.";
-        argibideak[22] = "HormaSaltoa() funtzioak bool motako datua behar du funtzionatzeko. Datu hori SaltoEginDaiteke() funtzioak eskeiniko du. Jarri funtzioak itzultzen duen datua HormaSaltoa() duen hutsunean.";
+        argibideak[22] = "HormaSaltoa() funtzioak bool motako datua behar du funtzionatzeko. Datu hori SaltoEginDaiteke() funtzioak eskeiniko du.";
         argibideak[23] = "Jokalariak salto egin ahal izango du baldin eta lurrean badago edo hormari itsatsita badago. Funtzioak egia itzuli behar du salto egin badezake eta gezurra kontrako kasuan.";
         argibideak[24] = "Jokalaria lurrean badago salto normala egingo du. Bestela, airean badago eta pareta baten aurka itsatsita badago horma saltoa egingo du.";
         argibideak[25] = "Jokalariak bihotzak berreskuratu behar ditu. Kopurua bihotzKopurua aldagaiak adieraziko du. Ziurtatu bihotzak bizitza maximoa baino hadiagoa ez izatea.";
@@ -106,7 +106,7 @@ public class Ekintzak : MonoBehaviour {
         argibideak[49] = "Ezpataren eraso distantzia lastarrgiaren bikoitza da. ErasoErradioa etsaiarekiko distantzia baino handiagoa bada funtzioak egia iztuli behar du eta gezurra bestela.";
         argibideak[50] = "Etsai guztiak kolpatu behar dira min puntu egokiekin. Erabiliko den itema itemZerrendako lehen postuan dago.";
         argibideak[51] = "Item zerrendan dagoen lehen elementua bigarrenarekin aldatu. Arazorik ez izateko sortu aldagai lagungarri bat zeinekin itema den galtzen.";
-        argibideak[52] = "Jokalariak geziak baditu arkua erabili dezake. Gezia jaurti ostean geziKopurua murriztu behar da. Etsaia kolpatzen bada bizitza behar zaio.";
+        argibideak[52] = "Jokalariak geziak baditu arkua erabili dezake. Gezia jaurti ostean geziKopurua murriztu behar da. Etsaia kolpatzen bada bizitza murriztu behar zaio.";
         argibideak[53] = "Bigarren eta hirugarren itema lehenengoarengatik aldatu behar dira. Sortu aldagai lagungarriak itemak ez galtzeko.";
 
         emaitzak = new string[tamaina][];
@@ -133,7 +133,7 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[19] = new string[] { "ifbk!aand!bcif", "ifbk!band!acif" };
         emaitzak[20] = new string[] { "aifbkbandcifefifelseeelsegif" };
         emaitzak[21] = new string[] { "bifbkaandbifdgififceiffif", "bifbkaandbifdgiffifceifif", "bifbkaandbfifdgififceifif" };
-        emaitzak[22] = new string[] { "ifehdif", "abcdifehbif" };
+        emaitzak[22] = new string[] { "ifehdif", "abcdifehbif", "abifecdhbif" };
         emaitzak[23] = new string[] { "aifbkborceifelsefelsegd", "aifbkcorbeifelsefelsegd" };
         emaitzak[24] = new string[] { "ifaifbcifelseifbkcordefifelseif", "ifaifbcifelseifbkdorcefifelseif" };
         emaitzak[25] = new string[] { "ifbka<bcdifelseefelse", "ifbka>befifelsecdelse" };
@@ -144,7 +144,7 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[30] = new string[] { "abifcdififefififghififijif" };
         emaitzak[31] = new string[] { "awhilebfifbk!cand!ceeeifwhilei", "awhilebifbk!cand!ceeeiffwhilei" };
         emaitzak[32] = new string[] { "ifbcifadifif" };
-        emaitzak[33] = new string[] { "whilebka>bdif!fccifwhileg", "whilebka>bif!fccifdwhileg" };
+        emaitzak[33] = new string[] { "awhilebka>bdif!fccifwhileg", "awhilebka>bif!fccifdwhileg" };
         emaitzak[34] = new string[] { "aifbkbandheifwhilecdififgifwhile", "aifbkbandheifwhilecdifigfifwhile", "aifbkbandheifwhilecifigfifdwhile", "aifbkbandheifwhilecififgifdwhile" };
         emaitzak[35] = new string[] { "ifeqaeeqbif", "cpkdepkifeqadeqbif" };
         emaitzak[36] = new string[] { "aaapkbfepkifeqgeqdif" };
@@ -165,7 +165,7 @@ public class Ekintzak : MonoBehaviour {
         emaitzak[50] = new string[] { "abifcm==cdififeflfifforghn<jhgilifor" };
         emaitzak[51] = new string[] { "acifbdeif", "aifbcdeif" };
         emaitzak[52] = new string[] { "abbifcgandbi>jbcpdififfehif", "abbifcgandbi>jbcdpififfehif", "abbifcbi>jbandgcdpififfehif", "abbifcbi>jbandgcpdififfehif" };
-        emaitzak[53] = new string[] { "aifbcocdldekeififfgmghnhijiif" };
+        emaitzak[53] = new string[] { "aifbcjcdkdekeififfgmghmhioiif" };
     }
 
     public bool EmaitzaKonprobatu(string erabEmaitza)
@@ -272,8 +272,23 @@ public class Ekintzak : MonoBehaviour {
         return ekintzak[34];
     }
 
+    public bool GetSuErasoa()
+    {
+        return ekintzak[40];
+    }
+
     public bool GetArgiakPiztu()
     {
         return ekintzak[41];
+    }
+
+    public bool GetEzpata()
+    {
+        return ekintzak[51];
+    }
+
+    public bool GetArkua()
+    {
+        return ekintzak[53];
     }
 }

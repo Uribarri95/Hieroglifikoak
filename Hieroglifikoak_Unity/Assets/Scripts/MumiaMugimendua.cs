@@ -72,12 +72,27 @@ public class MumiaMugimendua : MonoBehaviour {
     // mumia hiltzen denean besoa jauzten utziko du
     public void KolpeaJaso()
     {
-        if (GetComponent<Etsaia>().GetKnockBack() && (!anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_attack") || !anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_arm_attack")))
+        if (GetComponent<Etsaia>().GetKnockBack() /*&& (!anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_attack") || !anim.GetCurrentAnimatorStateInfo(0).IsName("mummy_arm_attack"))*/)
         {
             transform.Translate(Vector2.right * knockBack * Time.deltaTime);
             GetComponent<Etsaia>().KnockBackErreseteatu();
         }
-        if (!name.Contains("arm") && !GetComponent<Etsaia>().GetBizirik())
+        if (!GetComponent<Etsaia>().GetBizirik())
+        {
+            if (!name.Contains("arm"))
+            {
+                GameObject mumiBesoaGO = Instantiate(mumiBesoa, transform.position, transform.rotation);
+                mumiBesoaGO.transform.parent = transform.parent;
+                MumiaMugimendua mumia = mumiBesoaGO.GetComponent<MumiaMugimendua>();
+                if (mumia != null)
+                {
+                    mumia.GetComponent<Animator>().SetTrigger(Random.Range(0, 2) == 0 ? "rspin" : "lspin");
+                    mumia.BesoaJauzi();
+                }
+            }
+            Destroy(gameObject);
+        }
+        /*if (!name.Contains("arm") && !GetComponent<Etsaia>().GetBizirik())
         {
             Destroy(gameObject);
             GameObject mumiBesoaGO = Instantiate(mumiBesoa, transform.position, transform.rotation);
@@ -88,7 +103,7 @@ public class MumiaMugimendua : MonoBehaviour {
                 mumia.GetComponent<Animator>().SetTrigger(Random.Range(0, 2) == 0 ? "rspin" : "lspin");
                 mumia.BesoaJauzi();
             }
-        }
+        }*/
     }
 
     // besoa mumitik jauzten denean salto txiki bat ematen du

@@ -61,7 +61,14 @@ public class Mapa : MonoBehaviour {
     {
         for (int i = 0; i < itemak.transform.childCount; i++)
         {
-            itemak.transform.GetChild(i).gameObject.SetActive(itemZerrenda[i]);
+            if(itemak.transform.GetChild(i).GetComponent<ItemHolder>() != null)
+            {
+                itemak.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(itemZerrenda[i]);
+            }
+            else
+            {
+                itemak.transform.GetChild(i).gameObject.SetActive(itemZerrenda[i]);
+            }
         }
     }
 
@@ -78,7 +85,14 @@ public class Mapa : MonoBehaviour {
         bool[] itemZerrenda = new bool[itemak.transform.childCount];
         for (int i = 0; i < itemak.transform.childCount; i++)
         {
-            itemZerrenda[i] = itemak.transform.GetChild(i).gameObject.activeSelf;
+            if(itemak.transform.GetChild(i).GetComponent<ItemHolder>() != null)
+            {
+                itemZerrenda[i] = itemak.transform.GetChild(i).transform.GetChild(0).gameObject.activeSelf;
+            }
+            else
+            {
+                itemZerrenda[i] = itemak.transform.GetChild(i).gameObject.activeSelf;
+            }
         }
         return itemZerrenda;
     }

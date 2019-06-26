@@ -875,6 +875,11 @@ Prefab:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114542331517329522, guid: d46c7d6450e6f4d4c9be4bdb1196605a,
+        type: 2}
+      propertyPath: kolpeGainazalak.m_Bits
+      value: 246272
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46c7d6450e6f4d4c9be4bdb1196605a, type: 2}
   m_IsPrefabAsset: 0

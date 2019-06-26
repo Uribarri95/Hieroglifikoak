@@ -5,13 +5,14 @@ using UnityEngine;
 public class DialogTrigger : MonoBehaviour {
 
     public GameObject dialogCanvas;
-    public float itzaroteDenbora = 1;
+    public float itxaroteDenbora = 1;
     public bool puzleaErakutsi;
     public int zenbakia;
     public Dialog dialog;
 
     public bool pasahitzak;
     public int pasahitzKopurua;
+    private float denbora = 2;
     Dialog pasahitzakFaltan = new Dialog();
 
     DialogManager dialogManager;
@@ -24,6 +25,14 @@ public class DialogTrigger : MonoBehaviour {
         {
             pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu."};
         }*/
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            print("pasahitzKop: " + Inbentarioa.instantzia.GetPasahitzKop());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,20 +49,26 @@ public class DialogTrigger : MonoBehaviour {
 
     public IEnumerator TriggerDialog()
     {
-        print("beharrezkoak: " + pasahitzKopurua);
-        print("hartutakoak: " + Inbentarioa.instantzia.GetPasahitzKop());
-
-        yield return new WaitForSeconds(itzaroteDenbora);
+        yield return new WaitForSeconds(itxaroteDenbora);
         dialogCanvas.SetActive(true);
-        if (pasahitzak && pasahitzKopurua != Inbentarioa.instantzia.GetPasahitzKop())
+        if (pasahitzak)
         {
-            pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu." };
-            dialogManager.StartDialog(pasahitzakFaltan, false, 0);
-            exekutatu = false;
+            if(pasahitzKopurua != Inbentarioa.instantzia.GetPasahitzKop())
+            {
+                pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaizu." };
+                dialogManager.StartDialog(pasahitzakFaltan, false, 0);
+                yield return new WaitForSeconds(denbora);
+                exekutatu = false;
+            }
+            else
+            {
+                Inbentarioa.instantzia.PasahitzakReset();
+                dialogManager.StartDialog(dialog, puzleaErakutsi, zenbakia);
+                gameObject.SetActive(false);
+            }
         }
         else
         {
-            Inbentarioa.instantzia.PasahitzakReset();
             dialogManager.StartDialog(dialog, puzleaErakutsi, zenbakia);
             gameObject.SetActive(false);
         }

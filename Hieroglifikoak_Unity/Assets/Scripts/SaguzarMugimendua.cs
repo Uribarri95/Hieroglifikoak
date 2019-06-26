@@ -68,9 +68,12 @@ public class SaguzarMugimendua : MonoBehaviour {
         // zorutik eskegitu
         if (zintzilik)
         {
-            aktibatuta = true;
-            bool eskuma = targetPos.x >= transform.position.x;
-            SaguzarraJeisti(eskuma);
+            if(transform.position.y > targetPos.y)
+            {
+                aktibatuta = true;
+                bool eskuma = targetPos.x >= transform.position.x;
+                SaguzarraJeisti(eskuma);
+            }
         }
         // jokalaria jarriatu
         else

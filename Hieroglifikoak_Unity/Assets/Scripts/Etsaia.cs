@@ -9,7 +9,7 @@ public class Etsaia : MonoBehaviour {
 
     bool kolpatuta = false;             // jokalariak kolpe bat eraso bakoitzeko
     bool knockBack = false;             // etsaiak kolpea jaso duen efektua lortzeko
-    bool bizirik = true;                // jokalaria bizirik jarraitzen duen
+    bool bizirik = true;                // etsaia bizirik jarraitzen duen
 
     // etsaiari min puntuak kendu
     public void KolpeaJaso(float minPuntuak)
@@ -20,7 +20,6 @@ public class Etsaia : MonoBehaviour {
             bizitzaPuntuak -= minPuntuak;
             if (bizitzaPuntuak <= 0)
             {
-                bizirik = false;
                 Hil();
             }
         }
@@ -29,7 +28,8 @@ public class Etsaia : MonoBehaviour {
     // min puntuak 0 direnean etsaia hil, mumia denean bere IA barruan egingo da
     public void Hil()
     {
-        if(!transform.name.Contains("Mummy"))
+        bizirik = false;
+        if (!transform.name.Contains("Mummy"))
         {
             Destroy(gameObject);
         }

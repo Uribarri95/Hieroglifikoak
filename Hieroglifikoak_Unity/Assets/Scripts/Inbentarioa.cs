@@ -56,7 +56,8 @@ public class Inbentarioa : MonoBehaviour {
     {
         if (datuak.suArgia)
         {
-            Item suArgia = new Item();
+            Item suArgia = ScriptableObject.CreateInstance<Item>();
+            //Item suArgia = new Item();
             suArgia.izena = "SuArgia";
             suArgia.irudia = suIrudia;
             suArgia.erabileraBakarra = false;
@@ -64,7 +65,8 @@ public class Inbentarioa : MonoBehaviour {
         }
         if (datuak.ezpata)
         {
-            Item ezpata = new Item();
+            Item ezpata = ScriptableObject.CreateInstance<Item>();
+            //Item ezpata = new Item();
             ezpata.izena = "Ezpata";
             ezpata.irudia = ezpataIrudia;
             ezpata.erabileraBakarra = false;
@@ -72,7 +74,8 @@ public class Inbentarioa : MonoBehaviour {
         }
         if (datuak.arkua)
         {
-            Item arkua = new Item();
+            Item arkua = ScriptableObject.CreateInstance<Item>();
+            //Item arkua = new Item();
             arkua.izena = "Arkua";
             arkua.irudia = arkuIrudia;
             arkua.erabileraBakarra = false;

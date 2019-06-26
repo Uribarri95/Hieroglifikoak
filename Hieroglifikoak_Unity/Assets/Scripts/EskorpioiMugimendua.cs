@@ -80,7 +80,8 @@ public class EskorpioiMugimendua : MonoBehaviour {
         anim.SetBool("eraso", false);
         Vector3 noranzkoa = jokalariPos - transform.position;
         float zAngelua = Mathf.Atan2(noranzkoa.y, noranzkoa.x) * Mathf.Rad2Deg;
-        Instantiate(jaurtigaia, erasoPuntua.position, Quaternion.Euler(transform.rotation.x, transform.position.y ,zAngelua + offset));
+        Instantiate(jaurtigaia, erasoPuntua.position, Quaternion.Euler(0, 0, zAngelua + offset));
+        //Instantiate(jaurtigaia, erasoPuntua.position, Quaternion.Euler(transform.rotation.x, transform.position.y ,zAngelua + offset));
     }
 
     // eraso dezake / ezin du eraso zikloa kontrolatzen du

@@ -6,7 +6,7 @@ public class ErreDaiteke : MonoBehaviour {
 
     Animator anim;
     SpriteMask argia;
-    bool piztuta = false;
+    public bool piztuta = false;
 
 	// Use this for initialization
 	void Start () {

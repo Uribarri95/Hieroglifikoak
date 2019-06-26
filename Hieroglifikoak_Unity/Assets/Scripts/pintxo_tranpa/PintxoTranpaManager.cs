@@ -10,6 +10,8 @@ public class PintxoTranpaManager : MonoBehaviour {
     public float zikloDenbora;
     bool eragin;
     bool aktibatuta;
+    public bool tranpaBerezia;
+    public bool alderantziz;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,8 @@ public class PintxoTranpaManager : MonoBehaviour {
         {
             Desaktibatu();
         }
-        eragin = false;
+        //eragin = false;
+        eragin = alderantziz;
         if (ziklikoa)
         {
             StartCoroutine("ZikloKudeaketa");
@@ -37,7 +40,21 @@ public class PintxoTranpaManager : MonoBehaviour {
     IEnumerator ZikloKudeaketa()
     {
         eragin = !eragin;
-        yield return new WaitForSeconds(zikloDenbora);
+        if (tranpaBerezia)
+        {
+            if (eragin)
+            {
+                yield return new WaitForSeconds(zikloDenbora);
+            }
+            else
+            {
+                yield return new WaitForSeconds(zikloDenbora / 2);
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(zikloDenbora);
+        }
         TranpakKudeatu(eragin);
         StartCoroutine("ZikloKudeaketa");
     }
@@ -51,7 +68,7 @@ public class PintxoTranpaManager : MonoBehaviour {
                 tranpak[i].Piztu();
             }
             aktibatuta = true;
-            eragin = true;
+            //eragin = true;
             TranpakKudeatu(eragin);
             StopAllCoroutines();
             StartCoroutine("ZikloKudeaketa");
