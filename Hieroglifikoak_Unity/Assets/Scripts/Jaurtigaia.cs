@@ -11,6 +11,7 @@ public class Jaurtigaia : MonoBehaviour {
     Rigidbody2D rb;
 
     void Start () {
+
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * -1 * abiadura;
         Destroy(gameObject, desagertuDenbora);

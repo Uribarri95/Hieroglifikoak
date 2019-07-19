@@ -44,4 +44,31 @@ public class KakalardoMugimendua : MonoBehaviour {
         GameObject kakaBola = Instantiate(bola, erasoPuntua.position, erasoPuntua.rotation);
         kakaBola.transform.SetParent(transform);
     }
+
+    public void SoinuaJarri()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            AudioSource soinua = GetComponent<AudioSource>();
+            if (soinua != null)
+            {
+                if (!soinua.isPlaying)
+                {
+                    soinua.Play();
+                }
+            }
+        }
+    }
+
+    public void SoinuaKendu()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            AudioSource soinua = GetComponent<AudioSource>();
+            if (soinua != null)
+            {
+                soinua.Stop();
+            }
+        }
+    }
 }

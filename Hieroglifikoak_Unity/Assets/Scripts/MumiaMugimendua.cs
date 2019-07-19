@@ -29,12 +29,18 @@ public class MumiaMugimendua : MonoBehaviour {
     public float erasoErradioa;         // jokalaria kolpatzeko zirkunferentziaren erradioa
     public float erasoDistantzia;       // erasotzeko distantzia minimoa
     public float erasoDenbora;          // denbora txiki bat bi erasoen artean
-    
+
+    public AudioSource grunt;
+    public AudioSource walk;
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
         abiadura = abiaduraNormala;
+        if(grunt != null)
+        {
+            StartCoroutine("Grunt");
+        }
     }
 
     // mugituAgindua eta idleMoveKontrola mumia erren dagoen efektua emoten diote
@@ -160,6 +166,17 @@ public class MumiaMugimendua : MonoBehaviour {
         erasoDezaket = true;
     }
 
+    IEnumerator Grunt()
+    {
+        int denbora = Random.Range(5, 10);
+        yield return new WaitForSeconds(denbora);
+        if(GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            grunt.Play();
+        }
+        StartCoroutine("Grunt");
+    }
+
     // animazioko eraso event jaurtitzen du
     void Eraso()
     {
@@ -167,7 +184,7 @@ public class MumiaMugimendua : MonoBehaviour {
         if (kolpea)
         {
             bool eskuma = transform.position.x > kolpea.transform.position.x ? true : false;
-            GetComponent<MinEmanKolpatzean>().JokalariaKolpatu(kolpea.transform.GetComponent<Eraso>(), eskuma);
+            GetComponentInChildren<MinEmanKolpatzean>().JokalariaKolpatu(kolpea.transform.GetComponent<Eraso>(), eskuma);
         }
     }
 
@@ -216,6 +233,17 @@ public class MumiaMugimendua : MonoBehaviour {
     bool HormaBilatu()
     {
         return Physics2D.Raycast(groundCheck.position, eskumaBegira ? Vector2.right : Vector2.left, hormaDistantzia, oztopoak); ;
+    }
+
+    public void MugimenduSoinua()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (!walk.isPlaying)
+            {
+                walk.Play();
+            }
+        }
     }
 
     private void OnDrawGizmos()

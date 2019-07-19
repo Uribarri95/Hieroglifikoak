@@ -25,8 +25,19 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     bool alderantziz = false;
     public bool lurreraJauzi = false;
 
+    AudioSource audioa;
+    public bool mugimenduAudioa;
+    public bool kolpeAudioa;
+
     public override void Start () {
         base.Start();
+
+        audioa = GetComponent<AudioSource>();
+        if(audioa == null && (mugimenduAudioa || kolpeAudioa))
+        {
+            Debug.Log("Audio pista jartzea ahaztu zaizu");
+        }
+
         itxarotePuntuak = new Vector3[marraztuPuntuak.Length];
         for (int i = 0; i < marraztuPuntuak.Length; i++)
         {
@@ -50,6 +61,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
             if (itxarotePuntuak.Length != 0)
             {
                 abiadura = PlataformaMugitu();
+                
                 if (abiadura.y >= 0)
                 {
                     MugituBidaiariak(abiadura);
@@ -115,6 +127,21 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
 
     Vector3 PlataformaMugitu()
     {
+        if (mugimenduAudioa)
+        {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if (!audioa.isPlaying)
+                {
+                    audioa.Play();
+                }
+            }
+            else
+            {
+                audioa.Stop();
+            }
+        }
+
         if (Time.time < hurrengoDenbora)
         {
             return Vector3.zero;
@@ -128,6 +155,21 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
         float easeBidaiKantitatea = Ease(bidaiKantitatea);
 
         Vector3 posizioBerria = Vector3.Lerp(itxarotePuntuak[itxarotePosizioa], itxarotePuntuak[hurrengoPosizoia], easeBidaiKantitatea);
+
+        if (bidaiKantitatea > .9f && bidaiKantitatea < .95f)
+        {
+            if (kolpeAudioa)
+            {
+                if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+                {
+                    if (!audioa.isPlaying)
+                    {
+                        audioa.Play();
+                    }
+                }
+            }
+        }
+
         if (bidaiKantitatea >= 1)
         {
             bidaiKantitatea = 0;
@@ -161,6 +203,7 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
     {
         HashSet<Transform> mugitutakoBidaiariak = new HashSet<Transform>();
 
+        bool gainean = false;
         // jokalaria plataforma gainean
         float izpiLuzera = 2 * azalZabalera;
         for (int i = 0; i < izpiBertKop; i++)
@@ -171,6 +214,10 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
             Debug.DrawRay(jatorriIzpia, Vector2.up, Color.red);
             if (kolpatu)
             {
+                if(transform.tag == "Player")
+                {
+                    gainean = true;
+                }
                 if (!mugitutakoBidaiariak.Contains(kolpatu.transform))
                 {
                     mugitutakoBidaiariak.Add(kolpatu.transform);
@@ -182,6 +229,40 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
                 }
             }
         }
+
+        if (!gainean)
+        {
+            izpiLuzera = 1.4f + 2 * azalZabalera;
+            for (int i = 0; i < izpiBertKop; i++)
+            {
+                Vector2 jatorriIzpia = izpiJatorria.topLeft + Vector2.right * (bertIzpiTartea * i);
+                RaycastHit2D[] kolpatu = Physics2D.RaycastAll(jatorriIzpia, Vector2.up, izpiLuzera, bidaiariak);
+                //RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.up, izpiLuzera, bidaiariak);
+                
+                for (int j = 0; j < kolpatu.Length; j++)
+                {
+                    if (kolpatu[j])
+                    {
+                        if (kolpatu[j].transform.tag == "Player")
+                        {
+                            if (kolpatu[j].transform.GetComponent<JokalariMug>().KutxaGaineanDago())
+                            {
+                                if (!mugitutakoBidaiariak.Contains(kolpatu[j].transform))
+                                {
+                                    mugitutakoBidaiariak.Add(kolpatu[j].transform);
+                                    if (!hiztegia.Contains(kolpatu[j].transform))
+                                    {
+                                        hiztegia.Add(kolpatu[j].transform);
+                                    }
+                                    Mugitu(kolpatu[j].transform, new Vector2(abiadura.x, abiadura.y), true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         // kolpe horizontala plataformaren aurka
         if (abiadura.x != 0)

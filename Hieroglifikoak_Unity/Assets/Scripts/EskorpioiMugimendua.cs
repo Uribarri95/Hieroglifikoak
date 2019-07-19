@@ -15,13 +15,17 @@ public class EskorpioiMugimendua : MonoBehaviour {
     public float erasoMaiztasuna = 8;       // erasoen arteko denbora tartea
     float abiadura = .5f;                   // mugimendu abiadura
     float knockBack = 15;                   // kolpea jasotzean bultzatzen den indarra
-    float erasoErradioa = 10;               // eskorpioia ikusten den distantzia
+    float erasoErradioa = 15;               // eskorpioia ikusten den distantzia
     float offset = 180;                     // pozoia ezkerrerantz botatzen da beti, 180º
     bool eskumaBegira;                      // irudiari buelta emateko
     bool erasoDezaket;                      // erasoMaiztasuna betetzeko
 
+    AudioSource mugituSoinua;
+
     // Use this for initialization
     void Start () {
+        mugituSoinua = GetComponent<AudioSource>();
+
         anim = GetComponent<Animator>();
         eskumaBegira = false;
         erasoDezaket = true;
@@ -39,11 +43,55 @@ public class EskorpioiMugimendua : MonoBehaviour {
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("scorpion_move_forward"))
         {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if(mugituSoinua != null)
+                {
+                    if (!mugituSoinua.isPlaying)
+                    {
+                        mugituSoinua.Play();
+                    }
+                }
+            }
+            else
+            {
+                if(mugituSoinua != null)
+                {
+                    mugituSoinua.Stop();
+                }
+            }
+
             transform.Translate(Vector2.left * abiadura * Time.deltaTime);
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("scorpion_move_backward"))
         {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if(mugituSoinua != null)
+                {
+                    if (!mugituSoinua.isPlaying)
+                    {
+                        mugituSoinua.Play();
+                    }
+                }
+            }
+            else
+            {
+                if(mugituSoinua != null)
+                {
+                    mugituSoinua.Stop();
+                }
+            }
+
             transform.Translate(Vector2.right * abiadura * Time.deltaTime);
+        }
+
+        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("scorpion_move_forward") && !anim.GetCurrentAnimatorStateInfo(0).IsName("scorpion_move_backward"))
+        {
+            if(mugituSoinua != null)
+            {
+                mugituSoinua.Stop();
+            }
         }
 
         Collider2D target = Physics2D.OverlapCircle(transform.position, erasoErradioa, jokalaria);

@@ -46,6 +46,8 @@ public class Atea : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.DownArrow) && jokalaria.GetLurrean() && !jokalaria.GetAteaZeharkatzen())
                     {
+                        AudioManager.instantzia.Play("Atea");
+
                         jokalaria.SetAteaZeharkatzen(true);
 
                         anim.SetBool("zabaldu", true);
@@ -70,7 +72,11 @@ public class Atea : MonoBehaviour {
         fadeManager.Ilundu();
         //trantzizioa.FadeOut();
 
-        yield return new WaitForSeconds(1f); // atetik desagertzeko behar duen denbora
+        yield return new WaitForSeconds(.2f);
+
+        AudioManager.instantzia.Stop("Atea");
+
+        yield return new WaitForSeconds(.8f); // atetik desagertzeko behar duen denbora
 
         cam.GetComponent<VCam>().CameraConfinerKudeatu(irteeraAtea.transform.position);
         jokalaria.transform.position = new Vector2(irteeraAtea.transform.position.x, irteeraAtea.transform.position.y);
@@ -88,10 +94,17 @@ public class Atea : MonoBehaviour {
 
         yield return new WaitForSeconds(1f); // jokalaria irten ostean atea ixten da
 
+        EtsaiakKendu();
+
+        AudioManager.instantzia.Play("Atea");
+
         anim.SetBool("zabaldu", false);
         exitAnim.SetBool("zabaldu", false);
 
         yield return new WaitForSeconds(.4f);
+
+        AudioManager.instantzia.Stop("Atea");
+
         jokalaria.SetAteaZeharkatzen(false);
     }
 
@@ -127,6 +140,14 @@ public class Atea : MonoBehaviour {
         if (etsaiak != null)
         {
             etsaiak.EtsaiakReset();
+        }
+    }
+
+    void EtsaiakKendu()
+    {
+        if(etsaiak != null)
+        {
+            etsaiak.EtsaiakKendu();
         }
     }
 }

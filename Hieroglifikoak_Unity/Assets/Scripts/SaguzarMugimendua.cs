@@ -27,8 +27,12 @@ public class SaguzarMugimendua : MonoBehaviour {
     Vector2 erasoPos;
     float jauziYpos;
 
+    public AudioSource squeak;
+    public AudioSource flap;
+
 	// Use this for initialization
 	void Start () {
+
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
@@ -61,6 +65,13 @@ public class SaguzarMugimendua : MonoBehaviour {
                 sprite.flipX = false;
             }
         }
+        else
+        {
+            if(zintzilik && aktibatuta)
+            {
+                SaguzarraMugitu(new Vector2(transform.position.x, transform.position.y - 2));
+            }
+        }
     }
 
     void SaguzarraMugitu(Vector2 targetPos)
@@ -68,7 +79,7 @@ public class SaguzarMugimendua : MonoBehaviour {
         // zorutik eskegitu
         if (zintzilik)
         {
-            if(transform.position.y > targetPos.y)
+            if(transform.position.y > targetPos.y || aktibatuta)
             {
                 aktibatuta = true;
                 bool eskuma = targetPos.x >= transform.position.x;
@@ -85,6 +96,14 @@ public class SaguzarMugimendua : MonoBehaviour {
     // saguzarra zorutik eskegitu .8 unitate distantzia jokalariarengana gerturatuz. gero jokalaria jarraituko du
     void SaguzarraJeisti(bool eskuma)
     {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (!squeak.isPlaying)
+            {
+                squeak.Play();
+            }
+        }
+
         anim.SetBool("esnaturik", true);
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("bat_getDown"))
         {
@@ -159,6 +178,17 @@ public class SaguzarMugimendua : MonoBehaviour {
     {
         yield return new WaitForSeconds(coolDownDenbora);
         erasoDezaket = true;
+    }
+
+    public void Flap()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (!flap.isPlaying)
+            {
+                flap.Play();
+            }
+        }
     }
 
     private void OnDrawGizmos()

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EtsaiKudeaketa : MonoBehaviour {
 
-    // !!! destroy beharrean setactivefalse?
-    // !!! DISEINUA: etsaiak[] prefab-etik hartu -->> ordena mantendu!!!
     public GameObject[] etsaiak;
     float etsaiKop;
     float[] etsaiRotation;
@@ -13,7 +11,7 @@ public class EtsaiKudeaketa : MonoBehaviour {
     public bool reset;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         etsaiKop = etsaiak.Length;
         if(etsaiKop != 0)
         {
@@ -25,6 +23,7 @@ public class EtsaiKudeaketa : MonoBehaviour {
                 etsaiRotation[i] = transform.GetChild(i).transform.rotation.y;
             }
         }
+        EtsaiakKendu();
 	}
 	
 	// Update is called once per frame
@@ -49,6 +48,17 @@ public class EtsaiKudeaketa : MonoBehaviour {
             //GameObject etsaia =  Instantiate(etsaiak[i], etsaiPos[i], transform.rotation);
             GameObject etsaia = Instantiate(etsaiak[i], etsaiPos[i], new Quaternion(0, etsaiRotation[i], 0, 0));
             etsaia.transform.parent = transform;
+        }
+    }
+
+    public void EtsaiakKendu()
+    {
+        if (etsaiKop != 0)
+        {
+            for (int i = 0; i < etsaiak.Length; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
         }
     }
 }

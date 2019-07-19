@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1246081956148688}
+  m_IsPrefabAsset: 1
+--- !u!1 &1246081956148688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4823652767917528}
+  - component: {fileID: 114004173344031292}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4823652767917528
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246081956148688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114004173344031292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246081956148688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2ea2036dc8d2c4c8b534d399d13adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soinuak:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 07b24a0b9d85a0b45abe084ec505a515, type: 3}
+    volume: 0.06
+    pitch: 1
+    loop: 1
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Oinez
+    clip: {fileID: 8300000, guid: 9dc9841993abd7e4aaa50f9c6845114d, type: 3}
+    volume: 0.1
+    pitch: 0.9
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Korrika
+    clip: {fileID: 8300000, guid: 9dc9841993abd7e4aaa50f9c6845114d, type: 3}
+    volume: 0.1
+    pitch: 1.4
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Botoia
+    clip: {fileID: 8300000, guid: 999452d75d8607c46b39640b0af48b16, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: Menua
+    clip: {fileID: 8300000, guid: 4597ca4c7e1ab704fac38e8bd54f6cc0, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: PiezaHartu
+    clip: {fileID: 8300000, guid: 4cf95bb98b6c64c468283d0cb106bfcb, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: PiezaJarri
+    clip: {fileID: 8300000, guid: 6d6c76a11421a40488dc1b289980f28a, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: PiezaTxartoJarri
+    clip: {fileID: 8300000, guid: 5a48f654b459b014b92541b83fe90ba6, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: EmaitzaZuzena
+    clip: {fileID: 8300000, guid: 3013038d487b8d546b8cd9c0b6bb8d23, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: EmaitzaOkerra
+    clip: {fileID: 8300000, guid: 29e5da576b1c42c43a28495a52be7587, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    UI: 1
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: Saltoa
+    clip: {fileID: 8300000, guid: 29273cb7304bb714b901fc1d887a637e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 1
+    source: {fileID: 0}
+  - name: Txanpona
+    clip: {fileID: 8300000, guid: 5bb323651f8e17d469173f8d8701f18e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: JokalariaHil
+    clip: {fileID: 8300000, guid: d58fc948613f4e4449f43a03155e14eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Respawn
+    clip: {fileID: 8300000, guid: fa1df1183dfb8e84cae6fa474b9e3329, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Kolpea
+    clip: {fileID: 8300000, guid: 92e775da28a06a348908ee325d921329, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Atea
+    clip: {fileID: 8300000, guid: 39be3bf99573db84ea21ad54a5de1aac, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Makurtu
+    clip: {fileID: 8300000, guid: 9dc9841993abd7e4aaa50f9c6845114d, type: 3}
+    volume: 0.1
+    pitch: 0.7
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}
+  - name: Irristatu
+    clip: {fileID: 8300000, guid: adffce2710fe0c34fb268beb4e73eddf, type: 3}
+    volume: 0.02
+    pitch: 0.6
+    loop: 0
+    UI: 0
+    errepikatu: 0
+    source: {fileID: 0}

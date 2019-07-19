@@ -108,6 +108,8 @@ public class JokalariKudetzailea : MonoBehaviour {
         fadeManager.Ilundu();
 
         // jokalaria azken checkpointera mugitu eta jokoaren aurreko egoera berrezarri
+        AudioManager.instantzia.Play("JokalariaHil");
+
         yield return new WaitForSeconds(hilAnimazioa);
         jokalaria.transform.position = checkpoint.transform.position;
         checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
@@ -120,6 +122,8 @@ public class JokalariKudetzailea : MonoBehaviour {
         // animazioa kargatzeko behar duen denbora
 
         yield return new WaitForSeconds(.4f);
+        AudioManager.instantzia.Play("Respawn");
+
         jokalaria.berpizten = true;
         inbentarioa.Berpiztu();
         yield return new WaitForSeconds(.04f);
@@ -134,7 +138,7 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         jokalaria.kargatzen = true;
         jokalaria.transform.position = checkpoint.transform.position;
-        //checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
+        checkpoint.GetComponent<Checkpoint>().EtsaiakAgerrarazi();
 
         // camera bound aldatu
         yield return new WaitForSeconds(1);

@@ -28,6 +28,7 @@ public class ArgibideakAldatu : MonoBehaviour {
         }
 	}
 
+    // ez da erabiltzen
     public void IkusiEzkutatu()
     {
         gameObject.SetActive(!gameObject.activeSelf);
@@ -45,14 +46,12 @@ public class ArgibideakAldatu : MonoBehaviour {
         textua.text = argibideak.GetArgibidea();
     }
 
-    public IEnumerator BehinBehinekoTextua(string mezua, Color kolorea)
+    public IEnumerator BehinBehinekoTextua(string mezua)
     {
         argibideBerria = true;
-        textua.color = kolorea;
         textua.text = mezua;
         yield return new WaitForSeconds(1f);
         argibideBerria = false;
-        textua.color = Color.black;
         textua.text = argibideMezua;
     }
 }

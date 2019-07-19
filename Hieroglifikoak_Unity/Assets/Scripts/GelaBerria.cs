@@ -36,6 +36,11 @@ public class GelaBerria : MonoBehaviour {
             {
                 if (!jokalaria.eskumarantz != eskuma)
                 {
+                    if (etsaiak != null)
+                    {
+                        etsaiak.EtsaiakKendu();
+                    }
+
                     jokalaria.transform.position = irteeraPuntua.transform.position;
                 }
                 else

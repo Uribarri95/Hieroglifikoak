@@ -30,7 +30,7 @@ public class MinEmanKolpatzean : MonoBehaviour {
         {
             GetComponent<Etsaia>().Hil();
         }
-        else if (gameObject.transform.parent.name.Contains("kakalardo_bola"))
+        if (gameObject.transform.parent.name.Contains("kakalardo_bola"))
         {
             GetComponentInParent<KakalardoBola>().BolaSuntsitu();
         }

@@ -6,6 +6,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
     public LayerMask kolpeGainazalak;
 
+    public LayerMask kutxaGainazala;
+
     public KolpeInfo kolpeak;
     JokalariMug jokalariMug;
     float offsetHasiera;
@@ -30,7 +32,9 @@ public class MugKudeatzaile : IzpiKudeaketa {
         IzpiJatorriaEguneratu();
         kolpeak.Reset();
 
-        if(abiadura.y < 0)
+        KutxaKonprobaketa(ref abiadura, plataformaGainean);
+
+        if (abiadura.y < 0)
         {
             AldapaJaitsi(ref abiadura, irristatu);
         }
@@ -49,6 +53,23 @@ public class MugKudeatzaile : IzpiKudeaketa {
         }
 
         transform.Translate(abiadura);
+    }
+
+    void KutxaKonprobaketa(ref Vector2 abiadura, bool plataformaGainean)
+    {
+        float izpiLuzera = Mathf.Abs(abiadura.y) + azalZabalera;
+
+        for (int i = 0; i < izpiBertKop; i++)
+        {
+            Vector2 jatorriIzpia = izpiJatorria.bottomLeft;
+            jatorriIzpia += Vector2.right * (bertIzpiTartea * i + abiadura.x);
+            RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.up * -1, izpiLuzera, kutxaGainazala);
+
+            if (kolpatu)
+            {
+                    kolpeak.kutxaGainean = true;
+            }
+        }
     }
 
     // Mugimendu horizontala jaso. Beste gorputz baten aurka talka egingo bada abiadura eraldatzen da
@@ -339,6 +360,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
         public bool aldapaIrristatu;
         public bool paretaitsatsi;
 
+        public bool kutxaGainean;
+
         public float aldapaAngelu;
         public Vector2 normala;
 
@@ -353,6 +376,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
             aldapaJaisten = false;
             aldapaIrristatu = false;
             paretaitsatsi = false;
+
+            kutxaGainean = false;
 
             aldapaAngelu = 0;
             normala = Vector2.zero;

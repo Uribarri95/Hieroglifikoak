@@ -117,6 +117,7 @@ public class JokalariMug : MonoBehaviour
         // gela aldatzen, aginduak ezgaituta, jokalaria gela berrirantz mugitzen da
         else if (gelaAldaketa)
         {
+            anim.SetBool("lurrean", kudeatzailea.kolpeak.azpian);
             GelaAldatu();
             anim.SetFloat("xAbiadura", mugimendua);
         }
@@ -125,7 +126,26 @@ public class JokalariMug : MonoBehaviour
         {
             Aginduak();
         }
-        
+
+        if (Ekintzak.instantzia.GetIrristatu() || Ekintzak.instantzia.GetAldapaIrristatu())
+        {
+            if(GetLurrean() && !gelaAldaketa)
+            {
+                if(irristatu || kudeatzailea.kolpeak.aldapaIrristatu)
+                {
+                    AudioManager.instantzia.Play("Irristatu");
+                }
+                else
+                {
+                    AudioManager.instantzia.Stop("Irristatu");
+                }
+            }
+            else
+            {
+                AudioManager.instantzia.Stop("Irristatu");
+            }
+        }
+
         // aginduen arabera jokalaria mugitu
         kudeatzailea.Mugitu(abiadura * Time.deltaTime, irristatu: makurtu);
     }
@@ -172,6 +192,23 @@ public class JokalariMug : MonoBehaviour
 
         // aldapaIrristatu kudeatu
         AldapaIrristatu();
+
+        // soinuak
+
+        if (aginduHorizontala != 0 && GetLurrean() && !korrika && !makurtu && !irristatu)
+        {
+            AudioManager.instantzia.Play("Oinez");
+        }
+
+        if(aginduHorizontala != 0 && GetLurrean() && korrika && !makurtu && !irristatu)
+        {
+            AudioManager.instantzia.Play("Korrika");
+        }
+
+        if (aginduHorizontala != 0 && GetLurrean() && makurtu && !irristatu)
+        {
+            AudioManager.instantzia.Play("Makurtu");
+        }
 
         // animazioak
         AnimazioakKudeatu();
@@ -383,6 +420,8 @@ public class JokalariMug : MonoBehaviour
                         //aldapa irristatzen saltoa
                         if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && !kudeatzailea.kolpeak.ezkerra && !kudeatzailea.kolpeak.eskuma)
                         {
+                            AudioManager.instantzia.Play("Saltoa");
+
                             abiadura.y = saltoIndarHobea * saltoNeurria;
                             abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
                         }
@@ -391,11 +430,16 @@ public class JokalariMug : MonoBehaviour
                         {
                             if (makurtu && kudeatzailea.AltzatuNaiteke())
                             {
+                                AudioManager.instantzia.Play("Saltoa");
+
                                 Altxatu();
                                 abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarHobea : saltoIndarHobea / 1.3f;
+                                irristatu = false;
                             }
                             else if (!makurtu)
                             {
+                                AudioManager.instantzia.Play("Saltoa");
+
                                 abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarHobea : saltoIndarHobea / 1.3f;
                             }
                             anim.SetBool("eraso", false);
@@ -406,6 +450,8 @@ public class JokalariMug : MonoBehaviour
                     {
                         if (Ekintzak.instantzia.GetHormaSaltoa())
                         {
+                            AudioManager.instantzia.Play("Saltoa");
+
                             KorrikaBotoiaAskatu();
                             int paretaNoranzkoa = kudeatzailea.kolpeak.ezkerra ? -1 : 1;
                             abiadura.x = -paretaNoranzkoa * paretaSaltoa.x;
@@ -679,5 +725,10 @@ public class JokalariMug : MonoBehaviour
     public void MinEmanKendu()
     {
         anim.SetBool("minEman", false);
+    }
+
+    public bool KutxaGaineanDago()
+    {
+        return kudeatzailea.kolpeak.kutxaGainean;
     }
 }

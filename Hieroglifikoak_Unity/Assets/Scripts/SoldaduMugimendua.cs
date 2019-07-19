@@ -31,7 +31,11 @@ public class SoldaduMugimendua : MonoBehaviour {
     bool erasoDezaket;                  // erasoDenbora betetzeko
     bool jokalariaJarraitu;             // jokalaria ikusten den ala ez
     bool eskumaBegira;                  // irudiari bueta emateko
-    
+
+    public AudioSource oinezSoinua;
+    public AudioSource meleeSoinua;
+    public AudioSource dashSoinua;
+    public AudioSource spearSoinua;
 
     void Start () {
         anim = GetComponent<Animator>();
@@ -44,6 +48,7 @@ public class SoldaduMugimendua : MonoBehaviour {
 	// soldadua alde batetik bestera mugitzen da
     // jokalaria ikusten duenean gerturatu egingo da, 3 erasotik bat egiten du eta geldi geratzen da, gero berriro hasi
 	void Update () {
+        OinezJarri();
         KolpeaJaso();
         Collider2D target = Physics2D.OverlapCircle(transform.position, begiradaErradioa, jokalaria);
         if (target == null)
@@ -262,6 +267,65 @@ public class SoldaduMugimendua : MonoBehaviour {
     bool HormaBilatu()
     {
         return Physics2D.Raycast(groundCheck.position, eskumaBegira ? Vector2.right : Vector2.left, hormaDistantzia, oztopoak); ;
+    }
+
+    void OinezJarri()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("anubis_soldier_move"))
+        {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if (oinezSoinua != null)
+                {
+                    if (!oinezSoinua.isPlaying)
+                    {
+                        oinezSoinua.Play();
+                    }
+                }
+            }
+            else
+            {
+                oinezSoinua.Stop();
+            }
+        }
+        else
+        {
+            oinezSoinua.Stop();
+        }
+        
+    }
+
+    public void MeleeSoinua()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (meleeSoinua != null)
+            {
+                meleeSoinua.Play();
+            }
+        }
+    }
+
+    public void DashSoinua()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (dashSoinua != null)
+            {
+                dashSoinua.Play();
+            }
+        }
+    }
+
+    public void SpearSoinua()
+    {
+        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        {
+            if (spearSoinua != null)
+            {
+                spearSoinua.Play();
+            }
+        }
     }
 
     private void OnDrawGizmos()

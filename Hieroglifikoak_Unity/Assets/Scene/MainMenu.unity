@@ -712,6 +712,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1692790038}
+        m_MethodName: BotoiSoinua
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &497170273
@@ -824,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 462.80728, y: -122.07089}
-  m_SizeDelta: {x: 883.5911, y: 150}
+  m_AnchoredPosition: {x: 461.7764, y: -122.36606}
+  m_SizeDelta: {x: 883.5528, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591083383
 MonoBehaviour:
@@ -1393,6 +1404,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1692790038}
+        m_MethodName: BotoiSoinua
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1122739400
@@ -1536,7 +1558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 754.60284, y: -277.0709}
+  m_AnchoredPosition: {x: 753.5528, y: -277.36606}
   m_SizeDelta: {x: 300, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304502469
@@ -1638,6 +1660,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1635489482}
         m_MethodName: Irten
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1692790038}
+        m_MethodName: BotoiSoinua
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1867,7 +1900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 694.60284, y: -277.0709}
+  m_AnchoredPosition: {x: 693.5528, y: -277.36606}
   m_SizeDelta: {x: 420, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403173162
@@ -2009,7 +2042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 774.60284, y: -419.5709}
+  m_AnchoredPosition: {x: 773.5528, y: -419.86606}
   m_SizeDelta: {x: 260, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435996987
@@ -2063,7 +2096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 694.60284, y: -414.5709}
+  m_AnchoredPosition: {x: 693.5528, y: -414.86606}
   m_SizeDelta: {x: 420, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467049049
@@ -2085,6 +2118,58 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1001 &1528316233
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823652767917528, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004173344031292, guid: 02afae60335da604f8c15e3d0ce98ffb,
+        type: 2}
+      propertyPath: soinuak.Array.data[11].volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004173344031292, guid: 02afae60335da604f8c15e3d0ce98ffb,
+        type: 2}
+      propertyPath: soinuak.Array.data[3].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02afae60335da604f8c15e3d0ce98ffb, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1635489481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2213,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692790038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114004173344031292, guid: 02afae60335da604f8c15e3d0ce98ffb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1528316233}
+  m_Script: {fileID: 11500000, guid: 5d2ea2036dc8d2c4c8b534d399d13adc, type: 3}
 --- !u!1 &1867767056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,8 +2251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 462.30142, y: -117.07089}
-  m_SizeDelta: {x: 884.60284, y: 150}
+  m_AnchoredPosition: {x: 461.7764, y: -117.36606}
+  m_SizeDelta: {x: 883.5528, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867767058
 MonoBehaviour:
@@ -2312,6 +2403,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1635489482}
         m_MethodName: Jolastu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1692790038}
+        m_MethodName: BotoiSoinua
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

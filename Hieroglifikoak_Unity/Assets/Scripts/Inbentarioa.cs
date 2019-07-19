@@ -315,6 +315,8 @@ public class Inbentarioa : MonoBehaviour {
     // txanpona hartu
     void TxanponaHartu()
     {
+        AudioManager.instantzia.Play("Txanpona");
+
         lortutakoTxaponGuztiak++;
         txanponKopurua++;
         UIEguneratu();
@@ -350,6 +352,8 @@ public class Inbentarioa : MonoBehaviour {
     // kolpea jasotzean bihotz errdia galtzen da (BizitzaPuntuak bihotz erdietan kontatzen da)
     public bool KolpeaJaso()
     {
+        AudioManager.instantzia.Play("Kolpea");
+
         bizitzaPuntuak--;
         UIEguneratu();
         if (bizitzaPuntuak <= 0)

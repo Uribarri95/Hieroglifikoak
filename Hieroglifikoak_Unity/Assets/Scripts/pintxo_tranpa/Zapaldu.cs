@@ -20,8 +20,19 @@ public class Zapaldu : MonoBehaviour {
     bool ateratzen;
     bool gelditu = true;
 
+    AudioSource audioa;
+    public bool soinuJarraia;
+    public float soinuBlokea;
+    bool soinuaJarri = true;
+
 	// Use this for initialization
 	void Start () {
+        audioa = GetComponent<AudioSource>();
+        if (audioa == null)
+        {
+            Debug.Log("Audio pista jartzea ahaztu zaizu");
+        }
+
         if (goianHasi)
         {
             hasieraPos = transform.position.y;
@@ -65,8 +76,38 @@ public class Zapaldu : MonoBehaviour {
 
         if (!gelditu)
         {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if (soinuJarraia)
+                {
+                    if (!audioa.isPlaying)
+                    {
+                        audioa.Play();
+                    }
+                }
+            }
+            else
+            {
+                audioa.Stop();
+            }
+
             if (ateratzen)
             {
+                if(GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+                {
+                    if (!soinuJarraia)
+                    {
+                        if (transform.position.y < bukaeraPos + soinuBlokea)
+                        {
+                            if (soinuaJarri)
+                            {
+                                soinuaJarri = false;
+                                audioa.Play();
+                            }
+                        }
+                    }
+                }
+
                 if (transform.position.y >= bukaeraPos + offset)
                 {
                     Vector3 pos = transform.position;
@@ -91,7 +132,15 @@ public class Zapaldu : MonoBehaviour {
                     gelditu = true;
                     StartCoroutine("Itxaron");
                     ateratzen = true;
+                    soinuaJarri = true;
                 }
+            }
+        }
+        else
+        {
+            if (soinuJarraia)
+            {
+                audioa.Stop();
             }
         }
 	}
@@ -125,6 +174,7 @@ public class Zapaldu : MonoBehaviour {
     public void Erreseteatu()
     {
         StopAllCoroutines();
+        soinuaJarri = true;
         gelditu = true;
         if (goianHasi)
         {

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Pause : MonoBehaviour {
 
@@ -9,20 +6,40 @@ public class Pause : MonoBehaviour {
     public FadeManager fademanager;
     public GameObject pausePanel;
     public GameObject hiztegiPanel;
+    public GameObject menuPanel;
 
     public static bool jokuaGeldituta = false;
+
+    bool irten = false;
 	
 	// Update is called once per frame
 	void Update () {
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            TogglePause();
+            if (!irten)
+            {
+                TogglePause();
+            }
         }
 	}
 
     public void TogglePause()
     {
+        AudioManager.instantzia.Play("Menua");
+        
         pauseUI.SetActive(!pauseUI.activeSelf);
+        if (!pauseUI.activeSelf)
+        {
+            AudioListener.pause = false;
+
+            pausePanel.SetActive(true);
+            hiztegiPanel.SetActive(false);
+            menuPanel.SetActive(false);
+        }
+        else
+        {
+            AudioListener.pause = true;
+        }
         Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
         jokuaGeldituta = !jokuaGeldituta;
     }
@@ -40,7 +57,15 @@ public class Pause : MonoBehaviour {
 
     public void Menu()
     {
+        menuPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void Irten()
+    {
+        print("irten");
         TogglePause();
+        irten = true;
         fademanager.FadeToScene(0);
     }
 }

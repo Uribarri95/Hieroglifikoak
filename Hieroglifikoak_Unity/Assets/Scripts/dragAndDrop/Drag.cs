@@ -42,6 +42,8 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        AudioManager.instantzia.Play("PiezaHartu");
+
         if(piezaMota == mota.Izenburua)
         {
             return;

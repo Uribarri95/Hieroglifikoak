@@ -17,6 +17,8 @@ public class HormaMugimendua : MonoBehaviour {
     public bool aktibatu;
     public bool ziklikoa;
 
+    AudioSource audioa;
+
     float offset = .1f;
     float hasieraPos;
     float bukaeraPos;
@@ -26,6 +28,12 @@ public class HormaMugimendua : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        audioa = GetComponent<AudioSource>();
+        if(audioa == null)
+        {
+            Debug.Log("Audio pista jartzea ahaztu zaizu");
+        }
+
         gelditu = false;
         if (eskuman)
         {
@@ -44,8 +52,21 @@ public class HormaMugimendua : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
         if (!gelditu)
         {
+            if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                if (!audioa.isPlaying)
+                {
+                    audioa.Play();
+                }
+            }
+            else
+            {
+                audioa.Stop();
+            }
+
             if (ateratzen)
             {
                 if (transform.position.x >= bukaeraPos + offset)
@@ -79,6 +100,13 @@ public class HormaMugimendua : MonoBehaviour {
                         ateratzen = true;
                     }
                 }
+            }
+        }
+        else
+        {
+            if(audioa != null)
+            {
+                audioa.Stop();
             }
         }
         if (reseta)

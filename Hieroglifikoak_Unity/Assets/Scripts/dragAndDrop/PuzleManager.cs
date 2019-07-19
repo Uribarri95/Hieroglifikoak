@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzleManager : MonoBehaviour {
@@ -107,8 +106,10 @@ public class PuzleManager : MonoBehaviour {
             }*/
             if (zuzena)
             {
+                AudioManager.instantzia.Play("EmaitzaZuzena");
+
                 emaitzak.Eragin();
-                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaZuzenaMezua, Color.green));
+                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaZuzenaMezua));
                 if (currentPanel.GetComponent<EmaitzaKonprobatu>() != null && currentPanel.GetComponent<EmaitzaKonprobatu>().hurrengoPuzleaJarri)
                 {
                     StartCoroutine(HurrengoAriketaJarri());
@@ -120,9 +121,11 @@ public class PuzleManager : MonoBehaviour {
             }
             else
             {
+                AudioManager.instantzia.Play("EmaitzaOkerra");
+                
                 // mezu kutxa aldatu segundu batzuk, emaitza txarto dagoela esaten duen mezuarekin
                 konprobatzen = false;
-                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua, Color.red));
+                StartCoroutine(argibideak.BehinBehinekoTextua(emaitzaTxartoMezua));
             }
         }
     }

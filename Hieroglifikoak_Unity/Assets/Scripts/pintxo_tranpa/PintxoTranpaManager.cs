@@ -5,7 +5,7 @@ using UnityEngine;
 public class PintxoTranpaManager : MonoBehaviour {
 
     PintxoTranpa[] tranpak;
-    public bool ziklikoa;
+    public bool BetiAktibaturik;
     public bool aktibatutaHasi;
     public float zikloDenbora;
     bool eragin;
@@ -23,7 +23,7 @@ public class PintxoTranpaManager : MonoBehaviour {
         }
         //eragin = false;
         eragin = alderantziz;
-        if (ziklikoa)
+        if (BetiAktibaturik)
         {
             StartCoroutine("ZikloKudeaketa");
         }
@@ -39,6 +39,7 @@ public class PintxoTranpaManager : MonoBehaviour {
 
     IEnumerator ZikloKudeaketa()
     {
+        StartCoroutine("PintxoSoinua");
         eragin = !eragin;
         if (tranpaBerezia)
         {
@@ -57,6 +58,23 @@ public class PintxoTranpaManager : MonoBehaviour {
         }
         TranpakKudeatu(eragin);
         StartCoroutine("ZikloKudeaketa");
+    }
+
+    IEnumerator PintxoSoinua()
+    {
+        yield return new WaitForSeconds(1.3f);
+        if (GetComponentInChildren<SoinuGunea>() != null && !eragin)
+        {
+            if (GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+            {
+                AudioSource audioa = GetComponent<AudioSource>();
+                if (audioa != null)
+                {
+                    audioa.Play();
+                }
+            }   
+        }
+        yield return new WaitForSeconds(zikloDenbora - 1.3f);
     }
 
     public void Aktibatu()

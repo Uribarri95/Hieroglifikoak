@@ -29,6 +29,10 @@ public class ItemTokia : MonoBehaviour {
         {
             geziak.color = Color.red;
         }
+        else
+        {
+            geziak.color = Color.black;
+        }
         geziak.enabled = true;
     }
 

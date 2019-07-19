@@ -9,7 +9,6 @@ public class Hiztegia : MonoBehaviour {
 
     public GameObject datuakInfo;
     public GameObject eragiketakInfo;
-    public GameObject funtzioakInfo;
     public GameObject aldagaiakInfo;
     public GameObject baldintzakInfo;
     public GameObject eragigaiakInfo;
@@ -17,68 +16,7 @@ public class Hiztegia : MonoBehaviour {
     public GameObject elseInfo;
     public GameObject forInfo;
     public GameObject whileInfo;
-
-    public enum MenuStates { DatuOrokorrak, Eragiketak, Funtzioak, Aldagaiak, Baldintzak, Eragigaiak, If, Else, For, While };
-    public MenuStates currentMenu;
-
-    bool aldaketa = false;
-
-    private void Awake()
-    {
-        currentMenu = MenuStates.DatuOrokorrak;
-    }
-
-    private void Update()
-    {
-        if (aldaketa)
-        {
-            aldaketa = false;
-            switch (currentMenu)
-            {
-                case MenuStates.DatuOrokorrak:
-                    datuakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Eragiketak:
-                    eragigaiakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Funtzioak:
-                    funtzioakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Aldagaiak:
-                    aldagaiakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Baldintzak:
-                    baldintzakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Eragigaiak:
-                    eragigaiakInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.If:
-                    ifInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.Else:
-                    elseInfo.SetActive(true);
-                    break;
-                case MenuStates.For:
-                    forInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                case MenuStates.While:
-                    whileInfo.SetActive(true);
-                    UnableActivePanel();
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    public GameObject listInfo;
 
     public void AtzeraBotoia()
     {
@@ -100,93 +38,71 @@ public class Hiztegia : MonoBehaviour {
 
     public void DatuakIkusi()
     {
-        currentMenu = MenuStates.DatuOrokorrak;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.DatuOrokorrak;
         UnableActivePanel();
-        datuakBotoia.SetActive(true);
-        */
+        datuakInfo.SetActive(true);
     }
 
     public void Eragiketak()
     {
-        currentMenu = MenuStates.Eragiketak;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.Eragiketak;
         UnableActivePanel();
-        eragigaiakInfo.SetActive(true);
-        */
-    }
-
-    public void Funtzioak()
-    {
-        currentMenu = MenuStates.Funtzioak;
-        aldaketa = true;
+        eragiketakInfo.SetActive(true);
     }
 
     public void Aldagaiak()
     {
-        currentMenu = MenuStates.Aldagaiak;
-        aldaketa = true;
+        //currentMenu = MenuStates.Aldagaiak;
+        UnableActivePanel();
+        aldagaiakInfo.SetActive(true);
     }
 
     public void Baldintzak()
     {
-        currentMenu = MenuStates.Baldintzak;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.Baldintzak;
         UnableActivePanel();
         baldintzakInfo.SetActive(true);
-        */
     }
 
     public void Eragigaiak()
     {
-        currentMenu = MenuStates.Eragigaiak;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.Eragigaiak;
         UnableActivePanel();
         eragigaiakInfo.SetActive(true);
-        */
     }
 
     public void Ifak()
     {
-        currentMenu = MenuStates.If;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.If;
         UnableActivePanel();
         ifInfo.SetActive(true);
-        */
     }
 
     public void Elseak()
     {
-        currentMenu = MenuStates.Else;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.Else;
         UnableActivePanel();
         elseInfo.SetActive(true);
-        */
     }
 
     public void Forak()
     {
-        currentMenu = MenuStates.For;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.For;
         UnableActivePanel();
         forInfo.SetActive(true);
-        */
     }
 
     public void Whileak()
     {
-        currentMenu = MenuStates.While;
-        aldaketa = true;
-        /*
+        //currentMenu = MenuStates.While;
         UnableActivePanel();
         whileInfo.SetActive(true);
-        */
+    }
+
+    public void Listak()
+    {
+        //currentMenu = MenuStates.List;
+        UnableActivePanel();
+        listInfo.SetActive(true);
     }
 }
