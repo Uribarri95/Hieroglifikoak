@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Hasiera.unity
     guid: c4abb442ced90d34d89fe11b15aac628
+  - enabled: 1
+    path: Assets/Scene/Bukaera.unity
+    guid: 7037efb46b653bc479dc9373e7e7323e
   m_configObjects: {}

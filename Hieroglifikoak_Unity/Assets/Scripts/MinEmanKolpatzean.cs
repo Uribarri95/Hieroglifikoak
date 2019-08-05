@@ -15,9 +15,9 @@ public class MinEmanKolpatzean : MonoBehaviour {
         }
         else if (collision.transform.name == "Oztopoak" || collision.transform.name == "Plataforma_Zeharkagarria")
         {
-            if (gameObject.name.Contains("Saguzar_txikia"))
+            if (transform.parent.name.Contains("Saguzar_txikia"))
             {
-                GetComponent<Etsaia>().Hil();
+                GetComponentInParent<Etsaia>().Hil();
             }
         }
     }
@@ -26,9 +26,9 @@ public class MinEmanKolpatzean : MonoBehaviour {
     public void JokalariaKolpatu(Eraso eraso, bool eskuma)
     {
         eraso.KolpeaJaso(eskuma);
-        if (gameObject.name.Contains("Saguzar_txikia"))
+        if (transform.parent.name.Contains("Saguzar_txikia"))
         {
-            GetComponent<Etsaia>().Hil();
+            GetComponentInParent<Etsaia>().Hil();
         }
         if (gameObject.transform.parent.name.Contains("kakalardo_bola"))
         {

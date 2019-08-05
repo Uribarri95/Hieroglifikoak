@@ -62,13 +62,10 @@ public class KakalardoMugimendua : MonoBehaviour {
 
     public void SoinuaKendu()
     {
-        if (GetComponentInChildren<SoinuGunea>() != null && GetComponentInChildren<SoinuGunea>().EntzunDaiteke())
+        AudioSource soinua = GetComponent<AudioSource>();
+        if (soinua != null)
         {
-            AudioSource soinua = GetComponent<AudioSource>();
-            if (soinua != null)
-            {
-                soinua.Stop();
-            }
+            soinua.Stop();
         }
     }
 }

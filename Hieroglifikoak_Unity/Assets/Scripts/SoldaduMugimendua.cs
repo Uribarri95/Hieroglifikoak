@@ -174,7 +174,7 @@ public class SoldaduMugimendua : MonoBehaviour {
             if (kolpea)
             {
                 bool eskuma = transform.position.x > kolpea.transform.position.x ? true : false;
-                GetComponent<MinEmanKolpatzean>().JokalariaKolpatu(kolpea.transform.GetComponent<Eraso>(), eskuma);
+                GetComponentInChildren<MinEmanKolpatzean>().JokalariaKolpatu(kolpea.transform.GetComponent<Eraso>(), eskuma);
             }
         }
     }

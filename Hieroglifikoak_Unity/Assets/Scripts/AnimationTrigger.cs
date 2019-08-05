@@ -16,6 +16,7 @@ public class AnimationTrigger : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
+            print("trigger");
             anim.SetTrigger("trigger");
         }
     }

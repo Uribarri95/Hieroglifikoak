@@ -82,7 +82,7 @@ public class Ekintzak : MonoBehaviour {
                          "makurtu aldagaia gezurra izango da.";
         argibideak[29] = "Behera gezia zapaltzen denean eta makurtu badaiteke, jokalariaren tamaina 2 aldiz txikiagoa izan behar da eta abiadura 2 izan behar da.";
         argibideak[30] = "Erabili EskumaraMugitu() eta EzkerreraMugitu() pieza berriak abiadura ezberdinekin funtzionatzeko. Deitu KorrikaEgin() eta makurtu() funtzioei abiadura aldatzeko.";
-        argibideak[31] = "Joalaria makurtuta dagoen bitartean abiadura 2 izan behar du. Makurtzeko botoia askatzean (edo zapalduta ez dagoenean) eta gainean oztoporik ez dagoenean makurtu gezurra izango da " +
+        argibideak[31] = "Jokalaria makurtuta dagoen bitartean abiadura 2 izan behar du. Makurtzeko botoia askatzean (edo zapalduta ez dagoenean) eta gainean oztoporik ez dagoenean makurtu gezurra izango da " +
                          "eta abiadura 4 izan behar du berriro";
         argibideak[32] = "Jokalaria korrika badago eta makurtu egiten bada makurtuta mugitu beharrean irristatu egingo da.";
         argibideak[33] = "Erabili begizta jokalariaren abiadura pixkanaka murrizteko. Erabili IF pieza eta makurtuta aldagaia tamaina aldaketa behin bakarrik gertatzeko. Irristatzen bukatu ondoren jokalaria makurtu egin behar da.";

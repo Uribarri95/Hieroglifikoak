@@ -51,7 +51,7 @@ public class FadeManager : MonoBehaviour {
         StartCoroutine(FadeOut());
     }
 
-    public IEnumerator FadeOut(float denbora = 0)
+    IEnumerator FadeOut(float denbora = 0)
     {
         yield return new WaitForSeconds(denbora);
         float t = 0f;
@@ -66,6 +66,30 @@ public class FadeManager : MonoBehaviour {
         {
             fadeToScene = false;
             sceneLoader.LoadScene(newScene);
+        }
+    }
+
+    public void BukaeraEszenatokia()
+    {
+        fadeToScene = true;
+        StartCoroutine(Bukaera(2f));
+    }
+
+    IEnumerator Bukaera(float denbora = 0)
+    {
+        yield return new WaitForSeconds(denbora);
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * speed;
+            blackImage.color = new Color(1f, 1f, 1f, t);
+            yield return 0;
+        }
+        yield return new WaitForSeconds(fadeOutDenbora);
+        if (fadeToScene)
+        {
+            fadeToScene = false;
+            sceneLoader.LoadScene(2);
         }
     }
 }

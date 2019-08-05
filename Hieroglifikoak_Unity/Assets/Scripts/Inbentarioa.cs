@@ -352,13 +352,15 @@ public class Inbentarioa : MonoBehaviour {
     // kolpea jasotzean bihotz errdia galtzen da (BizitzaPuntuak bihotz erdietan kontatzen da)
     public bool KolpeaJaso()
     {
-        AudioManager.instantzia.Play("Kolpea");
-
         bizitzaPuntuak--;
         UIEguneratu();
         if (bizitzaPuntuak <= 0)
         {
             return true;
+        }
+        else
+        {
+            AudioManager.instantzia.Play("Kolpea");
         }
         return false;
     }

@@ -31,4 +31,10 @@ public class TutorialDialogTrigger : MonoBehaviour {
         dialogCanvas.SetActive(true);
         dialogManager.StartDialog(dialog, false, -1);
     }
+
+    public void ArgibideakJarri()
+    {
+        exekutatu = !exekutatu;
+        //exekutatu = false;
+    }
 }

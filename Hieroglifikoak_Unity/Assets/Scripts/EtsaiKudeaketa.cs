@@ -9,6 +9,7 @@ public class EtsaiKudeaketa : MonoBehaviour {
     float[] etsaiRotation;
     Vector2[] etsaiPos;
     public bool reset;
+    public bool kendu;
 
 	// Use this for initialization
 	void Awake () {
@@ -33,6 +34,11 @@ public class EtsaiKudeaketa : MonoBehaviour {
             reset = false;
             EtsaiakReset();
         }
+        if (kendu)
+        {
+            kendu = false;
+            EtsaiakKendu();
+        }
 	}
 
     public void EtsaiakReset()
@@ -55,7 +61,8 @@ public class EtsaiKudeaketa : MonoBehaviour {
     {
         if (etsaiKop != 0)
         {
-            for (int i = 0; i < etsaiak.Length; i++)
+            int childs = transform.childCount;
+            for (int i = 0; i < childs; i++)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }

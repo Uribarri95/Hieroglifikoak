@@ -160,4 +160,16 @@ public class PuzleManager : MonoBehaviour {
             resetDeia.Invoke();
         }
     }
+
+    public void DialogBerrizJarri()
+    {
+        print(currentPanel.name);
+        if(currentPanel != null)
+        {
+            if(currentPanel.GetComponent<TutorialDialogTrigger>() != null)
+            {
+                currentPanel.GetComponent<TutorialDialogTrigger>().ArgibideakJarri();
+            }
+        }
+    }
 }

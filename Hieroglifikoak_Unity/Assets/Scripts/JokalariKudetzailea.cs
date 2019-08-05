@@ -96,6 +96,8 @@ public class JokalariKudetzailea : MonoBehaviour {
     {
         if (!jokalaria.hiltzen)
         {
+            AudioManager.instantzia.Play("Kolpea");
+
             jokalaria.hiltzen = true;
             inbentarioa.JokalariaHil();
             StartCoroutine(JokalariaBerpiztu());

@@ -36,7 +36,7 @@ public class Eraso : MonoBehaviour {
     public float ezpataMinPuntuak = 10;         // ezpata erasoaren min puntuak
     public float ezpataHobetuta = 16;           // ezpata min puntuak hobetuta
 
-    public float geziMinPuntuak = 5;            // geziaren min puntuak
+    public float geziMinPuntuak = 8;            // geziaren min puntuak // hasieran 5, arazoak eskorpioiekin
     public float geziaHobetuta = 7;             // geziaren min puntuak hobetuta
 
     public Color zuria, grisa;                  // mina hartzean kolore aldaketak

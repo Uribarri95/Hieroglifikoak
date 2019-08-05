@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212014156459243362}
   - component: {fileID: 95226352049259686}
   - component: {fileID: 61997730487723356}
+  - component: {fileID: 114444631151260262}
   m_Layer: 0
   m_Name: arima
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101338173467984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98.39, y: 5.87, z: 0}
+  m_LocalPosition: {x: 51.15, y: -89.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4686489593475006}
@@ -115,6 +116,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114444631151260262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101338173467984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff36892c4d41284db85e22b94b87dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212014156459243362
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -195,8 +207,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 13
+  m_Sprite: {fileID: 21300000, guid: c0270a49662f2d14987c93f742aa2e0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,6 +216,6 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.34375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

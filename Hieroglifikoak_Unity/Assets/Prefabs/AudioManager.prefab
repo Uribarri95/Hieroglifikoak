@@ -94,7 +94,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PiezaHartu
     clip: {fileID: 8300000, guid: 4cf95bb98b6c64c468283d0cb106bfcb, type: 3}
-    volume: 0.8
+    volume: 0.7
     pitch: 1
     loop: 0
     UI: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PiezaJarri
     clip: {fileID: 8300000, guid: 6d6c76a11421a40488dc1b289980f28a, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     loop: 0
     UI: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: JokalariaHil
     clip: {fileID: 8300000, guid: d58fc948613f4e4449f43a03155e14eb, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     UI: 0

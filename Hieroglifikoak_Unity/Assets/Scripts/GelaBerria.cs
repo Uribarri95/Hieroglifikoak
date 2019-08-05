@@ -38,6 +38,7 @@ public class GelaBerria : MonoBehaviour {
                 {
                     if (etsaiak != null)
                     {
+                        print("gelatik irteten");
                         etsaiak.EtsaiakKendu();
                     }
 
@@ -49,6 +50,7 @@ public class GelaBerria : MonoBehaviour {
                     fadeManager.Argitu(.5f);
                     if (etsaiak != null)
                     {
+                        print("gelan sartzen");
                         etsaiak.EtsaiakReset();
                     }
                 }

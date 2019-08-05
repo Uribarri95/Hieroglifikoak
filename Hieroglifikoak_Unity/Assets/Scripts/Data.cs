@@ -41,10 +41,7 @@ public class Data : MonoBehaviour {
     }
     #endregion Singleton
 
-    private void Start()        // !!! try catch jarri kargatu eta gorde koedan !!!
-    {
-
-    }
+    // !!! try catch jarri kargatu eta gorde koedan !!!
 
     private void Update()
     {
