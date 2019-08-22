@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour {
 
@@ -7,6 +8,10 @@ public class Pause : MonoBehaviour {
     public GameObject pausePanel;
     public GameObject hiztegiPanel;
     public GameObject menuPanel;
+
+    public Sprite soinua;
+    public Sprite mute;
+    public Image botoia;
 
     public static bool jokuaGeldituta = false;
 
@@ -30,18 +35,33 @@ public class Pause : MonoBehaviour {
         pauseUI.SetActive(!pauseUI.activeSelf);
         if (!pauseUI.activeSelf)
         {
-            AudioListener.pause = false;
+            //AudioListener.pause = false;
+            //Mute();
 
             pausePanel.SetActive(true);
             hiztegiPanel.SetActive(false);
             menuPanel.SetActive(false);
         }
-        else
+        /*else
         {
-            AudioListener.pause = true;
-        }
+            //AudioListener.pause = true;
+            Mute();
+        }*/
         Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
         jokuaGeldituta = !jokuaGeldituta;
+    }
+
+    public void Mute()
+    {
+        AudioListener.pause = !AudioListener.pause;
+        if (AudioListener.pause)
+        {
+            botoia.sprite = mute;
+        }
+        else
+        {
+            botoia.sprite = soinua;
+        }
     }
 
     public void Jarraitu()

@@ -29,7 +29,7 @@ public class PuzleManager : MonoBehaviour {
     Ekintzak emaitzak;
     int zenbakia;
     bool konprobatzen = false;
-    string emaitzaTxartoMezua = "KODEA EZ DA ZUZENA, DUDARIK BADAUKAZU SAKATU 'P' EDO 'ESC' TEKLA ETA BEGIRATU HIZTEGIA ATALA.";
+    string emaitzaTxartoMezua = "KODEA EZ DA ZUZENA, DUDARIK BADAUKAZU IKUSI ARGIBIDEAK BERRIRO BOTOI URDINAREKIN EDO SAKATU 'P' EDO 'ESC' TEKLA ETA BEGIRATU HIZTEGIA ATALA.";
     string emaitzaZuzenaMezua = "KODEA ZUZENA DA, ZORIONAK!";
 
     private void Start()

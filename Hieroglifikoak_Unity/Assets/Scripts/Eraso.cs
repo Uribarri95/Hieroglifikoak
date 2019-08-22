@@ -13,6 +13,10 @@ public class Eraso : MonoBehaviour {
     SpriteMask argia;                           // sua daukagunean ikusten den zatia
     List<Etsaia> etsaiak;                       // etsaiak behin kolpatzeko
 
+    public AudioSource itemBerria;
+    public AudioSource suSoinua;
+    public AudioSource ezpataSoinua;
+    public AudioSource arkuSoinua;
     public Transform erasoPuntua;               // gezia agertzen den puntua / erasoaren erradioaren erdigunea
     public GameObject gezia;                    // gezi objektua, arkuarekin botatzeko
     public LayerMask zerDaEtsaia;               // etsaia kolpatzeko
@@ -84,6 +88,7 @@ public class Eraso : MonoBehaviour {
                 anim.SetBool("newSua", true);
                 anim.SetBool("newItem", true);
                 inbentarioa.NewItemHustu();
+                NewItemSoinua();
                 break;
             case "Ezpata":
                 if (sprite.flipX)
@@ -93,16 +98,23 @@ public class Eraso : MonoBehaviour {
                 anim.SetBool("newEzpata", true);
                 anim.SetBool("newItem", true);
                 inbentarioa.NewItemHustu();
+                NewItemSoinua();
                 break;
             case "Arkua":
                 anim.SetBool("newArkua", true);
                 anim.SetBool("newItem", true);
                 inbentarioa.NewItemHustu();
+                NewItemSoinua();
                 break;
             default:
                 Debug.Log("Error: item-a ez dago zerrendan");
                 break;
         }
+    }
+
+    public void NewItemSoinua()
+    {
+        itemBerria.Play();
     }
 
     // inbentarioko item artean aldatzeko
@@ -385,6 +397,21 @@ public class Eraso : MonoBehaviour {
     void ArgiakHanditu()
     {
         GetComponentInChildren<ArgiEfektua>().ArgiErasoa(argiErradioa);
+    }
+
+    public void SuSoinua()
+    {
+        suSoinua.Play();
+    }
+
+    public void EzpataSoinua()
+    {
+        ezpataSoinua.Play();
+    }
+
+    public void ArkuSoinua()
+    {
+        arkuSoinua.Play();
     }
 
     private void OnDrawGizmos()

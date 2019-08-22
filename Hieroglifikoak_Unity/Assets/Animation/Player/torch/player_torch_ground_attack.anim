@@ -99,6 +99,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0.055555556
+    functionName: EzpataSoinua
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.11111111
     functionName: Erasoa
     data: 
@@ -129,6 +136,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.33333334
     functionName: ArgiakHanditu
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: SuSoinua
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

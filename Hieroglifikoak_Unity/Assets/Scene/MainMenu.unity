@@ -345,7 +345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: Irten
 --- !u!222 &365185911
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -835,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461.7764, y: -122.36606}
-  m_SizeDelta: {x: 883.5528, y: 150}
+  m_AnchoredPosition: {x: 461.69943, y: -122.40933}
+  m_SizeDelta: {x: 883.39886, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591083383
 MonoBehaviour:
@@ -958,9 +958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Start
-
-'
+  m_Text: Hasi
 --- !u!222 &688983907
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1035,7 +1033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Jarraitu
 --- !u!222 &852606755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1270,7 +1268,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Partida bat duzu gordeta, jarraitu nahi duzu edo berriz hasi nahiko zenuke?
-    (Berriz hasten bazara gordetako datuak galduko daira).
+    (Berriz hasten bazara gordetako datuak galduko dira).
 --- !u!222 &1013535114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1507,7 +1505,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b94eeb6b3a5966241bd561c981974f30, type: 3}
-    m_FontSize: 80
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1518,7 +1516,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: Jolastu
 --- !u!222 &1175240478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1558,7 +1556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 753.5528, y: -277.36606}
+  m_AnchoredPosition: {x: 753.39886, y: -277.40933}
   m_SizeDelta: {x: 300, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304502469
@@ -1900,7 +1898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 693.5528, y: -277.36606}
+  m_AnchoredPosition: {x: 693.39886, y: -277.40933}
   m_SizeDelta: {x: 420, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403173162
@@ -2042,7 +2040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 773.5528, y: -419.86606}
+  m_AnchoredPosition: {x: 773.39886, y: -419.90933}
   m_SizeDelta: {x: 260, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435996987
@@ -2096,7 +2094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 693.5528, y: -414.86606}
+  m_AnchoredPosition: {x: 693.39886, y: -414.90933}
   m_SizeDelta: {x: 420, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467049049
@@ -2251,8 +2249,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461.7764, y: -117.36606}
-  m_SizeDelta: {x: 883.5528, y: 150}
+  m_AnchoredPosition: {x: 461.69943, y: -117.40933}
+  m_SizeDelta: {x: 883.39886, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867767058
 MonoBehaviour:

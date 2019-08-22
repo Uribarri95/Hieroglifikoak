@@ -92,4 +92,18 @@ public class FadeManager : MonoBehaviour {
             sceneLoader.LoadScene(2);
         }
     }
+
+    public IEnumerator BukaeraFadeIn(float denbora = 0)
+    {
+        yield return new WaitForSeconds(denbora);
+        float t = 1f;
+        blackImage.color = new Color(1f, 1f, 1f, t);
+        yield return new WaitForSeconds(fadeInDenbora);
+        while (t > 0f)
+        {
+            t -= Time.deltaTime * speed;
+            blackImage.color = new Color(1f, 1f, 1f, t);
+            yield return 0;
+        }
+    }
 }
