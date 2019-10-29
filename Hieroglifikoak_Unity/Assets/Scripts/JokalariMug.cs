@@ -34,8 +34,7 @@ public class JokalariMug : MonoBehaviour
 
 
     float grabitatea = -20;                                 // grabiatate indarra, jokalaria lurrerantz bultzatzen duena
-    float saltoIndarra = 7.55f;                             // jokalariaren hasierako salto indarra !!!
-    float saltoIndarHobea = 9.8f;                           // jokalariaren bukaerako salto indarra
+    float saltoIndarra = 9.8f;                              // jokalariaren bukaerako salto indarra
 
     float aldapaSaltoa = 12;                                // aldapan irristatzen gaudela salto eginda saltoa luzeagoa da (saltoaren abiadura horizontala)
     float saltoNeurria = .75f;                              // aldapan irristatzen gaudela salto eginda saltoa % 75 baxuagoa da (saltoaren abiadura bertikala)
@@ -47,7 +46,7 @@ public class JokalariMug : MonoBehaviour
     float denboraItsatsita = .15f;                          // hormatik askatzeko zenbat denbora sakatu behar den mugimendu botoia
     float askatzeDenbora;                                   // hormatik askatzeko denbora kontatzeko erlojua
 
-    bool eskileraIgotzen;                                   // jokalaria eskilerara igota dagoen adierazten du
+    bool eskaileraIgotzen;                                  // jokalaria eskilerara igota dagoen adierazten du
 
     bool kutxaIkutzen;                                      // jokalaria kutxa igotzen dagoen adierzten du (kutxa bultzatzeko)
     public Transform helduPuntua;                           // jokalariaren aurean dagoen puntua, kutxa ikutzen dagoen ikusiko duena
@@ -74,6 +73,8 @@ public class JokalariMug : MonoBehaviour
     public bool eskumarantz;                                // gela berria eskuman edo ezkerrean dagoen
     float aldaketaDenbora = .1f;                            // gela batetik bestera joateko behar duen denbora (oinez dagoen denbora)
 
+    Ekintzak ekintzak;
+
     // Use this for initialization
     void Start()
     {
@@ -88,6 +89,8 @@ public class JokalariMug : MonoBehaviour
 
         anim = GetComponent<Animator>();
         nireSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        ekintzak = Ekintzak.instantzia;
     }
 
     // Update is called once per frame
@@ -100,7 +103,7 @@ public class JokalariMug : MonoBehaviour
         }
 
         // eskilera gainean ez dago grabitate indarrik
-        if (!eskileraIgotzen)
+        if (!eskaileraIgotzen)
         {
             abiadura.y += grabitatea * Time.deltaTime;
         }
@@ -109,7 +112,7 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("hiltzen", hiltzen);
         anim.SetBool("berpiztu", berpizten);
 
-        // hiltzen, aginduak ezgaituta, jokalaria jauzi eta egoera arruntera iztuli
+        // hiltzen, aginduak ezgaituta, jokalaria jauzi eta egoera arruntera itzuli
         if (hiltzen || kargatzen)
         {
             BerpiztekoPrestatu();
@@ -125,25 +128,6 @@ public class JokalariMug : MonoBehaviour
         else
         {
             Aginduak();
-        }
-
-        if (Ekintzak.instantzia.GetIrristatu() || Ekintzak.instantzia.GetAldapaIrristatu())
-        {
-            if(GetLurrean() && !gelaAldaketa)
-            {
-                if(irristatu || kudeatzailea.kolpeak.aldapaIrristatu)
-                {
-                    AudioManager.instantzia.Play("Irristatu");
-                }
-                else
-                {
-                    AudioManager.instantzia.Stop("Irristatu");
-                }
-            }
-            else
-            {
-                AudioManager.instantzia.Stop("Irristatu");
-            }
         }
 
         // aginduen arabera jokalaria mugitu
@@ -166,13 +150,16 @@ public class JokalariMug : MonoBehaviour
             if (!Pause.jokuaGeldituta)
             {
                 aginduHorizontala = Input.GetAxisRaw("Horizontal");
+
                 // eskuma mugimendua desblokeatu gabe, mugimendua 0 da
-                if(aginduHorizontala == 1 && !Ekintzak.instantzia.GetEskuma())
+                //if(aginduHorizontala == 1 && !Ekintzak.instantzia.GetEskuma())
+                if (aginduHorizontala == 1 && !ekintzak.GetEskuma())
                 {
                     aginduHorizontala = 0;
                 }
                 //ezkerra mugimendua desblokeatu gabe, mugimendua 0 da
-                else if (aginduHorizontala == -1 && !Ekintzak.instantzia.GetEzkerra())
+                //else if (aginduHorizontala == -1 && !Ekintzak.instantzia.GetEzkerra())
+                else if (aginduHorizontala == -1 && !ekintzak.GetEzkerra())
                 {
                     aginduHorizontala = 0;
                 }
@@ -187,7 +174,7 @@ public class JokalariMug : MonoBehaviour
         // abiadura aldaketak leundu
         abiadura.x = Mathf.SmoothDamp(abiadura.x, aginduHorizontala * mugimendua, ref currentVelocity, !kudeatzailea.kolpeak.azpian && !irristatu ? .2f : leunketa);
 
-        // hormara itsatzita gauden konprobatu
+        // hormara itsatsita gauden konprobatu
         HormaItsatsiKudeaketa();
 
         // aldapaIrristatu kudeatu
@@ -217,7 +204,8 @@ public class JokalariMug : MonoBehaviour
         SaltoKudeaketa();
 
         // makurtu eta irristatu
-        if (Ekintzak.instantzia.GetMakurtu())
+        //if (Ekintzak.instantzia.GetMakurtu())
+        if (ekintzak.GetMakurtu())
         {
             // makurtu botoia sakatu lurrean gaudenean
             if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && kudeatzailea.kolpeak.azpian && !ateAurrean)
@@ -228,6 +216,28 @@ public class JokalariMug : MonoBehaviour
             else if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.S) && makurtu)
             {
                 MakurtuAskatu();
+            }
+
+            // irristatzean edo aldapa irristatzean soinuak jarri
+            if (GetLurrean() && !gelaAldaketa)
+            {
+                if (irristatu || kudeatzailea.kolpeak.aldapaIrristatu)
+                {
+                    AudioManager.instantzia.Play("Irristatu");
+                    // aldapa irristatzeko noranzko bakarra
+                    if (kudeatzailea.kolpeak.aldapaIrristatu)
+                    {
+                        NoranzkoaAldatu(Mathf.Sign(kudeatzailea.kolpeak.normala.x));
+                    }
+                }
+                else
+                {
+                    AudioManager.instantzia.Stop("Irristatu");
+                }
+            }
+            else
+            {
+                AudioManager.instantzia.Stop("Irristatu");
             }
         }
 
@@ -246,7 +256,7 @@ public class JokalariMug : MonoBehaviour
         anim.SetBool("makurtuta", makurtu);
         anim.SetBool("irristatzen", irristatu);
         anim.SetBool("itsatsita", paretaItsatsi);
-        anim.SetBool("eskileraIgo", eskileraIgotzen);
+        anim.SetBool("eskileraIgo", eskaileraIgotzen);
         anim.SetBool("kutxaBultzatu", kutxaIkutzen && kudeatzailea.kolpeak.azpian);
 
         // item berria jaso animazioa ezgaitu
@@ -260,7 +270,7 @@ public class JokalariMug : MonoBehaviour
         }
 
         // kutxa bultzatzen eta eskilerak igotzen ezin da eraso
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskileraIgotzen)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("player_push_box") || eskaileraIgotzen)
         {
             ErasoaEten();
         }
@@ -330,7 +340,8 @@ public class JokalariMug : MonoBehaviour
     // aldapa irristatu ostean pixka bat irristatu
     void AldapaIrristatu()
     {
-        if (Ekintzak.instantzia.GetAldapaIrristatu())
+        //if (Ekintzak.instantzia.GetAldapaIrristatu())
+        if (ekintzak.GetAldapaIrristatu())
         {
             if (makurtu && anim.GetCurrentAnimatorStateInfo(0).IsName("player_slope_slide") && kudeatzailea.kolpeak.azpian)
             {
@@ -410,7 +421,8 @@ public class JokalariMug : MonoBehaviour
     {
         if (!Pause.jokuaGeldituta)
         {
-            if (Ekintzak.instantzia.GetSaltoTxikia() || Ekintzak.instantzia.GetSaltoHandia()) // || get irristatusaltoa || paretasaltoa
+            //if (Ekintzak.instantzia.GetSaltoTxikia() || Ekintzak.instantzia.GetSaltoHandia())
+            if (ekintzak.GetSaltoTxikia() || ekintzak.GetSaltoHandia())
             {
                 if (Input.GetButton("Jump") && !anim.GetBool("eraso") && !ateaZeharkatzen)
                 {
@@ -422,25 +434,27 @@ public class JokalariMug : MonoBehaviour
                         {
                             AudioManager.instantzia.Play("Saltoa");
 
-                            abiadura.y = saltoIndarHobea * saltoNeurria;
+                            abiadura.y = saltoIndarra * saltoNeurria;
                             abiadura.x = Mathf.Sign(kudeatzailea.kolpeak.normala.x) * aldapaSaltoa;
                         }
                         // salto normala (desblokeatuta badago) 
                         else
                         {
-                            if (makurtu && kudeatzailea.AltzatuNaiteke())
+                            if (makurtu && kudeatzailea.AltxatuNaiteke())
                             {
                                 AudioManager.instantzia.Play("Saltoa");
 
                                 Altxatu();
-                                abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarHobea : saltoIndarHobea / 1.3f;
+                                //abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarra : saltoIndarra / 1.3f;
+                                abiadura.y = ekintzak.GetSaltoHandia() ? saltoIndarra : saltoIndarra / 1.3f;
                                 irristatu = false;
                             }
                             else if (!makurtu)
                             {
                                 AudioManager.instantzia.Play("Saltoa");
 
-                                abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarHobea : saltoIndarHobea / 1.3f;
+                                //abiadura.y = Ekintzak.instantzia.GetSaltoHandia() ? saltoIndarra : saltoIndarra / 1.3f;
+                                abiadura.y = ekintzak.GetSaltoHandia() ? saltoIndarra : saltoIndarra / 1.3f;
                             }
                             anim.SetBool("eraso", false);
                         }
@@ -448,7 +462,8 @@ public class JokalariMug : MonoBehaviour
                     // pareta saltoa
                     else if (paretaItsatsi)
                     {
-                        if (Ekintzak.instantzia.GetHormaSaltoa())
+                        //if (Ekintzak.instantzia.GetHormaSaltoa())
+                        if (ekintzak.GetHormaSaltoa())
                         {
                             AudioManager.instantzia.Play("Saltoa");
 
@@ -490,7 +505,8 @@ public class JokalariMug : MonoBehaviour
                 abiadura.x = 0;
                 aginduHorizontala = 0;
             }
-            if (Ekintzak.instantzia.GetAldapaIrristatu())
+            //if (Ekintzak.instantzia.GetAldapaIrristatu())
+            if (ekintzak.GetAldapaIrristatu())
             {
                 if (kudeatzailea.kolpeak.aldapaIgotzen || kudeatzailea.kolpeak.aldapaJaisten)
                 {
@@ -499,7 +515,8 @@ public class JokalariMug : MonoBehaviour
                 }
             }
 
-            if (Ekintzak.instantzia.GetIrristatu())
+            //if (Ekintzak.instantzia.GetIrristatu())
+            if (ekintzak.GetIrristatu())
             {
                 if (!kudeatzailea.kolpeak.aldapaIgotzen && !kudeatzailea.kolpeak.aldapaJaisten)
                 {
@@ -519,12 +536,12 @@ public class JokalariMug : MonoBehaviour
         }
     }
 
-    // jokalaria altzatzen da gainean oztoporik ez badauka
+    // jokalaria altxatzen da gainean oztoporik ez badauka
     void MakurtuAskatu()
     {
         irristatu = false;
         leunketa = korrika ? korrikaLeunketa : oinezLeunketa;
-        if (kudeatzailea.AltzatuNaiteke())
+        if (kudeatzailea.AltxatuNaiteke())
         {
             Altxatu();
         }
@@ -549,9 +566,6 @@ public class JokalariMug : MonoBehaviour
             if (kutxaIkutzen && !Input.GetButton("Jump"))
             {
                 kutxa.GetComponent<KutxaMugKud>().Mugitu(abiadura * Time.deltaTime);
-                /*KutxaMugitu kutxaMugimendua = kutxa.GetComponent<KutxaMugitu>();
-                kutxaMugimendua.SetBultzatzen(true);
-                kutxaMugimendua.SetAbiadura(abiadura);*/
             }
         }
     }
@@ -560,7 +574,8 @@ public class JokalariMug : MonoBehaviour
     void Korrika()
     {
         // korrika desblokeatuta
-        if (Ekintzak.instantzia.GetKorrika())
+        //if (Ekintzak.instantzia.GetKorrika())
+        if (ekintzak.GetKorrika())
         {
             // jokalariaren abiadura areagotzen da makurtuta ez badago, leunketa faktorea handiagooa da noranzko aldaketa motelagoa izateko
             if (Input.GetKey(KeyCode.LeftShift) && !makurtu && kudeatzailea.kolpeak.azpian)
@@ -634,13 +649,6 @@ public class JokalariMug : MonoBehaviour
         gelaAldaketa = false;
     }
 
-    // jokalaria gela berri batera doala eta noranzkoa adierazten da
-    public void SetGelaAldaketa(bool noranzkoa)
-    {
-        eskumarantz = noranzkoa;
-        gelaAldaketa = true;
-    }
-
     // jokalariak egin ahal dituen ekintzak ezgaitzen dira
     private void EgoeraArrunteraItzuli()
     {
@@ -658,7 +666,7 @@ public class JokalariMug : MonoBehaviour
     // jokalaria eraso dezake baldintza betetzen badira
     public bool ErasoDezaket()
     {
-        return !makurtu && !paretaItsatsi && !eskileraIgotzen && !ateaZeharkatzen && !Pause.jokuaGeldituta;
+        return !makurtu && !paretaItsatsi && !eskaileraIgotzen && !ateaZeharkatzen && !Pause.jokuaGeldituta;
     }
 
     // erasoa eteten da, animazioak bukatzeko event
@@ -668,9 +676,9 @@ public class JokalariMug : MonoBehaviour
     }
 
     // abiadura aldatzen da, eskileran gaudenean kontrola eskilerak dauka eta atea zabaltzean abiadura 0 jartzeko
-    public void SetAbiadura(Vector2 eskileraAbiadura)
+    public void SetAbiadura(Vector2 eskaileraAbiadura)
     {
-        abiadura = eskileraAbiadura;
+        abiadura = eskaileraAbiadura;
     }
 
     // abiadura itzultzen du, eskilerak erabiltzen du.
@@ -692,9 +700,9 @@ public class JokalariMug : MonoBehaviour
     }
 
     // eskileran gaudela ohartarazteko
-    public void SetEskileran(bool eskileran)
+    public void SetEskaileran(bool eskaileran)
     {
-        eskileraIgotzen = eskileran;
+        eskaileraIgotzen = eskaileran;
     }
 
     // vcam hil animazioan gauden jakiteko

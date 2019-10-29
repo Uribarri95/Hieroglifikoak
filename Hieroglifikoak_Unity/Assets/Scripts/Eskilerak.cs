@@ -22,7 +22,7 @@ public class Eskilerak : MonoBehaviour {
                 jokalaria.SetAbiadura(new Vector2(0, -.4f));
             }
             eskileran = false;
-            jokalaria.SetEskileran(false);
+            jokalaria.SetEskaileran(false);
         }
     }
 
@@ -38,7 +38,7 @@ public class Eskilerak : MonoBehaviour {
                 {
                     jokalaria.SetAbiadura(new Vector2(aginduHorizontala * xAbiadura, 0));
                     eskileran = false;
-                    jokalaria.SetEskileran(false);
+                    jokalaria.SetEskaileran(false);
                 }
 
                 // eskilera igo/jeitsi
@@ -49,13 +49,13 @@ public class Eskilerak : MonoBehaviour {
                     if (aginduBertikala < 0 && jokalaria.GetLurrean())
                     {
                         eskileran = false;
-                        jokalaria.SetEskileran(false);
+                        jokalaria.SetEskaileran(false);
                     }
                     // goiko topea
                     else if (aginduBertikala > 0 && jokalaria.transform.position.y > gameObject.transform.position.y && jokalaria.GetLurrean())
                     {
                         eskileran = false;
-                        jokalaria.SetEskileran(false);
+                        jokalaria.SetEskaileran(false);
                     }
                     // eskileratik mugitu
                     else
@@ -66,7 +66,7 @@ public class Eskilerak : MonoBehaviour {
                             float posX = gameObject.transform.position.x;
                             jokalaria.transform.position = new Vector2(posX, jokalaria.transform.position.y);
                         }
-                        jokalaria.SetEskileran(true);
+                        jokalaria.SetEskaileran(true);
                         jokalaria.SetAbiadura(new Vector2(0, aginduBertikala * yAbiadura));
                     }
                 }
@@ -75,7 +75,7 @@ public class Eskilerak : MonoBehaviour {
                     if (jokalaria.GetLurrean())
                     {
                         eskileran = false;
-                        jokalaria.SetEskileran(false);
+                        jokalaria.SetEskaileran(false);
                     }
                     // eskileran geldi
                     else if (eskileran)

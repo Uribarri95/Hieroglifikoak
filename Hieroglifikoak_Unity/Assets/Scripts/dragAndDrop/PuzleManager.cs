@@ -96,14 +96,6 @@ public class PuzleManager : MonoBehaviour {
             string erantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetErantzuna();
             emaitzak.SetIndex(zenbakia);
             bool zuzena = emaitzak.EmaitzaKonprobatu(erantzuna);
-            /*if (zuzena && currentPanel.GetComponent<EmaitzaKonprobatu>().extra) // bi algoritmo zuzendu behar dira
-            {
-                print("bestea");
-                string besteErantzuna = currentPanel.GetComponent<EmaitzaKonprobatu>().GetBesteErantzuna(); // !!! bigarren erantzuna kendu?
-                emaitzak.SetIndex(zenbakia + 1);
-                zuzena = emaitzak.EmaitzaKonprobatu(besteErantzuna);
-                emaitzak.SetIndex(zenbakia);
-            }*/
             if (zuzena)
             {
                 AudioManager.instantzia.Play("EmaitzaZuzena");

@@ -26,16 +26,9 @@ public class ItemHartu : MonoBehaviour {
                     GetComponentInChildren<SpriteMask>().enabled = false;
                     return;
                 }
-                // ezgaitu
                 gameObject.SetActive(false);
-                //Destroy(gameObject);
             }
         }
-        // !!! aldatu, hau ezgaituta badago gurasoa aldatu
-        /*if(gameObject.name.Contains("Ezpata") || gameObject.name.Contains("Arkua"))
-        {
-            GetComponentInParent<Animator>().SetBool("ItemHartu", true);
-        }*/
     }
 
 }

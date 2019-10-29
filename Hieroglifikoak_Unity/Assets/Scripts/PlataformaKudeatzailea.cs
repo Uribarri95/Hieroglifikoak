@@ -230,14 +230,15 @@ public class PlataformaKudeatzailea : IzpiKudeaketa {
             }
         }
 
+        // jokalaria kutxa baten gainean eta kutxa plataformaren gainean
         if (!gainean)
         {
+            // kutxak 1-eko altuera dauka, badaezpada 1.4 jarri da izpiaren distantzian
             izpiLuzera = 1.4f + 2 * azalZabalera;
             for (int i = 0; i < izpiBertKop; i++)
             {
                 Vector2 jatorriIzpia = izpiJatorria.topLeft + Vector2.right * (bertIzpiTartea * i);
                 RaycastHit2D[] kolpatu = Physics2D.RaycastAll(jatorriIzpia, Vector2.up, izpiLuzera, bidaiariak);
-                //RaycastHit2D kolpatu = Physics2D.Raycast(jatorriIzpia, Vector2.up, izpiLuzera, bidaiariak);
                 
                 for (int j = 0; j < kolpatu.Length; j++)
                 {

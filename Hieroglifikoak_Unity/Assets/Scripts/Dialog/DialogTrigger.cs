@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogTrigger : MonoBehaviour {
 
     public GameObject dialogCanvas;
-    public float itxaroteDenbora = 1;
+    public float itxaroteDenbora;
     public bool puzleaErakutsi;
     public int zenbakia;
     public Dialog dialog;
@@ -21,18 +21,6 @@ public class DialogTrigger : MonoBehaviour {
     private void Start()
     {
         dialogManager = DialogManager.instantzia;
-        /*if (pasahitzak)
-        {
-            pasahitzakFaltan.esaldiak = new string[] { pasahitzKopurua - Inbentarioa.instantzia.GetPasahitzKop() + " papiro hartzea falta zaigu."};
-        }*/
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            print("pasahitzKop: " + Inbentarioa.instantzia.GetPasahitzKop());
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

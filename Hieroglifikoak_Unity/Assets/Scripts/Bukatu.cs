@@ -17,7 +17,7 @@ public class Bukatu : MonoBehaviour {
 
     IEnumerator BukaeraEszenatokia()
     {
-        //JokalariKudetzailea.instantzia.DatuakGorde();
+        JokalariKudetzailea.instantzia.DatuakGorde();
         yield return new WaitForSeconds(denbora);
         fademanager.BukaeraEszenatokia();
     }

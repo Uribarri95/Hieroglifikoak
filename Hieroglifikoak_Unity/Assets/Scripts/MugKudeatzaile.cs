@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+// herentzia
 public class MugKudeatzaile : IzpiKudeaketa {
 
     public LayerMask kolpeGainazalak;
@@ -9,21 +8,22 @@ public class MugKudeatzaile : IzpiKudeaketa {
     public LayerMask kutxaGainazala;
 
     public KolpeInfo kolpeak;
-    JokalariMug jokalariMug;
     float offsetHasiera;
-    float geruzaHasiera;
+    float altueraHasiera;
     float makurtuAldaketa = .75f;
     float irristatuMoteldu = 5;
 
-    // !!! diseinua: aldapa denak 45º-koak edo gutxiago !!!
     public float aldapaAngeluMax = 45;
 
+    Ekintzak ekintzak;
+
 	// Use this for initialization
+    // Start gainidatzi baina gurasoaren start exekutatzen da
 	public override void Start () {
         base.Start();
-        jokalariMug = GetComponent<JokalariMug>();
         offsetHasiera = bc2d.offset.y;
-        geruzaHasiera = bc2d.size.y;
+        altueraHasiera = bc2d.size.y;
+        ekintzak = Ekintzak.instantzia;
     }
 
     // erabiltzailearen aginduak jaso eta fisika indarrak aplikatzen zaizkio jokalaritik ateratzen diren izpiak erabilita
@@ -32,7 +32,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
         IzpiJatorriaEguneratu();
         kolpeak.Reset();
 
-        KutxaKonprobaketa(ref abiadura, plataformaGainean);
+        KutxaKonprobaketa(ref abiadura);
 
         if (abiadura.y < 0)
         {
@@ -55,7 +55,9 @@ public class MugKudeatzaile : IzpiKudeaketa {
         transform.Translate(abiadura);
     }
 
-    void KutxaKonprobaketa(ref Vector2 abiadura, bool plataformaGainean)
+    // plataforma gainean eta kutxa baten gainean bagaude konprobatu
+    // horrela bada PlataformaKudeatzaileak Mugitu() funtzioa deituko du
+    void KutxaKonprobaketa(ref Vector2 abiadura)
     {
         float izpiLuzera = Mathf.Abs(abiadura.y) + azalZabalera;
 
@@ -67,7 +69,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
             if (kolpatu)
             {
-                    kolpeak.kutxaGainean = true;
+                kolpeak.kutxaGainean = true;
             }
         }
     }
@@ -76,7 +78,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
     // Kolpea eskuman edo ezkerran jaso den gordetzen da
     void KolpeHorizontalak(ref Vector2 abiadura, bool irristatu = false)
     {
-        if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        //if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        if (!ekintzak.GetAldapaIrristatu())
         {
             irristatu = false;
         }
@@ -161,7 +164,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
                     }
                     if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
                     {
-                        if (Ekintzak.instantzia.GetZoruaZeharkatu())
+                        //if (Ekintzak.instantzia.GetZoruaZeharkatu())
+                        if (ekintzak.GetZoruaZeharkatu())
                         {
                             continue;
                         }
@@ -215,7 +219,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
     // abiadura horizontala bertikalean eta horizontalean banatzen da aldapan
     void AldapaJaitsi(ref Vector2 abiadura, bool irristatu = false)
     {
-        if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        //if (!Ekintzak.instantzia.GetAldapaIrristatu())
+        if (!ekintzak.GetAldapaIrristatu())
         {
             irristatu = false;
         }
@@ -242,7 +247,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
                     if (Mathf.Sign(kolpea.normal.x) == xNoranzkoa)
                     {
                         // aldapa jaitsi kontaktuan gaudenean bakarrik
-                        if (kolpea.distance - azalZabalera <= Mathf.Tan(aldapaAngelua * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x))
+                        if (kolpea.distance - azalZabalera <= Mathf.Tan(aldapaAngelua * Mathf.Deg2Rad) * Mathf.Abs(abiadura.x)) // tangentea = abiadura.y
                         {
                             float distantzia = Mathf.Abs(abiadura.x);
                             abiadura.x = Mathf.Cos(aldapaAngelua * Mathf.Deg2Rad) * distantzia * Mathf.Sign(abiadura.x);
@@ -267,7 +272,6 @@ public class MugKudeatzaile : IzpiKudeaketa {
             float angelua = Vector2.Angle(kolpea.normal, Vector2.up);
             if(angelua != 0 && angelua != 90)
             {
-                jokalariMug.NoranzkoaAldatu(Mathf.Sign(kolpea.normal.x));
                 kolpeak.aldapaAngelu = angelua;
                 kolpeak.normala = kolpea.normal;
                 abiadura.x = Mathf.Cos(angelua * Mathf.Deg2Rad) * Mathf.Sign(kolpea.normal.x) / irristatuMoteldu;
@@ -279,7 +283,8 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
     void ParetaItsatsiKonprobatu(float xNoranzkoa, float izpiLuzera)
     {
-        if (Ekintzak.instantzia.GetHormaSaltoa())
+        //if (Ekintzak.instantzia.GetHormaSaltoa())
+        if (ekintzak.GetHormaSaltoa())
         {
             Vector2 jatorriIzpia = (xNoranzkoa == -1) ? izpiJatorria.topLeft : izpiJatorria.topRight;
             bool goian = KolpeaKonprobatu(jatorriIzpia, xNoranzkoa, izpiLuzera);
@@ -328,7 +333,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
             geruza.y = geruza.y *  makurtuAldaketa;
             bc2d.size = geruza;
 
-            offset.y = -(geruzaHasiera - geruza.y) / 2;
+            offset.y = -(altueraHasiera - geruza.y) / 2;
             bc2d.offset = offset;
         }
         IzpiTarteakKalkulatu();
@@ -336,7 +341,7 @@ public class MugKudeatzaile : IzpiKudeaketa {
 
     // true gainean oztoporik ez badago 
     // !!! diseinua: oztopoa beti izango da jokalaria etzan baino zabalagoa !!!
-    public bool AltzatuNaiteke()
+    public bool AltxatuNaiteke()
     {
         float jokalariLuzera = bc2d.size.y * Mathf.Pow(makurtuAldaketa, -1);
         
